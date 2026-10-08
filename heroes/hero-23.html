@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AREEJ WEAR — Drop 03</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#000;min-height:100vh;font-family:'Space Grotesk',sans-serif;color:#ddd;display:flex;align-items:center;justify-content:center;padding:3vmin;overflow:hidden}
+.stage{position:relative;width:min(96%,1060px);aspect-ratio:16/9.8}
+.logo{position:absolute;left:50%;top:0;width:190px;-webkit-mask-image:radial-gradient(60% 60% at 50% 50%,#000 46%,transparent 72%);mask-image:radial-gradient(60% 60% at 50% 50%,#000 46%,transparent 72%);transform:translateX(-50%);animation:lf 6s ease-in-out infinite;filter:drop-shadow(0 0 26px rgba(200,210,230,.25))}
+@keyframes lf{0%,100%{transform:translateX(-50%) translateY(0) rotate(-2deg)}50%{transform:translateX(-50%) translateY(-12px) rotate(2deg)}}
+.hd{position:absolute;bottom:0;filter:drop-shadow(0 26px 30px rgba(0,0,0,.9));-webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000 55%,transparent 82%);mask-image:radial-gradient(70% 70% at 50% 50%,#000 55%,transparent 82%)}
+.h1{left:1%;width:34%;animation:f1 5s ease-in-out infinite}
+.h2{left:50%;width:36%;transform:translateX(-50%);animation:f2 5s .7s ease-in-out infinite;z-index:3}
+.h3{right:1%;width:34%;animation:f3 5s 1.4s ease-in-out infinite}
+@keyframes f1{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-18px) rotate(1deg)}}
+@keyframes f2{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-24px)}}
+@keyframes f3{0%,100%{transform:translateY(0) rotate(1.5deg)}50%{transform:translateY(-18px) rotate(-1deg)}}
+.spark{position:absolute;color:#fff;animation:tw 2.6s ease-in-out infinite;font-size:13px}
+@keyframes tw{0%,100%{opacity:.1;transform:scale(.7) rotate(0)}50%{opacity:1;transform:scale(1.2) rotate(40deg)}}
+.cap{position:absolute;left:50%;bottom:-2%;transform:translateX(-50%);font-size:10px;letter-spacing:.56em;color:#8a8d94;white-space:nowrap;animation:glowt 4s ease-in-out infinite}
+@keyframes glowt{0%,100%{color:#777b84;text-shadow:none}50%{color:#d8dde8;text-shadow:0 0 18px rgba(200,210,235,.6)}}
+.ln{position:absolute;left:50%;top:26%;height:10%;width:1px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.4),transparent)}
+</style></head><body>
+<div class="stage">
+  <img class="logo" src="img/h23logo.jpg" alt="">
+  <span class="ln"></span>
+  <img class="hd h1" src="img/h23a.jpg" alt="">
+  <img class="hd h2" src="img/h23b.jpg" alt="">
+  <img class="hd h3" src="img/h23c.jpg" alt="">
+  <span class="spark" style="left:12%;top:24%">✦</span>
+  <span class="spark" style="right:10%;top:18%;animation-delay:.8s">✦</span>
+  <span class="spark" style="left:28%;top:48%;animation-delay:1.6s">✧</span>
+  <span class="spark" style="right:24%;top:52%;animation-delay:.4s">✧</span>
+  <div class="cap">A R E E J &nbsp;W E A R &nbsp;—&nbsp; D R O P &nbsp;0 3</div>
+</div></body></html>

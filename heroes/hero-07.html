@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LUMINESCENT Town — Artwork Hero</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Pacifico&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#9a9a9c;font-family:Inter,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:4vmin}
+.page{position:relative;background:#101010;color:#eee;width:100%;max-width:1100px;border-radius:10px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.bar{background:#fafafa;color:#111;display:flex;align-items:center;gap:22px;padding:13px 22px;font-size:11px;font-weight:600}
+.bar b{font-family:'Baloo 2';letter-spacing:.04em;margin-right:12px;color:#d6356e}
+.bar span:hover{color:#d6356e;cursor:pointer}
+.bar i{margin-left:auto;font-style:normal}
+.meta{display:flex;gap:30px;padding:16px 26px 0;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#9b9b9b;flex-wrap:wrap}
+.meta b{display:block;color:#fff;margin-bottom:3px}
+.title{position:relative;padding:8px 26px 0;line-height:.95}
+.title .bub{font-family:'Baloo 2';font-weight:800;font-size:clamp(44px,8.6vw,110px);color:#fff;letter-spacing:.01em}
+.title .scr{position:absolute;left:38%;top:52%;font-family:Pacifico;font-size:clamp(24px,4vw,52px);color:#ff79b0;transform:rotate(-6deg);text-shadow:0 2px 14px rgba(255,80,150,.5);animation:glowp 3s ease-in-out infinite}
+@keyframes glowp{0%,100%{text-shadow:0 2px 14px rgba(255,80,150,.4)}50%{text-shadow:0 2px 26px rgba(255,80,150,.9)}}
+.row{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;padding:18px 26px 26px}
+.imgbig{border-radius:10px;overflow:hidden}
+.imgbig img{width:100%;height:100%;min-height:320px;object-fit:cover;display:block;transition:.5s}
+.imgbig:hover img{transform:scale(1.05)}
+.colR .about{font-size:10px;letter-spacing:.08em;line-height:1.8;color:#c9c9c9;text-transform:uppercase}
+.colR .about b{color:#fff;display:block;margin-bottom:6px}
+.pal{display:flex;gap:6px;margin:14px 0}
+.pal i{width:26px;height:16px;border-radius:3px}
+.btn{display:inline-block;border:1px solid #777;border-radius:999px;color:#fff;font-size:11px;padding:10px 26px;text-decoration:none;margin:4px 0 14px;transition:.25s}
+.btn:hover{background:#fff;color:#111}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+</style></head><body>
+<div class="page">
+<div class="bar"><b>AREEJ</b><span>About me</span><span>Artworks</span><span>Talk to me?</span><i>≡</i></div>
+<div class="meta"><span><b>Credential —</b>Original artwork · AI art · Prompts</span><span><b>Date —</b>Oct 2026</span><span><b>Designer —</b>AREEJ</span><span><b>Instagram —</b>@areej.design</span></div>
+<div class="title"><span class="bub">LUMINESCENT</span><span class="scr">Town</span></div>
+<div class="row">
+<div class="imgbig"><img src="img/h7.jpg" alt=""></div>
+<div class="colR">
+<div class="pal"><i style="background:#ffd9e8"></i><i style="background:#ff9ec6"></i><i style="background:#f06292"></i><i style="background:#c2185b"></i><i style="background:#7b1138"></i></div>
+<p class="about"><b>About</b>A captivating fusion of light and imagination. A mesmerizing artwork that transports you to a world of ethereal beauty — a testament to the limitless possibilities of AI-generated art.</p>
+<a class="btn" href="#">See more</a>
+<div class="duo"><img src="img/h7.jpg" style="object-position:20% 80%"><img src="img/h7.jpg" style="object-position:80% 60%"></div>
+</div></div>
+</div></body></html>

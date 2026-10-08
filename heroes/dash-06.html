@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dei — Learning Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#d9f1f3;min-height:100vh;font-family:Inter,sans-serif;color:#191b1d;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.dev{width:min(96%,1060px);background:#101113;border-radius:30px;padding:12px;box-shadow:0 36px 80px rgba(20,60,70,.4)}
+.tb{display:flex;align-items:center;gap:18px;color:#fff;padding:10px 16px;font-size:11px}
+.tb b{font-size:15px}
+.tb .mid{margin-left:auto;display:flex;gap:16px;align-items:center;color:#b9bbbe}
+.tb .pill{background:#1e2023;border-radius:16px;padding:7px 14px}
+.tb img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.tb .usr{display:flex;align-items:center;gap:8px;margin-left:16px;font-size:10px}
+.tb .usr small{display:block;font-size:8px;color:#8d8f93}
+.body{background:#f4f5f3;border-radius:22px;display:flex;gap:0;overflow:hidden;position:relative}
+.main{flex:1.9;padding:18px 20px;position:relative}
+h1{font-size:19px;font-weight:800;margin-bottom:14px}
+.railz{position:absolute;left:18px;top:64px;display:flex;flex-direction:column;gap:8px}
+.railz i{width:34px;height:34px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;font-style:normal;font-size:12px}
+.railz i.o{background:#fff;color:#111;border:1px solid #ddd}
+.cards{margin-left:56px;position:relative}
+.cards::before{content:"";position:absolute;left:18px;top:30px;bottom:20px;border-left:2px dotted #b9ddc4}
+.cc{position:relative;background:#fff;border-radius:18px;padding:14px 16px;margin-bottom:12px;width:62%;box-shadow:0 8px 20px rgba(40,60,50,.08);transition:.3s;animation:up .6s ease both}
+.cc:hover{transform:translateY(-3px) scale(1.01)}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1}}
+.cc b{font-size:12.5px}
+.cc p{font-size:9.5px;color:#8d8f93;margin:5px 0 9px}
+.st{font-size:8.5px;font-weight:700;padding:4px 10px;border-radius:12px;background:#dff3e3;color:#2f9e55}
+.st.up{background:#f1f1ef;color:#8d8f93}
+.cc .plus{position:absolute;right:-8px;top:-8px;width:24px;height:24px;border-radius:50%;background:#dff3e3;color:#2f9e55;display:grid;place-items:center;font-size:13px;animation:pop 2.6s infinite}
+@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.cc.pink{background:linear-gradient(140deg,#f3d4f6,#ecc6f2);width:56%;margin-left:-14px;z-index:3;box-shadow:0 16px 34px rgba(170,90,190,.3)}
+.play{display:flex;align-items:center;gap:10px;margin-top:8px}
+.pb{width:34px;height:34px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;animation:pulse 2.2s infinite;cursor:pointer}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(17,17,17,.3)}50%{box-shadow:0 0 0 9px rgba(17,17,17,0)}}
+.avs{display:flex}
+.avs img{width:22px;height:22px;border-radius:50%;border:2px solid #fff;margin-left:-6px;object-fit:cover}
+.stats{position:absolute;right:22px;top:62px;display:flex;gap:8px}
+.sc{background:#fff;border-radius:14px;padding:10px 14px;text-align:center;box-shadow:0 8px 18px rgba(40,60,50,.08);animation:up .6s ease both}
+.sc b{font-size:17px;display:block}
+.sc small{font-size:8px;color:#8d8f93}
+.sc.g{background:#dff3e3}
+.toolbar{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:#111;border-radius:22px;padding:8px 14px;display:flex;gap:8px;z-index:5}
+.toolbar i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;color:#fff;cursor:pointer;transition:.25s}
+.toolbar i:hover{transform:translateY(-3px)}
+.evs{flex:1;background:#fbfbfa;border-left:1px solid #e8e8e4;padding:18px 16px}
+.evs h2{font-size:15px;margin-bottom:12px}
+.ev{border-radius:16px;padding:12px 14px;font-size:9.5px;margin-bottom:10px;animation:up .6s ease both;transition:.3s}
+.ev:hover{transform:translateX(-4px)}
+.ev .d{float:right;font-size:8.5px;color:#777a7e}
+.ev b{display:block;font-size:10.5px;margin-bottom:4px}
+.ev p{color:#5d6064;line-height:1.55}
+.ev .cta{display:inline-block;background:#fff;border-radius:12px;padding:5px 11px;font-size:8.5px;font-weight:700;margin-top:7px}
+.v1{background:#d9f1f3}.v2{background:#e6def6;animation-delay:.12s}.v3{background:#fdeec7;animation-delay:.24s}.v4{background:#dff3e3;animation-delay:.36s;transform:rotate(-2deg)}
+</style></head><body>
+<div class="dev">
+<div class="tb"><b>Dei</b><span class="mid"><span class="pill">🎓 Learning Plan</span><span>👥</span><span>🕐</span><span>✉</span><span>▦</span></span>
+  <span class="usr"><img src="img/av3.jpg"><span>Ellington Thom<small>areej@mail.com</small></span> ▾</span></div>
+<div class="body">
+  <div class="main">
+    <h1>My Learning Plan 🧺</h1>
+    <div class="railz"><i>📞</i><i class="o">☰</i><i class="o">▦</i></div>
+    <div class="stats">
+      <span class="sc"><b>26</b><small>Total</small></span>
+      <span class="sc g" style="animation-delay:.1s"><b>2</b><small>Completed 🎉</small></span>
+      <span class="sc" style="animation-delay:.2s"><b>23</b><small>Upcoming</small></span>
+    </div>
+    <div class="cards" style="margin-top:54px">
+      <div class="cc"><span class="plus">+</span><b>Medical Terminology</b><p>Learn basic medical language for effective communication.</p><span class="st">Completed 🎉</span> <span style="font-size:10px;color:#8d8f93">··· ✕ ✓</span></div>
+      <div class="cc pink" style="animation-delay:.12s"><b>Pharmacology Basics 🎵</b><p>Learn basic medical language for effective communication.</p>
+        <div class="play"><span class="pb">▶</span><span style="font-size:9px">Watching 00:30</span><span class="avs"><img src="img/av4.jpg"><img src="img/av5.jpg"><img src="img/av6.jpg"></span></div></div>
+      <div class="cc" style="animation-delay:.2s;margin-left:40px"><span class="plus" style="background:#efe7f8;color:#8b5cc9">⚙</span><b>Anatomy and Physiology</b><p>Understand the structure and function of the human body.</p><span class="st">Completed 🎉</span></div>
+      <div class="cc" style="animation-delay:.3s;margin-left:40px"><b>Medical Ethics and Professionalism</b><p>Ethical principles and professionalism in healthcare.</p><span class="st up">Upcoming 🕐</span></div>
+      <div class="cc" style="animation-delay:.4s"><b>Disease Pathophysiology</b><p>Study the cellular and molecular basis of common diseases.</p><span class="st up">Upcoming 🕐</span></div>
+    </div>
+    <div class="toolbar"><i style="background:#3db6c7">T</i><i style="background:#e8a33d">A</i><i style="background:#d955b8">🖊</i><i style="background:#56b96a">📋</i><i style="background:#8b5cc9">💬</i><i style="background:#c7566e">◎</i><i style="background:#2b2d30">+</i></div>
+  </div>
+  <div class="evs">
+    <h2>My Events 🙂</h2>
+    <div class="ev v1"><span class="d">Tu, 25.03</span><b>🎥 Webinar</b><p>Understanding medical research, critical appraisal skills, and applying evidence-based guidelines in practice</p><span class="cta">▶ Start at 12:30</span></div>
+    <div class="ev v2"><span class="d">We, 26.03</span><b>🎧 Lesson</b><p>Overview of healthcare delivery systems, health policy, and their impact on patient care.</p></div>
+    <div class="ev v3"><span class="d">Th, 27.03</span><b>📝 Task</b><p>Examination of major global health issues, including infectious diseases, non-communicable diseases, and healthcare disparities.</p></div>
+    <div class="ev v4"><span class="d">Fr, 28.03</span><b>✅ Task</b><p>Importance of teamwork and communication among healthcare professionals for optimal patient outcomes.</p></div>
+  </div>
+</div>
+</div></body></html>

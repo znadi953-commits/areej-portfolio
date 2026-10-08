@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MATCHA FUSION — AREEJ Café</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;600;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#dfe7df;font-family:Inter,sans-serif;color:#15241a;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{position:relative;width:100%;max-width:1150px;aspect-ratio:16/10;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(20,50,30,.3)}
+.blob1{position:absolute;left:-18%;top:-45%;width:62%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 60% 60%,#9dc4a4,#5f8f6a);opacity:.9}
+.blob2{position:absolute;right:-12%;top:-20%;width:55%;aspect-ratio:1;border-radius:46% 54% 55% 45%/48% 44% 56% 52%;background:linear-gradient(145deg,#1f4d33,#3c7a52);animation:blob 9s ease-in-out infinite alternate}
+.blob3{position:absolute;left:-8%;bottom:-38%;width:38%;aspect-ratio:1;border-radius:50%;background:#dcead f;background:#dceadf}
+@keyframes blob{from{border-radius:46% 54% 55% 45%/48% 44% 56% 52%}to{border-radius:55% 45% 44% 56%/52% 56% 44% 48%}}
+nav{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:26px;padding:20px 32px;z-index:8}
+nav .logo{font-family:Archivo;font-weight:900;font-size:14px;letter-spacing:.08em;color:#fff;display:flex;align-items:center;gap:8px}
+nav .logo i{width:26px;height:26px;border-radius:50%;background:#fff;color:#1f4d33;font-style:normal;display:grid;place-items:center;font-size:13px}
+nav a{font-size:12px;font-weight:600;color:#fff;text-decoration:none;opacity:.9;transition:.25s}
+nav a:hover{opacity:1;transform:translateY(-1px)}
+nav .about{margin-left:auto;background:#143824;padding:10px 22px;border-radius:0 0 0 18px}
+.search{position:absolute;top:72px;left:32px;width:300px;background:#f1f4f1;border-radius:22px;padding:10px 18px;font-size:11.5px;color:#8aa191;z-index:8;box-shadow:inset 0 1px 3px rgba(0,0,0,.06)}
+.left{position:absolute;left:5%;top:27%;width:44%;z-index:8;animation:fadeL 1s ease both}
+@keyframes fadeL{from{opacity:0;transform:translateX(-36px)}to{opacity:1;transform:none}}
+h1{font-family:Archivo;font-weight:900;font-size:clamp(40px,5.8vw,76px);letter-spacing:.01em}
+.h2{font-family:Archivo;font-weight:300;font-size:clamp(30px,4.4vw,58px);letter-spacing:.24em;margin-top:-6px}
+.price{font-family:Archivo;font-weight:900;font-size:clamp(22px,2.6vw,34px);margin:16px 0 14px}
+.desc{font-size:10.5px;line-height:1.8;color:#5f6f64;max-width:360px;text-transform:uppercase;letter-spacing:.04em}
+.row{display:flex;align-items:center;gap:22px;margin-top:26px}
+.cart{font-family:Archivo;font-weight:900;font-size:13px;letter-spacing:.14em;background:#143824;color:#fff;padding:16px 30px;border-radius:6px;text-decoration:none;box-shadow:0 12px 26px rgba(20,56,36,.35);transition:.3s}
+.cart:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(20,56,36,.45)}
+.view{font-size:12.5px;font-weight:600;color:#15241a}
+.cup{position:absolute;right:4%;top:6%;height:88%;z-index:7;filter:drop-shadow(0 30px 40px rgba(10,40,20,.35));animation:cup 1.2s .15s ease both}
+@keyframes cup{from{opacity:0;transform:translateY(50px) rotate(4deg)}to{opacity:1;transform:none}}
+.arr{position:absolute;top:50%;width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.14);display:grid;place-items:center;font-size:15px;color:#466;z-index:9;cursor:pointer;transition:.3s}
+.arr:hover{transform:scale(1.12)}
+.al{left:14px}.ar{right:14px}
+</style></head><body>
+<div class="frame">
+<span class="blob1"></span><span class="blob2"></span><span class="blob3"></span>
+<nav><span class="logo"><i>✿</i>AREEJ CAFÉ</span><a href="#">Menu</a><a href="#">Orders</a><a href="#">Trending</a><a href="#">Account</a><a class="about" href="#">About Us</a></nav>
+<div class="search">🔍&nbsp; Find your favourite</div>
+<div class="left">
+  <h1>MATCHA</h1><div class="h2">FUSION</div>
+  <div class="price">$5.99</div>
+  <p class="desc">The Matcha &amp; Espresso Fusion offers a surprising and delightful combination of flavors — matcha's grassy notes and natural sweetness mixed with the espresso's bitterness for a complex taste.</p>
+  <div class="row"><a class="cart" href="#">ADD TO CART</a><a class="view" href="#">View Cart</a></div>
+</div>
+<img class="cup" src="img/h10.jpg" style="-webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000 62%,transparent 86%);mask-image:radial-gradient(70% 70% at 50% 50%,#000 62%,transparent 86%)" alt="">
+<span class="arr al">‹</span><span class="arr ar">›</span>
+</div></body></html>

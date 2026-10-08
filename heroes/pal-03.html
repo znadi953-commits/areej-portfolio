@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHROMA — Gradient Poster</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;800&family=Inter:wght@300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#0d0c12;min-height:100vh;font-family:Inter,sans-serif;color:#fff;display:flex;align-items:center;justify-content:center;padding:3vmin;overflow:hidden}
+.frame{position:relative;width:min(88%,760px);aspect-ratio:3/4;border-radius:22px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.8)}
+.mesh{position:absolute;inset:-30%;filter:blur(50px);animation:spin 22s linear infinite}
+.mesh i{position:absolute;border-radius:50%}
+.m1{left:10%;top:8%;width:55%;aspect-ratio:1;background:#ff4d8d}
+.m2{right:6%;top:20%;width:48%;aspect-ratio:1;background:#7a3cff}
+.m3{left:22%;bottom:6%;width:52%;aspect-ratio:1;background:#ff9a3c;animation:bob 8s ease-in-out infinite}
+.m4{right:18%;bottom:14%;width:38%;aspect-ratio:1;background:#2cd4c0;animation:bob 9s 1s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8%)}}
+.grain{position:absolute;inset:0;opacity:.3;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:overlay}
+h1{position:absolute;left:50%;top:10%;transform:translateX(-50%);font-family:Unbounded;font-weight:800;font-size:clamp(40px,8vw,74px);letter-spacing:.02em;z-index:4;mix-blend-mode:overlay;animation:breath 5s ease-in-out infinite}
+@keyframes breath{0%,100%{letter-spacing:.02em}50%{letter-spacing:.1em}}
+.c2{position:absolute;left:50%;bottom:16%;transform:translateX(-50%);font-family:Unbounded;font-weight:400;font-size:12px;letter-spacing:.7em;z-index:4;color:rgba(255,255,255,.92)}
+.line{position:absolute;left:14%;right:14%;top:50%;height:1px;background:rgba(255,255,255,.4);z-index:4;animation:lw 3s ease both}
+@keyframes lw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.tag{position:absolute;left:7%;bottom:6%;font-size:8.5px;letter-spacing:.3em;color:rgba(255,255,255,.75);z-index:4}
+.tag2{position:absolute;right:7%;bottom:6%;font-size:8.5px;letter-spacing:.3em;color:rgba(255,255,255,.75);z-index:4}
+</style></head><body>
+<div class="frame">
+  <div class="mesh"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
+  <span class="grain"></span>
+  <h1>CHROMA</h1>
+  <span class="line"></span>
+  <div class="c2">LIQUID · SERIES</div>
+  <span class="tag">AREEJ POSTERS</span><span class="tag2">№ 04 — 2026</span>
+</div></body></html>

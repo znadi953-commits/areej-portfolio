@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Palette Studio — AREEJ</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#141318;min-height:100vh;font-family:'Space Grotesk',sans-serif;color:#fff;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{width:min(96%,1040px);background:#1c1b22;border-radius:22px;overflow:hidden;box-shadow:0 36px 80px rgba(0,0,0,.7);padding:22px 26px}
+.hd{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.hd b{font-size:16px}
+.hd small{color:#8a8894;font-size:10px}
+.sp{margin-left:auto;background:#2a2932;border-radius:16px;padding:9px 18px;font-size:10.5px;cursor:pointer;transition:.25s}
+.sp:hover{background:#3a3944}
+.gen{background:linear-gradient(120deg,#ff6b9d,#c86bff);font-weight:700;animation:pu 2.4s infinite}
+@keyframes pu{0%,100%{box-shadow:0 0 0 0 rgba(200,107,255,.4)}50%{box-shadow:0 0 0 9px rgba(200,107,255,0)}}
+.pal{display:flex;height:330px;border-radius:16px;overflow:hidden}
+.sw{flex:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;cursor:pointer;transition:flex .5s ease;animation:drop .8s ease both}
+.sw:hover{flex:1.7}
+@keyframes drop{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+.sw b{font-size:13px;letter-spacing:.08em;text-shadow:0 1px 6px rgba(0,0,0,.3)}
+.sw small{font-size:9px;opacity:.85}
+.sw .lock{position:absolute;top:14px;right:14px;opacity:.6;font-size:12px}
+.meta{display:flex;gap:10px;margin-top:16px;font-size:10px;color:#8a8894;align-items:center}
+.tagz{display:flex;gap:8px}
+.tagz span{background:#2a2932;border-radius:12px;padding:6px 13px;transition:.25s;cursor:pointer}
+.tagz span:hover{background:#3a3944;color:#fff}
+.hint{margin-left:auto}
+kbd{background:#2a2932;border-radius:5px;padding:2px 7px;font-family:inherit}
+</style></head><body>
+<div class="frame">
+<div class="hd"><b>🎨 Palette Studio</b><small>by AREEJ — generator dyal les couleurs</small><span class="sp">💾 Save</span><span class="sp">⤓ Export</span><span class="sp gen" onclick="gen()">✦ Generate</span></div>
+<div class="pal" id="pal"></div>
+<div class="meta"><span class="tagz"><span>#warm</span><span>#pastel</span><span>#brand</span><span>#sunset</span></span>
+<span class="hint">Klik 3la <kbd>✦ Generate</kbd> wla kbss <kbd>Space</kbd> bach tbdel l palette</span></div>
+</div>
+<script>
+const names=['Rose Poudré','Lilas Doux','Crème','Caramel','Encre','Menthe','Pêche','Ciel','Safran','Brume','Corail','Olive'];
+function rnd(a,b){return Math.floor(a+Math.random()*(b-a))}
+function hsl2hex(h,s,l){l/=100;const a=s*Math.min(l,1-l)/100;const f=n=>{const k=(n+h/30)%12;const c=l-a*Math.max(Math.min(k-3,9-k,1),-1);return Math.round(255*c).toString(16).padStart(2,'0')};return('#'+f(0)+f(8)+f(4)).toUpperCase()}
+function gen(){
+  const pal=document.getElementById('pal');pal.innerHTML='';
+  const base=rnd(0,360);
+  for(let i=0;i<5;i++){
+    const h=(base+i*rnd(18,42))%360,s=rnd(38,72),l=rnd(42,78);
+    const hex=hsl2hex(h,s,l);
+    const d=document.createElement('div');d.className='sw';
+    d.style.background=hex;d.style.animationDelay=(i*0.08)+'s';
+    d.style.color=l>60?'#1d1c22':'#fff';
+    d.innerHTML='<span class="lock">🔓</span><b>'+hex+'</b><small>'+names[rnd(0,names.length)]+'</small>';
+    d.onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(hex);d.querySelector('small').textContent='Copié ✓'};
+    pal.appendChild(d);
+  }
+}
+document.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();gen()}});
+gen();
+</script>
+</body></html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DRAGON SAKURA — Custom Livery</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@700&family=Space+Mono&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#dcdcda;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3vmin;font-family:Inter,sans-serif;color:#23262a}
+.frame{position:relative;width:100%;max-width:1150px;aspect-ratio:16/9.6;background:linear-gradient(150deg,#fbfbfa,#f1f2f1 60%,#e9ebe9);overflow:hidden;border-radius:16px;box-shadow:0 30px 70px rgba(50,60,55,.3)}
+.wm{position:absolute;right:-14%;top:-20%;width:85%;opacity:.07;filter:grayscale(.4);transform:rotate(6deg);pointer-events:none}
+h1{position:absolute;left:5%;top:9%;font-family:'Zen Old Mincho',serif;font-size:clamp(38px,5.6vw,72px);line-height:1.05;z-index:5;animation:fadeUp 1s .1s ease both}
+h1 em{font-style:normal;color:#3d8d85}
+.jp{position:absolute;left:5%;top:38%;font-family:'Zen Old Mincho';font-size:15px;letter-spacing:.5em;color:#b0566e;z-index:5;animation:fadeUp 1s .3s ease both}
+.desc{position:absolute;left:5%;top:47%;max-width:300px;font-size:11px;font-weight:300;line-height:1.9;color:#5b6168;z-index:5;animation:fadeUp 1s .45s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.car{position:absolute;right:-3%;bottom:7%;width:72%;z-index:4;filter:drop-shadow(0 24px 28px rgba(40,60,55,.3));animation:driveR 1.6s cubic-bezier(.2,.8,.2,1) both;-webkit-mask-image:radial-gradient(75% 75% at 50% 50%,#000 60%,transparent 88%);mask-image:radial-gradient(75% 75% at 50% 50%,#000 60%,transparent 88%)}
+@keyframes driveR{from{opacity:0;transform:translateX(50%)}to{opacity:1;transform:none}}
+.side{position:absolute;right:22px;top:9%;writing-mode:vertical-rl;font-family:'Space Mono';font-size:9px;letter-spacing:.3em;color:#8a9094;z-index:6}
+.petal{position:absolute;top:-6%;width:12px;height:10px;background:radial-gradient(circle at 30% 30%,#ffd9e4,#f7a8c0);border-radius:60% 40% 55% 45%;opacity:0;z-index:6;animation:petal 8s linear infinite}
+@keyframes petal{0%{opacity:0;transform:translate(0,0) rotate(0)}8%{opacity:.95}50%{transform:translate(-60px,46vh) rotate(200deg)}100%{opacity:0;transform:translate(30px,92vh) rotate(420deg)}}
+.btn{position:absolute;left:5%;bottom:10%;z-index:7;background:#23262a;color:#f4f4f2;font-size:11px;letter-spacing:.2em;padding:13px 26px;border-radius:30px;text-decoration:none;transition:.3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,30,25,.3)}
+.num{position:absolute;left:24px;bottom:18px;font-family:'Space Mono';font-size:9.5px;letter-spacing:.24em;color:#9aa0a4;z-index:6}
+</style></head><body>
+<div class="frame">
+  <img class="wm" src="img/h18.jpg" alt="">
+  <h1>DRAGON<br><em>SAKURA</em> WRAP</h1>
+  <div class="jp">生き甲斐 ・ 桜龍</div>
+  <p class="desc">Custom livery design — fine ink dragon, sakura bloom. Chaque courbe de la carrosserie racont histoire. Designed by AREEJ Studio.</p>
+  <a class="btn" href="#">COMMANDER LE WRAP →</a>
+  <img class="car" src="img/h18.jpg" alt="">
+  <span class="side">CONTACT &gt; @AREEJ.DESIGN — © 2026 ALL RIGHTS RESERVED</span>
+  <i class="petal" style="left:30%;animation-delay:0s"></i>
+  <i class="petal" style="left:48%;animation-delay:2.4s"></i>
+  <i class="petal" style="left:64%;animation-delay:1.2s"></i>
+  <i class="petal" style="left:80%;animation-delay:3.8s"></i>
+  <i class="petal" style="left:16%;animation-delay:5.2s"></i>
+  <span class="num">LIVERY №2 / SAKURA SERIES</span>
+</div></body></html>

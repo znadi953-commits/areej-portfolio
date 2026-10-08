@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MOONLITE — Web Design Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{min-height:100vh;font-family:Montserrat,sans-serif;display:flex;align-items:center;justify-content:center;padding:3vmin;background:#8d8a8c url('img/h11.jpg') center/cover no-repeat}
+.glass{position:relative;width:min(92%,880px);aspect-ratio:16/9.2;border-radius:28px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(14px) saturate(1.15);-webkit-backdrop-filter:blur(14px) saturate(1.15);box-shadow:0 30px 80px rgba(60,20,40,.35), inset 0 1px 0 rgba(255,255,255,.6);animation:float 6s ease-in-out infinite;display:flex;flex-direction:column;align-items:center}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+nav{display:flex;align-items:center;gap:0;width:100%;padding:26px 36px;color:#fff}
+nav .logo{font-family:Fredoka;font-weight:700;font-size:18px;letter-spacing:.06em;margin-right:auto;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+nav a{font-size:12px;font-weight:600;color:#fff;text-decoration:none;padding:0 14px;border-left:1px solid rgba(255,255,255,.5);transition:.25s;text-shadow:0 1px 4px rgba(0,0,0,.2)}
+nav a:first-of-type{border-left:none}
+nav a:hover{opacity:.75}
+nav .pillb{width:92px;height:26px;border-radius:16px;background:rgba(255,255,255,.75);margin-left:18px;box-shadow:inset 0 1px 3px rgba(0,0,0,.12)}
+.mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 6%;margin-top:-12px}
+h1{font-family:Fredoka;font-weight:700;font-size:clamp(52px,9vw,110px);letter-spacing:.02em;line-height:1;background:linear-gradient(168deg,#ffffff 4%,#d9dade 22%,#86878f 42%,#f6f6fa 58%,#9a9aa4 76%,#e8e8ee 94%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 14px rgba(40,10,30,.4));transform:rotate(-2deg);animation:shimmer 5s ease-in-out infinite alternate}
+@keyframes shimmer{from{filter:drop-shadow(0 6px 14px rgba(40,10,30,.4)) brightness(1)}to{filter:drop-shadow(0 10px 22px rgba(40,10,30,.5)) brightness(1.15)}}
+.sub{font-size:15px;font-weight:700;color:#fff;margin-top:18px;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.txt{font-size:12.5px;font-weight:400;color:rgba(255,255,255,.92);line-height:1.8;margin-top:12px;max-width:480px;text-shadow:0 1px 6px rgba(0,0,0,.25)}
+</style></head><body>
+<div class="glass">
+<nav><span class="logo">✦ MOONLITE</span><a href="#">à propos</a><a href="#">projets</a><a href="#">étapes</a><a href="#">services</a><a href="#">contact</a><span class="pillb"></span></nav>
+<div class="mid">
+  <h1>MOONLITE</h1>
+  <div class="sub">• web-design / création de site</div>
+  <p class="txt">Design esthétique et stylé pour votre marque.<br>Nous créons des sites uniques, logiques et inoubliables — by AREEJ Studio.</p>
+</div>
+</div></body></html>

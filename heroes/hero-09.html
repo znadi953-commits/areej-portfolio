@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIND YOUR STREET BALLERS — AREEJ</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#d8cfc0;font-family:Inter,sans-serif;color:#17170f;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{position:relative;width:100%;max-width:1150px;aspect-ratio:16/10.5;background:linear-gradient(135deg,#e9decb,#e5dbc6 55%,#dbd0b9);border-radius:22px;overflow:hidden;box-shadow:0 30px 70px rgba(40,30,10,.35)}
+.ball{position:absolute;right:-6%;bottom:-24%;width:62%;animation:ballIn 1.2s ease both;-webkit-mask-image:radial-gradient(60% 60% at 50% 50%,#000 55%,transparent 78%);mask-image:radial-gradient(60% 60% at 50% 50%,#000 55%,transparent 78%)}
+@keyframes ballIn{from{opacity:0;transform:translateY(60px) rotate(-14deg)}to{opacity:1;transform:none}}
+.top{position:absolute;top:3.5%;left:0;right:0;display:flex;justify-content:space-between;padding:0 3.5%;z-index:6}
+.pills{display:flex;gap:8px}
+.pill{font-size:11px;font-weight:600;padding:9px 16px;border-radius:22px;border:1px solid rgba(23,23,15,.18);background:rgba(255,255,255,.55);cursor:pointer;transition:.3s}
+.pill.on{background:#20241c;color:#efe9db}
+.pill:hover{transform:translateY(-2px)}
+.join{position:absolute;right:7%;top:22%;z-index:5;animation:up 1s .2s ease both}
+@keyframes up{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+.join .k{font-size:10px;letter-spacing:.42em;font-weight:700;color:#5a5747}
+.join h1{font-family:Anton;font-size:clamp(38px,5.6vw,74px);line-height:.98;letter-spacing:.01em;margin-top:12px;text-transform:uppercase}
+.join .y{font-family:Anton;font-size:15px;margin-top:14px;color:#2a2b20}
+.sig{position:absolute;right:6%;bottom:9%;font-family:'Segoe Script',cursive;font-size:22px;color:#3a3a2c;transform:rotate(-8deg);z-index:6}
+.card{position:absolute;left:4%;top:9%;width:24.5%;min-width:215px;background:#f7f3ea;border-radius:20px;padding:10px;z-index:7;box-shadow:0 20px 50px rgba(30,24,8,.28);animation:up .9s .35s ease both}
+.card .ph{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:1/1.15}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.tagrow{position:absolute;left:8px;bottom:8px;display:flex;gap:5px}
+.tag{font-size:8.5px;font-weight:700;background:rgba(247,243,234,.92);border-radius:12px;padding:4px 8px}
+.card h3{font-size:14px;margin:12px 6px 2px;font-weight:700}
+.card .dt{font-size:11.5px;color:#777061;margin:0 6px}
+.org{display:flex;align-items:center;gap:8px;margin:12px 6px}
+.av{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#c9b89a,#6e6450);flex-shrink:0}
+.org span{font-size:11px;font-weight:600}
+.org small{display:block;font-size:9px;color:#9a9283;font-weight:400}
+.avs{display:flex;margin:0 6px 10px}
+.avs i{width:20px;height:20px;border-radius:50%;background:#cfc4ae;border:2px solid #f7f3ea;margin-left:-6px}
+.avs i:first-child{margin-left:0}
+.loc{font-size:10.5px;color:#6d675a;margin:0 6px 12px;line-height:1.5}
+.btn{display:block;text-align:center;font-size:11.5px;font-weight:700;padding:11px;border-radius:14px;text-decoration:none;margin:6px 0;transition:.3s}
+.b1{border:1px solid rgba(23,23,15,.2);color:#17170f;background:#fff}
+.b2{background:#20241c;color:#efe9db}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(20,16,4,.18)}
+.free{text-align:center;font-size:9.5px;color:#8f897a;margin-top:6px}
+.prof{font-size:11px;font-weight:600;padding:9px 16px;border-radius:22px;border:1px solid rgba(23,23,15,.18);background:rgba(255,255,255,.55)}
+</style></head><body>
+<div class="frame">
+<img class="ball" src="img/h9.jpg" alt="">
+<div class="top"><span class="pills"><span class="pill on">▦ Menu</span><span class="pill">◉ Map</span></span><span class="prof">⊡ My profile</span></div>
+<div class="join"><div class="k">J O I N&nbsp;&nbsp;G A M E</div><h1>Find your<br>Street<br>Ballers</h1><div class="y">A26'</div></div>
+<div class="sig">Areej.</div>
+<div class="card">
+  <div class="ph"><img src="img/h9b.jpg" alt=""><span class="tagrow"><span class="tag">12 min from</span><span class="tag">🏠 Home</span></span></div>
+  <h3>Booys night out</h3><p class="dt">May 12 , 9 PM</p>
+  <div class="org"><span class="av"></span><span>Matthew Walker<small>organizer</small></span></div>
+  <div class="avs"><i></i><i></i><i></i><i></i><span style="font-size:9px;margin-left:6px;color:#8f897a">+5</span></div>
+  <p class="loc"><b>Shōten</b><br>123 Sakura Park<br>Sakyo-ku, Kyoto</p>
+  <a class="btn b1" href="#">◎ Check on map</a>
+  <a class="btn b2" href="#">✦ Join game</a>
+  <p class="free">✓ Free event</p>
+</div>
+</div></body></html>

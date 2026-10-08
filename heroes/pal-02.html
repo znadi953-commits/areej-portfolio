@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Identité de Marque — AREEJ Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#c9b9a4;min-height:100vh;font-family:Inter,sans-serif;color:#3c3225;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{position:relative;width:min(96%,1080px);aspect-ratio:16/9.6;border-radius:18px;overflow:hidden;box-shadow:0 34px 76px rgba(80,60,30,.45)}
+.frame>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:ken 16s ease-in-out infinite alternate}
+@keyframes ken{from{transform:scale(1)}to{transform:scale(1.07)}}
+.veil{position:absolute;inset:0;background:linear-gradient(100deg,rgba(234,221,203,.94) 0%,rgba(234,221,203,.82) 36%,transparent 62%)}
+.lead{position:absolute;left:5.5%;top:20%;max-width:40%;z-index:4}
+.k{font-size:9.5px;letter-spacing:.44em;color:#8c7452;animation:up 1s .1s ease both}
+h1{font-size:clamp(30px,4.6vw,54px);font-weight:700;line-height:1.14;margin-top:14px;animation:up 1s .25s ease both}
+h1 em{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;color:#a4763c}
+.lead p{font-size:11.5px;font-weight:300;line-height:1.9;color:#6e5c42;margin-top:14px;animation:up 1s .4s ease both}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.chips{display:flex;gap:8px;margin-top:20px;animation:up 1s .55s ease both}
+.chips span{background:rgba(255,255,255,.8);border-radius:14px;font-size:9px;font-weight:600;letter-spacing:.1em;padding:8px 14px;transition:.3s}
+.chips span:hover{transform:translateY(-3px);background:#fff}
+.cta{display:inline-block;margin-top:24px;background:#3c3225;color:#efe6d7;font-size:11px;font-weight:700;letter-spacing:.14em;padding:14px 28px;border-radius:26px;text-decoration:none;animation:up 1s .7s ease both,pu 2.6s 1s infinite;transition:.3s}
+.cta:hover{transform:translateY(-3px)}
+@keyframes pu{0%,100%{box-shadow:0 0 0 0 rgba(60,50,37,.35)}50%{box-shadow:0 0 0 10px rgba(60,50,37,0)}}
+.sw{position:absolute;right:4%;bottom:7%;display:flex;gap:7px;z-index:4}
+.sw i{width:34px;height:52px;border-radius:9px;box-shadow:0 8px 18px rgba(60,40,20,.3);animation:drop .7s ease both;transition:.3s;cursor:pointer}
+.sw i:hover{transform:translateY(-8px)}
+@keyframes drop{from{opacity:0;transform:translateY(-26px)}to{opacity:1;transform:none}}
+</style></head><body>
+<div class="frame">
+<img src="img/p2.jpg" alt=""><span class="veil"></span>
+<div class="lead">
+  <div class="k">AREEJ STUDIO — BRANDING</div>
+  <h1>Une identité<br>qui se <em>ressent</em></h1>
+  <p>Logo, papeterie, palette, typographie — kanbniw l'univers kamel dyal marque dyalek, mn l'idée 7tal la carte de visite.</p>
+  <div class="chips"><span>LOGO</span><span>PAPETERIE</span><span>PALETTE</span><span>GUIDELINES</span></div>
+  <a class="cta" href="#">DEMANDER UN DEVIS →</a>
+</div>
+<div class="sw"><i style="background:#8c5a2e;animation-delay:.5s"></i><i style="background:#c2874a;animation-delay:.6s"></i><i style="background:#e4c9a4;animation-delay:.7s"></i><i style="background:#efe6d7;animation-delay:.8s"></i><i style="background:#3c3225;animation-delay:.9s"></i></div>
+</div></body></html>

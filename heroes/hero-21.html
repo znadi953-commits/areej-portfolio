@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HEADSHOT KITTY — Sticker Bomb</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#f3a9c4;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3vmin;font-family:Inter,sans-serif;overflow:hidden}
+.frame{position:relative;width:100%;max-width:1060px;aspect-ratio:16/9.6;border-radius:20px;overflow:hidden;box-shadow:0 36px 80px rgba(150,40,80,.45);background:#f9c6d8}
+.rays{position:absolute;left:50%;top:50%;width:240%;aspect-ratio:1;transform:translate(-50%,-50%);background:repeating-conic-gradient(#39c3bd 0 11deg,#fdfdfb 11deg 22deg,#f9c6d8 22deg 33deg);animation:spin 36s linear infinite;opacity:.9}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.vig{position:absolute;inset:0;background:radial-gradient(70% 70% at 50% 50%,transparent 40%,rgba(249,198,216,.9) 100%)}
+.cat{position:absolute;left:50%;top:52%;height:78%;transform:translate(-50%,-50%);z-index:5;filter:drop-shadow(0 20px 30px rgba(140,30,70,.4));animation:bounce 2.4s ease-in-out infinite;-webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000 58%,transparent 84%);mask-image:radial-gradient(70% 70% at 50% 50%,#000 58%,transparent 84%)}
+@keyframes bounce{0%,100%{transform:translate(-50%,-50%) rotate(-3deg)}50%{transform:translate(-50%,-54%) rotate(3deg)}}
+h1{position:absolute;left:50%;bottom:4%;transform:translateX(-50%) rotate(-5deg);font-family:Bangers;font-size:clamp(52px,9vw,110px);letter-spacing:.04em;color:#e8447c;-webkit-text-stroke:3px #fff;text-shadow:5px 6px 0 rgba(140,20,60,.35);z-index:7;white-space:nowrap;animation:wig 3s ease-in-out infinite}
+@keyframes wig{0%,100%{transform:translateX(-50%) rotate(-5deg) scale(1)}50%{transform:translateX(-50%) rotate(-3deg) scale(1.04)}}
+.star{position:absolute;font-family:Bangers;color:#fff;text-shadow:2px 3px 0 rgba(140,20,60,.4);z-index:6;animation:pw 1.8s ease-in-out infinite}
+@keyframes pw{0%,100%{transform:scale(1) rotate(-8deg)}50%{transform:scale(1.25) rotate(6deg)}}
+.heart{position:absolute;font-size:20px;z-index:6;animation:hf 4s ease-in-out infinite;opacity:.9}
+@keyframes hf{0%{transform:translateY(0) scale(.9)}50%{transform:translateY(-26px) scale(1.15)}100%{transform:translateY(0) scale(.9)}}
+.chip{position:absolute;z-index:8;font-weight:800;font-size:10.5px;letter-spacing:.18em;padding:9px 18px;border-radius:22px;border:2px solid #fff;box-shadow:0 8px 18px rgba(140,30,70,.3)}
+.c1{left:4%;top:6%;background:#39c3bd;color:#fff;transform:rotate(-4deg)}
+.c2{right:4%;top:6%;background:#fff;color:#e8447c;transform:rotate(3deg)}
+.band{position:absolute;right:12%;bottom:22%;z-index:7;background:#fff;border-radius:16px;padding:8px 20px;font-weight:800;font-size:11px;color:#e8447c;letter-spacing:.14em;transform:rotate(-10deg);box-shadow:0 8px 16px rgba(140,30,70,.3);animation:pw 2.6s ease-in-out infinite}
+</style></head><body>
+<div class="frame">
+  <span class="rays"></span><span class="vig"></span>
+  <span class="star" style="left:12%;top:20%;font-size:40px">POW!</span>
+  <span class="star" style="right:14%;top:32%;font-size:32px;animation-delay:.6s">MEOW!</span>
+  <span class="star" style="left:18%;bottom:26%;font-size:28px;animation-delay:1.1s">BAM!</span>
+  <span class="heart" style="left:28%;top:34%">💗</span>
+  <span class="heart" style="right:26%;top:56%;animation-delay:1.3s">💗</span>
+  <span class="heart" style="left:66%;top:18%;animation-delay:2.2s">💕</span>
+  <img class="cat" src="img/h21.jpg" alt="">
+  <span class="chip c1">KICX ✦ AREEJ</span><span class="chip c2">STICKER BOMB</span>
+  <span class="band">🩹 НАХОДКА</span>
+  <h1>HEADSHOT KITTY</h1>
+</div></body></html>

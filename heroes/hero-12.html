@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GLOBAL — Model Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#0c0f0f;font-family:Inter,sans-serif;color:#efece6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{position:relative;width:100%;max-width:1150px;aspect-ratio:16/9.6;background:#101818;border-radius:26px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);display:grid;grid-template-columns:46% 54%}
+.photo{position:relative;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:top;animation:ph 1.4s ease both;-webkit-mask-image:linear-gradient(90deg,#000 78%,transparent 100%);mask-image:linear-gradient(90deg,#000 78%,transparent 100%)}
+@keyframes ph{from{opacity:0;transform:scale(1.07)}to{opacity:1;transform:scale(1)}}
+.stripes{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 26px,rgba(10,14,14,.16) 26px 28px);pointer-events:none}
+.name{position:absolute;left:8%;bottom:8%;z-index:3}
+.name h4{font-size:15px;font-weight:600;letter-spacing:.03em;margin-bottom:8px}
+.name p{font-size:10.5px;font-weight:300;line-height:1.7;color:#cfcac0;max-width:230px}
+.right{position:relative;padding:4% 6%}
+nav{display:flex;gap:26px;font-size:10.5px;letter-spacing:.08em;color:#b5b0a6;margin-bottom:12%}
+nav b{color:#efece6;font-weight:600}
+nav .soc{margin-left:auto;letter-spacing:.3em}
+h1{font-family:'Playfair Display';font-weight:500;font-size:clamp(46px,7vw,92px);letter-spacing:.06em;animation:fadeUp 1s .2s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+h1 .oo{display:inline-block;position:relative}
+h1 .oo::after{content:"";position:absolute;left:-18%;right:-18%;top:6%;bottom:2%;border:1.5px solid #efece6;border-radius:50%;transform:rotate(-24deg)}
+.para{font-size:10px;letter-spacing:.06em;line-height:1.9;text-transform:uppercase;color:#b9b4aa;max-width:380px;margin-top:26px;animation:fadeUp 1s .35s ease both}
+.hl{position:absolute;right:9%;bottom:10%;width:130px;height:130px;border:1px solid rgba(239,236,230,.4);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;animation:fadeUp 1s .5s ease both}
+.hl small{font-size:9px;letter-spacing:.24em;color:#b5b0a6}
+.hl span{font-family:'Playfair Display';font-style:italic;font-size:24px}
+</style></head><body>
+<div class="frame">
+  <div class="photo"><img src="img/h12.jpg" alt=""><span class="stripes"></span>
+    <div class="name"><h4>Sienna Blake</h4><p>5'10" frame, effortlessly transitions between radiant beauty campaigns and high fashion editorials with striking natural presence.</p></div>
+  </div>
+  <div class="right">
+    <nav><b>Model Agency</b><span>Catalog</span><span>Work</span><span>Follow Us</span><span class="soc">✦ ◎</span></nav>
+    <h1>GL<span class="oo">O</span>BAL</h1>
+    <p class="para">Inspired by diverse global aesthetics, our agency ensures models stand out in every market. Prioritizing transparency, we foster trust and clarity with clients and models. — AREEJ Agency</p>
+    <div class="hl"><small>HIGHLIGHTS</small><span>'01/'07</span></div>
+  </div>
+</div></body></html>

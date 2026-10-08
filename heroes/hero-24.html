@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sofa Blob — My Storehouse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#d8d8da;min-height:100vh;font-family:Inter,sans-serif;color:#1d1e22;display:flex;align-items:center;justify-content:center;padding:3vmin;overflow:hidden}
+.frame{position:relative;width:min(94%,980px);aspect-ratio:16/11;background:#fff;border-radius:34px;box-shadow:0 36px 80px rgba(60,60,80,.35);overflow:visible}
+.inner{position:absolute;inset:0;border-radius:34px;overflow:hidden}
+.blob{position:absolute;left:-6%;top:-10%;width:62%;aspect-ratio:1;background:linear-gradient(140deg,#b18de8,#9b6fe0);animation:morph 9s ease-in-out infinite alternate;z-index:1}
+@keyframes morph{0%{border-radius:38% 62% 56% 44%/46% 42% 58% 54%}50%{border-radius:60% 40% 44% 56%/52% 60% 40% 48%}100%{border-radius:44% 56% 62% 38%/58% 44% 56% 42%}}
+.bt{position:absolute;left:5%;top:16%;font-size:clamp(30px,4.6vw,52px);font-weight:800;color:#fff;line-height:1.25;z-index:2;animation:fadeUp 1s .2s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.sofa{position:absolute;left:3%;bottom:16%;width:42%;z-index:3;filter:drop-shadow(0 20px 26px rgba(90,60,150,.3));animation:sf 5s ease-in-out infinite}
+@keyframes sf{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.ball{position:absolute;border-radius:50%;z-index:6;animation:bb 6s ease-in-out infinite}
+.b1{left:6%;top:-5%;width:74px;height:74px;background:radial-gradient(circle at 32% 30%,#ffe9a8,#f2c94c);filter:blur(1.5px)}
+.b2{left:-4%;top:6%;width:56px;height:56px;background:radial-gradient(circle at 32% 30%,#ffc9b8,#f2994a);filter:blur(4px);animation-delay:1.4s}
+.b3{left:30%;top:34%;width:46px;height:40px;border-radius:46% 54% 60% 40%/55% 48% 52% 45%;background:radial-gradient(circle at 36% 30%,#ffb199,#ec7d54);filter:blur(1px);animation-delay:.7s}
+.b4{left:12%;top:46%;width:40px;height:30px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#fff,#e2e2e6);transform:rotate(-16deg);animation-delay:2s}
+@keyframes bb{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-22px) rotate(8deg)}}
+.smile{position:absolute;right:5%;top:7%;width:34px;height:34px;border-radius:50%;background:#f2b33d;display:grid;place-items:center;font-size:15px;z-index:6;animation:bb 5s ease-in-out infinite}
+.store{position:absolute;right:6%;top:16%;width:44%;z-index:5}
+.store h1{font-size:clamp(20px,2.8vw,30px);font-weight:800;line-height:1.3;animation:fadeUp 1s .3s ease both}
+.cols{display:flex;justify-content:space-between;font-size:8.5px;letter-spacing:.2em;color:#9a9ba2;margin:18px 0 4px;animation:fadeUp 1s .4s ease both}
+.row{display:flex;align-items:center;gap:12px;font-size:11px;padding:13px 4px;border-bottom:1px solid #ededf0;animation:slid .7s ease both;transition:.3s;cursor:pointer}
+.row:hover{background:#faf8ff;transform:translateX(-5px)}
+@keyframes slid{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+.row .nm{width:64px;font-weight:600}
+.row small{color:#9a9ba2;font-size:9.5px}
+.row .th{width:40px;height:34px;display:grid;place-items:center;font-size:20px;background:#f4f2fa;border-radius:9px;margin-left:auto}
+.row b{width:62px;font-size:10.5px}
+.row .pl{width:22px;height:22px;border-radius:50%;background:#f0eff4;display:grid;place-items:center;font-size:12px;transition:.25s}
+.row:hover .pl{background:#9b6fe0;color:#fff;transform:rotate(90deg)}
+.bar{position:absolute;left:50%;bottom:6%;transform:translateX(-50%);background:#fff;border-radius:24px;box-shadow:0 14px 34px rgba(60,60,90,.18);padding:9px 12px;display:flex;gap:12px;align-items:center;z-index:7;animation:fadeUp 1s .6s ease both}
+.bar i{font-style:normal;font-size:13px;color:#8a8b92;cursor:pointer;transition:.25s}
+.bar i:hover{color:#1d1e22;transform:scale(1.2)}
+.go{width:42px;height:34px;border-radius:14px;background:#1d1e22;color:#fff;display:grid;place-items:center;font-size:14px;cursor:pointer;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(29,30,34,.35)}50%{box-shadow:0 0 0 9px rgba(29,30,34,0)}}
+.side{position:absolute;left:4%;bottom:5%;display:flex;gap:16px;align-items:center;font-size:13px;color:#9a9ba2;z-index:6}
+.side i{font-style:normal;width:36px;height:36px;border-radius:12px;background:#f3f3f6;display:grid;place-items:center;cursor:pointer;transition:.25s}
+.side i:hover{background:#e8e3f7}
+.side em{width:14px;border-top:1.5px solid #d6d6da}
+.pg{position:absolute;right:4%;bottom:5%;width:36px;height:36px;border-radius:12px;background:#f3f3f6;display:grid;place-items:center;font-size:13px;z-index:6;cursor:pointer}
+</style></head><body>
+<div class="frame">
+  <div class="inner">
+    <span class="blob"></span>
+    <div class="bt">Sofa Blob<br>cake sofa</div>
+    <div class="store">
+      <h1>My<br>storehouse</h1>
+      <div class="cols"><span>PRODUCT</span><span>NO</span></div>
+      <div class="row" style="animation-delay:.45s"><span class="nm">p</span><small>110 × 110</small><span class="th">🪴</span><b>Purifier</b><span class="pl">+</span></div>
+      <div class="row" style="animation-delay:.6s"><span class="nm">capsule</span><small>110 × 110</small><span class="th">🛋</span><b>Copse c.</b><span class="pl">+</span></div>
+      <div class="row" style="animation-delay:.75s"><span class="nm">cake</span><small>110 × 110</small><span class="th">🍰</span><b>Bouncy</b><span class="pl">+</span></div>
+    </div>
+    <div class="side"><i>🛋</i><em></em><i>🪑</i><em></em><i>🗓</i></div>
+    <span class="pg">▣</span>
+    <div class="bar"><i>⌨</i><i style="color:#9b6fe0">✎</i><i>👤 ▾</i><span class="go">→</span></div>
+  </div>
+  <img class="sofa" src="img/h24.png" alt="">
+  <span class="ball b1"></span><span class="ball b2"></span><span class="ball b3"></span><span class="ball b4"></span>
+  <span class="smile">😊</span>
+</div></body></html>

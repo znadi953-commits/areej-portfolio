@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WINTER JACKET — AREEJ Wear</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#4a443f;min-height:100vh;font-family:Inter,sans-serif;color:#e9e4de;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{position:relative;width:min(96%,1100px);aspect-ratio:16/10.6;background:radial-gradient(90% 90% at 50% 30%,#766c64,#655c55 55%,#554d47);border-radius:26px;overflow:hidden;box-shadow:0 40px 90px rgba(20,15,10,.6),inset 0 0 0 1px rgba(255,255,255,.07)}
+nav{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;padding:22px 30px;z-index:8}
+.lg{font-family:Archivo;font-weight:900;font-size:15px;letter-spacing:.14em}
+.pills{margin:0 auto;display:flex;gap:8px}
+.pill{font-size:11px;font-weight:500;padding:9px 20px;border-radius:20px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);cursor:pointer;transition:.3s}
+.pill:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+.usr{display:flex;gap:10px;align-items:center}
+.usr i{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;font-style:normal;font-size:12px;cursor:pointer}
+.usr img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+.big{position:absolute;left:4%;top:18%;font-family:Archivo;font-weight:900;font-size:clamp(70px,12.5vw,160px);line-height:.95;letter-spacing:.01em;z-index:2;background:linear-gradient(110deg,#8e847b 0%,#cfc5ba 22%,#8e847b 44%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 5s linear infinite;user-select:none}
+@keyframes sheen{to{background-position:-220% 0}}
+.jacket{position:absolute;left:50%;top:52%;height:88%;transform:translate(-50%,-50%);z-index:4;filter:drop-shadow(0 30px 44px rgba(10,5,0,.55));animation:float 5s ease-in-out infinite;-webkit-mask-image:radial-gradient(40% 66% at 50% 50%,#000 50%,transparent 76%);mask-image:radial-gradient(40% 66% at 50% 50%,#000 50%,transparent 76%)}
+@keyframes float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,-54%)}}
+.glow{position:absolute;left:50%;top:48%;width:46%;aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,240,220,.16),transparent 60%);z-index:3;animation:gp 5s ease-in-out infinite}
+@keyframes gp{0%,100%{opacity:.6}50%{opacity:1}}
+.desc{position:absolute;right:4.5%;top:24%;width:200px;font-size:10px;font-weight:300;line-height:1.8;color:#d6cfc7;z-index:6;animation:fadeUp 1s .3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.arrows{position:absolute;right:21%;top:52%;display:flex;gap:10px;z-index:6}
+.arrows span{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-size:13px;cursor:pointer;transition:.3s}
+.arrows span:hover{background:rgba(255,255,255,.18);transform:scale(1.1)}
+.avail{position:absolute;right:4.5%;top:60%;z-index:6;font-size:11.5px;padding:10px 24px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);animation:fadeUp 1s .45s ease both}
+.sizes{position:absolute;right:4.5%;top:71%;z-index:6;display:flex;gap:14px;align-items:baseline;animation:fadeUp 1s .55s ease both}
+.sizes span{font-family:Archivo;color:#95897e;font-size:15px;cursor:pointer;transition:.25s}
+.sizes span:hover{color:#fff;transform:scale(1.2)}
+.sizes .on{color:#fff;font-size:22px;font-weight:900}
+.qty{position:absolute;right:4.5%;top:83%;z-index:6;display:flex;gap:14px;align-items:center;animation:fadeUp 1s .65s ease both}
+.qty i{width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-style:normal;font-size:13px;cursor:pointer;transition:.25s}
+.qty i:hover{background:rgba(255,255,255,.18)}
+.qty b{font-size:16px}
+.price{position:absolute;left:50%;bottom:12%;transform:translateX(-50%);z-index:6;display:flex;gap:22px;align-items:baseline}
+.price span{color:#978b80;font-size:14px}
+.price b{font-family:Archivo;font-size:24px;color:#fff;font-weight:900}
+.buy{position:absolute;left:50%;bottom:4.5%;transform:translateX(-50%);z-index:7;background:#15110e;color:#f1ece6;font-size:12px;font-weight:700;padding:13px 34px;border-radius:24px;text-decoration:none;animation:pulse 2.4s infinite;transition:.3s}
+.buy:hover{transform:translateX(-50%) scale(1.08)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(20,15,10,.5)}50%{box-shadow:0 0 0 10px rgba(20,15,10,0)}}
+.fol{position:absolute;left:4.5%;bottom:20%;z-index:6;font-size:10.5px;padding:9px 20px;border-radius:18px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+.soc{position:absolute;left:4.5%;bottom:9%;z-index:6;display:flex;gap:10px}
+.soc i{width:30px;height:30px;border-radius:9px;border:1px solid rgba(255,255,255,.22);display:grid;place-items:center;font-style:normal;font-size:12px;cursor:pointer;transition:.3s}
+.soc i:hover{background:rgba(255,255,255,.16);transform:translateY(-3px)}
+.dash{position:absolute;right:16%;bottom:26%;width:120px;height:60px;border-bottom:1px dashed rgba(255,255,255,.35);border-right:1px dashed rgba(255,255,255,.35);border-radius:0 0 30px 0;z-index:5;opacity:.6}
+</style></head><body>
+<div class="frame">
+<nav><span class="lg">✦ AREEJ</span><span class="pills"><span class="pill">Products</span><span class="pill">Contacts</span></span>
+<span class="usr"><i>↗</i><img src="img/av11.jpg"></span></nav>
+<div class="big">WINTER<br>JACKET</div>
+<span class="glow"></span>
+<img class="jacket" src="img/h22.jpg" alt="">
+<p class="desc">A winter jacket is designed to provide maximum warmth and comfort during cold weather, combining insulation, durability, and style in one essential outerwear piece</p>
+<div class="arrows"><span>←</span><span>→</span></div>
+<span class="dash"></span>
+<span class="avail">Available</span>
+<div class="sizes"><span class="on">M</span><span>L</span><span>XL</span><span>XXL</span></div>
+<div class="qty"><i>−</i><b>1</b><i>+</i></div>
+<div class="price"><span>$20.29</span><b>$50.29</b><span>$80.29</span></div>
+<a class="buy" href="#">Buy Now</a>
+<span class="fol">Follow Us</span>
+<div class="soc"><i>♪</i><i>f</i><i>◎</i></div>
+</div></body></html>

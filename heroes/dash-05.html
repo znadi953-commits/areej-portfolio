@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Invoice — AREEJ Billing</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#9a9aa2;min-height:100vh;font-family:Inter,sans-serif;color:#1d2024;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{width:min(96%,1100px);border-radius:20px;overflow:hidden;box-shadow:0 34px 80px rgba(30,30,40,.5);background:linear-gradient(130deg,#d7f2e4,#cfe9ef 38%,#ccd9f2 68%,#d9ccf0);padding:20px 24px}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.top b{font-size:16px}
+.top .ttl{font-size:12.5px;font-weight:600}
+.top .btns{margin-left:auto;display:flex;gap:8px;align-items:center}
+.btn{background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.9);font-size:10px;font-weight:600;padding:9px 16px;border-radius:18px;cursor:pointer;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(50,60,90,.15)}
+.top img{width:30px;height:30px;border-radius:50%;object-fit:cover}
+.hero{display:flex;align-items:center;gap:28px;margin-bottom:14px}
+.big{font-size:42px;font-weight:800}
+.big small{font-size:18px;color:#7d8088}
+.kv{font-size:9px;color:#7d8088}
+.kv b{display:block;font-size:11px;color:#1d2024;margin-top:3px}
+.status{background:rgba(255,255,255,.8);font-size:9.5px;font-weight:700;border-radius:14px;padding:6px 14px}
+.bars{display:flex;gap:8px;align-items:center;margin:12px 0 18px}
+.pay{height:34px;border-radius:17px;display:flex;align-items:center;font-size:10px;font-weight:700;padding:0 14px;gap:6px;animation:wide 1.2s ease both;overflow:hidden;white-space:nowrap}
+@keyframes wide{from{max-width:0;padding:0}to{max-width:400px}}
+.p1{background:#9fe3b4;width:22%}
+.p2{background:#f3e27f;width:14%;animation-delay:.25s}
+.p3{flex:1;background:repeating-linear-gradient(135deg,#dfe3ea 0 6px,#cfd4de 6px 12px);color:#5d6068;animation-delay:.5s}
+.pinv{margin-left:auto;background:#121418;color:#fff;border-radius:18px;font-size:10.5px;font-weight:700;padding:11px 20px;cursor:pointer;transition:.3s}
+.pinv:hover{transform:scale(1.05)}
+.g{display:grid;grid-template-columns:1.9fr 1fr;gap:14px}
+.panel{background:rgba(255,255,255,.72);backdrop-filter:blur(8px);border-radius:18px;padding:14px}
+.tabs{display:flex;gap:4px;margin-bottom:12px;font-size:10px;font-weight:600}
+.tabs span{padding:8px 16px;border-radius:12px 12px 0 0;color:#7d8088;cursor:pointer}
+.tabs .a{background:#fff;color:#1d2024;box-shadow:0 -4px 14px rgba(60,70,100,.08)}
+.srch{display:flex;align-items:center;gap:10px;font-size:10px;color:#9a9da4;margin-bottom:12px}
+.items{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.it{background:#fff;border-radius:14px;padding:12px;transition:.3s;animation:up .6s ease both;cursor:pointer}
+.it:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(60,70,100,.14)}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1}}
+.it .ic{font-size:20px}
+.it b{display:block;font-size:11px;margin:7px 0 2px}
+.it small{font-size:9px;color:#9a9da4}
+.it .qty{display:flex;justify-content:space-between;margin-top:10px;font-size:10px;color:#7d8088}
+.it .qty b{font-size:15px;margin:0}
+.act h3{font-size:12.5px;margin-bottom:10px}
+.icons{display:flex;gap:6px;margin-bottom:12px}
+.icons span{width:30px;height:30px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:11px;cursor:pointer;transition:.25s}
+.icons span:hover{transform:scale(1.14)}
+.up{font-size:9.5px;color:#7d8088;display:flex;justify-content:space-between;margin-bottom:8px}
+.ev{border-radius:14px;padding:11px 13px;margin-bottom:9px;animation:up .6s ease both}
+.ev b{font-size:10.5px;display:block}
+.ev small{font-size:8.5px;color:#666a72}
+.ev .d{font-size:8px;color:#8a8d94;float:right;text-align:right}
+.e1{background:#e5d7f8}
+.e2{background:#f7eeb5;animation-delay:.15s}
+.e3{background:#d8ecf8;animation-delay:.3s}
+</style></head><body>
+<div class="frame">
+  <div class="top"><b>Sf.</b><span class="btn">⠿</span><span class="btn">←</span><span class="ttl">Invoice</span>
+    <span class="btns"><span class="btn">✎ Issue Credit</span><span class="btn">Edit</span><span class="btn">Delete</span><img src="img/av12.jpg"><span class="btn">🔍</span></span></div>
+  <div class="hero">
+    <span class="big" id="amt">$0<small>.00</small></span>
+    <span class="kv">Account<b>🏢 Ohana Inc.</b></span>
+    <span class="kv">Invoice Number<b># INV-4905</b></span>
+    <span class="kv">Status<b><span class="status">✓ Posted</span></b></span>
+  </div>
+  <div class="bars"><span class="pay p1">✓ $ 25.000</span><span class="pay p2">💳 $ 10.000</span><span class="pay p3">⏳ $ 33.575 — Days Outstanding : 8</span><span class="pinv">Pay Invoice</span></div>
+  <div class="g">
+    <div class="panel">
+      <div class="tabs"><span class="a">Invoice lines</span><span>Details</span><span>Docs</span><span>Notes</span></div>
+      <div class="srch"><b style="color:#1d2024">67</b> items &nbsp; 🔍 Search items <span style="margin-left:auto">▦ ☰</span></div>
+      <div class="items">
+        <div class="it"><span class="ic">📱</span><b>Phone 14 Pro</b><small>$ 890</small><div class="qty"><b>20</b> Qty · Store 2</div></div>
+        <div class="it" style="animation-delay:.08s"><span class="ic">📱</span><b>Phone 14</b><small>$ 700</small><div class="qty"><b>20</b> Qty · Store 2</div></div>
+        <div class="it" style="animation-delay:.16s"><span class="ic">💻</span><b>Laptop Pro 13</b><small>$ 1.600</small><div class="qty"><b>10</b> Qty · Store 2</div></div>
+        <div class="it" style="animation-delay:.24s"><span class="ic">💻</span><b>Laptop Air M1</b><small>$ 1.100</small><div class="qty"><b>22</b> Qty · Store 1</div></div>
+        <div class="it" style="animation-delay:.32s"><span class="ic">🖥</span><b>Screen 27"</b><small>$ 1.300</small><div class="qty"><b>8</b> Qty · Store 3</div></div>
+        <div class="it" style="animation-delay:.4s"><span class="ic">📱</span><b>Phone 15</b><small>$ 800</small><div class="qty"><b>14</b> Qty · Store 2</div></div>
+      </div>
+    </div>
+    <div class="panel act">
+      <h3>Activity</h3>
+      <div class="icons"><span>✆</span><span>+</span><span>🗓</span><span>✉</span><span>⚡</span><span>⋯</span></div>
+      <div class="up">Upcoming <b style="color:#1d2024">12 Activities</b></div>
+      <div class="ev e1"><span class="d">12 Feb<br>9 pm</span><b>Send Payment Reminder</b><small>💌 Jossi Johnson sent a payment reminder</small></div>
+      <div class="ev e2"><span class="d">13 Feb<br>11 am</span><b>Call about the contract</b><small>📞 Brian Carpenter · meets</small></div>
+      <div class="ev e3"><span class="d">15 Feb<br>4 pm</span><b>Review invoice draft</b><small>📝 Team review before posting</small></div>
+    </div>
+  </div>
+</div>
+<script>
+let t=0,target=68575;const el=document.getElementById('amt');
+const iv=setInterval(()=>{t+=target/36;if(t>=target){t=target;clearInterval(iv)}
+el.innerHTML='$'+Math.round(t).toLocaleString('en-US')+'<small>.00</small>'},30);
+</script>
+</body></html>

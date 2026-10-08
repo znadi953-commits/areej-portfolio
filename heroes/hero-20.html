@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARTVERSE — Owl №7</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#e8e8e6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3vmin;font-family:'Space Mono',monospace;color:#2b2b29}
+.frame{position:relative;width:100%;max-width:1100px;aspect-ratio:16/9.6;background:#fdfdfc;overflow:hidden;box-shadow:0 30px 70px rgba(50,50,45,.3)}
+.owl{position:absolute;right:-4%;bottom:-8%;width:68%;z-index:2;animation:in 1.4s ease both;-webkit-mask-image:radial-gradient(80% 80% at 55% 55%,#000 62%,transparent 92%);mask-image:radial-gradient(80% 80% at 55% 55%,#000 62%,transparent 92%)}
+@keyframes in{from{opacity:0;transform:scale(1.06) rotate(2deg)}to{opacity:1;transform:none}}
+.hd{position:absolute;left:4%;top:6%;z-index:6}
+.hd b{font-size:15px;letter-spacing:.3em}
+.hd small{display:block;font-size:9px;letter-spacing:.22em;color:#8b8b86;margin-top:6px;line-height:1.8}
+.vert{position:absolute;left:24px;bottom:8%;writing-mode:vertical-rl;transform:rotate(180deg);font-size:10px;letter-spacing:.5em;color:#a5a5a0;z-index:6}
+.ann{position:absolute;z-index:7;opacity:0;animation:pop .6s ease forwards}
+.ann .bx{border:1px solid #2b2b29;padding:6px 10px;font-size:9px;letter-spacing:.14em;background:rgba(253,253,252,.88)}
+.ann .ln{position:absolute;height:1px;background:#b33;transform-origin:left;animation:grow 1s ease forwards}
+@keyframes pop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.a1{left:7%;top:28%;animation-delay:.5s}.a1 .ln{left:100%;top:50%;width:160px;transform:rotate(14deg);animation-delay:.9s}
+.a2{left:14%;top:46%;animation-delay:1s}.a2 .ln{left:100%;top:50%;width:200px;transform:rotate(-4deg);animation-delay:1.4s}
+.a3{left:9%;top:64%;animation-delay:1.5s}.a3 .ln{left:100%;top:50%;width:150px;transform:rotate(-18deg);animation-delay:1.9s}
+.a4{left:40%;top:14%;animation-delay:2s}.a4 .ln{left:60%;top:100%;width:120px;transform:rotate(66deg);animation-delay:2.4s}
+.glitch{animation:pop .6s 1s ease forwards, gl 4s 2.4s steps(2) infinite}
+@keyframes gl{0%,92%{clip-path:none;transform:none}94%{clip-path:inset(20% 0 40% 0);transform:translateX(3px)}96%{clip-path:inset(60% 0 10% 0);transform:translateX(-3px)}98%{clip-path:inset(10% 0 70% 0);transform:translateX(2px)}}
+.dot{position:absolute;width:5px;height:5px;border-radius:50%;background:#c33;z-index:7;animation:blink 2.2s infinite}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+.meta{position:absolute;right:3.5%;top:7%;text-align:right;font-size:8.5px;letter-spacing:.2em;color:#8b8b86;line-height:2;z-index:7}
+.meta b{color:#2b2b29}
+.scan{position:absolute;left:0;right:0;height:46px;background:linear-gradient(180deg,transparent,rgba(180,40,40,.05),transparent);z-index:5;animation:scan 7s linear infinite;pointer-events:none}
+@keyframes scan{from{top:-10%}to{top:110%}}
+</style></head><body>
+<div class="frame">
+  <div class="hd"><b>ARTVERSE</b><small>MODIFIED BIRDS : OWL №7<br>SHADY FEATHER STUDY — AREEJ</small></div>
+  <span class="vert">A R T V E R S E</span>
+  <div class="meta"><b>TOMARF SERIES</b><br>BUILD MODE : ON<br>SPEC : 9L-1BR<br>INK / DIGITAL — 2026</div>
+  <img class="owl" src="img/h20.jpg" alt="">
+  <div class="ann a1"><span class="bx">FEATHER FLOW ↗</span><span class="ln"></span></div>
+  <div class="ann a2"><span class="bx glitch">AMBER IRIS — 94%</span><span class="ln"></span></div>
+  <div class="ann a3"><span class="bx">BEAK · GLOSS BLACK</span><span class="ln"></span></div>
+  <div class="ann a4"><span class="bx glitch">GRUMPY MODE : ON</span><span class="ln"></span></div>
+  <span class="dot" style="left:52%;top:40%"></span>
+  <span class="dot" style="left:64%;top:26%;animation-delay:.8s"></span>
+  <span class="dot" style="left:46%;top:70%;animation-delay:1.4s"></span>
+  <span class="scan"></span>
+</div></body></html>

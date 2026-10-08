@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TaskLab — Team Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+@property --p{syntax:'<number>';inherits:false;initial-value:0}
+*{margin:0;box-sizing:border-box}
+body{min-height:100vh;font-family:Inter,sans-serif;color:#17181a;display:flex;align-items:center;justify-content:center;padding:3vmin;background:linear-gradient(180deg,#b9bdc4 0%,#d7d9dc 46%,#efe9df 72%,#e6ded0)}
+.frame{display:flex;gap:14px;width:min(97%,1140px)}
+aside{width:200px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:22px;padding:16px 14px;box-shadow:0 20px 50px rgba(60,60,60,.25)}
+.lg{font-weight:800;font-size:13px;margin-bottom:16px}
+.mi{display:flex;gap:9px;align-items:center;font-size:11px;font-weight:600;color:#6e6f74;padding:9px 11px;border-radius:12px;margin:2px 0;cursor:pointer;transition:.25s}
+.mi:hover{background:#f0f0ee;transform:translateX(3px)}
+.mi.on{background:#17181a;color:#fff}
+.chat{margin-top:16px;border-top:1px solid #ececea;padding-top:12px}
+.chat h4{font-size:10px;margin-bottom:8px}
+.bub{font-size:8.5px;border-radius:10px;padding:7px 10px;margin:6px 0;max-width:88%}
+.b1{background:#f0f0ee}
+.b2{background:#d6f252;margin-left:auto}
+.wave{display:flex;gap:2px;align-items:center;height:14px}
+.wave i{width:3px;background:#17181a;border-radius:2px;animation:eq 1s ease-in-out infinite alternate}
+@keyframes eq{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
+main{flex:1}
+.hd{display:flex;align-items:center;margin-bottom:12px;background:rgba(255,255,255,.9);border-radius:18px;padding:12px 18px}
+.hd h1{font-size:16px;font-weight:800}
+.hd small{display:block;font-size:9px;color:#8d8f93}
+.hd .r{margin-left:auto;display:flex;gap:10px;align-items:center;font-size:10px;font-weight:600}
+.hd .pill{background:#f0f0ee;border-radius:14px;padding:7px 12px}
+.g{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:12px}
+.card{background:#fff;border-radius:18px;padding:14px;box-shadow:0 14px 34px rgba(60,60,60,.16);animation:up .6s ease both;transition:.3s}
+.card:hover{transform:translateY(-4px)}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1}}
+.card h3{font-size:11px;margin-bottom:8px}
+.hrs{font-size:26px;font-weight:800}
+.tag{font-size:8.5px;color:#8d8f93}
+.lime{background:#d6f252}
+.avr{display:flex;margin:8px 0}
+.avr img{width:26px;height:26px;border-radius:50%;border:2px solid #d6f252;margin-left:-7px;object-fit:cover}
+.avr img:first-child{margin-left:0}
+.p29{background:#17181a;color:#fff;font-size:8.5px;font-weight:700;border-radius:12px;padding:4px 9px}
+.dash{border:1.5px dashed #b9bdb0;border-radius:18px;display:grid;place-items:center;font-size:10px;color:#6e6f74;animation:up .6s .15s ease both}
+.dash .plus{width:34px;height:34px;border-radius:50%;background:#d6f252;display:grid;place-items:center;font-size:16px;margin:0 auto 6px;animation:pop 2.4s infinite}
+@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.prod{background:#17181a;color:#fff}
+.prod h3{color:#fff}
+.bars{display:flex;align-items:flex-end;gap:7px;height:74px;margin-top:8px}
+.bars i{flex:1;background:#2c2d31;border-radius:6px 6px 0 0;transform-origin:bottom;animation:grow 1s .3s ease both;position:relative}
+.bars i.l{background:#d6f252}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.pr{font-size:8.5px;color:#aaacb0;display:flex;justify-content:space-between;margin-top:8px}
+.pr b{color:#d6f252}
+.ins .eq{display:flex;align-items:flex-end;gap:3px;height:44px;margin:8px 0}
+.ins .eq i{flex:1;background:#17181a;border-radius:2px;animation:eq 1.2s ease-in-out infinite alternate}
+.hist{margin-top:0}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:8px}
+.cal span{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-size:8px;background:#f0f0ee;transition:.25s;cursor:pointer}
+.cal span:hover{transform:scale(1.15)}
+.cal .k{background:#17181a;color:#fff}
+.cal .l{background:#d6f252;font-weight:700}
+.names{display:flex;gap:5px;font-size:8px;margin-top:8px}
+.names span{background:#f0f0ee;border-radius:10px;padding:4px 9px}
+.names .a{background:#d6f252;font-weight:700}
+.g2{display:grid;grid-template-columns:1.6fr 1fr;gap:12px;margin-top:12px}
+.sched .row{display:flex;align-items:center;gap:8px;font-size:9px;margin:8px 0}
+.sched .ch{background:#f0f0ee;border-radius:12px;padding:6px 12px;font-weight:600}
+.sched .ch.l{background:#d6f252}
+.gant{position:relative;height:8px;flex:1;border-radius:5px;background:#f0f0ee;overflow:hidden}
+.gant i{position:absolute;top:0;bottom:0;border-radius:5px;animation:widex 1.3s ease both}
+@keyframes widex{from{width:0!important}}
+.trk{background:#17181a;color:#fff;text-align:center}
+.trk h3{color:#aaacb0}
+.time{font-size:30px;font-weight:800;letter-spacing:.04em;margin:6px 0}
+.trk .btns{display:flex;gap:8px;justify-content:center}
+.trk .btns span{width:30px;height:30px;border-radius:50%;background:#2c2d31;display:grid;place-items:center;font-size:11px;cursor:pointer}
+.trk .btns .l{background:#d6f252;color:#17181a}
+</style></head><body>
+<div class="frame">
+<aside>
+  <div class="lg">▣ TaskLab</div>
+  <div class="mi">⌂ Home</div><div class="mi">📁 Projects</div><div class="mi">🎧 Meetings</div><div class="mi on">👥 Team</div><div class="mi">🗓 Schedules</div><div class="mi">📈 Analitics</div><div class="mi">📅 Calendar</div><div class="mi">⚙ Settings</div>
+  <div class="chat"><h4>💬 Chat <small style="color:#8d8f93">Lukas is typing...</small></h4>
+    <div class="bub b1"><span class="wave"><i style="height:50%"></i><i style="height:100%;animation-delay:.1s"></i><i style="height:70%;animation-delay:.2s"></i><i style="height:90%;animation-delay:.3s"></i><i style="height:40%"></i></span></div>
+    <div class="bub b2">Great job, guys, keep it up! 🔥</div>
+    <div class="bub b1">Message... 😊 📎</div>
+  </div>
+</aside>
+<main>
+  <div class="hd"><span><h1>Your Team Members</h1><small>Manage all your projects with team members</small></span>
+    <span class="r"><span class="pill">☀ 12:45PM · 23°C</span><span class="pill" style="background:#17181a;color:#fff">Starts Next Meeting −02:31:12</span></span></div>
+  <div class="g">
+    <div>
+      <div class="card"><h3>▣ Tasks <span style="float:right">↗</span></h3><span class="hrs" id="hrs">0 h</span>
+        <div class="tag">● In Work &nbsp; ● Completed</div></div>
+      <div class="card prod" style="margin-top:12px;animation-delay:.1s"><h3>Productivity</h3>
+        <div class="bars"><i style="height:46%"></i><i style="height:68%"></i><i class="l" style="height:94%"></i><i style="height:55%"></i><i style="height:72%"></i><i style="height:40%"></i></div>
+        <div class="pr"><span>Jan — Jun</span><span>week <b>−7%</b> · month <b>+13%</b></span></div></div>
+    </div>
+    <div>
+      <div class="card lime"><h3>👥 Core Team <span style="float:right">⋯</span></h3><small style="font-size:9px">32 Members</small>
+        <div class="avr"><img src="img/av1.jpg"><img src="img/av2.jpg"><img src="img/av5.jpg"><img src="img/av7.jpg"><img src="img/av8.jpg"></div><span class="p29">+29</span></div>
+      <div class="dash" style="margin-top:12px;height:92px"><span><span class="plus">+</span>Add New Board</span></div>
+      <div class="card sched" style="margin-top:12px;animation-delay:.2s"><h3>🗓 Schedule <small style="color:#8d8f93">15 Upcoming Tasks · April</small></h3>
+        <div class="row"><span class="ch">Process</span><div class="gant"><i style="width:55%;left:8%;background:#b9ddf2"></i></div></div>
+        <div class="row"><span class="ch l">Prototype</span><div class="gant"><i style="width:40%;left:30%;background:#d6f252"></i></div><img src="img/av6.jpg" style="width:20px;height:20px;border-radius:50%"></div>
+        <div class="row"><span class="ch">UI Kit</span><div class="gant"><i style="width:34%;left:46%;background:#efc7ef"></i></div></div></div>
+    </div>
+    <div>
+      <div class="card ins"><h3>📊 Team Insights <span style="float:right;font-size:8.5px;color:#8d8f93">View all</span></h3>
+        <div class="eq"><i style="height:30%"></i><i style="height:70%;animation-delay:.1s"></i><i style="height:45%;animation-delay:.2s"></i><i style="height:95%;animation-delay:.05s"></i><i style="height:60%;animation-delay:.3s"></i><i style="height:80%;animation-delay:.15s"></i><i style="height:38%;animation-delay:.25s"></i><i style="height:66%;animation-delay:.08s"></i></div>
+        <div class="avr" style="margin:0"><img src="img/av9.jpg" style="border-color:#fff"><img src="img/av10.jpg" style="border-color:#fff"><span style="margin-left:8px;font-size:12px">▶</span></div></div>
+      <div class="card hist" style="margin-top:12px;animation-delay:.15s"><h3>🕘 History <small style="color:#8d8f93">Working Days</small></h3>
+        <div class="names"><span class="a">Yours</span><span>Lukas</span><span>Janny</span><span>Andrey</span></div>
+        <div class="cal">
+          <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+          <span>1</span><span class="k">2</span><span class="k">3</span><span>4</span><span class="k">5</span><span>6</span><span>7</span>
+          <span class="k">8</span><span>9</span><span class="l">10</span><span class="k">11</span><span>12</span><span class="k">13</span><span class="k">14</span>
+          <span>15</span><span class="k">16</span><span class="k">17</span><span class="l">18</span><span class="k">19</span><span>20</span><span>21</span>
+        </div></div>
+      <div class="card trk" style="margin-top:12px;animation-delay:.25s"><h3>⏱ Time Tracker</h3><div class="time" id="clock">07:40:15</div>
+        <div class="btns"><span class="l">⏸</span><span>⏹</span></div></div>
+    </div>
+  </div>
+</main>
+</div>
+<script>
+let h2=0,tg=34.5;const e=document.getElementById('hrs');
+const v=setInterval(()=>{h2+=tg/30;if(h2>=tg){h2=tg;clearInterval(v)}e.textContent=h2.toFixed(1).replace('.',',')+' h'},34);
+let s=7*3600+40*60+15;
+setInterval(()=>{s++;const hh=String(Math.floor(s/3600)).padStart(2,'0'),mm=String(Math.floor(s%3600/60)).padStart(2,'0'),ss=String(s%60).padStart(2,'0');
+document.getElementById('clock').textContent=hh+':'+mm+':'+ss},1000);
+</script>
+</body></html>

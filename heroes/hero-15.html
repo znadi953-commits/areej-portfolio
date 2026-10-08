@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PHOENIX LIVERY — AREEJ Design Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#1c1d21;font-family:Inter,sans-serif;color:#eee;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3vmin;overflow:hidden}
+.frame{position:relative;width:100%;max-width:1150px;aspect-ratio:16/9.6;background:linear-gradient(140deg,#2c2e34,#232529 60%,#1f2024);border-radius:18px;overflow:hidden;box-shadow:0 36px 90px rgba(0,0,0,.7)}
+.big{position:absolute;left:50%;top:7%;transform:translateX(-50%);font-family:'Bebas Neue';font-size:clamp(70px,13vw,170px);letter-spacing:.06em;line-height:1;background:linear-gradient(100deg,#55565c 0%,#9b9ca3 18%,#55565c 36%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 4s linear infinite;user-select:none}
+@keyframes sheen{to{background-position:-200% 0}}
+.car{position:absolute;left:50%;bottom:6%;width:82%;transform:translateX(-50%);filter:drop-shadow(0 26px 30px rgba(0,0,0,.6));animation:drive 1.6s cubic-bezier(.2,.8,.2,1) both;-webkit-mask-image:radial-gradient(75% 75% at 50% 50%,#000 60%,transparent 88%);mask-image:radial-gradient(75% 75% at 50% 50%,#000 60%,transparent 88%)}
+@keyframes drive{from{opacity:0;transform:translateX(-120%)}to{opacity:1;transform:translateX(-50%)}}
+.side{position:absolute;right:26px;top:10%;writing-mode:vertical-rl;font-family:'Space Mono';font-size:9.5px;letter-spacing:.3em;color:#8d8f96;z-index:5}
+.side b{color:#ff7a2f}
+.ember{position:absolute;width:5px;height:5px;border-radius:50%;background:#ff8a3d;box-shadow:0 0 10px 2px rgba(255,122,47,.8);opacity:0;animation:fly 5s linear infinite}
+@keyframes fly{0%{opacity:0;transform:translateY(0) scale(.6)}12%{opacity:1}100%{opacity:0;transform:translateY(-340px) translateX(40px) scale(.2)}}
+.mq{position:absolute;left:0;right:0;bottom:0;background:#141519;border-top:1px solid rgba(255,122,47,.35);overflow:hidden;white-space:nowrap;padding:10px 0;z-index:8}
+.mq span{display:inline-block;font-family:'Bebas Neue';font-size:16px;letter-spacing:.34em;color:#ff7a2f;animation:scroll 16s linear infinite}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.tag{position:absolute;left:4%;top:8%;font-family:'Space Mono';font-size:10px;letter-spacing:.24em;color:#9aa;z-index:5;line-height:2}
+</style></head><body>
+<div class="frame">
+  <div class="big">PHOENIX</div>
+  <div class="tag">AREEJ DESIGN STUDIO<br><b style="color:#ff7a2f">CUSTOM LIVERY — 2026</b></div>
+  <span class="side">© 2026 ALL RIGHTS RESERVED <b>AREEJ</b> — GRAPHIC DESIGN STUDIO ✦ 生き甲斐</span>
+  <img class="car" src="img/h15.jpg" alt="">
+  <i class="ember" style="left:18%;bottom:26%;animation-delay:0s"></i>
+  <i class="ember" style="left:30%;bottom:20%;animation-delay:1.2s"></i>
+  <i class="ember" style="left:55%;bottom:24%;animation-delay:2.1s"></i>
+  <i class="ember" style="left:70%;bottom:18%;animation-delay:.6s"></i>
+  <i class="ember" style="left:82%;bottom:28%;animation-delay:3s"></i>
+  <i class="ember" style="left:44%;bottom:16%;animation-delay:3.8s"></i>
+  <div class="mq"><span>PHOENIX LIVERY ✦ SPORT COUPÉ ✦ CUSTOM WRAP DESIGN ✦ AREEJ STUDIO ✦ PHOENIX LIVERY ✦ SPORT COUPÉ ✦ CUSTOM WRAP DESIGN ✦ AREEJ STUDIO ✦&nbsp;</span></div>
+</div></body></html>

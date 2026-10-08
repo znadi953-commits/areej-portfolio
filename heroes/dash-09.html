@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MED+ — Patient History</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#1557ff;min-height:100vh;font-family:Inter,sans-serif;color:#191b1e;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{display:flex;width:min(97%,1120px);background:#eef0f2;border-radius:24px;overflow:hidden;box-shadow:0 40px 90px rgba(0,20,80,.5)}
+aside{width:208px;background:#0d0e10;color:#fff;padding:16px 14px}
+aside h2{font-size:13px;margin-bottom:4px}
+aside .n{font-size:8.5px;color:#8a8d93;margin-bottom:12px}
+.pt{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:11px;font-size:9.5px;color:#b9bcc2;transition:.25s;cursor:pointer}
+.pt:hover{background:#1a1c20}
+.pt img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.pt b{color:#fff;display:block;font-size:10px}
+.pt .x{margin-left:auto;color:#5a5d64}
+.pt.on{background:#1e2126;box-shadow:inset 0 0 0 1px #2e323a}
+.diag{margin:12px 0;background:#1a1c20;border-radius:14px;padding:11px;font-size:9px;color:#b9bcc2}
+.diag b{color:#fff;display:block;font-size:10.5px;margin-bottom:3px}
+.chron{font-size:7.5px;background:#2a2e36;padding:2px 8px;border-radius:9px;color:#9adf6a}
+.bio{display:flex;gap:7px;margin-top:10px}
+.bio span{flex:1;background:#fff;color:#191b1e;border-radius:11px;padding:8px;font-size:8px}
+.bio b{display:block;font-size:10.5px}
+.mn{margin-top:14px;border-top:1px solid #23262c;padding-top:10px}
+.mi{display:flex;gap:8px;align-items:center;font-size:10px;color:#b9bcc2;padding:7px 9px;border-radius:10px;cursor:pointer;transition:.25s}
+.mi:hover{background:#1a1c20;color:#fff}
+.mi.on{color:#fff;background:#1e2126}
+main{flex:1;padding:14px 18px;position:relative}
+.top{display:flex;gap:7px;align-items:center;font-size:9px;margin-bottom:12px}
+.chipz{background:#fff;border-radius:13px;padding:7px 13px;font-weight:600;box-shadow:0 4px 10px rgba(20,40,90,.07);cursor:pointer;transition:.25s}
+.chipz:hover{transform:translateY(-2px)}
+.chipz.a{background:#1557ff;color:#fff}
+.top img{width:28px;height:28px;border-radius:50%;object-fit:cover;margin-left:auto}
+.cols{display:flex;gap:12px}
+.left{width:190px}
+.pc{background:#fff;border-radius:13px;padding:10px 12px;margin-bottom:8px;font-size:9px;color:#8a8d93;animation:up .6s ease both;transition:.3s;cursor:pointer}
+.pc:hover{transform:translateX(4px)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1}}
+.pc b{font-size:13px;color:#191b1e;float:right}
+.pc .bar{height:4px;border-radius:3px;background:#eef0f2;margin-top:7px;overflow:hidden}
+.pc .bar i{display:block;height:100%;background:#1557ff;animation:wide 1.2s .3s ease both}
+@keyframes wide{from{width:0!important}}
+.pc.hot{background:#1557ff;color:#cdd9ff}
+.pc.hot b{color:#fff}
+.pc.hot .bar{background:#3a6fff}
+.pc.hot .bar i{background:#fff}
+.flow{flex:1;position:relative;min-height:420px}
+.fc{position:absolute;background:#fff;border-radius:14px;padding:10px 12px;font-size:9px;color:#8a8d93;box-shadow:0 10px 24px rgba(20,40,90,.1);animation:up .7s ease both;transition:.3s}
+.fc:hover{transform:translateY(-3px);box-shadow:0 16px 30px rgba(20,40,90,.18)}
+.fc b{color:#191b1e;display:block;font-size:10px}
+.fc img.av{width:22px;height:22px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:5px}
+.fc.dk{background:#0d0e10;color:#9a9da4}
+.fc.dk b{color:#fff}
+.fc.bl{background:#1557ff;color:#cdd9ff;box-shadow:0 18px 36px rgba(21,87,255,.4)}
+.fc.bl b{color:#fff;font-size:12px}
+.brainz{width:120px;border-radius:10px;display:block;margin-top:6px}
+.scans{display:flex;gap:5px;margin-top:7px}
+.scans img{width:44px;height:38px;object-fit:cover;border-radius:7px;filter:grayscale(1) contrast(1.15)}
+.wav{display:flex;gap:2px;align-items:flex-end;height:22px;margin-top:6px}
+.wav i{width:3px;background:#1557ff;border-radius:2px;animation:eq 1.1s ease-in-out infinite alternate}
+.fc.dk .wav i{background:#9adf6a}
+@keyframes eq{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
+svg.links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+svg.links path{fill:none;stroke:#aebee0;stroke-width:1.5;stroke-dasharray:4 5;stroke-dashoffset:200;animation:dash 3s .4s linear both}
+@keyframes dash{to{stroke-dashoffset:0}}
+.tl{position:absolute;left:0;right:0;bottom:46px;display:flex;align-items:center;gap:10px;font-size:8.5px;color:#8a8d93}
+.tl .yr{background:#fff;border-radius:10px;padding:5px 10px}
+.tl .dots{flex:1;display:flex;gap:6px;align-items:center}
+.tl .dots i{width:7px;height:7px;border-radius:50%;background:#c9cdd4;animation:pop 2.4s infinite}
+.tl .dots i.b{background:#1557ff}
+@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+.bbar{position:absolute;left:0;right:0;bottom:0;display:flex;gap:10px;font-size:10px}
+.srch{flex:1;background:#fff;border-radius:13px;padding:10px 14px;color:#8a8d93;box-shadow:0 6px 14px rgba(20,40,90,.08)}
+.srch b{color:#191b1e;margin-right:10px}
+</style></head><body>
+<div class="frame">
+<aside>
+  <h2>Med.+ <span style="float:right;background:#1557ff;border-radius:8px;width:20px;height:20px;display:inline-grid;place-items:center;font-size:12px">+</span></h2>
+  <div class="n">9 patients</div>
+  <div class="pt"><img src="img/av5.jpg"><span><b>N. Turner</b>Female 36</span><span class="x">✕</span></div>
+  <div class="pt"><img src="img/av6.jpg"><span><b>K. Wilson</b>Female 27</span><span class="x">✕</span></div>
+  <div class="pt on"><img src="img/av10.jpg"><span><b>H. Evans</b>Male 25</span></div>
+  <div class="diag"><b>Atherosclerosis</b>Diagnosis <span class="chron">Chronic</span></div>
+  <div class="bio"><span>Blood<b>AB +</b></span><span>Height/Weight<b>5'5 / 160 lb</b></span></div>
+  <div class="mn">
+    <div class="mi on">◉ Overview</div><div class="mi">📝 Notes</div><div class="mi">📁 Documents</div><div class="mi">🧪 Labs</div><div class="mi">🩻 Imagings</div>
+  </div>
+</aside>
+<main>
+  <div class="top"><span class="chipz a">Visits</span><span class="chipz">Hospitalizations</span><span class="chipz">Procedures</span><span class="chipz">Labs</span><span class="chipz">Medication</span><span class="chipz">🔍 Search</span><span class="chipz">✉</span>
+    <img src="img/av12.jpg"><span style="font-size:9px"><b>Dr. White</b><br>Therapist</span></div>
+  <div class="cols">
+    <div class="left">
+      <div class="pc">Respiratory <b>13%</b><div class="bar"><i style="width:13%"></i></div></div>
+      <div class="pc" style="animation-delay:.07s">Circulatory <b>21%</b><div class="bar"><i style="width:21%"></i></div></div>
+      <div class="pc hot" style="animation-delay:.14s">Neurology · Headaches <b>49%</b><div class="bar"><i style="width:49%"></i></div></div>
+      <div class="pc" style="animation-delay:.21s">Cardiology <b>25%</b><div class="bar"><i style="width:25%"></i></div></div>
+      <div class="pc" style="animation-delay:.28s">Digestive <b>17%</b><div class="bar"><i style="width:17%"></i></div></div>
+    </div>
+    <div class="flow">
+      <svg class="links" viewBox="0 0 640 420" preserveAspectRatio="none">
+        <path d="M150,110 C230,110 240,60 320,60"/>
+        <path d="M150,150 C260,160 300,220 360,230"/>
+        <path d="M190,300 C260,310 320,330 400,330"/>
+        <path d="M480,90 C520,120 540,180 520,240"/>
+      </svg>
+      <div class="fc" style="left:2%;top:10%"><b>🩺 Visits</b>Symptoms and Tests...<br><img class="av" src="img/av12.jpg">Dr. White</div>
+      <div class="fc dk" style="left:30%;top:4%;animation-delay:.15s"><b>Pain location level</b><span style="font-size:14px">🧠 ②</span><br>Stress 😖 · Dizziness 😵<div class="wav"><i style="height:40%"></i><i style="height:90%;animation-delay:.1s"></i><i style="height:60%;animation-delay:.2s"></i><i style="height:100%;animation-delay:.05s"></i><i style="height:50%;animation-delay:.3s"></i></div></div>
+      <div class="fc bl" style="left:28%;top:40%;animation-delay:.3s"><small style="opacity:.8">Neurology · ✚</small><br><b>Headaches</b><small>Tension headache</small><img class="brainz" src="img/d-brain.jpg"></div>
+      <div class="fc" style="left:56%;top:30%;animation-delay:.4s"><b>🩺 Visits</b>Doctor's referral<br><img class="av" src="img/av12.jpg">Dr. White · 05 · 03</div>
+      <div class="fc dk" style="right:1%;top:8%;animation-delay:.5s"><b>Visits · 523</b>evening<div class="wav"><i style="height:50%"></i><i style="height:80%;animation-delay:.12s"></i><i style="height:35%;animation-delay:.22s"></i><i style="height:95%;animation-delay:.03s"></i></div></div>
+      <div class="fc" style="right:2%;top:52%;animation-delay:.6s"><b>🩻 Labs &amp; Image · CT SCAN</b><img class="av" src="img/av8.jpg">Dr. Burke
+        <div class="scans"><img src="img/d-brain.jpg"><img src="img/d-brain.jpg" style="transform:scaleX(-1)"><img src="img/d-brain.jpg" style="filter:grayscale(1) invert(.9)"></div></div>
+      <div class="tl"><span class="yr">2024</span><span class="dots"><i></i><i class="b"></i><i></i><i class="b" style="animation-delay:.4s"></i><i></i><i></i><i class="b" style="animation-delay:.8s"></i><i></i></span><span class="yr">Aug ⬤⬤ · Sep ⬤ · 2026</span></div>
+      <div class="bbar"><span class="srch"><b>Medications</b> 🔍 Search ...</span><span class="srch"><b>Diagnosis</b> 🔍 Search ...</span></div>
+    </div>
+  </div>
+</main>
+</div></body></html>

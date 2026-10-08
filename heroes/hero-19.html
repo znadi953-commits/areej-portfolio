@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CLARITY — Poster</title>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Space+Mono&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#d9d6d0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3vmin;font-family:Inter,sans-serif;color:#3c3a37}
+.frame{position:relative;width:min(94%,760px);aspect-ratio:3/4.05;background:
+ linear-gradient(28deg,transparent 40%,rgba(120,120,125,.14) 42%,transparent 55%),
+ linear-gradient(-35deg,transparent 55%,rgba(100,100,108,.16) 58%,transparent 70%),
+ linear-gradient(150deg,#f4f2ee,#ecebe7 55%,#e4e2dd);
+ overflow:hidden;box-shadow:0 34px 80px rgba(60,55,45,.45)}
+h1{position:absolute;left:50%;top:2%;transform:translateX(-50%) rotate(-4deg);font-family:'Permanent Marker';font-size:clamp(64px,13vw,120px);color:#d64360;z-index:6;text-shadow:3px 4px 0 rgba(160,30,60,.25);animation:drip 3.5s ease-in-out infinite}
+@keyframes drip{0%,100%{transform:translateX(-50%) rotate(-4deg) translateY(0)}50%{transform:translateX(-50%) rotate(-4deg) translateY(6px)}}
+.man{position:absolute;left:50%;bottom:0;height:76%;transform:translateX(-50%);z-index:4;filter:drop-shadow(0 18px 34px rgba(60,50,40,.4));-webkit-mask-image:linear-gradient(180deg,#000 86%,transparent 100%);mask-image:linear-gradient(180deg,#000 86%,transparent 100%)}
+.ringwrap{position:absolute;left:50%;top:54%;width:min(88%,560px);aspect-ratio:1;transform:translate(-50%,-50%);z-index:5;pointer-events:none;perspective:700px}
+.ring{position:absolute;inset:0;animation:spin 18s linear infinite;transform-style:preserve-3d}
+.ring.r2{animation:spinR 24s linear infinite}
+@keyframes spin{from{transform:rotateX(64deg) rotateZ(0)}to{transform:rotateX(64deg) rotateZ(360deg)}}
+@keyframes spinR{from{transform:rotateX(64deg) rotateZ(360deg)}to{transform:rotateX(64deg) rotateZ(0)}}
+.ring i{position:absolute;left:50%;top:50%;font-family:Inter;font-weight:600;font-size:20px;color:#fff;background:rgba(224,100,130,.85);padding:2px 5px;border-radius:3px;font-style:normal}
+.p1{position:absolute;left:6%;top:30%;max-width:160px;font-size:9.5px;line-height:1.75;z-index:6}
+.p2{position:absolute;right:6%;top:42%;max-width:170px;font-size:9.5px;line-height:1.75;text-align:right;z-index:6}
+.p2 b{display:block;font-family:'Permanent Marker';color:#d64360;font-size:14px;margin-bottom:6px}
+.bar{position:absolute;left:7%;top:22%;width:54px;height:16px;background:repeating-linear-gradient(90deg,#3c3a37 0 2px,transparent 2px 5px);z-index:6}
+.vis{position:absolute;left:7%;bottom:22%;font-family:'Permanent Marker';font-size:15px;color:#b64a63;transform:rotate(-8deg);z-index:6}
+.sig{position:absolute;right:7%;bottom:4%;font-family:'Permanent Marker';font-size:13px;color:#a4683c;z-index:6}
+</style></head><body>
+<div class="frame">
+  <h1>Clarity</h1>
+  <span class="bar"></span>
+  <p class="p1">Clarity is the beauty of seeing things as they are. No fog, no distractions — just pure vision and intention. It is the art of removing the blur between vision and reality.</p>
+  <p class="p2"><b>focus</b>It cuts through the noise and makes space for focus. In clarity, even complexity feels effortless, and direction becomes undeniable.</p>
+  <img class="man" src="img/h19.jpg" alt="">
+  <div class="ringwrap"><div class="ring" id="r1"></div><div class="ring r2" id="r2"></div></div>
+  <span class="vis">vision ✦ ✦ ✦</span>
+  <span class="sig">✕✕ AREEJWALE</span>
+</div>
+<script>
+function ring(el,txt,rad,fs){
+  const chars=(txt.repeat(6)).split("");
+  const step=360/chars.length;
+  chars.forEach((c,k)=>{
+    const i=document.createElement("i");
+    i.textContent=c;i.style.fontSize=fs+"px";
+    i.style.transform="rotate("+(k*step)+"deg) translateY(-"+rad+"px)";
+    el.appendChild(i);
+  });
+}
+const w=document.querySelector(".ringwrap").offsetWidth;
+ring(document.getElementById("r1"),"CLARITY · ",w*0.46,18);
+ring(document.getElementById("r2"),"CLARITY · ",w*0.30,14);
+</script>
+</body></html>

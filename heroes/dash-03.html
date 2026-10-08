@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tracking — Logistics Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#6b6a75;min-height:100vh;font-family:Inter,sans-serif;color:#23242a;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{display:flex;width:min(97%,1140px);background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 34px 80px rgba(20,20,30,.5)}
+aside{width:172px;background:#fbfbfc;border-right:1px solid #eee;padding:16px 12px}
+.me{display:flex;gap:9px;align-items:center;margin-bottom:16px}
+.me img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+.me b{font-size:10.5px;display:block}
+.me small{font-size:8px;color:#9a9ba2}
+.mi{display:flex;gap:9px;align-items:center;font-size:10.5px;font-weight:600;color:#6e6f77;padding:9px 10px;border-radius:10px;margin:2px 0;cursor:pointer;transition:.25s}
+.mi:hover{background:#f4e3e7;transform:translateX(3px)}
+.mi.on{background:#e9566e;color:#fff;box-shadow:0 8px 18px rgba(233,86,110,.3)}
+.cnr{margin-top:20px;display:block;text-align:center;background:#e9566e;color:#fff;font-size:10px;font-weight:700;padding:11px;border-radius:10px;text-decoration:none;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(233,86,110,.4)}50%{box-shadow:0 0 0 8px rgba(233,86,110,0)}}
+.mid{width:342px;border-right:1px solid #eee;padding:16px}
+.mid h2{font-size:16px}
+.mid .f{font-size:9px;color:#9a9ba2;margin:10px 0 6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.chip{font-size:8.5px;font-weight:600;border:1px solid #eec;border:1px solid #eedce0;color:#b4536a;background:#fdf3f5;padding:5px 10px;border-radius:14px;cursor:pointer;transition:.25s}
+.chip:hover{background:#e9566e;color:#fff}
+.tl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.tc{border:1px solid #eee;border-radius:12px;padding:10px;cursor:pointer;transition:.3s;animation:up .6s ease both}
+.tc:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(30,30,40,.12)}
+.tc.on{border:2px solid #e9566e;box-shadow:0 10px 24px rgba(233,86,110,.22)}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1}}
+.tc b{font-size:9px}
+.tc .st{font-size:7.5px;font-weight:700;color:#3eb876;background:#e7f7ee;border-radius:10px;padding:2px 7px;margin-left:4px}
+.tc .st.w{color:#d49a2a;background:#fbf2dc}
+.tc img{width:100%;margin:7px 0;filter:drop-shadow(0 4px 6px rgba(0,0,0,.12))}
+.tc small{font-size:7.5px;color:#9a9ba2;display:block;line-height:1.6}
+.main{flex:1;padding:16px 20px}
+.hd{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.hd h2{font-size:15px}
+.hd .st{font-size:8.5px;font-weight:700;color:#3eb876;background:#e7f7ee;padding:4px 10px;border-radius:12px}
+.hd .act{margin-left:auto;display:flex;gap:8px}
+.hd a{font-size:9.5px;font-weight:700;padding:9px 14px;border-radius:9px;text-decoration:none;transition:.25s}
+.call{background:#fff;border:1.5px solid #e9566e;color:#e9566e}
+.chat{background:#e9566e;color:#fff}
+.hd a:hover{transform:translateY(-2px)}
+.tabs{display:flex;gap:16px;font-size:9.5px;color:#9a9ba2;border-bottom:1px solid #eee;padding-bottom:8px;margin-bottom:12px}
+.tabs b{color:#23242a;border-bottom:2px solid #e9566e;padding-bottom:8px;margin-bottom:-9px}
+.cap{position:relative;border:1px solid #eee;border-radius:14px;padding:12px;margin-bottom:12px}
+.cap h4{font-size:10.5px;margin-bottom:8px}
+.capwrap{position:relative}
+.capwrap img{width:86%;display:block;margin:0 auto}
+.fill{position:absolute;left:34%;top:4%;width:46%;height:62%;background:rgba(233,86,110,.82);border-radius:6px;display:grid;place-items:center;color:#fff;font-size:22px;font-weight:800;transform-origin:left;animation:fillx 1.4s .3s ease both;overflow:hidden}
+@keyframes fillx{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.fill span{animation:fadein .5s 1.4s ease both}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.route{border:1px solid #eee;border-radius:14px;padding:12px}
+.route h4{font-size:10.5px;display:flex;align-items:center}
+.route .cr{margin-left:auto;font-size:8.5px;color:#e9566e;border:1px solid #f3cdd5;padding:4px 10px;border-radius:9px;cursor:pointer}
+.map{position:relative;height:150px;border-radius:10px;margin-top:10px;overflow:hidden;background:
+ repeating-linear-gradient(0deg,#eef0ea 0 1px,transparent 1px 22px),
+ repeating-linear-gradient(90deg,#eef0ea 0 1px,transparent 1px 22px),
+ linear-gradient(140deg,#f6f7f2,#eef1ea)}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.map .path{stroke-dasharray:400;stroke-dashoffset:400;animation:draw 2.2s .4s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.dotm{position:absolute;width:12px;height:12px;border-radius:50%;background:#e9566e;border:3px solid #fff;box-shadow:0 0 0 4px rgba(233,86,110,.25);left:58%;top:44%;animation:pul 1.8s infinite}
+@keyframes pul{0%,100%{box-shadow:0 0 0 4px rgba(233,86,110,.25)}50%{box-shadow:0 0 0 10px rgba(233,86,110,0)}}
+.ph{display:flex;gap:8px;margin-top:12px}
+.ph .p{flex:1;border:1px dashed #e3b9c3;border-radius:10px;padding:8px;font-size:8px;color:#9a9ba2;text-align:center;transition:.25s}
+.ph .p:hover{background:#fdf3f5}
+.ph .p b{display:block;font-size:16px;margin-bottom:4px}
+</style></head><body>
+<div class="frame">
+<aside>
+  <div class="me"><img src="img/av10.jpg"><span><b>George Davidson</b><small>george.d@areej.ma</small></span></div>
+  <div class="mi">▦ Dashboard</div><div class="mi">🤝 Partners</div><div class="mi">💬 Chats <span style="margin-left:auto;background:#e9566e;color:#fff;border-radius:8px;font-size:7.5px;padding:2px 6px">2</span></div>
+  <div class="mi on">📍 Tracking</div><div class="mi">📦 Request</div><div class="mi">🛠 Repair</div><div class="mi">👷 Drivers</div><div class="mi">📑 Reports</div><div class="mi">📊 Analysis</div><div class="mi">🕘 History</div>
+  <a class="cnr" href="#">Create new request</a>
+</aside>
+<div class="mid">
+  <h2>Tracking 🔍</h2>
+  <div class="f">Filter by Partners</div>
+  <div class="chips"><span class="chip">Shiphike 12</span><span class="chip">Roambee 8</span><span class="chip">Post Hawk 5</span><span class="chip">Loginxt 13</span><span class="chip">Forwardo 10</span><span class="chip">Lopez Pallets 7</span></div>
+  <div class="f">Show</div>
+  <div class="chips"><span class="chip" style="background:#e9566e;color:#fff">Active 61</span><span class="chip">Inactive 17</span><span class="chip">All 78</span></div>
+  <div class="tl">
+    <div class="tc"><b>RE-74ER453TR5</b><span class="st">On Route</span><img src="img/d-truck.jpg"><small>02:47:24 — 372 packages<br>217 Hollyway St.</small></div>
+    <div class="tc on" style="animation-delay:.1s"><b>YR-34DFR734W2</b><span class="st">On Route</span><img src="img/d-truck.jpg"><small>01:38:47 — 57 min. left<br>307 Mountainview Dr.</small></div>
+    <div class="tc" style="animation-delay:.2s"><b>DW-847DE74E4R</b><span class="st">On Route</span><img src="img/d-truck.jpg"><small>01:39:47 — 78 min. left<br>122 Kelsey Ln.</small></div>
+    <div class="tc" style="animation-delay:.3s"><b>AQ-257DRE141E</b><span class="st w">Waiting</span><img src="img/d-truck.jpg"><small>29 min. left — 103 Dickinson<br>290 Angelo Dr.</small></div>
+  </div>
+</div>
+<div class="main">
+  <div class="hd"><h2>YR-34DFR734W2</h2><span class="st">● On Route</span>
+    <span class="act"><a class="call" href="#">📞 Call Driver</a><a class="chat" href="#">💬 Chat with Driver</a></span></div>
+  <div class="tabs"><b>Shipping info</b><span>Vehicle info</span><span>Documents</span><span>Company</span><span>Billing</span></div>
+  <div class="cap"><h4>Current Truck Capacity</h4>
+    <div class="capwrap"><img src="img/d-truck.jpg"><div class="fill"><span>82%</span></div></div></div>
+  <div class="route"><h4>Route &nbsp;<small style="color:#9a9ba2;font-weight:400">01:38:47 · 57 min. left</small><span class="cr">⇄ Change Route</span></h4>
+    <div class="map">
+      <svg viewBox="0 0 400 150"><path class="path" d="M30,120 C90,110 120,60 180,70 C230,78 240,55 265,62" fill="none" stroke="#e9566e" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7"/></svg>
+      <span class="dotm"></span></div>
+    <div class="ph"><span class="p"><b>📦</b>Point #1 Cargo Photo</span><span class="p"><b>📦</b>Point #2 Cargo Photo</span><span class="p"><b>📦</b>Point #3 Cargo Photo</span><span class="p" style="color:#e9566e;border-color:#e9566e"><b>📷</b>Add Photo</span></div>
+  </div>
+</div>
+</div></body></html>

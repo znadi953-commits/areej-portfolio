@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AREEJ Drone Pro — Interface</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#000;min-height:100vh;font-family:'Space Grotesk',sans-serif;color:#e8e8e8;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{display:flex;width:min(97%,1120px);background:#0b0b0d;border-radius:22px;overflow:hidden;box-shadow:0 0 0 1px #1c1c20,0 40px 90px rgba(0,0,0,.8);padding:14px;gap:12px}
+.rail{width:52px;display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px 0}
+.rail b{font-size:10px;letter-spacing:.1em;margin-bottom:8px}
+.rail i{width:38px;height:38px;border-radius:12px;background:#141417;display:grid;place-items:center;font-style:normal;font-size:13px;color:#9a9aa0;cursor:pointer;transition:.25s}
+.rail i:hover{background:#1e1e23;color:#fff}
+.rail i.on{background:#26262c;color:#fff;box-shadow:inset 0 0 0 1px #3a3a42}
+.rail .sp{flex:1}
+.rail img{width:30px;height:30px;border-radius:50%;object-fit:cover}
+.mid{flex:1.9;display:flex;flex-direction:column;gap:12px}
+.feed{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/8.4}
+.feed img{width:100%;height:100%;object-fit:cover;animation:kenb 14s ease-in-out infinite alternate}
+@keyframes kenb{from{transform:scale(1)}to{transform:scale(1.08) translateX(-10px)}}
+.hud{position:absolute;inset:0;font-size:9px}
+.tagz{position:absolute;left:12px;top:12px;display:flex;gap:8px}
+.tg{background:rgba(10,10,12,.72);border-radius:7px;padding:5px 9px;font-weight:600;letter-spacing:.06em}
+.rec{position:absolute;right:12px;top:12px;display:flex;gap:8px;align-items:center}
+.rec .r{background:rgba(10,10,12,.72);border-radius:7px;padding:5px 10px;display:flex;align-items:center;gap:6px}
+.rd{width:7px;height:7px;border-radius:50%;background:#ff3b30;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.15}}
+.cross{position:absolute;left:38%;top:48%;width:86px;height:58px;border:1.5px solid #ffd60a;border-radius:3px;animation:tgt 3s ease-in-out infinite}
+@keyframes tgt{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.65}}
+.cross::after{content:"☀";position:absolute;right:-16px;top:-16px;color:#ffd60a}
+.horiz{position:absolute;left:30%;right:30%;top:50%;height:1px;background:rgba(255,255,255,.65)}
+.horiz::after{content:"";position:absolute;left:50%;top:-14px;width:26px;height:26px;border:1px solid rgba(255,255,255,.6);border-radius:50%;transform:translateX(-50%)}
+.hist{position:absolute;left:12px;bottom:12px;background:rgba(10,10,12,.6);border-radius:8px;padding:8px;display:flex;align-items:flex-end;gap:2px;height:52px}
+.hist i{width:4px;background:#fff;opacity:.9;animation:eq 1.6s ease-in-out infinite alternate}
+@keyframes eq{from{transform:scaleY(.5)}to{transform:scaleY(1)}}
+.lvl{position:absolute;left:12px;top:36%;font-size:8.5px;color:#cfcfd4}
+.bot{display:flex;gap:12px;flex:1}
+.panel{background:#121214;border-radius:16px;padding:12px}
+.ctl{flex:1.4;display:flex;gap:12px}
+.cl{flex:1}
+.tgl{display:inline-flex;background:#1b1b1f;border-radius:16px;padding:3px;font-size:9.5px;margin-bottom:10px}
+.tgl span{padding:6px 14px;border-radius:13px;cursor:pointer}
+.tgl .a{background:#fff;color:#111}
+.mapd{position:relative;height:96px;border-radius:10px;overflow:hidden;background:
+ repeating-linear-gradient(0deg,#1a1a1e 0 1px,transparent 1px 16px),
+ repeating-linear-gradient(90deg,#1a1a1e 0 1px,transparent 1px 16px),#141417}
+.mapd svg{position:absolute;inset:0;width:100%;height:100%}
+.mapd .p{stroke-dasharray:240;stroke-dashoffset:240;animation:draw 2.4s .4s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.dotr{position:absolute;left:60%;top:38%;width:9px;height:9px;border-radius:50%;background:#ff3b30;box-shadow:0 0 0 4px rgba(255,59,48,.25);animation:pl 1.6s infinite}
+@keyframes pl{50%{box-shadow:0 0 0 9px rgba(255,59,48,0)}}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:8.5px;color:#9a9aa0;margin-top:10px}
+.stats b{display:block;color:#fff;font-size:12px}
+.wheel{width:120px;height:120px;border-radius:50%;background:#1a1a1e;margin:8px auto;position:relative;display:grid;place-items:center;box-shadow:inset 0 0 0 1px #2a2a30}
+.wheel i{position:absolute;font-style:normal;font-size:10px;color:#cfcfd4}
+.wheel .u{top:8px}.wheel .d{bottom:8px}.wheel .l{left:10px}.wheel .r{right:10px}
+.wheel b{width:48px;height:48px;border-radius:50%;background:#0d0d0f;display:grid;place-items:center;font-size:7.5px;color:#9a9aa0;box-shadow:inset 0 0 0 1px #2a2a30}
+.right{flex:1;display:flex;flex-direction:column;gap:12px}
+.right h3{font-size:13px;display:flex;align-items:center;gap:8px}
+.right small{font-size:8.5px;color:#9a9aa0;display:block;margin-top:3px}
+.bt{margin-top:12px;font-size:9px;color:#9a9aa0}
+.bt b{color:#ffd60a;float:right}
+.bbar{height:7px;border-radius:5px;background:#1b1b1f;margin-top:6px;overflow:hidden}
+.bbar i{display:block;height:100%;width:75%;border-radius:5px;background:linear-gradient(90deg,#ffd60a,#ffb800);animation:wide 1.4s .3s ease both}
+@keyframes wide{from{width:0}}
+.alt{display:flex;justify-content:space-between;font-size:9px;color:#9a9aa0;margin-top:14px}
+.alt b{color:#fff}
+.sld{margin-top:12px;height:3px;background:#2a2a30;border-radius:3px;position:relative}
+.sld i{position:absolute;left:62%;top:-5px;width:13px;height:13px;border-radius:50%;background:#fff}
+.mods{display:flex;gap:8px;margin-top:14px}
+.mods span{flex:1;background:#1b1b1f;border-radius:10px;text-align:center;padding:10px 0;font-size:11px;cursor:pointer;transition:.25s}
+.mods span:hover{background:#26262c}
+.comp{position:relative;width:128px;height:128px;margin:4px auto;border-radius:50%;background:#141417;box-shadow:inset 0 0 0 1px #2a2a30;display:grid;place-items:center}
+.cring{position:absolute;inset:8px;border-radius:50%;border:1px dashed #33333a;animation:rot 24s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.cring i{position:absolute;font-style:normal;font-size:9px;color:#9a9aa0}
+.cring .n{top:4px;left:50%;transform:translateX(-50%);color:#ff3b30}
+.cring .s{bottom:4px;left:50%;transform:translateX(-50%)}
+.cring .e{right:6px;top:50%;transform:translateY(-50%)}
+.cring .w{left:6px;top:50%;transform:translateY(-50%)}
+.needle{width:3px;height:44px;background:linear-gradient(180deg,#ff3b30 50%,#fff 50%);border-radius:2px;animation:sway 6s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(14deg)}50%{transform:rotate(-20deg)}}
+.temp{position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#2e6fed;font-size:8.5px;padding:3px 9px;border-radius:9px}
+.coord{text-align:center;font-size:8px;color:#9a9aa0;margin-top:8px}
+</style></head><body>
+<div class="frame">
+<div class="rail"><b>AREEJ</b><i>⌂</i><i class="on">✈</i><i>▣</i><i>🌐</i><i>⚙</i><i>🔔</i><i>⚑</i><span class="sp"></span><img src="img/av11.jpg"><i>⏻</i></div>
+<div class="mid">
+  <div class="feed"><img src="img/d-drone.jpg">
+    <div class="hud">
+      <div class="tagz"><span class="tg">HDR</span><span class="tg">4K · 19.67FPS</span></div>
+      <div class="rec"><span class="r">⏸</span><span class="r"><span class="rd"></span>02:09</span></div>
+      <span class="lvl">LEVEL<br>KT ▾</span>
+      <span class="cross"></span><span class="horiz"></span>
+      <div class="hist"><i style="height:30%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:100%;animation-delay:.2s"></i><i style="height:70%;animation-delay:.1s"></i><i style="height:45%;animation-delay:.3s"></i><i style="height:60%;animation-delay:.15s"></i><i style="height:35%"></i></div>
+    </div>
+  </div>
+  <div class="bot">
+    <div class="panel ctl">
+      <div class="cl">
+        <span class="tgl"><span class="a">🎥 Video</span><span>📷 Photo</span></span>
+        <div class="mapd"><svg viewBox="0 0 200 96"><path class="p" d="M20,80 C60,70 70,30 120,40 C150,46 160,30 180,34" fill="none" stroke="#ff3b30" stroke-width="2"/></svg><span class="dotr"></span></div>
+        <div class="stats"><span>SPEED<b>20 km/h</b></span><span>LENS<b>25 mm</b></span><span>HEIGHT<b>80 m</b></span><span>ISO<b>600</b></span><span>FLIGHT TIME<b>05:43</b></span><span>SHUTTER<b>180.0</b></span></div>
+      </div>
+      <div class="cl" style="text-align:center">
+        <div class="mods"><span>AWB</span><span>DISP</span></div>
+        <div class="wheel"><i class="u">∧</i><i class="d">∨</i><i class="l">‹</i><i class="r">›</i><b>Disp/menu<br>mode</b></div>
+      </div>
+    </div>
+    <div class="panel right">
+      <div><h3>🛸 AREEJ Drone Pro</h3><small>FHD high-framerate Live Feed</small>
+        <div class="bt">Battery status · 12 min ago<b>75%</b><div class="bbar"><i></i></div></div>
+        <div class="alt">Altitude limited<b>275 M</b></div>
+        <div class="sld"><i></i></div>
+        <div class="mods"><span>◉ HDR+</span><span>🌙</span><span>🌐</span></div>
+      </div>
+      <div class="panel" style="padding:10px">
+        <div class="comp"><span class="temp">83°</span><span class="cring"><i class="n">N</i><i class="s">S</i><i class="e">E</i><i class="w">W</i></span><span class="needle"></span></div>
+        <div class="coord">22.3039° N, 70.8022° E</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></body></html>

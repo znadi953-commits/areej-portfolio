@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AREEJ — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+<style>
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  :root{
+    --ink:#161616;
+    --wine:#4a0d17;
+    --gold:#a8842e;
+    --bg:#e4d6da;
+    --paper:#f4f1ee;
+  }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    font-family:'Playfair Display',serif;
+    color:#111;
+    min-height:100vh;
+    padding:70px 20px 40px;
+    position:relative;
+  }
+
+  /* ---------- KHALFIYA ROYAL ---------- */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      linear-gradient(180deg,
+        rgba(233,220,224,.42) 0%,
+        rgba(233,220,224,.68) 45%,
+        rgba(236,226,229,.88) 100%),
+      url("images/bg-door.jpg") center 28% / cover no-repeat;
+    z-index:0;
+  }
+
+  /* grain subtil */
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index:1;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{ text-align:center; margin-bottom:26px; position:relative; z-index:2; }
+  header h1{
+    font-weight:400;
+    font-size:clamp(32px,6vw,56px);
+    letter-spacing:1px;
+  }
+  .sr-only{
+    position:absolute; width:1px; height:1px;
+    overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;
+  }
+  .bismillah-img{
+    display:block;
+    margin:0 auto 26px;
+    width:min(170px,38vw);
+    height:auto;
+    filter:drop-shadow(0 6px 12px rgba(0,0,0,.16));
+    animation:bismFloat 6s ease-in-out infinite;
+  }
+  @keyframes bismFloat{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-6px) rotate(.5deg); }
+  }
+  .byline-img{
+    display:block;
+    margin:0 auto;
+    width:min(420px,70vw);
+    height:auto;
+    filter:drop-shadow(0 8px 14px rgba(0,0,0,.18));
+  }
+  header span{
+    display:block;
+    font-family:'Pinyon Script',cursive;
+    font-size:clamp(40px,8vw,80px);
+    margin-top:-10px;
+    color:var(--wine);
+  }
+  .name-img{
+    display:block;
+    margin:14px auto 0;
+    width:min(580px,88vw);
+    height:auto;
+    filter:drop-shadow(0 12px 22px rgba(0,0,0,.20));
+    animation:nameFloat 5s ease-in-out infinite;
+  }
+  @keyframes nameFloat{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-8px); }
+  }
+  .tagline{
+    font-size:13px;
+    color:#444;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    margin-top:10px;
+  }
+  .tagline::before{ content:"╫ "; color:var(--gold); }
+  .tagline::after{ content:" ╫"; color:var(--gold); }
+  .tagline-img{
+    display:block;
+    margin:18px auto 0;
+    width:min(230px,46vw);
+    height:auto;
+    filter:drop-shadow(0 6px 12px rgba(0,0,0,.18));
+  }
+  .divider{
+    width:120px; height:1px;
+    background:linear-gradient(90deg,transparent,#8a7a5a 35%,transparent 50%,#8a7a5a 65%,transparent);
+    margin:34px auto 60px;
+    position:relative;
+    z-index:2;
+  }
+  .divider::after{
+    content:"✦";
+    position:absolute; top:-9px; left:50%;
+    transform:translateX(-50%);
+    font-size:12px; color:var(--gold);
+    padding:0 10px;
+  }
+
+  /* ---------- GRID ---------- */
+  .grid{
+    max-width:850px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:60px 40px;
+    position:relative; z-index:2;
+  }
+
+  /* apparition en cascade */
+  .cell{
+    opacity:0;
+    transform:translateY(34px);
+    transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1);
+    transition-delay:var(--d,0s);
+  }
+  .cell.show{ opacity:1; transform:translateY(0); }
+
+  /* ---------- FOLDER : ENVELOPPE EN FOURRURE (PNG transparente) ---------- */
+  .folder{
+    position:relative;
+    aspect-ratio:742/724;
+    cursor:pointer;
+    transition:transform .35s ease;
+    outline:none;
+  }
+  .folder:hover,
+  .folder:focus-visible{
+    transform:translateY(-10px) rotate(-1.5deg) scale(1.03);
+  }
+  .folder:focus-visible{ outline:2px dashed var(--wine); outline-offset:8px; border-radius:12px; }
+
+  /* couches dyal tswira — le filtre couleur + ombre qui suit la forme */
+  .env-bg{
+    position:absolute; inset:0;
+    background-position:center;
+    background-size:contain;
+    background-repeat:no-repeat;
+    filter:var(--tint,brightness(1)) drop-shadow(0 18px 22px rgba(0,0,0,.32));
+    transition:filter .35s ease, opacity .4s ease, transform .5s ease;
+  }
+  .folder:hover .env-bg{
+    filter:var(--tint,brightness(1)) drop-shadow(0 30px 34px rgba(0,0,0,.38));
+  }
+  /* enveloppe M7ELLOULA (te7t) */
+  .env-open-img{
+    background-image:url("images/envelope.png");
+    opacity:0;
+    transform:scale(.94);
+  }
+  .folder.open .env-open-img{ opacity:1; transform:scale(1); }
+  /* enveloppe MSDODA (fo9) */
+  .env-closed-img{
+    background-image:url("images/envelope-closed.png");
+    opacity:1;
+    transform:scale(1);
+  }
+  .folder.open .env-closed-img{ opacity:0; transform:scale(1.06); }
+
+  /* smiyat dossier mkteuba 3la l carte */
+  .env-name{
+    z-index:1;
+    position:absolute;
+    top:52%;
+    left:15%; right:15%;
+    height:22%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Pinyon Script',cursive;
+    font-weight:400;
+    font-size:clamp(20px,2.6vw,30px);
+    color:#f5ead9;
+    text-shadow:0 2px 10px rgba(0,0,0,.55);
+    text-align:center;
+    line-height:1;
+    transform:rotate(-.5deg);
+    pointer-events:none;
+    white-space:nowrap;
+    transition:top .5s cubic-bezier(.2,.7,.3,1), height .5s cubic-bezier(.2,.7,.3,1), color .4s ease, text-shadow .4s ease;
+  }
+  .folder.open .env-name{
+    top:26%;
+    height:27%;
+    color:#2b2420;
+    text-shadow:none;
+  }
+
+  /* badge nombre de projets */
+  .count{
+    position:absolute;
+    top:24%; right:0;
+    z-index:2;
+    background:var(--wine);
+    color:#fff;
+    font-size:12px;
+    width:28px; height:28px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 10px rgba(0,0,0,.3);
+    font-family:'Playfair Display',serif;
+    border:1.5px solid rgba(255,255,255,.6);
+  }
+
+  .folder-name{
+    text-align:center;
+    margin-top:12px;
+    font-size:15px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    min-height:44px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .folder-name img{
+    max-height:48px;
+    max-width:88%;
+    width:auto; height:auto;
+    filter:var(--tint,brightness(1)) drop-shadow(0 4px 8px rgba(0,0,0,.25));
+    transition:transform .35s ease, filter .35s ease;
+  }
+  .cell:hover .folder-name img{
+    transform:scale(1.12);
+    filter:var(--tint,brightness(1)) drop-shadow(0 6px 16px rgba(0,0,0,.45));
+  }
+
+  /* ---------- MODAL ---------- */
+  .modal{
+    position:fixed; inset:0;
+    background:rgba(10,0,0,.65);
+    backdrop-filter:blur(6px);
+    display:none;
+    align-items:center; justify-content:center;
+    padding:20px;
+    z-index:10;
+  }
+  .modal.open{ display:flex; }
+  .modal.closing .modal-box{ animation:popOut .28s ease forwards; }
+
+  .modal-box{
+    background:
+      linear-gradient(rgba(12,8,6,.50), rgba(12,8,6,.74)),
+      url("images/modal-bg.jpg") center/cover no-repeat;
+    color:#f0e3cd;
+    width:560px; max-width:100%;
+    max-height:85vh; overflow:auto;
+    border-radius:20px;
+    padding:30px;
+    animation:pop .35s ease;
+    scrollbar-width:thin;
+    scrollbar-color:#a8842e transparent;
+  }
+  .modal-box::-webkit-scrollbar{ width:6px; }
+  .modal-box::-webkit-scrollbar-thumb{ background:#a8842e; border-radius:3px; }
+
+  @keyframes pop{
+    from{ transform:scale(.8) translateY(30px); opacity:0; }
+    to{ transform:scale(1) translateY(0); opacity:1; }
+  }
+  @keyframes popOut{
+    to{ transform:scale(.85) translateY(24px); opacity:0; }
+  }
+
+  .modal-head{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:20px;
+  }
+  .modal-head h2{
+    font-family:'Pinyon Script',cursive;
+    font-weight:400; font-size:46px; color:#f3dfae;
+    text-shadow:0 2px 16px rgba(0,0,0,.8);
+  }
+  .close{
+    background:rgba(0,0,0,.55); color:#f0e3cd;
+    border:1px solid rgba(243,223,174,.4) !important;
+    border:none; width:36px; height:36px;
+    border-radius:50%; cursor:pointer; font-size:16px;
+    transition:.25s;
+    flex-shrink:0;
+  }
+  .close:hover{ background:var(--wine); transform:rotate(90deg); }
+
+  .project{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px;
+    text-decoration:none; color:inherit;
+    background:rgba(10,6,4,.60);
+    backdrop-filter:blur(3px);
+    border:1px solid rgba(232,200,119,.18);
+    border-left:3px solid var(--gold);
+    border-radius:12px;
+    padding:16px 18px;
+    margin-bottom:14px;
+    transition:.25s;
+  }
+  .project:hover{ transform:translateX(8px); box-shadow:0 8px 22px rgba(0,0,0,.55); border-left-color:#e8c877; }
+  .project h3{ font-size:18px; margin-bottom:4px; color:#f6ead2; }
+  .project p{ font-size:14px; color:#c9b798; }
+  .project .arrow{
+    color:#e8c877;
+    font-size:20px;
+    transition:transform .25s;
+    flex-shrink:0;
+  }
+  .project:hover .arrow{ transform:translateX(5px); }
+  .empty{ text-align:center; color:#d8c5a5; padding:20px; }
+
+  /* projet ajouté par l'utilisateur : bouton supprimer */
+  .project{ position:relative; }
+  .project.custom{ cursor:default; }
+  .pbody{ flex:1; min-width:0; }
+  .go-link{
+    text-decoration:none;
+    color:#e8c877;
+    font-size:20px;
+    flex-shrink:0;
+    transition:transform .25s;
+  }
+  .go-link:hover{ transform:translateX(5px); }
+  .del{
+    background:none; border:none;
+    color:#9a8a76; font-size:15px;
+    cursor:pointer; flex-shrink:0;
+    padding:4px 6px; border-radius:6px;
+    transition:.2s;
+  }
+  .del:hover{ color:#fff; background:var(--wine); }
+
+  /* ---------- PIÈCES JOINTES ---------- */
+  .atts{
+    display:flex; flex-wrap:wrap; gap:8px;
+    margin-top:10px; align-items:center;
+  }
+  a.att{ display:block; border-radius:8px; }
+  .att-thumb{
+    width:66px; height:50px;
+    border-radius:8px;
+    object-fit:cover;
+    border:1px solid rgba(232,200,119,.4);
+    display:block;
+    background:#1a120c;
+    transition:.2s;
+  }
+  a.att:hover .att-thumb{ transform:scale(1.07); box-shadow:0 4px 12px rgba(0,0,0,.18); }
+  .att-chip{
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(0,0,0,.45);
+    border:1px solid rgba(232,200,119,.35);
+    border-radius:50px;
+    padding:6px 13px;
+    font-size:12.5px;
+    color:#e4d2ae;
+    text-decoration:none;
+    max-width:190px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    transition:.2s;
+  }
+  .att-chip:hover{ border-color:#e8c877; color:#f6ead2; background:rgba(0,0,0,.65); }
+
+  /* ---------- VUE DÉTAIL PROJET ---------- */
+  .project.custom{ cursor:pointer; }
+  .project.custom:hover{ transform:translateX(8px); box-shadow:0 6px 18px rgba(0,0,0,.12); }
+  .back-btn{
+    background:rgba(0,0,0,.35);
+    border:1px solid rgba(240,227,205,.4);
+    color:#e4d2ae;
+    border-radius:50px;
+    padding:9px 20px;
+    font-family:'Playfair Display',serif;
+    font-size:14px;
+    cursor:pointer;
+    transition:.25s;
+    margin-bottom:18px;
+  }
+  .back-btn:hover{ background:#e8c877; color:#1a120c; border-color:#e8c877; }
+  .view-title{
+    font-size:24px;
+    color:#f3dfae;
+    margin-bottom:6px;
+  }
+  .view-desc{
+    font-size:15px; color:#cdb996;
+    margin-bottom:18px;
+    font-style:italic;
+  }
+  .view-img{
+    width:100%;
+    border-radius:14px;
+    display:block;
+    margin-bottom:14px;
+    border:1px solid rgba(232,200,119,.25);
+    box-shadow:0 10px 26px rgba(0,0,0,.5);
+    cursor:zoom-in;
+  }
+  .pdf-block{ margin-bottom:16px; }
+  .view-pdf{
+    width:100%; height:440px;
+    border:1px solid rgba(232,200,119,.35);
+    border-radius:14px;
+    background:#fff;
+    display:block;
+    margin-bottom:8px;
+  }
+  .view-link{
+    display:inline-block;
+    background:var(--wine); color:#fff;
+    text-decoration:none;
+    border-radius:50px;
+    padding:12px 26px;
+    font-size:14px;
+    letter-spacing:1px;
+    transition:.25s;
+    margin-top:4px;
+  }
+  .view-link:hover{ background:#6b1420; transform:translateY(-2px); }
+
+  /* ---------- UPLOAD ZONE ---------- */
+  .file-drop{
+    display:block;
+    border:2px dashed rgba(232,200,119,.35);
+    border-radius:10px;
+    padding:16px;
+    text-align:center;
+    color:#cdb996;
+    font-size:14px;
+    cursor:pointer;
+    transition:.25s;
+    background:rgba(0,0,0,.3);
+  }
+  .file-drop:hover, .file-drop.drag{
+    border-color:#e8c877;
+    color:#f3dfae;
+    background:rgba(232,200,119,.08);
+  }
+  .file-drop input{ display:none; }
+  .file-list{ margin-top:8px; display:flex; flex-direction:column; gap:6px; }
+  .file-item{
+    display:flex; justify-content:space-between; align-items:center; gap:8px;
+    font-size:13px;
+    background:rgba(0,0,0,.45);
+    border:1px solid rgba(232,200,119,.25);
+    padding:7px 11px;
+    border-radius:8px;
+    color:#e4d2ae;
+  }
+  .file-item span{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .file-item button{
+    background:none; border:none;
+    color:#9a8a76; cursor:pointer;
+    font-size:14px; padding:2px 5px; border-radius:5px;
+    transition:.2s; flex-shrink:0;
+  }
+  .file-item button:hover{ color:#fff; background:var(--wine); }
+  /* ===== HERO SECTION dyal dossier ===== */
+  .folder-hero{
+    position:relative; border-radius:20px; overflow:hidden;
+    margin-bottom:20px; border:1.5px solid rgba(232,200,119,.55);
+    box-shadow:0 14px 34px rgba(0,0,0,.5);
+  }
+  .folder-hero img{ width:100%; display:block; }
+  .folder-hero::after{
+    content:""; position:absolute; top:0; bottom:0; left:0; width:55%;
+    background:linear-gradient(115deg, rgba(255,255,255,0) 25%, rgba(255,255,255,.18) 50%, rgba(255,255,255,0) 75%);
+    transform:translateX(-170%) skewX(-18deg);
+    animation:logoShine 4.2s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .folder-hero-cap{
+    position:absolute; left:14px; bottom:12px;
+    background:rgba(10,6,4,.72); backdrop-filter:blur(4px);
+    border:1px solid rgba(232,200,119,.5);
+    color:#f3dfae; font-size:.72rem; font-weight:700; letter-spacing:.08em;
+    padding:6px 14px; border-radius:999px; text-transform:uppercase;
+  }
+
+  /* ===== LIVE CARDS (hero projects) ===== */
+.project.live-card{display:block;padding:0;overflow:hidden;cursor:pointer;border-radius:16px;border:1px solid rgba(212,175,55,.35);background:rgba(10,10,14,.75);transition:.35s}
+.project.live-card:hover{transform:translateY(-4px);border-color:#d4af37;box-shadow:0 18px 45px rgba(0,0,0,.55),0 0 0 1px rgba(212,175,55,.25)}
+.browser-bar{display:flex;align-items:center;gap:10px;padding:9px 12px;background:linear-gradient(180deg,#26262c,#1b1b20);border-bottom:1px solid rgba(255,255,255,.07)}
+.bdots{display:flex;gap:5px}
+.bdots .d{width:9px;height:9px;border-radius:50%;display:inline-block}
+.bdots .r{background:#ff5f57}.bdots .y{background:#febc2e}.bdots .g{background:#28c840}
+.burl{flex:1;font-size:10.5px;color:#9aa0ab;background:rgba(255,255,255,.06);border-radius:7px;padding:4px 10px;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.live-chip{font-size:9.5px;font-weight:800;letter-spacing:.12em;color:#30e07a;background:rgba(48,224,122,.12);border:1px solid rgba(48,224,122,.4);border-radius:20px;padding:3px 9px;animation:livePulse 1.6s infinite}
+@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(48,224,122,.35)}50%{box-shadow:0 0 0 5px rgba(48,224,122,0)}}
+.live-shot{display:block;width:100%;aspect-ratio:16/8.4;object-fit:cover;object-position:top;filter:saturate(1.05);transition:.5s}
+.project.live-card:hover .live-shot{filter:saturate(1.15) brightness(1.05)}
+.live-body{display:flex;align-items:center;gap:12px;padding:13px 16px}
+.live-txt{flex:1;min-width:0}
+.live-txt h3{margin:0 0 3px;font-size:14.5px}
+.live-txt p{margin:0;font-size:11.5px;opacity:.75;line-height:1.45}
+.live-btn{flex-shrink:0;background:linear-gradient(135deg,#d4af37,#f3d27a);color:#1a1205;font-size:11px;font-weight:800;letter-spacing:.06em;padding:9px 16px;border-radius:24px;box-shadow:0 6px 16px rgba(212,175,55,.35);transition:.3s}
+.project.live-card:hover .live-btn{transform:scale(1.07);box-shadow:0 8px 22px rgba(212,175,55,.5)}
+/* ===== LIVE OVERLAY ===== */
+#liveOverlay{position:fixed;inset:0;z-index:99999;display:none;flex-direction:column;background:#070709}
+#liveOverlay.show{display:flex;animation:ovIn .25s ease}
+@keyframes ovIn{from{opacity:0}to{opacity:1}}
+.live-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:linear-gradient(180deg,#1d1d22,#121216);border-bottom:1px solid rgba(212,175,55,.3)}
+#liveTitle{font-size:13px;font-weight:700;color:#f3d27a;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.live-actions{display:flex;gap:8px;flex-shrink:0}
+.live-actions a,.live-actions button{font-family:inherit;font-size:11.5px;font-weight:700;padding:8px 14px;border-radius:20px;cursor:pointer;text-decoration:none;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);color:#e8e8ee;transition:.25s}
+.live-actions a:hover{background:rgba(255,255,255,.14)}
+.live-actions button{background:linear-gradient(135deg,#d4af37,#f3d27a);color:#1a1205;border:none}
+.live-actions button:hover{transform:scale(1.05)}
+#liveFrame{flex:1;width:100%;border:0;background:#fff}
+/* ===== PREMIUM SHOP ===== */
+  .pro-badge{ display:inline-flex; align-items:center; gap:3px; background:linear-gradient(135deg,#f3dfae,#e8c877 55%,#caa24a); color:#2b1d05; font-size:.62rem; font-weight:800; letter-spacing:.08em; padding:3px 9px; border-radius:999px; vertical-align:2px; text-transform:uppercase; box-shadow:0 2px 6px rgba(0,0,0,.35); }
+  .price-chip{ display:inline-block; background:rgba(232,200,119,.14); border:1px solid rgba(232,200,119,.5); color:#f3dfae; font-weight:700; font-size:.78rem; padding:3px 10px; border-radius:999px; }
+  .price-chip.big{ font-size:.95rem; padding:6px 14px; }
+  .pack-card{ display:flex; align-items:center; gap:14px; background:rgba(16,12,10,.72); border:1px solid rgba(232,200,119,.45); border-radius:18px; padding:14px; margin-bottom:14px; cursor:pointer; transition:.3s; }
+  .pack-card:hover{ transform:translateX(8px); border-color:#e8c877; box-shadow:0 10px 26px rgba(0,0,0,.55); }
+  .pack-cover{ width:96px; height:72px; object-fit:cover; border-radius:12px; flex:none; border:1px solid rgba(232,200,119,.3); }
+  .pack-info{ flex:1; min-width:0; }
+  .pack-info h3{ color:#f3dfae; font-size:1rem; margin-bottom:4px; }
+  .pack-info p{ color:#d8c9b2; font-size:.78rem; line-height:1.45; }
+  .pack-meta{ display:block; margin-top:6px; color:#a89673; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; }
+  .pack-right{ display:flex; flex-direction:column; align-items:flex-end; gap:8px; flex:none; }
+  .pack-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .tag{ background:rgba(255,255,255,.07); border:1px solid rgba(232,200,119,.3); color:#e9ddc6; font-size:.68rem; padding:4px 10px; border-radius:999px; }
+  .elem-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(128px,1fr)); gap:12px; margin:18px 0; }
+  .elem{ position:relative; border-radius:16px; overflow:hidden; background:#1d1d22; border:1px solid rgba(232,200,119,.22); transition:.25s; display:block; }
+  .elem img{ width:100%; aspect-ratio:1/1; object-fit:cover; display:block; transition:transform .3s; }
+  .elem:hover{ border-color:#e8c877; }
+  .elem:hover img{ transform:scale(1.07); }
+  .elem .pro-chip.free{ background:rgba(20,60,30,.82); border-color:rgba(120,230,150,.6); color:#c9f5d4; }
+  .elem img[src$=".png"]{ background:
+    linear-gradient(45deg, rgba(255,255,255,.06) 25%, transparent 25%, transparent 75%, rgba(255,255,255,.06) 75%),
+    linear-gradient(45deg, rgba(255,255,255,.06) 25%, transparent 25%, transparent 75%, rgba(255,255,255,.06) 75%);
+    background-size:22px 22px; background-position:0 0, 11px 11px; }
+  .elem .pro-chip{ position:absolute; left:8px; bottom:8px; background:rgba(10,8,6,.78); border:1px solid rgba(232,200,119,.55); color:#f3dfae; font-size:.6rem; font-weight:700; padding:3px 8px; border-radius:999px; letter-spacing:.06em; }
+  .elem.anim{ overflow:hidden; }
+  .elem.anim img{ animation:logoPulse 3.6s ease-in-out infinite; }
+  .elem.anim::after{
+    content:""; position:absolute; top:0; bottom:0; left:0; width:60%;
+    background:linear-gradient(115deg, rgba(255,255,255,0) 20%, rgba(255,255,255,.22) 50%, rgba(255,255,255,0) 80%);
+    transform:translateX(-160%) skewX(-18deg);
+    animation:logoShine 3.6s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .elem.anim:nth-child(3n)::after, .elem.anim:nth-child(3n) img{ animation-delay:.8s; }
+  .elem.anim:nth-child(3n+2)::after, .elem.anim:nth-child(3n+2) img{ animation-delay:1.6s; }
+  @keyframes logoShine{ 0%{ transform:translateX(-160%) skewX(-18deg); } 55%,100%{ transform:translateX(280%) skewX(-18deg); } }
+  @keyframes logoPulse{ 0%,100%{ transform:scale(1); filter:brightness(1); } 50%{ transform:scale(1.045); filter:brightness(1.14); } }
+  .buy-box{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; background:linear-gradient(135deg,rgba(232,200,119,.16),rgba(74,13,23,.4)); border:1.5px solid rgba(232,200,119,.55); border-radius:18px; padding:16px 20px; margin-top:6px; }
+  .buy-label{ color:#a89673; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; }
+  .buy-price{ color:#f3dfae; font-size:1.5rem; font-weight:800; }
+  .buy-btn{ display:inline-block; background:linear-gradient(135deg,#f3dfae,#e8c877 55%,#caa24a); color:#2b1d05; font-weight:800; padding:12px 24px; border-radius:999px; text-decoration:none; letter-spacing:.04em; box-shadow:0 8px 20px rgba(0,0,0,.4); transition:.25s; }
+  .buy-btn:hover{ transform:translateY(-3px); box-shadow:0 12px 26px rgba(0,0,0,.5); }
+  .buy-note{ color:#b7a98d; font-size:.72rem; margin-top:12px; }
+  .prem-toggle{ display:flex; align-items:center; gap:8px; cursor:pointer; }
+  .prem-fields{ display:none; margin-top:4px; padding:12px; border:1px dashed rgba(232,200,119,.5); border-radius:12px; }
+  .prem-fields.on{ display:block; }
+  .form-err{
+    color:#ff9f9f; font-size:13px;
+    margin-top:8px; display:none;
+  }
+
+  /* ---------- FORM ZID PROJET ---------- */
+  .add-toggle{
+    width:100%;
+    background:rgba(0,0,0,.3);
+    border:2px dashed rgba(232,200,119,.5);
+    color:#d8c5a5;
+    border-radius:12px;
+    padding:14px;
+    font-family:'Playfair Display',serif;
+    font-size:15px;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:.25s;
+    margin-top:4px;
+  }
+  .add-toggle:hover{
+    border-color:#e8c877;
+    color:#f3dfae;
+    background:rgba(232,200,119,.10);
+  }
+  .add-form{
+    display:none;
+    background:rgba(10,6,4,.72);
+    backdrop-filter:blur(4px);
+    border:1px solid rgba(232,200,119,.2);
+    border-radius:12px;
+    padding:18px;
+    margin-top:14px;
+    border-top:3px solid var(--gold);
+    box-shadow:0 10px 26px rgba(0,0,0,.5);
+  }
+  .add-form.open{ display:block; animation:pop .3s ease; }
+  .add-form label{
+    display:block;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#cdb996;
+    margin:12px 0 5px;
+  }
+  .add-form label:first-child{ margin-top:0; }
+  .add-form input, .add-form textarea{
+    width:100%;
+    border:1px solid rgba(232,200,119,.3);
+    border-radius:8px;
+    padding:10px 12px;
+    font-family:'Playfair Display',serif;
+    font-size:15px;
+    background:rgba(0,0,0,.42);
+    color:#f0e3cd;
+    outline:none;
+    transition:border .2s;
+    resize:vertical;
+  }
+  .add-form input:focus, .add-form textarea:focus{ border-color:#e8c877; }
+  .add-form .btns{
+    display:flex; gap:10px; margin-top:16px;
+  }
+  .add-form .save{
+    flex:1;
+    background:var(--wine); color:#fff;
+    border:none; border-radius:50px;
+    padding:12px;
+    font-family:'Playfair Display',serif;
+    font-size:15px; letter-spacing:1px;
+    cursor:pointer;
+    transition:.25s;
+  }
+  .add-form .save:hover{ background:#6b1420; transform:translateY(-2px); }
+  .add-form .cancel{
+    background:none;
+    border:1px solid rgba(240,227,205,.4);
+    color:#d8c5a5;
+    border-radius:50px;
+    padding:12px 22px;
+    font-family:'Playfair Display',serif;
+    font-size:14px;
+    cursor:pointer;
+    transition:.25s;
+  }
+  .add-form .cancel:hover{ border-color:#f0e3cd; color:#f0e3cd; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    text-align:center;
+    margin-top:110px;
+    position:relative; z-index:2;
+  }
+  .contact h2{
+    font-family:'Pinyon Script',cursive;
+    font-weight:400;
+    font-size:clamp(36px,6vw,56px);
+    color:var(--wine);
+  }
+  .contact p{
+    font-style:italic; color:#666;
+    margin:8px 0 26px;
+    font-size:15px;
+  }
+  .socials{
+    display:flex; justify-content:center; gap:34px; flex-wrap:wrap;
+    align-items:flex-start;
+  }
+  .social{
+    text-decoration:none;
+    color:var(--ink);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    transition:transform .35s cubic-bezier(.2,.7,.3,1.4);
+  }
+  .social img{
+    width:clamp(74px,10vw,104px);
+    height:auto;
+    filter:drop-shadow(0 10px 16px rgba(0,0,0,.28));
+    transition:transform .35s cubic-bezier(.2,.7,.3,1.4), filter .35s ease;
+  }
+  .social span{
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    transition:color .3s;
+  }
+  .social:hover img{
+    transform:translateY(-8px) rotate(-4deg) scale(1.1);
+    filter:drop-shadow(0 20px 26px rgba(0,0,0,.34));
+  }
+  .social:hover span{ color:var(--wine); }
+
+  footer{
+    text-align:center;
+    margin-top:70px;
+    font-size:14px; color:#555;
+    position:relative; z-index:2;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1 class="sr-only">Portfolio by AREEJ</h1>
+  <img class="bismillah-img" src="images/bismillah.png" alt="بسم الله الرحمن الرحيم">
+  <img class="byline-img" src="images/byline.png" alt="Portfolio by">
+  <img class="name-img" src="images/name-areej.png" alt="AREEJ">
+  <img class="tagline-img" src="images/tagline2.png" alt="Créativité & Passion">
+</header>
+
+<div class="divider"></div>
+
+<div class="grid" id="grid"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2>Contact</h2>
+  <p>Un projet en tête ? Parlons-en.</p>
+  <div class="socials">
+    <a href="mailto:ton@email.com" class="social">
+      <img src="images/ico-email.png" alt="Email">
+      <span>Email</span>
+    </a>
+    <a href="https://instagram.com/toncompte" target="_blank" class="social">
+      <img src="images/ico-insta.png" alt="Instagram">
+      <span>Instagram</span>
+    </a>
+    <a href="https://linkedin.com/in/tonprofil" target="_blank" class="social">
+      <img src="images/ico-linkedin.png" alt="LinkedIn">
+      <span>LinkedIn</span>
+    </a>
+  </div>
+</section>
+
+<footer>© 2025 — AREEJ</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="modal-title"></h2>
+      <button class="close" onclick="closeModal()" aria-label="Fermer">✕</button>
+    </div>
+    <div id="modal-projects"></div>
+  </div>
+</div>
+
+<script>
+/* ============ HNA TBDL DATA DYALEK ============
+   img      : tswira (ila khallitha khawya kayban gradient)
+   gradient : lon dyal fallback
+   projects : lista dyal projets dyal had folder
+================================================= */
+const folders = [
+  {
+    name:"Leopard",
+    nameImg:"images/fn2-leopard.png?v=3",
+    modalBg:"images/modal-bg.jpg",
+    tint:"hue-rotate(32deg) saturate(.8) brightness(1.08)",
+    img:"images/leopard.jpg",
+    gradient:"repeating-radial-gradient(circle at 20% 30%, #3b2412 0 6px, #c89b5e 7px 18px)",
+    projects:[],
+    packs:[
+      {
+        title:"AREEJ \u2014 Logo Collection",
+        showcase:true,
+        desc:"19 logos \u00ab AREEJ \u00bb anim\u00e9s \u2014 PNG bla khalfiya, FREE: klik 3la ay logo bach t-t\u00e9l\u00e9chargih! Glass, chrome, n\u00e9on, nature, Y2K, glam metal, kpop, gothique, dragon w akthar.",
+        cover:"images/prem/cover-logo.jpg",
+        tags:["19 logos","PNG transparent","FREE \u2b07\ufe0f","Anim\u00e9s \u2728"],
+        elements:["images/prem/logo-01.png","images/prem/logo-02.png","images/prem/logo-03.png","images/prem/logo-04.png","images/prem/logo-05.png","images/prem/logo-06.png","images/prem/logo-07.png","images/prem/logo-08.png","images/prem/logo-09.png","images/prem/logo-10.png","images/prem/logo-11.png","images/prem/logo-12.png","images/prem/logo-13.png","images/prem/logo-14.png","images/prem/logo-15.png","images/prem/logo-16.png","images/prem/logo-17.png","images/prem/logo-18.png","images/prem/logo-19.png"]
+      }
+    ]
+  },
+  {
+    name:"Lucky Girl",
+    nameImg:"images/fn2-lucky.png?v=3",
+    modalBg:"images/bg-lucky.jpg",
+    tint:"brightness(1)",
+    img:"images/lucky.jpg",
+    gradient:"linear-gradient(135deg,#3d0508,#6b0f14)",
+    text:"Lucky Girl",
+    hero:"images/hero-lucky.jpg",
+    heroCap:"\u2728 Hero Section \u2014 Lucky Girl",
+    projects:[
+      {title:"VELVET DROP \u2014 Poster Streetwear \ud83e\udde5", desc:"Hero style affiche grunge \u2014 doudoune lavande, typo brush g\u00e9ante, grain cin\u00e9ma. Klik bach tshofha khdama!", link:"heroes/hero-01.html", shot:"heroes/shots/shot-01.jpg", url:"areej.studio/velvet-drop"},
+      {title:"BUILD FUTURE \u2014 Robot Tech \ud83e\udd16", desc:"Hero agence tech \u2014 typo noire g\u00e9ante, robot 3D, chips flottants anim\u00e9s.", link:"heroes/hero-02.html", shot:"heroes/shots/shot-02.jpg", url:"areej.studio/build-future"},
+      {title:"COMFORT & STYLE U7 \u2014 Fashion Dark \ud83d\udd76\ufe0f", desc:"Hero e-commerce luxe sombre \u2014 lunettes futuristes, serif italique, thumbnails.", link:"heroes/hero-03.html", shot:"heroes/shots/shot-03.jpg", url:"areej.studio/comfort-style-u7"},
+      {title:"EMERGE \u2014 Next Begins Here \u26ab", desc:"Hero techwear noir \u2014 cartes arrondies bidat, typo Orbitron, casque futuriste.", link:"heroes/hero-04.html", shot:"heroes/shots/shot-04.jpg", url:"areej.studio/emerge"},
+      {title:"Aura Store \u2014 Minimal Cream \ud83e\udd0d", desc:"Hero e-commerce minimaliste \u2014 titre split, carte produit b ombre dure, style mono.", link:"heroes/hero-05.html", shot:"heroes/shots/shot-05.jpg", url:"areej.studio/aura-store"},
+      {title:"FREAK BUTIK \u2014 White E-commerce \ud83d\udd77\ufe0f", desc:"Hero boutique bida n9iya \u2014 mannequin latex, nav fine, catalogue thumbnails.", link:"heroes/hero-06.html", shot:"heroes/shots/shot-06.jpg", url:"areej.studio/freak-butik"},
+      {title:"LUMINESCENT Town \u2014 Artwork \ud83c\udf38", desc:"Hero portfolio artistique \u2014 typo bubble + script rose, palette, grille d'images.", link:"heroes/hero-07.html", shot:"heroes/shots/shot-07.jpg", url:"areej.studio/luminescent-town"},
+      {title:"Heart Blooms \u2014 Cardiac App \ud83e\ude77", desc:"Hero app m\u00e9dicale \u2014 c\u0153ur 3D iridescent, widgets glassmorphism flottants anim\u00e9s.", link:"heroes/hero-08.html", shot:"heroes/shots/shot-08.jpg", url:"areej.studio/heart-blooms"},
+      {title:"Street Ballers \u2014 Sport App \ud83c\udfc0", desc:"Hero app sportive \u2014 basketball cr\u00e8me, carte \u00e9v\u00e9nement mobile, style japonais minimal.", link:"heroes/hero-09.html", shot:"heroes/shots/shot-09.jpg", url:"areej.studio/street-ballers"},
+      {title:"Matcha Fusion \u2014 Caf\u00e9 Produit \ud83c\udf75", desc:"Hero page produit \u2014 boisson matcha, blobs verts organiques, ADD TO CART.", link:"heroes/hero-10.html", shot:"heroes/shots/shot-10.jpg", url:"areej.studio/matcha-fusion"},
+      {title:"MOONLITE \u2014 Glassmorphism \ud83e\ude90", desc:"Hero studio web-design \u2014 carte en verre flottante, titre chrome, sph\u00e8res roses 3D.", link:"heroes/hero-11.html", shot:"heroes/shots/shot-11.jpg", url:"areej.studio/moonlite"},
+      {title:"GLOBAL \u2014 Model Agency \ud83d\udc83", desc:"Hero agence de mannequins \u2014 split layout sombre, serif \u00e9l\u00e9gant, portrait \u00e9ditorial.", link:"heroes/hero-12.html", shot:"heroes/shots/shot-12.jpg", url:"areej.studio/global-models"},
+      {title:"NEONIX \u2014 Tech Crimson \ud83d\udc8e", desc:"Hero tech cramoisi \u2014 visi\u00e8re rose futuriste, typo Michroma, barre trailer + missions.", link:"heroes/hero-13.html", shot:"heroes/shots/shot-13.jpg", url:"areej.studio/neonix"},
+      {title:"RETROLITE \u2014 Get The Pug \ud83d\udc36", desc:"Hero dark UI \u2014 bouledogue f sac rouge, typo letterspaced, carte Our Residents.", link:"heroes/hero-14.html", shot:"heroes/shots/shot-14.jpg", url:"areej.studio/retrolite-pug"},
+      {title:"PHOENIX Livery \u2014 Car Wrap \ud83d\udd25", desc:"Hero studio livery \u2014 phoenix orange 3la coup\u00e9 blanc, \u00e9tincelles kay-tiro, marquee anim\u00e9.", link:"heroes/hero-15.html", shot:"heroes/shots/shot-15.jpg", url:"areej.studio/phoenix-livery"},
+      {title:"TOKYO DRIFT \u2014 Poster JDM \ud83c\udfce\ufe0f", desc:"Hero poster journal \u2014 2 marquees g\u00e9ants kay-mshiw f sens m3akssin, drift car rose chrome, lens flare.", link:"heroes/hero-16.html", shot:"heroes/shots/shot-16.jpg", url:"areej.studio/tokyo-drift"},
+      {title:"CASH KINGS \u2014 Art Print \ud83d\udcb0", desc:"Hero billet 100 \u2014 cadre or, lapin gangsta original, des billets kay-tiy7o, titre or shimmer.", link:"heroes/hero-17.html", shot:"heroes/shots/shot-17.jpg", url:"areej.studio/cash-kings"},
+      {title:"DRAGON SAKURA \u2014 Car Wrap \ud83c\udf38", desc:"Hero livery claire \u2014 dragon japonais + sakura, p\u00e9tales kay-tiy7o, watermark g\u00e9ant.", link:"heroes/hero-18.html", shot:"heroes/shots/shot-18.jpg", url:"areej.studio/dragon-sakura"},
+      {title:"CLARITY \u2014 Poster Graffiti \ud83c\udfa8", desc:"Hero poster \u2014 titre graffiti rose, figure 3D chrome, 2 anneaux de texte CLARITY kay-doro live.", link:"heroes/hero-19.html", shot:"heroes/shots/shot-19.jpg", url:"areej.studio/clarity"},
+      {title:"ARTVERSE \u2014 Owl \u21167 \ud83e\udd89", desc:"Hero artwork \u2014 hibou d\u00e9taill\u00e9, annotations techniques kay-banu wa7da b wa7da + effet glitch.", link:"heroes/hero-20.html", shot:"heroes/shots/shot-20.jpg", url:"areej.studio/artverse-owl"},
+      {title:"HEADSHOT KITTY \u2014 Sticker Bomb \ud83d\udc31", desc:"Hero pop comic \u2014 rayons kay-doro, chat kawaii original kay-n9ez, POW! MEOW! kay-pulsiw.", link:"heroes/hero-21.html", shot:"heroes/shots/shot-21.jpg", url:"areej.studio/headshot-kitty"},
+      {title:"WINTER JACKET \u2014 E-commerce \ud83e\udde5", desc:"Hero produit taupe \u2014 doudoune noire kat-floati b glow, typo g\u00e9ante derriha, tailles M L XL, Buy Now pulsant.", link:"heroes/hero-22.html", shot:"heroes/shots/shot-22.jpg", url:"areej.studio/winter-jacket"},
+      {title:"AREEJ WEAR \u2014 Hoodie Drop 3D \ud83e\udde5", desc:"Hero drop noir \u2014 3 hoodies 3D kay-floatiw kol wa7d bou7do, logo chrome, \u00e9toiles kay-wmdo.", link:"heroes/hero-23.html", shot:"heroes/shots/shot-23.jpg", url:"areej.studio/hoodie-drop"},
+      {title:"Sofa Blob \u2014 Furniture App \ud83d\udecb\ufe0f", desc:"Hero app meubles \u2014 blob violet kay-tbeddel chakl, sofa d\u00e9tour\u00e9e, boules 3D kay-tiro, liste storehouse animée.", link:"heroes/hero-24.html", shot:"heroes/shots/shot-24.jpg", url:"areej.studio/sofa-blob"}
+    ]
+  },
+  {
+    name:"Gold",
+    nameImg:"images/fn2-gold.png?v=3",
+    modalBg:"images/bg-gold.jpg",
+    tint:"hue-rotate(50deg) saturate(1.05) brightness(1.18)",
+    img:"images/gold.jpg",
+    gradient:"radial-gradient(circle at 30% 30%,#f3d98b,#a67c2e 60%,#4a3510)",
+    hero:"images/hero-dash.jpg",
+    heroCap:"\ud83d\udcbb Dashboards \u2014 UI Collection",
+    projects:[
+      {title:"Dashbird \u2014 Creative Suite \ud83c\udf38", desc:"Dashboard rose glassy \u2014 sidebar, donut 73% anim\u00e9, stats bars, activit\u00e9s b avatars.", link:"heroes/dash-01.html", shot:"heroes/shots/dash-01.jpg", url:"areej.studio/dashbird"},
+      {title:"Fenko \u2014 Finance \ud83c\udf43", desc:"Dashboard finance claire \u2014 compteur $38,729 kay-tla3 live, carte bancaire, donut 90%.", link:"heroes/dash-02.html", shot:"heroes/shots/dash-02.jpg", url:"areej.studio/fenko"},
+      {title:"Tracking \u2014 Logistics \ud83d\ude9a", desc:"Dashboard logistique \u2014 capacit\u00e9 camion 82% kat-tmla, route animée 3la carte, flotte.", link:"heroes/dash-03.html", shot:"heroes/shots/dash-03.jpg", url:"areej.studio/tracking"},
+      {title:"Drone Pro \u2014 Interface \ud83d\udef8", desc:"Interface drone dark \u2014 live feed, REC kay-wmd, batterie 75%, boussole kat-dor, histogram.", link:"heroes/dash-04.html", shot:"heroes/shots/dash-04.jpg", url:"areej.studio/drone-pro"},
+      {title:"Invoice \u2014 Billing Soft \ud83e\udde2", desc:"Facture gradient pastel \u2014 $68,575 compteur, barres paiement animées, lignes produits.", link:"heroes/dash-05.html", shot:"heroes/shots/dash-05.jpg", url:"areej.studio/invoice"},
+      {title:"Dei \u2014 Learning Plan \ud83c\udf93", desc:"Plan d'apprentissage m\u00e9dical \u2014 timeline cours, carte rose player, events color\u00e9s.", link:"heroes/dash-06.html", shot:"heroes/shots/dash-06.jpg", url:"areej.studio/dei-learning"},
+      {title:"TaskLab \u2014 Team Lime \u26a1", desc:"Gestion d'\u00e9quipe lime \u2014 Time Tracker kay-7seb LIVE, calendrier, equalizer, gantt.", link:"heroes/dash-07.html", shot:"heroes/shots/dash-07.jpg", url:"areej.studio/tasklab"},
+      {title:"AREEJ CRM \u2014 Invoices \ud83d\udcc8", desc:"CRM factures \u2014 stats cards, panneau dark unpaid, d\u00e9tail facture bleu, Pay out lime.", link:"heroes/dash-08.html", shot:"heroes/shots/dash-08.jpg", url:"areej.studio/crm-invoices"},
+      {title:"MED+ \u2014 Patient History \ud83e\udde0", desc:"Cabinet m\u00e9dical bleu \u2014 flow cards connect\u00e9s b khyout animés, cerveau 3D, scans CT.", link:"heroes/dash-09.html", shot:"heroes/shots/dash-09.jpg", url:"areej.studio/med-plus"},
+      {title:"ethereal \u2014 Dark Finance \ud83c\udf0c", desc:"Finance dark \u2014 balance 120,456$ compteur live, stack cartes 3D, donut multicolore.", link:"heroes/dash-10.html", shot:"heroes/shots/dash-10.jpg", url:"areej.studio/ethereal"}
+    ]
+  },
+  {
+    name:"Fur",
+    nameImg:"images/fn2-fur.png?v=3",
+    modalBg:"images/bg-fur.jpg",
+    tint:"hue-rotate(20deg) saturate(.45) brightness(.88)",
+    img:"images/fur.jpg",
+    gradient:"linear-gradient(90deg,#3a2a20,#8a6a4a,#c9772f,#efe3d0)",
+    hero:"images/hero-fur.jpg",
+    heroCap:"\ud83e\uddf8 Soft & Fluffy \u2014 Collection",
+    projects:[
+      {title:"SOFT \u2014 Fluffy Poster \ud83e\udde6", desc:"Poster 3D \u2014 typo en fourrure rose kat-floati, pompoms kay-tiro, lilas doux.", link:"heroes/fur-01.html", shot:"heroes/shots/fur-01.jpg", url:"areej.studio/soft-poster"},
+      {title:"Teddy & Co \u2014 Boutique \ud83e\uddf8", desc:"E-commerce peluches \u2014 teddy kay-thezz, prix 349 MAD, badges livraison, c\u0153urs kay-tiro.", link:"heroes/fur-02.html", shot:"heroes/shots/fur-02.jpg", url:"areej.studio/teddy-co"},
+      {title:"Maison Fourrure \u2014 Hiver '26 \ud83e\udde5", desc:"Fashion luxe \u2014 manteau fourrure caramel, serif \u00e9l\u00e9gant, neige kat-tiy7, reflet kay-dozi.", link:"heroes/fur-03.html", shot:"heroes/shots/fur-03.jpg", url:"areej.studio/maison-fourrure"}
+    ]
+  },
+  {
+    name:"Palette",
+    nameImg:"images/fn2-palette.png?v=3",
+    modalBg:"images/bg-palette.jpg",
+    tint:"hue-rotate(318deg) saturate(1.0) brightness(1.1)",
+    img:"images/palette.jpg",
+    gradient:"linear-gradient(135deg,#4a0d17,#7a1f2b,#9a666b,#c0c0c0)",
+    hero:"images/hero-palette.jpg",
+    heroCap:"\ud83c\udfa8 Art & Branding \u2014 Collection",
+    projects:[
+      {title:"Palette Studio \u2014 Generator \ud83c\udfa8", desc:"Outil INTERACTIF \u2014 kbss Generate wla Space: palette jdida kat-tiy7! Klik 3la lon = copi\u00e9.", link:"heroes/pal-01.html", shot:"heroes/shots/pal-01.jpg", url:"areej.studio/palette-studio"},
+      {title:"Identit\u00e9 de Marque \u2014 Studio \u2728", desc:"Branding \u2014 papeterie mockup, swatches kay-tiy7o mn lfo9, zoom lent, devis CTA.", link:"heroes/pal-02.html", shot:"heroes/shots/pal-02.jpg", url:"areej.studio/brand-identity"},
+      {title:"CHROMA \u2014 Gradient Poster \ud83c\udf08", desc:"Poster liquide \u2014 mesh gradient kay-dor ghir b CSS, grain, typo Unbounded kat-tnafess.", link:"heroes/pal-03.html", shot:"heroes/shots/pal-03.jpg", url:"areej.studio/chroma"}
+    ]
+  },
+  {
+    name:"Fireworks",
+    nameImg:"images/fn2-fireworks.png?v=3",
+    modalBg:"images/bg-fireworks.jpg",
+    tint:"hue-rotate(255deg) saturate(.9) brightness(.92)",
+    img:"images/fireworks.jpg",
+    gradient:"radial-gradient(circle at 70% 30%,#e9c46a,#1a1208 45%,#000)",
+    hero:"images/hero-events.jpg",
+    heroCap:"\ud83c\udf86 Events & Celebration \u2014 Collection",
+    projects:[
+      {title:"R\u00e9veillon 2027 \u2014 Countdown \ud83c\udf86", desc:"Compte \u00e0 rebours LIVE 7tal 2027 + feux d'artifice kay-tfarq3o ghir b CSS, fus\u00e9es kay-tla3o!", link:"heroes/evt-01.html", shot:"heroes/shots/evt-01.jpg", url:"areej.studio/reveillon-2027"},
+      {title:"NOVA FEST '26 \u2014 Festival \ud83c\udfb6", desc:"Landing festival \u2014 foule + projecteurs violets, titre sheen, lineup marquee, equalizer.", link:"heroes/evt-02.html", shot:"heroes/shots/evt-02.jpg", url:"areej.studio/nova-fest"},
+      {title:"Soir\u00e9e Royale \u2014 Invitation \ud83d\udc8c", desc:"Invitation or & noir \u2014 titre or kay-shimmeri, \u00e9toiles kay-wmdo, particules kay-tla3o, RSVP.", link:"heroes/evt-03.html", shot:"heroes/shots/evt-03.jpg", url:"areej.studio/soiree-royale"}
+    ]
+  },
+  {
+    name:"Notion — Afkar",
+    nameImg:"images/fn2-notion.png?v=3",
+    modalBg:"images/bg-notion.jpg",
+    tint:"grayscale(.9) brightness(.8)",
+    img:"images/notion.jpg",
+    gradient:"linear-gradient(135deg,#0f0f0f,#2b2b2b 55%,#a8842e)",
+    text:"Notion",
+    projects:[
+      {title:"فكرة: تقليص مشاريع الربع", desc:"يبدو أننا نحاول إنجاز الكثير في هذا الربع؛ فإطلاق ثلاثة مشاريع كبرى يُعد مبالغة تفوق طاقتنا.", link:"https://app.notion.com/p/3ee8200d6c7f80e1822dd05532f8c0e4"},
+      {title:"فكرة: لوحة المؤشرات", desc:"إعادة تصميم لوحة المؤشرات تستمر في فقدان الأولوية — نحتاج إما إلى الالتزام بها أو إلغائها.", link:"https://app.notion.com/p/3ee8200d6c7f80e1822dd05532f8c0e4"},
+      {title:"فكرة: تخصيص الموارد", desc:"تحدّث مع جوردان بشأن تخصيص الموارد قبل اعتماد خارطة الطريق.", link:"https://app.notion.com/p/3ee8200d6c7f80e1822dd05532f8c0e4"},
+      {title:"فكرة: تأجيل الإطلاق التجريبي؟", desc:"الأمر يستحق مناقشة جادة قبل اجتماع التخطيط يوم الخميس، وليس مجرد سلسلة رسائل على Slack.", link:"https://app.notion.com/p/3ee8200d6c7f80e1822dd05532f8c0e4"},
+      {title:"مهام للمتابعة ✅", desc:"الرد على أليكس (العقد) · طبيب الأسنان · تعويضات مارس · إرسال العرض لجيمي · قراءة ملف Figma · حليب الشوفان 🥛", link:"https://app.notion.com/p/3ee8200d6c7f80e1b67bf06e6198578b"}
+    ]
+  },
+  {
+    name:"Premium Shop",
+    nameImg:"images/fn2-shop.png",
+    text:"Premium \ud83d\udc8e",
+    modalBg:"images/bg-shop.jpg",
+    tint:"hue-rotate(290deg) saturate(.8) brightness(.95)",
+    gradient:"linear-gradient(135deg,#1c1030,#3b1f4e 55%,#a8842e)",
+    projects:[],
+    packs:[
+      {
+        title:"Medical Healthcare 3D Pack",
+        desc:"Pack dyal 12 \u00e9l\u00e9ments 3D m\u00e9dicaux premium \u2014 style glossy haute qualit\u00e9, wajdin l les designs, pr\u00e9sentations w r\u00e9seaux sociaux.",
+        price:"99 MAD",
+        buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/cover-med.jpg",
+        tags:["12 \u00e9l\u00e9ments","PNG haute qualit\u00e9","Usage commercial","Style 3D glossy"],
+        elements:["images/prem/med-01.jpg","images/prem/med-02.jpg","images/prem/med-03.jpg","images/prem/med-04.jpg","images/prem/med-05.jpg","images/prem/med-06.jpg","images/prem/med-07.jpg","images/prem/med-08.jpg","images/prem/med-09.jpg","images/prem/med-10.jpg","images/prem/med-11.jpg","images/prem/med-12.jpg"]
+      },
+      {
+        title:"Pink Health Awareness 3D Pack",
+        desc:"Pack rose dyal 12 \u00e9l\u00e9ments 3D \u2014 anatomie f style glossy rose w ruban de sensibilisation, parfait l les campagnes sant\u00e9 f\u00e9minine.",
+        price:"99 MAD",
+        buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/cover-pink.jpg",
+        tags:["12 \u00e9l\u00e9ments","PNG haute qualit\u00e9","Usage commercial","Th\u00e8me rose"],
+        elements:["images/prem/pink-01.jpg","images/prem/pink-02.jpg","images/prem/pink-03.jpg","images/prem/pink-04.jpg","images/prem/pink-05.jpg","images/prem/pink-06.jpg","images/prem/pink-07.jpg","images/prem/pink-08.jpg","images/prem/pink-09.jpg","images/prem/pink-10.jpg","images/prem/pink-11.jpg","images/prem/pink-12.jpg"]
+      },
+      {
+        title:"Beauty & Cosmetics 3D Pack",
+        desc:"Pack dyal 12 \u00e9l\u00e9ments 3D beauty \u2014 cosm\u00e9tiques f style glossy cr\u00e8me w rose b \u00e9toiles brillantes, parfait l les marques de beaut\u00e9 w makeup \u2014 pack kamel 12/12.",
+        price:"99 MAD",
+        buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/cover-beauty.jpg",
+        tags:["12 \u00e9l\u00e9ments","PNG haute qualit\u00e9","Usage commercial","Th\u00e8me beauty"],
+        elements:["images/prem/beauty-01.jpg","images/prem/beauty-02.jpg","images/prem/beauty-03.jpg","images/prem/beauty-04.jpg","images/prem/beauty-05.jpg","images/prem/beauty-06.jpg","images/prem/beauty-07.jpg","images/prem/beauty-08.jpg","images/prem/beauty-09.jpg","images/prem/beauty-10.jpg","images/prem/beauty-11.jpg","images/prem/beauty-12.jpg"]
+      },
+      {
+        title:"Leopard Fur Alphabet 3D",
+        desc:"Lettres 3D f fourrure l\u00e9opard r\u00e9aliste \u2014 12 lettres A\u2192L wajdin, l'alphabet kamel A-Z kayn 3la talab.",
+        price:"99 MAD", buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/cover-lp.jpg",
+        tags:["12 lettres A\u2192L","PNG haute qualit\u00e9","Usage commercial","Fourrure l\u00e9opard"],
+        elements:["images/prem/lp-a.jpg","images/prem/lp-b.jpg","images/prem/lp-c.jpg","images/prem/lp-d.jpg","images/prem/lp-e.jpg","images/prem/lp-f.jpg","images/prem/lp-g.jpg","images/prem/lp-h.jpg","images/prem/lp-i.jpg","images/prem/lp-j.jpg","images/prem/lp-k.jpg","images/prem/lp-l.jpg"]
+      },
+      {
+        title:"Red Balloon Alphabet 3D",
+        desc:"Lettres ballons gonfl\u00e9s rouge glossy \u2014 12 lettres a\u2192l wajdin, l'alphabet kamel a-z kayn 3la talab.",
+        price:"99 MAD", buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/cover-rb.jpg",
+        tags:["12 lettres a\u2192l","PNG haute qualit\u00e9","Usage commercial","Ballons rouges"],
+        elements:["images/prem/rb-a.jpg","images/prem/rb-b.jpg","images/prem/rb-c.jpg","images/prem/rb-d.jpg","images/prem/rb-e.jpg","images/prem/rb-f.jpg","images/prem/rb-g.jpg","images/prem/rb-h.jpg","images/prem/rb-i.jpg","images/prem/rb-j.jpg","images/prem/rb-k.jpg","images/prem/rb-l.jpg"]
+      },
+      {
+        title:"Black Fur Alphabet 3D",
+        desc:"Lettres f fourrure noire luxueuse vison \u2014 12 lettres A\u2192L wajdin, l'alphabet kamel A-Z kayn 3la talab.",
+        price:"99 MAD", buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/cover-bf.jpg",
+        tags:["12 lettres A\u2192L","PNG haute qualit\u00e9","Usage commercial","Fourrure noire"],
+        elements:["images/prem/bf-a.jpg","images/prem/bf-b.jpg","images/prem/bf-c.jpg","images/prem/bf-d.jpg","images/prem/bf-e.jpg","images/prem/bf-f.jpg","images/prem/bf-g.jpg","images/prem/bf-h.jpg","images/prem/bf-i.jpg","images/prem/bf-j.jpg","images/prem/bf-k.jpg","images/prem/bf-l.jpg"]
+      },
+      {
+        title:"Ice Crystal Alphabet 3D",
+        desc:"Lettres men7outin f telj transparent b cracks w bulles \u2014 12 lettres A\u2192L wajdin, l'alphabet kamel A-Z kayn 3la talab.",
+        price:"99 MAD", buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/cover-ic.jpg",
+        tags:["12 lettres A\u2192L","PNG haute qualit\u00e9","Usage commercial","Glace 3D"],
+        elements:["images/prem/ic-a.jpg","images/prem/ic-b.jpg","images/prem/ic-c.jpg","images/prem/ic-d.jpg","images/prem/ic-e.jpg","images/prem/ic-f.jpg","images/prem/ic-g.jpg","images/prem/ic-h.jpg","images/prem/ic-i.jpg","images/prem/ic-j.jpg","images/prem/ic-k.jpg","images/prem/ic-l.jpg"]
+      },
+      {
+        title:"Dalmatian Fluffy Alphabet 3D",
+        desc:"Lettres peluche bida b ta9ches noires dalmatien \u2014 12 lettres A\u2192L wajdin, l'alphabet kamel A-Z kayn 3la talab.",
+        price:"99 MAD", buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/cover-dl.jpg",
+        tags:["12 lettres A\u2192L","PNG haute qualit\u00e9","Usage commercial","Peluche dalmatien"],
+        elements:["images/prem/dl-a.jpg","images/prem/dl-b.jpg","images/prem/dl-c.jpg","images/prem/dl-d.jpg","images/prem/dl-e.jpg","images/prem/dl-f.jpg","images/prem/dl-g.jpg","images/prem/dl-h.jpg","images/prem/dl-i.jpg","images/prem/dl-j.jpg","images/prem/dl-k.jpg","images/prem/dl-l.jpg"]
+      },
+      {
+        title:"Metallic Party Balloons 3D",
+        desc:"Ballons chrome m\u00e9talliques rose, or w argent b glitter \u2014 l les invitations w f\u00eates (aper\u00e7u \u00b7 collection kamla kayna 3la talab).",
+        price:"99 MAD", buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/pack-metballoon.jpg",
+        tags:["Collection","PNG haute qualit\u00e9","Usage commercial","Ballons m\u00e9talliques"],
+        elements:["images/prem/pack-metballoon.jpg"]
+      },
+      {
+        title:"Rose Gold Balloon Alphabet 3D",
+        desc:"Lettres ballons foil rose gold brillantes \u2014 12 lettres A\u2192L wajdin, l'alphabet kamel A-Z kayn 3la talab.",
+        price:"99 MAD", buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/cover-rg.jpg",
+        tags:["12 lettres A\u2192L","PNG haute qualit\u00e9","Usage commercial","Foil rose gold"],
+        elements:["images/prem/rg-a.jpg","images/prem/rg-b.jpg","images/prem/rg-c.jpg","images/prem/rg-d.jpg","images/prem/rg-e.jpg","images/prem/rg-f.jpg","images/prem/rg-g.jpg","images/prem/rg-h.jpg","images/prem/rg-i.jpg","images/prem/rg-j.jpg","images/prem/rg-k.jpg","images/prem/rg-l.jpg"]
+      },
+      {
+        title:"Pink Puffy Y2K Alphabet 3D",
+        desc:"Lettres gonfl\u00e9es glossy bidat b contour rose \u2014 style Y2K bubbly cute, 12 lettres A\u2192L wajdin, l'alphabet kamel A-Z kayn 3la talab.",
+        price:"99 MAD", buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/cover-pp.jpg",
+        tags:["12 lettres A\u2192L","PNG haute qualit\u00e9","Usage commercial","Y2K rose"],
+        elements:["images/prem/pp-a.jpg","images/prem/pp-b.jpg","images/prem/pp-c.jpg","images/prem/pp-d.jpg","images/prem/pp-e.jpg","images/prem/pp-f.jpg","images/prem/pp-g.jpg","images/prem/pp-h.jpg","images/prem/pp-i.jpg","images/prem/pp-j.jpg","images/prem/pp-k.jpg","images/prem/pp-l.jpg"]
+      },
+      {
+        title:"Leopard Aesthetic Stickers",
+        desc:"Stickers die-cut l\u00e9opard \u2014 \u00e9toiles, 9loub w akthar, b contour byed (2 wajdin \u00b7 l ba9i jay 3la talab).",
+        price:"99 MAD", buyUrl:"https://ton-lien-de-paiement.com",
+        cover:"images/prem/stk-01.jpg",
+        tags:["Stickers","PNG haute qualit\u00e9","Usage commercial","Th\u00e8me l\u00e9opard"],
+        elements:["images/prem/stk-01.jpg","images/prem/stk-02.jpg"]
+      }
+    ]
+  }
+];
+
+/* ============ CODE ============ */
+const grid = document.getElementById("grid");
+
+folders.forEach((f,i)=>{
+  grid.insertAdjacentHTML("beforeend",`
+    <div class="cell" style="--d:${i*0.08}s">
+      <div class="folder" tabindex="0" role="button"
+           aria-label="Ouvrir ${f.name}"
+           onclick="openEnvelope(${i})"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openEnvelope(${i})}">
+        <div class="env-bg env-open-img" style="--tint:${f.tint || "brightness(1)"}"></div>
+        <div class="env-bg env-closed-img" style="--tint:${f.tint || "brightness(1)"}"></div>
+        ${(f.projects.length + ((f.packs||[]).length)) ? `<span class="count">${f.projects.length + ((f.packs||[]).length)}</span>` : ""}
+        <span class="env-name">${f.text || f.name}</span>
+      </div>
+      <p class="folder-name">${f.nameImg ? `<img src="${f.nameImg}" alt="${f.name}" style="--tint:${f.tint || "brightness(1)"}">` : f.name}</p>
+    </div>
+  `);
+});
+
+/* apparition en cascade au scroll */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add("show"); io.unobserve(e.target); }
+  });
+},{ threshold:.15 });
+document.querySelectorAll(".cell").forEach(c=>io.observe(c));
+
+const modal = document.getElementById("modal");
+let currentFolder = null;
+
+/* ===== PROJETS LI KAYZIDHOM USER (localStorage) ===== */
+function loadCustom(){
+  try{ return JSON.parse(localStorage.getItem("customProjects")) || {}; }
+  catch(e){ return {}; }
+}
+function saveCustom(data){
+  try{ localStorage.setItem("customProjects", JSON.stringify(data)); }catch(e){}
+}
+function getCustom(i){
+  const data = loadCustom();
+  return data[i] || [];
+}
+
+/* ===== FICHIERS (IndexedDB — images PNG/JPG + PDF) ===== */
+let dbPromise = null;
+function getDB(){
+  if(!dbPromise){
+    dbPromise = new Promise((res,rej)=>{
+      const req = indexedDB.open("portfolioFiles", 1);
+      req.onupgradeneeded = ()=> req.result.createObjectStore("files",{ keyPath:"id" });
+      req.onsuccess = ()=> res(req.result);
+      req.onerror = ()=> rej(req.error);
+    });
+  }
+  return dbPromise;
+}
+async function putFile(file){
+  const db = await getDB();
+  const id = Date.now() + "-" + Math.random().toString(36).slice(2);
+  await new Promise((res,rej)=>{
+    const tx = db.transaction("files","readwrite");
+    tx.objectStore("files").put({ id, name:file.name, type:file.type, blob:file });
+    tx.oncomplete = res;
+    tx.onerror = ()=> rej(tx.error);
+  });
+  return { id, name:file.name, type:file.type };
+}
+async function getFileRec(id){
+  const db = await getDB();
+  return new Promise((res,rej)=>{
+    const req = db.transaction("files").objectStore("files").get(id);
+    req.onsuccess = ()=> res(req.result || null);
+    req.onerror = ()=> rej(req.error);
+  });
+}
+async function delFile(id){
+  const db = await getDB();
+  return new Promise((res,rej)=>{
+    const tx = db.transaction("files","readwrite");
+    tx.objectStore("files").delete(id);
+    tx.oncomplete = res;
+    tx.onerror = ()=> rej(tx.error);
+  });
+}
+
+/* fichiers li mazal ma t-sauvegardawsh (f le formulaire) */
+let pendingFiles = [];
+const ALLOWED = ["image/png","image/jpeg","image/webp","image/gif","application/pdf"];
+const MAX_MB = 15;
+
+function pickFiles(input){
+  const err = document.getElementById("form-err");
+  err.style.display = "none";
+  for(const f of input.files){
+    if(!ALLOWED.includes(f.type)){
+      err.textContent = "⚠️ Ghir PNG / JPG / WEBP / GIF / PDF msmou7in";
+      err.style.display = "block";
+      continue;
+    }
+    if(f.size > MAX_MB*1024*1024){
+      err.textContent = `⚠️ "${f.name}" kbir bzaf (max ${MAX_MB} MB)`;
+      err.style.display = "block";
+      continue;
+    }
+    pendingFiles.push(f);
+  }
+  input.value = "";
+  renderFileList();
+}
+function removePending(j){
+  pendingFiles.splice(j,1);
+  renderFileList();
+}
+function renderFileList(){
+  const list = document.getElementById("file-list");
+  if(!list) return;
+  list.innerHTML = pendingFiles.map((f,j)=>`
+    <div class="file-item">
+      <span>${f.type==="application/pdf" ? "📄" : "🖼"} ${escapeHTML(f.name)}</span>
+      <button type="button" onclick="removePending(${j})" title="Retirer">✕</button>
+    </div>
+  `).join("");
+}
+
+/* 7ell les fichiers mn IndexedDB w 3tihom URLs */
+async function hydrateAttachments(){
+  const els = document.querySelectorAll("[data-att]");
+  for(const el of els){
+    try{
+      const rec = await getFileRec(el.dataset.att);
+      if(!rec) continue;
+      const url = URL.createObjectURL(rec.blob);
+      el.href = url;
+      el.target = "_blank";
+      const img = el.querySelector("img");
+      if(img && rec.type.startsWith("image/")) img.src = url;
+    }catch(e){}
+  }
+}
+
+function escapeHTML(s){
+  return String(s).replace(/[&<>"']/g, c=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+}
+
+function updateBadge(i){
+  const total = folders[i].projects.length + ((folders[i].packs||[]).length) + getCustom(i).length;
+  const folderEl = document.querySelectorAll(".folder")[i];
+  let badge = folderEl.querySelector(".count");
+  if(total > 0){
+    if(!badge){
+      badge = document.createElement("span");
+      badge.className = "count";
+      folderEl.prepend(badge);
+    }
+    badge.textContent = total;
+  } else if(badge){
+    badge.remove();
+  }
+}
+
+function openLiveProj(i,j){
+  const p = folders[i].projects[j];
+  const ov = document.getElementById("liveOverlay");
+  document.getElementById("liveTitle").textContent = p.title;
+  document.getElementById("liveExt").href = p.link;
+  document.getElementById("liveFrame").src = p.link;
+  ov.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+function closeLive(){
+  const ov = document.getElementById("liveOverlay");
+  ov.classList.remove("show");
+  document.getElementById("liveFrame").src = "about:blank";
+  document.body.style.overflow = "";
+}
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeLive(); });
+
+function renderProjects(i){
+  const f = folders[i];
+  const custom = getCustom(i);
+
+  const packsHTML = (f.packs||[]).map((pk,k)=>`
+    <div class="pack-card" onclick="openPackView(${i},${k})" title="Klik bach tshof le pack">
+      <img class="pack-cover" src="${pk.cover}" alt="">
+      <span class="pack-info">
+        <h3>${pk.title} <span class="pro-badge">${pk.showcase ? "\u2b07 FREE" : "\ud83d\udc51 PRO"}</span></h3>
+        <p>${pk.desc}</p>
+        <span class="pack-meta">${pk.elements.length} ${pk.showcase ? "logos" : "\u00e9l\u00e9ments \u00b7 PNG HD"}</span>
+      </span>
+      <span class="pack-right">
+        ${pk.price ? `<span class="price-chip big">${pk.price}</span>` : ""}
+        <span class="arrow">\u2192</span>
+      </span>
+    </div>`).join("");
+
+  const baseHTML = f.projects.map((p,j)=> p.shot ? `
+    <div class="project live-card" onclick="openLiveProj(${i},${j})" title="Klik bach tshof la page khdama">
+      <span class="browser-bar">
+        <span class="bdots"><i class="d r"></i><i class="d y"></i><i class="d g"></i></span>
+        <span class="burl">\ud83d\udd12 ${p.url||""}</span>
+        <span class="live-chip">\u25cf LIVE</span>
+      </span>
+      <img class="live-shot" src="${p.shot}" loading="lazy" alt="">
+      <span class="live-body">
+        <span class="live-txt"><h3>${p.title}</h3><p>${p.desc}</p></span>
+        <span class="live-btn">\u25b6 Voir Live</span>
+      </span>
+    </div>` : `
+    <a class="project" href="${p.link}" target="_blank">
+      <span>
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+      </span>
+      <span class="arrow">→</span>
+    </a>`).join("");
+
+  const customHTML = custom.map((p,j)=>{
+    const atts = (p.atts || []).map(a=>{
+      if(a.type.startsWith("image/")){
+        return `<a class="att" data-att="${a.id}" title="${escapeHTML(a.name)}"><img class="att-thumb" alt="${escapeHTML(a.name)}"></a>`;
+      }
+      return `<a class="att-chip" data-att="${a.id}">📄 ${escapeHTML(a.name)}</a>`;
+    }).join("");
+
+    const hasLink = p.link && p.link !== "#";
+    return `
+    <div class="project custom" title="Klik bach t7ell l projet" onclick="openProjectView(event,${i},${j})">
+      <span class="pbody">
+        <h3>${escapeHTML(p.title)} ${p.premium ? `<span class="pro-badge">\ud83d\udc51 PRO</span> <span class="price-chip">${escapeHTML(p.price||"\u2014")}</span>` : ""}</h3>
+        <p>${escapeHTML(p.desc)}</p>
+        ${atts ? `<span class="atts">${atts}</span>` : ""}
+      </span>
+      ${hasLink ? `<a class="go-link" href="${escapeHTML(p.link)}" target="_blank" title="Ouvrir le lien">→</a>` : ""}
+      <button class="del" title="Supprimer" onclick="deleteProject(event,${i},${j})">🗑</button>
+    </div>`;
+  }).join("");
+
+  const listHTML = (packsHTML + baseHTML + customHTML) ||
+    `<p class="empty">Ma kayn 7ta projet db 🤍</p>`;
+
+  pendingFiles = [];
+
+  const heroHTML = f.hero ? `
+    <div class="folder-hero">
+      <img src="${f.hero}" alt="">
+      ${f.heroCap ? `<span class="folder-hero-cap">${f.heroCap}</span>` : ""}
+    </div>` : "";
+
+  document.getElementById("modal-projects").innerHTML = `
+    ${heroHTML}
+    ${listHTML}
+
+    <button class="add-toggle" onclick="toggleForm()">＋ Zid projet jdid</button>
+
+    <form class="add-form" id="add-form" onsubmit="addProject(event,${i})">
+      <label>Titre *</label>
+      <input id="np-title" required maxlength="80" placeholder="Smiyat l projet">
+      <label>Description</label>
+      <textarea id="np-desc" rows="2" maxlength="200" placeholder="Wsef l projet dyalek"></textarea>
+      <label>Lien</label>
+      <input id="np-link" type="url" placeholder="https://...">
+      <label class="prem-toggle"><input type="checkbox" id="np-prem" onchange="document.getElementById('prem-fields').classList.toggle('on',this.checked)"> \ud83d\udc8e Pack Premium \u2014 lil bi3</label>
+      <div class="prem-fields" id="prem-fields">
+        <label>Prix *</label>
+        <input id="np-price" maxlength="30" placeholder="99 MAD">
+        <label>Lien d'achat (Gumroad, PayPal, Etsy...)</label>
+        <input id="np-buy" type="url" placeholder="https://...">
+      </div>
+      <label>Images / PDF</label>
+      <label class="file-drop" id="file-drop">
+        🖼 📄 Klik hna wla jbed fichiers (PNG · JPG · PDF — max ${MAX_MB} MB)
+        <input type="file" multiple accept="image/png,image/jpeg,image/webp,image/gif,application/pdf" onchange="pickFiles(this)">
+      </label>
+      <div class="file-list" id="file-list"></div>
+      <p class="form-err" id="form-err"></p>
+      <div class="btns">
+        <button type="submit" class="save">Sauvegarder ✓</button>
+        <button type="button" class="cancel" onclick="toggleForm(false)">Annuler</button>
+      </div>
+    </form>
+  `;
+
+  /* drag & drop */
+  const drop = document.getElementById("file-drop");
+  drop.addEventListener("dragover", e=>{ e.preventDefault(); drop.classList.add("drag"); });
+  drop.addEventListener("dragleave", ()=> drop.classList.remove("drag"));
+  drop.addEventListener("drop", e=>{
+    e.preventDefault();
+    drop.classList.remove("drag");
+    pickFiles({ files: e.dataTransfer.files, value: "" });
+  });
+
+  hydrateAttachments();
+}
+
+function toggleForm(force){
+  const form = document.getElementById("add-form");
+  const open = force !== undefined ? force : !form.classList.contains("open");
+  form.classList.toggle("open", open);
+  if(open) document.getElementById("np-title").focus();
+}
+
+async function addProject(e, i){
+  e.preventDefault();
+  const title = document.getElementById("np-title").value.trim();
+  const desc  = document.getElementById("np-desc").value.trim();
+  const link  = document.getElementById("np-link").value.trim();
+  const prem  = document.getElementById("np-prem").checked;
+  const price = document.getElementById("np-price").value.trim();
+  const buy   = document.getElementById("np-buy").value.trim();
+  if(!title) return;
+
+  const saveBtn = e.target.querySelector(".save");
+  saveBtn.disabled = true;
+  saveBtn.textContent = "Sauvegarde…";
+
+  /* upload les fichiers l IndexedDB */
+  const atts = [];
+  try{
+    for(const f of pendingFiles){
+      atts.push(await putFile(f));
+    }
+  }catch(err){
+    const errEl = document.getElementById("form-err");
+    errEl.textContent = "⚠️ Ma qdertsh nsauvegardi les fichiers (navigateur ma kay-supportish). L projet ghadi ytsjel bla fichiers.";
+    errEl.style.display = "block";
+  }
+
+  const data = loadCustom();
+  if(!data[i]) data[i] = [];
+  data[i].push({ title, desc: desc || "—", link: link || "#", atts, premium: prem, price: prem ? (price || "—") : "", buyUrl: prem ? (buy || "#") : "" });
+  saveCustom(data);
+
+  pendingFiles = [];
+  renderProjects(i);
+  updateBadge(i);
+}
+
+/* ===== PAGE PRODUIT PREMIUM (packs lil bi3) ===== */
+function openPackView(i, k){
+  const pk = folders[i].packs[k];
+  if(!pk) return;
+  document.getElementById("modal-projects").innerHTML = `
+    <button class="back-btn" onclick="renderProjects(${i})">← Rja3 l lista</button>
+    <h3 class="view-title">${pk.title} <span class="pro-badge">${pk.showcase ? "⬇ FREE" : "👑 PRO"}</span></h3>
+    <p class="view-desc">${pk.desc}</p>
+    <div class="pack-tags">${(pk.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+    <div class="elem-grid">
+      ${pk.elements.map(src=>pk.showcase ? `<a class="elem anim" href="${src}" download title="Télécharger PNG"><img src="${src}" loading="lazy" alt=""><span class="pro-chip free">⬇ FREE</span></a>` : `<span class="elem"><img src="${src}" loading="lazy" alt=""><span class="pro-chip">👑 PRO</span></span>`).join("")}
+    </div>
+    ${pk.showcase ? `<p class="buy-note">⬇️ Had les logos <b>FREE</b> — klik 3la ay wa7d bach t-téléchargih PNG bla khalfiya!</p>` : `<div class="buy-box">
+      <span><p class="buy-label">Prix du pack</p><p class="buy-price">${pk.price}</p></span>
+      <a class="buy-btn" href="${pk.buyUrl}" target="_blank" rel="noopener">👑 Acheter maintenant</a>
+    </div>
+    <p class="buy-note">🔒 L'achat kay-dowz 3ber lien externe sécurisé — 3tini le lien dyalek (Gumroad, PayPal, Etsy...) bach nbedlo blast le lien d'exemple.</p>`}
+  `;
+  document.querySelector(".modal-box").scrollTop = 0;
+}
+
+/* ===== VUE DÉTAIL : klik 3la projet → kay-t7ell ===== */
+async function openProjectView(e, i, j){
+  /* ila kan klik 3la thumbnail / chip / lien / supprimer, khellih ydir khdemto */
+  if(e && e.target.closest("a.att, .att-chip, .go-link, .del")) return;
+
+  const p = getCustom(i)[j];
+  if(!p) return;
+
+  const atts = p.atts || [];
+  const imgs = atts.filter(a=>a.type.startsWith("image/"));
+  const pdfs = atts.filter(a=>a.type==="application/pdf");
+  const hasLink = p.link && p.link !== "#";
+
+  document.getElementById("modal-projects").innerHTML = `
+    <button class="back-btn" onclick="renderProjects(${i})">← Rja3 l lista</button>
+    <h3 class="view-title">${escapeHTML(p.title)}</h3>
+    <p class="view-desc">${escapeHTML(p.desc)}</p>
+
+    ${p.premium && imgs.length ? `<div class="elem-grid">${imgs.map(a=>`<a class="elem" data-att="${a.id}" title="7ell f onglet jdid"><img data-att-img="${a.id}" alt="${escapeHTML(a.name)}"><span class="pro-chip">\ud83d\udc51 PRO</span></a>`).join("")}</div>`
+      : imgs.map(a=>`<a data-att="${a.id}" title="7ell f onglet jdid"><img class="view-img" data-att-img="${a.id}" alt="${escapeHTML(a.name)}"></a>`).join("")}
+
+    ${pdfs.map(a=>`
+      <div class="pdf-block">
+        <iframe class="view-pdf" data-att-frame="${a.id}" title="${escapeHTML(a.name)}"></iframe>
+        <a class="att-chip" data-att="${a.id}">📄 7ell "${escapeHTML(a.name)}" f onglet jdid</a>
+      </div>`).join("")}
+
+    ${p.premium ? `<div class="buy-box"><span><p class="buy-label">Prix</p><p class="buy-price">${escapeHTML(p.price||"—")}</p></span><a class="buy-btn" href="${escapeHTML(p.buyUrl && p.buyUrl!=="#" ? p.buyUrl : "#")}"${p.buyUrl && p.buyUrl!=="#" ? ` target="_blank"` : ``}>👑 Acheter maintenant</a></div>` : ""}
+
+    ${hasLink ? `<a class="view-link" href="${escapeHTML(p.link)}" target="_blank">Visiter le lien →</a>` : ""}
+
+    ${(!atts.length && !hasLink && !p.premium) ? `<p class="empty">Ma kayn 7ta fichier wla lien f had projet 🤍</p>` : ""}
+  `;
+
+  /* chargi les fichiers mn IndexedDB */
+  for(const el of document.querySelectorAll("[data-att-img]")){
+    try{
+      const rec = await getFileRec(el.dataset.attImg);
+      if(rec) el.src = URL.createObjectURL(rec.blob);
+    }catch(err){}
+  }
+  for(const el of document.querySelectorAll("[data-att-frame]")){
+    try{
+      const rec = await getFileRec(el.dataset.attFrame);
+      if(rec) el.src = URL.createObjectURL(rec.blob);
+    }catch(err){}
+  }
+  hydrateAttachments();
+
+  /* scroll l fo9 dyal la modal */
+  document.querySelector(".modal-box").scrollTop = 0;
+}
+
+async function deleteProject(e, i, j){
+  e.preventDefault();
+  e.stopPropagation();
+  const data = loadCustom();
+  if(data[i]){
+    /* msa7 les fichiers dyal had projet mn IndexedDB */
+    const atts = (data[i][j] && data[i][j].atts) || [];
+    for(const a of atts){
+      try{ await delFile(a.id); }catch(err){}
+    }
+    data[i].splice(j,1);
+    saveCustom(data);
+  }
+  renderProjects(i);
+  updateBadge(i);
+}
+
+function openEnvelope(i){
+  const el = document.querySelectorAll(".folder")[i];
+  if(el.classList.contains("open")){ openFolder(i); return; }
+  el.classList.add("open");
+  setTimeout(()=>openFolder(i), 560);
+}
+
+function openFolder(i){
+  currentFolder = i;
+  const f = folders[i];
+  document.querySelector(".modal-box").style.backgroundImage =
+    `linear-gradient(rgba(12,8,6,.50), rgba(12,8,6,.74)), url('${f.modalBg || "images/modal-bg.jpg"}')`;
+  document.getElementById("modal-title").textContent = f.name;
+  renderProjects(i);
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+/* mise à jour des badges au chargement (projets sauvegardés) */
+folders.forEach((_,i)=>updateBadge(i));
+
+function closeModal(){
+  modal.classList.add("closing");
+  setTimeout(()=>{
+    modal.classList.remove("open","closing");
+    document.body.style.overflow = "";
+    /* sed l'enveloppe 3awtani */
+    if(currentFolder !== null){
+      const el = document.querySelectorAll(".folder")[currentFolder];
+      if(el) el.classList.remove("open");
+    }
+  }, 260);
+}
+
+modal.addEventListener("click",e=>{
+  if(e.target.id==="modal") closeModal();
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && modal.classList.contains("open")) closeModal();
+});
+</script>
+<div id="liveOverlay">
+  <div class="live-top">
+    <span id="liveTitle"></span>
+    <span class="live-actions">
+      <a id="liveExt" href="#" target="_blank" rel="noopener">⧉ Onglet jdid</a>
+      <button onclick="closeLive()">✕ Fermer</button>
+    </span>
+  </div>
+  <iframe id="liveFrame" title="Live preview"></iframe>
+</div>
+</body>
+</html>

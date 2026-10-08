@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NOVA FEST '26</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;800&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#0a0514;min-height:100vh;font-family:Inter,sans-serif;color:#fff;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{position:relative;width:min(96%,1080px);aspect-ratio:16/9.6;border-radius:20px;overflow:hidden;box-shadow:0 38px 88px rgba(0,0,0,.8)}
+.frame>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:ken 14s ease-in-out infinite alternate}
+@keyframes ken{from{transform:scale(1)}to{transform:scale(1.08)}}
+.veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,25,.25) 0%,rgba(10,5,25,.1) 40%,rgba(10,5,25,.85) 100%)}
+nav{position:absolute;top:0;left:0;right:0;display:flex;gap:24px;align-items:center;padding:22px 32px;z-index:7;font-size:10.5px;letter-spacing:.2em;color:#d8ccf2}
+nav b{font-family:Unbounded;font-size:13px;letter-spacing:.14em;margin-right:auto;color:#fff}
+.tik{background:linear-gradient(120deg,#b86bff,#ff6bbe);border-radius:18px;padding:9px 18px;font-weight:700;color:#fff;text-decoration:none;font-size:10px;animation:pu 2.4s infinite}
+@keyframes pu{0%,100%{box-shadow:0 0 0 0 rgba(200,107,255,.5)}50%{box-shadow:0 0 0 10px rgba(200,107,255,0)}}
+h1{position:absolute;left:50%;bottom:24%;transform:translateX(-50%);font-family:Unbounded;font-weight:800;font-size:clamp(44px,8vw,96px);z-index:6;white-space:nowrap;background:linear-gradient(100deg,#fff 10%,#e0b8ff 40%,#ff9ad8 70%,#fff 95%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 4.5s linear infinite;text-shadow:none}
+@keyframes sheen{to{background-position:-200% 0}}
+.meta{position:absolute;left:50%;bottom:16%;transform:translateX(-50%);font-size:11px;letter-spacing:.4em;color:#e4d8ff;z-index:6;white-space:nowrap}
+.lineup{position:absolute;left:0;right:0;bottom:0;background:rgba(8,4,18,.82);backdrop-filter:blur(6px);border-top:1px solid rgba(200,150,255,.25);overflow:hidden;white-space:nowrap;padding:12px 0;z-index:7}
+.lineup span{display:inline-block;font-family:Unbounded;font-size:13px;letter-spacing:.2em;color:#cdb8f2;animation:scr 20s linear infinite}
+@keyframes scr{to{transform:translateX(-50%)}}
+.eq{position:absolute;right:4%;top:30%;display:flex;gap:4px;align-items:flex-end;height:50px;z-index:6}
+.eq i{width:5px;border-radius:3px;background:linear-gradient(180deg,#ff9ad8,#b86bff);animation:eq 1s ease-in-out infinite alternate}
+@keyframes eq{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
+</style></head><body>
+<div class="frame">
+<img src="img/w2.jpg" alt=""><span class="veil"></span>
+<nav><b>NOVA FEST</b><span>LINE-UP</span><span>INFOS</span><span>ACCÈS</span><a class="tik" href="#">🎫 TICKETS</a></nav>
+<div class="eq"><i style="height:40%"></i><i style="height:90%;animation-delay:.12s"></i><i style="height:60%;animation-delay:.24s"></i><i style="height:100%;animation-delay:.06s"></i><i style="height:50%;animation-delay:.3s"></i></div>
+<h1>NOVA FEST '26</h1>
+<div class="meta">14 — 16 AOÛT · CASABLANCA · BY AREEJ</div>
+<div class="lineup"><span>LUNA REY ✦ MIDNIGHT CLUB ✦ SAHARA BASS ✦ ECHO VELVET ✦ KAYNA ✦ NEON ATLAS ✦ LUNA REY ✦ MIDNIGHT CLUB ✦ SAHARA BASS ✦ ECHO VELVET ✦ KAYNA ✦ NEON ATLAS ✦&nbsp;</span></div>
+</div></body></html>

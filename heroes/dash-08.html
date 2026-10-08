@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AREEJ CRM — Invoices</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{background:#c6d4e8;min-height:100vh;font-family:Inter,sans-serif;color:#15171c;display:flex;align-items:center;justify-content:center;padding:3vmin}
+.frame{width:min(97%,1120px);background:linear-gradient(160deg,#eef3fb,#e4ecf8);border-radius:20px;padding:18px 22px;box-shadow:0 34px 80px rgba(30,50,90,.4)}
+.nav{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.nav b{font-size:13px}
+.pillbar{background:#15171c;border-radius:22px;display:flex;gap:2px;padding:4px;font-size:9.5px;color:#b9bdc6}
+.pillbar span{padding:7px 13px;border-radius:17px;cursor:pointer;transition:.25s}
+.pillbar span:hover{color:#fff}
+.pillbar .a{background:#d9f44a;color:#15171c;font-weight:700}
+.nav .r{margin-left:auto;display:flex;gap:8px;align-items:center}
+.cir{width:30px;height:30px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:12px;box-shadow:0 4px 10px rgba(30,50,90,.12)}
+.nav img{width:30px;height:30px;border-radius:50%;object-fit:cover}
+h1{font-size:24px;font-weight:800;margin-bottom:12px}
+h1 small{font-size:10px;color:#7d828c;font-weight:400;margin-left:8px}
+.ci{float:right;background:#fff;font-size:10px;font-weight:700;border-radius:14px;padding:9px 16px;box-shadow:0 6px 14px rgba(30,50,90,.12);cursor:pointer}
+.stats{display:grid;grid-template-columns:1fr 1fr .6fr 1.1fr;gap:12px;margin-bottom:12px}
+.sc{background:#fff;border-radius:16px;padding:13px 15px;animation:up .6s ease both;transition:.3s}
+.sc:hover{transform:translateY(-3px)}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1}}
+.sc small{font-size:9px;color:#7d828c}
+.sc .v{font-size:19px;font-weight:800;margin-top:4px}
+.sc .ln{height:5px;border-radius:4px;background:#eef0f4;margin-top:9px;overflow:hidden}
+.sc .ln i{display:block;height:100%;background:repeating-linear-gradient(90deg,#d9f44a 0 7px,#c6e03e 7px 10px);animation:wide 1.4s .3s ease both}
+@keyframes wide{from{width:0!important}}
+.avs{display:flex;margin-top:8px}
+.avs img{width:22px;height:22px;border-radius:50%;border:2px solid #fff;margin-left:-6px;object-fit:cover}
+.payo{background:#15171c;color:#fff}
+.payo small{color:#9aa0ab}
+.payo .cards{display:flex;gap:6px;margin-top:8px;font-size:8.5px}
+.payo .cards span{background:#272a31;border-radius:9px;padding:6px 9px}
+.payo .cards .y{background:#d9f44a;color:#15171c;font-weight:700}
+.payo a{float:right;background:#fff;color:#15171c;font-size:9px;font-weight:700;border-radius:12px;padding:7px 13px;text-decoration:none;margin-top:-26px}
+.filters{display:flex;gap:8px;font-size:9px;color:#7d828c;margin-bottom:12px;align-items:center}
+.filters .f{background:#fff;border-radius:12px;padding:8px 13px;box-shadow:0 4px 10px rgba(30,50,90,.08)}
+.dark{background:#15171c;border-radius:18px;padding:16px;display:grid;grid-template-columns:1fr 1.5fr;gap:14px;color:#fff}
+.dark h3{font-size:11.5px;margin-bottom:10px}
+.tabs2{display:inline-flex;background:#23262d;border-radius:14px;padding:3px;font-size:8.5px;margin-bottom:10px}
+.tabs2 span{padding:5px 11px;border-radius:11px;color:#9aa0ab;cursor:pointer}
+.tabs2 .a{background:#fff;color:#15171c;font-weight:700}
+.inv{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:12px;font-size:9px;color:#b9bdc6;transition:.25s;cursor:pointer;animation:up .5s ease both}
+.inv:hover{background:#1e2127}
+.inv.on{background:#2a2e36;box-shadow:inset 0 0 0 1px #3a3f49}
+.inv img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.inv b{color:#fff;display:block;font-size:9.5px}
+.inv .amt{margin-left:auto;font-weight:800;color:#fff;font-size:10px}
+.inv .st{font-size:7.5px;background:#3a3f49;border-radius:8px;padding:2px 7px;margin-left:5px}
+.det{background:#3f5a7d;border-radius:14px;padding:14px;position:relative;overflow:hidden}
+.det::after{content:"";position:absolute;right:-20%;bottom:-40%;width:70%;aspect-ratio:1;background:repeating-linear-gradient(45deg,rgba(255,255,255,.06) 0 8px,transparent 8px 16px);border-radius:50%}
+.det .hdr{display:flex;align-items:center;gap:10px;font-size:9px;color:#c8d4e2;margin-bottom:12px}
+.det .hdr b{color:#fff;font-size:12px}
+.det .hdr img{width:26px;height:26px;border-radius:50%;object-fit:cover;margin-left:auto}
+.kv3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:8.5px;color:#c8d4e2}
+.kv3 span{background:rgba(255,255,255,.1);border-radius:10px;padding:9px}
+.kv3 b{display:block;color:#fff;font-size:10.5px;margin-top:3px}
+.tot{display:flex;gap:8px;margin-top:10px;font-size:8.5px;color:#c8d4e2;align-items:center}
+.tot b{color:#fff;font-size:12px}
+.pon{margin-left:auto;background:#d9f44a;color:#15171c;font-size:9.5px;font-weight:800;border-radius:12px;padding:9px 16px;text-decoration:none;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,244,74,.5)}50%{box-shadow:0 0 0 9px rgba(217,244,74,0)}}
+</style></head><body>
+<div class="frame">
+<div class="nav"><b>✳ AREEJ CRM</b>
+  <span class="pillbar"><span>▦</span><span>Estimates</span><span class="a">◆ Invoices</span><span>Payments</span><span>Recurring</span><span>Checkouts</span></span>
+  <span class="r"><span class="cir">🔔</span><span class="cir">⚙</span><img src="img/av2.jpg"></span></div>
+<h1>← Invoices <small>November — December 2026</small><span class="ci">+ Create an invoice</span></h1>
+<div class="stats">
+  <div class="sc"><small>Overdue</small><div class="v">$31,211.00</div><div class="ln"><i style="width:36%"></i></div><div class="avs"><img src="img/av1.jpg"><img src="img/av3.jpg"><img src="img/av4.jpg"></div></div>
+  <div class="sc" style="animation-delay:.1s"><small>Due within next month</small><div class="v">$172,560.00</div><div class="ln"><i style="width:72%"></i></div><div class="avs"><img src="img/av5.jpg"><img src="img/av6.jpg"><img src="img/av7.jpg"><img src="img/av8.jpg"></div></div>
+  <div class="sc" style="animation-delay:.2s"><small>Average time to get paid</small><div class="v">12 <small>days</small></div><div class="ln"><i style="width:48%"></i></div></div>
+  <div class="sc payo" style="animation-delay:.3s"><small>Available for Instant Payout ↗</small><div class="v">$214,390.00</div>
+    <div class="cards"><span>•4443</span><span class="y">#177210</span><span>#711221</span></div><a href="#">Pay out now</a></div>
+</div>
+<div class="filters"><b style="color:#15171c">Active filters ❷</b><span class="f">All customers ▾</span><span class="f">All statuses ▾</span><span class="f">November 2026 📅</span><span class="f">December 2026 📅</span><span class="f">Enter invoice # 🔍</span></div>
+<div class="dark">
+  <div>
+    <h3>Unpaid Invoices</h3>
+    <span class="tabs2"><span>All Invoices</span><span>Draft 3</span><span class="a">Unpaid 5</span></span>
+    <div class="inv"><img src="img/av9.jpg"><span><b># 404-002</b>In 2 days · Unsent</span><span class="amt">$80,770.00</span></div>
+    <div class="inv" style="animation-delay:.08s"><img src="img/av10.jpg"><span><b># 426-001</b>In 4 days · Viewed</span><span class="amt">$27,114.00</span></div>
+    <div class="inv on" style="animation-delay:.16s"><img src="img/av11.jpg"><span><b># 427-012</b>In 5 days<span class="st">Unsent</span></span><span class="amt">$53,154.00</span></div>
+    <div class="inv" style="animation-delay:.24s"><img src="img/av12.jpg"><span><b># 424-112</b>In 16 days · Viewed</span><span class="amt">$61,223.00</span></div>
+    <div class="inv" style="animation-delay:.32s"><img src="img/av4.jpg"><span><b># 417-020</b>In 19 days · Viewed</span><span class="amt">$7,311.00</span></div>
+  </div>
+  <div class="det">
+    <div class="hdr"><span>Invoice details<br><b># 427-012 · Unsent</b></span><span>Company<br><b>🪨 RockBlue Ltd</b></span><img src="img/av11.jpg"><span>Maria Jones<br>CEO RockBlue Pvt Ltd</span></div>
+    <div class="kv3"><span>Concept Development<b>$10,630.80</b></span><span>CRM Development<b>$31,892.40</b></span><span>CRM Integration<b>$10,630.80</b></span></div>
+    <div class="tot">Sub Total <b>$53,154.00</b> · Total <b>$53,154.00</b> · Balance Due <b>$53,154.00</b><a class="pon" href="#">Pay out now</a></div>
+  </div>
+</div>
+</div></body></html>

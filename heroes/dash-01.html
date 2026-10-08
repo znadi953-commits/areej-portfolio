@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashbird — Creative Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+@property --p{syntax:'<number>';inherits:false;initial-value:0}
+*{margin:0;box-sizing:border-box}
+body{min-height:100vh;font-family:Inter,sans-serif;color:#3c2b36;display:flex;align-items:center;justify-content:center;padding:3vmin;background:#c98ba2 url('img/h11.jpg') center/cover}
+.win{width:min(96%,1120px);border-radius:18px;overflow:hidden;box-shadow:0 40px 90px rgba(120,30,70,.45);backdrop-filter:blur(6px)}
+.bar{display:flex;align-items:center;gap:10px;background:rgba(255,235,243,.9);padding:10px 14px}
+.dots i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+.url{flex:1;background:#fff;border-radius:16px;font-size:10.5px;color:#b06;padding:6px 14px}
+.app{display:flex;background:rgba(255,248,251,.94)}
+aside{width:190px;padding:18px 14px;border-right:1px solid #f3d7e2}
+.logo{font-weight:800;font-size:14px;margin-bottom:18px}
+.logo b{color:#e8318a}
+.mi{display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:600;color:#9c7f8e;padding:9px 12px;border-radius:12px;margin:3px 0;cursor:pointer;transition:.25s}
+.mi:hover{background:#ffe3ef;color:#3c2b36;transform:translateX(3px)}
+.mi.on{background:linear-gradient(90deg,#ffd9ea,#ffeef5);color:#e8318a;box-shadow:0 6px 14px rgba(232,49,138,.18)}
+.pro{margin-top:22px;background:linear-gradient(160deg,#ffd9ea,#ffeef6);border-radius:16px;padding:16px;text-align:center}
+.pro b{font-size:12px}
+.pro p{font-size:9.5px;color:#a9879a;margin:6px 0 10px}
+.pro a{display:inline-block;background:#e8318a;color:#fff;font-size:10px;font-weight:700;padding:8px 16px;border-radius:16px;text-decoration:none;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,49,138,.4)}50%{box-shadow:0 0 0 8px rgba(232,49,138,0)}}
+main{flex:1;padding:18px 22px}
+.hd{display:flex;align-items:center;margin-bottom:14px}
+.hd h1{font-size:19px;font-weight:800}
+.seg{margin-left:18px;background:#ffe6f0;border-radius:18px;padding:3px;font-size:10px;font-weight:700}
+.seg span{padding:6px 14px;border-radius:15px;display:inline-block;cursor:pointer}
+.seg .a{background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.08)}
+.me{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:10.5px;font-weight:600}
+.me img{width:28px;height:28px;border-radius:50%;object-fit:cover}
+.nc{background:#e8318a;color:#fff;font-size:10px;font-weight:700;padding:8px 14px;border-radius:14px;margin-left:10px}
+.grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:12px}
+.card{background:#fff;border-radius:16px;padding:14px;box-shadow:0 10px 26px rgba(190,60,120,.1);transition:.3s;animation:up .7s ease both}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(190,60,120,.2)}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1}}
+.card h3{font-size:11.5px;margin-bottom:8px}
+.bars{display:flex;align-items:flex-end;gap:9px;height:86px;padding-top:6px}
+.bars i{flex:1;border-radius:7px;background:#f6dce7;transform-origin:bottom;animation:grow 1s .3s ease both}
+.bars i.hot{background:linear-gradient(180deg,#ff5fa8,#e8318a)}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.xl{display:flex;gap:9px;font-size:8px;color:#b89;margin-top:6px}
+.xl span{flex:1;text-align:center}
+.donut{--p:0;width:84px;height:84px;border-radius:50%;margin:4px auto;background:conic-gradient(#e8318a calc(var(--p)*1%),#f6dce7 0);display:grid;place-items:center;animation:fill 1.4s .4s ease both}
+@keyframes fill{from{--p:0}to{--p:73}}
+.donut b{background:#fff;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:14px}
+.rep{background:linear-gradient(150deg,#e8318a,#ff7ab5);color:#fff}
+.rep h3{color:#fff;font-size:13px}
+.rep p{font-size:10px;opacity:.9;margin-top:4px}
+.rep .ic{font-size:22px;background:rgba(255,255,255,.2);width:40px;height:40px;border-radius:12px;display:grid;place-items:center;margin-bottom:10px}
+.meet .avs{display:flex;margin:8px 0}
+.meet .avs img{width:26px;height:26px;border-radius:50%;border:2px solid #fff;margin-left:-7px;object-fit:cover}
+.meet .avs img:first-child{margin-left:0}
+.jm{display:inline-block;background:#e8318a;color:#fff;font-size:9.5px;font-weight:700;padding:7px 14px;border-radius:14px;text-decoration:none}
+.g2{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin-top:12px}
+.act .row{display:flex;align-items:center;gap:10px;background:#fff6fa;border-radius:12px;padding:8px 10px;margin:7px 0;transition:.25s}
+.act .row:hover{transform:translateX(4px);background:#ffe9f2}
+.act img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.act b{font-size:10.5px;display:block}
+.act small{font-size:9px;color:#b08}
+.apr{margin-left:auto;background:#e8318a;color:#fff;font-size:8.5px;font-weight:700;padding:5px 11px;border-radius:11px}
+svg .l1{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 2s .5s ease forwards}
+svg .l2{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 2s .8s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.tk{position:absolute;background:#e8318a;color:#fff;font-size:8.5px;font-weight:700;padding:4px 9px;border-radius:10px;right:18%;top:14px;animation:pulse 2.4s infinite}
+.gg{--p:0;width:72px;height:72px;border-radius:50%;background:conic-gradient(#9b5cf6 calc(var(--p)*1%),#efe3fd 0);display:grid;place-items:center;margin:4px auto;animation:fill2 1.4s .5s ease both}
+@keyframes fill2{from{--p:0}to{--p:74.7}}
+.gg b{background:#fff;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-size:11px}
+</style></head><body>
+<div class="win">
+<div class="bar"><span class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></span><span class="url">🔒 areej.studio/dashbird</span></div>
+<div class="app">
+<aside>
+  <div class="logo">🌸 Dashb<b>i</b>rd</div>
+  <div class="mi on">▦ Dashboard</div><div class="mi">✉ Inbox</div><div class="mi">📰 Feed</div><div class="mi">👥 Staff</div><div class="mi">📈 Statistic</div><div class="mi">📁 Folders</div>
+  <div class="pro"><b>Go Pro!</b><p>Upgrade your plan to get pro benefits</p><a href="#">Get Started</a></div>
+</aside>
+<main>
+  <div class="hd"><h1>Hello Creative! 👋</h1><span class="seg"><span class="a">General</span><span>Workspace</span></span>
+  <span class="me"><img src="img/av1.jpg">Areej W.</span><span class="nc">+ New Card</span></div>
+  <div class="grid">
+    <div class="card"><h3>Projects Stats</h3>
+      <div class="bars"><i style="height:38%"></i><i class="hot" style="height:92%"></i><i style="height:50%"></i><i style="height:34%"></i><i style="height:58%"></i></div>
+      <div class="xl"><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span></div></div>
+    <div class="card" style="animation-delay:.1s"><h3>Tasks Chart <small style="color:#b89;font-weight:400">73% of total</small></h3>
+      <div class="donut"><b>73%</b></div>
+      <div class="xl"><span style="color:#e8318a">● Done</span><span>● In progress</span></div></div>
+    <div class="card rep" style="animation-delay:.2s"><span class="ic">📊</span><h3>Projects Report</h3><p>We done 17 project this month</p></div>
+  </div>
+  <div class="grid" style="margin-top:12px">
+    <div class="card meet" style="animation-delay:.15s"><h3>Talk about Figma plugins</h3>
+      <div class="avs"><img src="img/av2.jpg"><img src="img/av3.jpg"><img src="img/av4.jpg"><img src="img/av5.jpg"></div>
+      <a class="jm" href="#">🎥 Join Meeting</a></div>
+    <div class="card" style="animation-delay:.25s"><h3>📱 App Store new guidlines</h3><p style="font-size:9.5px;color:#b89;margin:6px 0">About 3 months to deadline</p>
+      <div class="avs" style="display:flex"><img src="img/av6.jpg" style="width:24px;height:24px;border-radius:50%"><span style="font-size:9px;color:#b89;margin:6px 8px">👍 152 &nbsp; 💬 36</span></div></div>
+    <div class="card" style="animation-delay:.35s;text-align:center"><h3>Emanuel Valdez</h3><small style="font-size:9px;color:#b89">Visual artist · Illustrator</small>
+      <div class="gg"><b>74.7%</b></div><small style="font-size:9px;color:#b89">Tasks Overall</small></div>
+  </div>
+  <div class="g2">
+    <div class="card act" style="animation-delay:.3s"><h3>Recent Activities <small style="color:#b89;font-weight:400">3 items</small></h3>
+      <div class="row"><img src="img/av7.jpg"><span><b>Kristin Watson</b><small>changed my tasks in freelan project 🔥</small></span><span style="color:#e8318a">♥</span></div>
+      <div class="row"><img src="img/av8.jpg"><span><b>Guy Hawkins</b><small>please review our new task 🙏</small></span><span class="apr">Approve</span></div>
+      <div class="row"><img src="img/av9.jpg"><span><b>Albert Flores</b><small>created new branch on Thrixio 🚀</small></span><span style="color:#e8318a">♥</span></div></div>
+    <div class="card" style="animation-delay:.4s;position:relative"><h3>Tasks Comparison</h3><span class="tk">27 Tasks</span>
+      <svg viewBox="0 0 320 110" style="width:100%;margin-top:14px">
+        <path class="l1" d="M0,70 C40,40 70,90 110,62 C150,36 180,80 220,58 C260,38 290,66 320,48" fill="none" stroke="#e8318a" stroke-width="2.5"/>
+        <path class="l2" d="M0,86 C50,70 80,52 120,74 C160,95 200,50 240,70 C275,86 300,60 320,70" fill="none" stroke="#9b5cf6" stroke-width="2.5"/>
+        <circle cx="220" cy="58" r="5" fill="#e8318a"/>
+      </svg>
+      <div class="xl"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div></div>
+  </div>
+</main>
+</div></div></body></html>
