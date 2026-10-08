@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Anime Labels</title>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Baloo+2:wght@500;700&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+
+body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;color:#dfe9ff;overflow:hidden;padding:40px 0;background:linear-gradient(160deg,#0c1430,#17264f 55%,#0a0f24)}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(115deg,transparent 0 60px,rgba(90,140,255,.06) 60px 62px);pointer-events:none}
+.sp{position:fixed;animation:tw ease-in-out infinite alternate;pointer-events:none}
+@keyframes tw{from{opacity:.2;transform:scale(.8)}to{opacity:1;transform:scale(1.15)}}
+h1{font-family:'Luckiest Guy',cursive;font-size:36px;color:#fff;-webkit-text-stroke:1.5px #1b49b8;text-shadow:0 0 22px rgba(80,140,255,.9);margin-bottom:16px;z-index:5;position:relative}
+.cover{background:url('img/b9.jpg') center/cover}
+.backboard{background:linear-gradient(140deg,#13214a,#070d20);border:2px solid #3f6ae0}
+.pg{background:#f4f6ff;color:#1c2b55;padding:20px 18px;display:flex;flex-direction:column;gap:12px}
+.pg h2{font-family:'Luckiest Guy',cursive;font-size:20px;text-align:center;color:#1b49b8}
+.lbl{flex:1;border-radius:14px;padding:12px 14px;color:#fff;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.lbl .tt{font-family:'Luckiest Guy',cursive;font-size:19px;letter-spacing:1px;text-shadow:2px 2px 0 rgba(0,0,0,.4)}
+.lbl .jp{font-size:10px;opacity:.85;margin-bottom:6px}
+.fl{display:flex;align-items:flex-end;gap:7px;background:rgba(255,255,255,.92);border-radius:8px;padding:6px 10px;margin:4px 0;color:#223;font-weight:700;font-size:12px}
+.fl input{flex:1;border-bottom:2px dotted #99a;font-size:12px;color:#223}
+.inback{background:linear-gradient(140deg,#101c40,#060a18);display:flex;align-items:center;justify-content:center;font-size:48px}
+
+.scene{perspective:2600px;position:relative;z-index:5}
+.book{position:relative;width:380px;height:580px;transform-style:preserve-3d;transition:transform 1s ease}
+.book.open{transform:translateX(190px)}
+.sheet{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:left center;transition:transform 1.1s cubic-bezier(.35,.1,.25,1);cursor:pointer}
+.sheet.flipped{transform:rotateY(-180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:6px 14px 14px 6px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.face.back{transform:rotateY(180deg);border-radius:14px 6px 6px 14px}
+.backboard{position:absolute;inset:0;border-radius:6px 14px 14px 6px;z-index:1}
+.hint{margin-top:24px;text-align:center;font-size:14px;opacity:.9;position:relative;z-index:5}
+.closebtn{margin-top:10px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:inherit;padding:8px 22px;border-radius:30px;cursor:pointer;font-size:13px;position:relative;z-index:5}
+input,textarea{border:0;background:transparent;outline:none;font-family:inherit}
+</style></head><body>
+<span class="sp" style="top:12%;left:7%;font-size:28px;animation-duration:1.8s">⚡</span>
+<span class="sp" style="top:66%;left:9%;font-size:24px;animation-duration:2.4s">✦</span>
+<span class="sp" style="top:20%;right:8%;font-size:26px;animation-duration:2s">⚡</span>
+<span class="sp" style="top:72%;right:9%;font-size:22px;animation-duration:2.6s">✦</span>
+<h1>ANIME LABELS ⚡</h1>
+<div class="scene"><div class="book" id="book"><div class="backboard"></div>
+<div class="sheet"><div class="face front cover"></div>
+ <div class="face back pg"><h2>Étiquettes 1-2</h2><div class="lbl" style="background:linear-gradient(135deg,#e8731c,#8a3a05)"><div class="tt">🦊 KITSUNE LEGEND</div><div class="jp">キツネ伝説</div><div class="fl">NAME:<input></div><div class="fl">SUBJECT:<input></div><div class="fl">GRADE:<input></div></div><div class="lbl" style="background:linear-gradient(135deg,#2b3a8f,#0d1540)"><div class="tt">⚔️ SHADOW BLADE</div><div class="jp">影の刃</div><div class="fl">NAME:<input></div><div class="fl">SUBJECT:<input></div><div class="fl">GRADE:<input></div></div></div></div>
+<div class="sheet"><div class="face front pg"><h2>Étiquettes 3-4</h2><div class="lbl" style="background:linear-gradient(135deg,#8a2bb8,#3d0a60)"><div class="tt">💫 STAR HUNTER</div><div class="jp">スターハンター</div><div class="fl">NAME:<input></div><div class="fl">SUBJECT:<input></div><div class="fl">GRADE:<input></div></div><div class="lbl" style="background:linear-gradient(135deg,#1b8a5a,#073c24)"><div class="tt">🤖 MECHA ZERO</div><div class="jp">メカゼロ</div><div class="fl">NAME:<input></div><div class="fl">SUBJECT:<input></div><div class="fl">GRADE:<input></div></div></div>
+ <div class="face back pg"><h2>Étiquettes 5-6</h2><div class="lbl" style="background:linear-gradient(135deg,#e04f8a,#7a1040)"><div class="tt">🌸 SAKURA SPIRIT</div><div class="jp">桜の精神</div><div class="fl">NAME:<input></div><div class="fl">SUBJECT:<input></div><div class="fl">GRADE:<input></div></div><div class="lbl" style="background:linear-gradient(135deg,#1273c4,#063057)"><div class="tt">⚽ BLUE STRIKER</div><div class="jp">ブルーストライカー</div><div class="fl">NAME:<input></div><div class="fl">SUBJECT:<input></div><div class="fl">GRADE:<input></div></div></div></div>
+<div class="sheet"><div class="face front pg"><h2>Étiquettes 7-8</h2><div class="lbl" style="background:linear-gradient(135deg,#c2271f,#570803)"><div class="tt">🐉 DRAGON FLAME</div><div class="jp">竜の炎</div><div class="fl">NAME:<input></div><div class="fl">SUBJECT:<input></div><div class="fl">GRADE:<input></div></div><div class="lbl" style="background:linear-gradient(135deg,#4b4e8f,#15173d)"><div class="tt">🌙 MOON REAPER</div><div class="jp">月の死神</div><div class="fl">NAME:<input></div><div class="fl">SUBJECT:<input></div><div class="fl">GRADE:<input></div></div></div>
+ <div class="face back inback">⚔️🌸</div></div>
+</div></div>
+<div class="hint">🖱️ Klik bash t7ell l book · klik 3la la page lisr bash tsedd</div>
+<button class="closebtn" id="seddBtn">↺ Sedd l book</button>
+<script>
+const sheets=[...document.querySelectorAll('.sheet')];
+const book=document.getElementById('book');
+function upd(){const n=sheets.filter(s=>s.classList.contains('flipped')).length;
+ book.classList.toggle('open',n>0);
+ sheets.forEach((s,i)=>{s.style.zIndex=s.classList.contains('flipped')?10+i:100+sheets.length-i;});}
+sheets.forEach(s=>{s.addEventListener('click',e=>{
+ if(e.target.closest('input,textarea,.noflip'))return;
+ const i=sheets.indexOf(s);
+ if(!s.classList.contains('flipped')){if(i>0&&!sheets[i-1].classList.contains('flipped'))return;}
+ else{if(i<sheets.length-1&&sheets[i+1].classList.contains('flipped'))return;}
+ s.classList.toggle('flipped');upd();});});
+document.getElementById('seddBtn').addEventListener('click',()=>{sheets.forEach(s=>s.classList.remove('flipped'));upd();});
+upd();
+</script></body></html>
