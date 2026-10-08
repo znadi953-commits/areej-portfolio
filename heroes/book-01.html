@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ocean Kingdom — Carnet Magique</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Quicksand',sans-serif;color:#eaf8ff;overflow:hidden;background:linear-gradient(180deg,#03344d 0%,#015a7e 45%,#012436 100%);padding:40px 0}
+.rays{position:fixed;inset:-20%;background:conic-gradient(from 180deg at 50% -10%,transparent 0 8%,rgba(160,230,255,.08) 10%,transparent 14%,rgba(160,230,255,.06) 20%,transparent 26%,rgba(160,230,255,.08) 33%,transparent 40%);animation:ray 14s linear infinite alternate;pointer-events:none}
+@keyframes ray{to{transform:rotate(6deg)}}
+.bub{position:fixed;bottom:-40px;border-radius:50%;background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.85),rgba(255,255,255,.12) 55%,transparent 70%);animation:rise linear infinite;pointer-events:none}
+@keyframes rise{to{transform:translateY(-115vh)}}
+.sea{position:fixed;font-size:30px;animation:drift ease-in-out infinite alternate;pointer-events:none;filter:drop-shadow(0 0 10px rgba(120,220,255,.5))}
+@keyframes drift{from{transform:translate(0,0)}to{transform:translate(40px,-30px)}}
+h1{font-family:'Cinzel Decorative',serif;font-size:26px;letter-spacing:3px;color:#bfeaff;text-shadow:0 0 18px rgba(110,210,255,.8);margin-bottom:24px;text-align:center;position:relative;z-index:5}
+
+.scene{perspective:2600px;position:relative;z-index:5}
+.book{position:relative;width:380px;height:560px;transform-style:preserve-3d;transition:transform 1s ease}
+.book.open{transform:translateX(190px)}
+.sheet{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:left center;transition:transform 1.1s cubic-bezier(.35,.1,.25,1);cursor:pointer}
+.sheet.flipped{transform:rotateY(-180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:6px 14px 14px 6px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.face.back{transform:rotateY(180deg);border-radius:14px 6px 6px 14px}
+.backboard{position:absolute;inset:0;border-radius:6px 14px 14px 6px;z-index:1}
+.book.shake{animation:shk .45s}
+@keyframes shk{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-8px) rotate(-1deg)}75%{transform:translateX(8px) rotate(1deg)}}
+.book.open.shake{animation:none}
+.hint{margin-top:26px;text-align:center;font-size:14px;letter-spacing:.5px;opacity:.85}
+.closebtn{margin-top:10px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);color:#fff;padding:8px 22px;border-radius:30px;cursor:pointer;font-size:13px;backdrop-filter:blur(4px)}
+input,textarea{border:0;background:transparent;outline:none;font-family:inherit}
+
+.cover{background:url('img/b1.jpg') center/cover}
+.backboard{background:linear-gradient(135deg,#06425e,#02283c);border:2px solid rgba(150,220,255,.3)}
+.paper{background:#f7efdd;color:#3c4a56;padding:34px 28px;display:flex;flex-direction:column}
+.paper h2{font-family:'Cinzel Decorative',serif;font-size:19px;color:#0d6e93;text-align:center;margin-bottom:18px}
+.pearlbox{border:3px double #c9a86a;border-radius:14px;padding:20px 18px;background:rgba(255,255,255,.55)}
+.fld{display:flex;align-items:flex-end;gap:8px;margin:16px 0;font-weight:600;color:#0a5a7a}
+.fld input{flex:1;border-bottom:2px solid #9fc6d8;font-size:15px;color:#174}
+.lines{flex:1;background:repeating-linear-gradient(transparent 0 30px,#b9d7e4 30px 31px);border-radius:4px}
+.quote{display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;font-size:21px;line-height:1.8;color:#0a5a7a;font-weight:600;background:#f7efdd;flex-direction:column;gap:18px}
+.inback{background:linear-gradient(160deg,#07415c,#021e2e);display:flex;align-items:center;justify-content:center;font-size:52px}
+.sig{text-align:center;margin-top:14px;font-size:12px;letter-spacing:2px;color:#87c7e2}
+</style></head><body>
+<div class="rays"></div>
+<span class="sea" style="top:12%;left:6%;animation-duration:7s">🐬</span>
+<span class="sea" style="top:64%;left:8%;animation-duration:9s;font-size:40px">🪼</span>
+<span class="sea" style="top:26%;right:7%;animation-duration:8s">🐠</span>
+<span class="sea" style="top:72%;right:10%;animation-duration:11s;font-size:38px">🐢</span>
+<h1>✦ OCEAN KINGDOM ✦<br><span style="font-size:13px;letter-spacing:5px;font-family:'Quicksand'">MON CARNET MAGIQUE</span></h1>
+<div class="scene"><div class="book" id="book">
+ <div class="backboard"></div>
+ <div class="sheet"><div class="face front cover"></div>
+  <div class="face back paper"><h2>Ce carnet appartient à…</h2>
+   <div class="pearlbox">
+    <div class="fld">🫧 Name <input type="text"></div>
+    <div class="fld">🏫 Class <input type="text"></div>
+    <div class="fld">📖 Subject <input type="text"></div>
+   </div>
+   <div style="text-align:center;margin-top:auto;font-size:40px">🐉</div></div></div>
+ <div class="sheet"><div class="face front paper"><h2>🌊 Mes Notes</h2><div class="lines"></div></div>
+  <div class="face back paper"><h2>🪼 Idées &amp; Rêves</h2><div class="lines"></div></div></div>
+ <div class="sheet"><div class="face front quote">🐚<br>« Dans l'océan des rêves,<br>chaque page est une perle »<br>✨</div>
+  <div class="face back inback">🦪</div></div>
+</div></div>
+<div class="hint">🖱️ Klik 3la l book bash <b>yt7ell</b> · klik 3la la page lisr bash <b>ytsedd</b></div>
+<button class="closebtn" id="seddBtn">↺ Sedd l book</button>
+<script>
+
+const sheets=[...document.querySelectorAll('.sheet')];
+const book=document.getElementById('book');
+let locked = window.LOCKED_INIT||false;
+function upd(){
+  const n=sheets.filter(s=>s.classList.contains('flipped')).length;
+  book.classList.toggle('open', n>0);
+  sheets.forEach((s,i)=>{s.style.zIndex=s.classList.contains('flipped')? 10+i : 100+sheets.length-i;});
+}
+sheets.forEach(s=>{s.addEventListener('click',e=>{
+  if(e.target.closest('input,textarea,.noflip'))return;
+  if(locked){book.classList.add('shake');setTimeout(()=>book.classList.remove('shake'),500);return;}
+  const i=sheets.indexOf(s);
+  if(!s.classList.contains('flipped')){ if(i>0&&!sheets[i-1].classList.contains('flipped'))return; }
+  else { if(i<sheets.length-1&&sheets[i+1].classList.contains('flipped'))return; }
+  s.classList.toggle('flipped');upd();
+});});
+document.getElementById('seddBtn').addEventListener('click',()=>{sheets.forEach(s=>s.classList.remove('flipped'));upd();});
+upd();
+window.unlockBook=function(){locked=false;};
+
+for(let i=0;i<16;i++){const b=document.createElement('div');b.className='bub';const s=6+Math.random()*18;b.style.width=b.style.height=s+'px';b.style.left=Math.random()*100+'vw';b.style.animationDuration=(6+Math.random()*9)+'s';b.style.animationDelay=(-Math.random()*10)+'s';document.body.appendChild(b);}
+</script></body></html>
