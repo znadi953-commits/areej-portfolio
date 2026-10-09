@@ -504,6 +504,19 @@
     padding:6px 14px; border-radius:999px; text-transform:uppercase;
   }
 
+  /* ===== PRICING (books) ===== */
+  .price-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 18px}
+  .price-title{grid-column:1/-1;text-align:center;font-weight:800;font-size:17px;color:#ff9ec7;letter-spacing:.5px}
+  .price-card{background:linear-gradient(160deg,rgba(255,79,160,.14),rgba(122,16,51,.38));border:1px solid rgba(255,140,190,.35);border-radius:16px;padding:16px 12px 14px;text-align:center;color:#ffd9e8;position:relative;backdrop-filter:blur(4px)}
+  .price-card .nm{font-weight:700;font-size:14px;display:block}
+  .price-card b{display:block;font-size:24px;color:#ff9ec7;margin:6px 0 3px;font-family:inherit}
+  .price-card .dg{font-size:11px;opacity:.75;display:block}
+  .price-card a{display:inline-block;margin-top:9px;background:linear-gradient(90deg,#ff4fa0,#c2185b);color:#fff;padding:6px 18px;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:700;box-shadow:0 4px 12px rgba(255,79,160,.35)}
+  .price-card a:hover{filter:brightness(1.12)}
+  .price-card.best{border:1.5px solid #ffd21e;box-shadow:0 0 20px rgba(255,210,30,.22)}
+  .badge-best{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#ffd21e;color:#5a2e00;font-size:10.5px;font-weight:800;padding:3px 11px;border-radius:12px;white-space:nowrap}
+  .price-free{grid-column:1/-1;text-align:center;font-size:13px;color:#ffe3ef;background:rgba(255,79,160,.14);border:1.5px dashed rgba(255,158,199,.5);border-radius:12px;padding:10px}
+  @media(max-width:640px){.price-strip{grid-template-columns:1fr}.badge-best{top:-9px}}
   /* ===== LIVE CARDS (hero projects) ===== */
 .project.live-card{display:block;padding:0;overflow:hidden;cursor:pointer;border-radius:16px;border:1px solid rgba(212,175,55,.35);background:rgba(10,10,14,.75);transition:.35s}
 .project.live-card:hover{transform:translateY(-4px);border-color:#d4af37;box-shadow:0 18px 45px rgba(0,0,0,.55),0 0 0 1px rgba(212,175,55,.25)}
@@ -791,7 +804,7 @@
 
 /* ================= I18N — AR / FR / EN ================= */
 const I18N={
- fr:{contactH:"Contact",contactP:"Un projet en tête ? Parlons-en.",footer:"© 2025 — AREEJ",
+ fr:{prT:"\ud83d\udc9c Tarifs des Books",prOne:"1 Book",prTri:"3 Books",prAll:"Collection 25 Books",prBest:"\u2b50 Meilleure offre",prFree:"\ud83c\udf81 Ocean Notebook \u2014 GRATUIT pour tester la qualit\u00e9 !",prBuy:"Commander",prDig:"PDF digital \u00b7 cover + 7 pages",contactH:"Contact",contactP:"Un projet en tête ? Parlons-en.",footer:"© 2025 — AREEJ",
   addProj:"＋ Zid projet jdid",emptyFolder:"Ma kayn 7ta projet db 🤍",emptyProj:"Ma kayn 7ta fichier wla lien f had projet 🤍",
   lblTitle:"Titre *",phTitle:"Smiyat l projet",lblDesc:"Description",phDesc:"Wsef l projet dyalek",lblLink:"Lien",
   lblPrem:"💎 Pack Premium — lil bi3",lblPrice:"Prix *",lblBuy:"Lien d'achat (Gumroad, PayPal, Etsy...)",lblFiles:"Images / PDF",
@@ -804,7 +817,7 @@ const I18N={
   visit:"Visiter le lien →",voirLive:"▶ Voir Live",logosMeta:"logos",elemsMeta:"éléments · PNG HD",
   dlPng:"Télécharger PNG",openTab:"7ell f onglet jdid",openPdf:'📄 7ell "{n}" f onglet jdid',del:"Supprimer",openLink:"Ouvrir le lien",
   clickPack:"Klik bach tshof le pack",clickLive:"Klik bach tshof la page khdama",clickProj:"Klik bach t7ell l projet"},
- en:{contactH:"Contact",contactP:"Got a project in mind? Let's talk.",footer:"© 2025 — AREEJ",
+ en:{prT:"\ud83d\udc9c Books Pricing",prOne:"1 Book",prTri:"3 Books",prAll:"Full 25-Book Collection",prBest:"\u2b50 Best deal",prFree:"\ud83c\udf81 Ocean Notebook \u2014 FREE to try the quality!",prBuy:"Order",prDig:"Digital PDF \u00b7 cover + 7 pages",contactH:"Contact",contactP:"Got a project in mind? Let's talk.",footer:"© 2025 — AREEJ",
   addProj:"＋ Add a new project",emptyFolder:"No projects yet 🤍",emptyProj:"No files or links in this project 🤍",
   lblTitle:"Title *",phTitle:"Project name",lblDesc:"Description",phDesc:"Describe your project",lblLink:"Link",
   lblPrem:"💎 Premium pack — for sale",lblPrice:"Price *",lblBuy:"Purchase link (Gumroad, PayPal, Etsy...)",lblFiles:"Images / PDF",
@@ -817,7 +830,7 @@ const I18N={
   visit:"Visit link →",voirLive:"▶ View Live",logosMeta:"logos",elemsMeta:"elements · PNG HD",
   dlPng:"Download PNG",openTab:"Open in a new tab",openPdf:'📄 Open "{n}" in a new tab',del:"Delete",openLink:"Open link",
   clickPack:"Click to view the pack",clickLive:"Click to view the live page",clickProj:"Click to open the project"},
- ar:{contactH:"تواصل معي",contactP:"لديك مشروع في بالك؟ لنتحدث عنه.",footer:"© 2025 — أريج",
+ ar:{prT:"\ud83d\udc9c أسعار الكتب",prOne:"كتاب واحد",prTri:"3 كتب",prAll:"المجموعة كاملة — 25 كتاباً",prBest:"\u2b50 أفضل عرض",prFree:"\ud83c\udf81 دفتر المحيط — مجاني لتجربة الجودة!",prBuy:"اطلب الآن",prDig:"PDF رقمي · غلاف + 7 صفحات",contactH:"تواصل معي",contactP:"لديك مشروع في بالك؟ لنتحدث عنه.",footer:"© 2025 — أريج",
   addProj:"＋ أضف مشروعاً جديداً",emptyFolder:"لا توجد مشاريع بعد 🤍",emptyProj:"لا ملفات أو روابط في هذا المشروع 🤍",
   lblTitle:"العنوان *",phTitle:"اسم المشروع",lblDesc:"الوصف",phDesc:"صِف مشروعك",lblLink:"الرابط",
   lblPrem:"💎 باقة مميزة — للبيع",lblPrice:"الثمن *",lblBuy:"رابط الشراء (Gumroad, PayPal, Etsy...)",lblFiles:"صور / PDF",
@@ -935,6 +948,7 @@ const folders = [
     img:"images/fur.jpg",
     gradient:"linear-gradient(90deg,#3a2a20,#8a6a4a,#c9772f,#efe3d0)",
     hero:"images/hero-fur.jpg",
+    pricing:true,
     heroCap:"\ud83d\udcda Books Interactifs \u2014 Collection",
     projects:[
       {title:"Ocean Kingdom — Carnet Magique 🐉", desc:"Book 3D interactif — kay-t7ell w kay-tsedd! Cover dragon & ghost, pages à remplir, bulles & méduses animées.", link:"heroes/book-01.html", shot:"heroes/shots/book-01.jpg", url:"areej.studio/ocean-notebook", dEn:"3D interactive book — dragon cover, fillable pages, bubbles.", dAr:"كتاب تفاعلي يفتح ويُغلق — غلاف التنين وصفحات للتعبئة وفقاعات."},
@@ -1366,8 +1380,18 @@ function renderProjects(i){
       ${f.heroCap ? `<span class="folder-hero-cap">${trCap(f.heroCap)}</span>` : ""}
     </div>` : "";
 
+  const BUYB="https://ton-lien-de-paiement.com";
+  const priceHTML = f.pricing ? `
+    <div class="price-strip">
+      <div class="price-title">${T.prT}</div>
+      <div class="price-card"><span class="nm">\ud83d\udcd6 ${T.prOne}</span><b>49 DH</b><span class="dg">${T.prDig}</span><a href="${BUYB}" target="_blank" rel="noopener">${T.prBuy}</a></div>
+      <div class="price-card"><span class="nm">\ud83d\udcda ${T.prTri}</span><b>119 DH</b><span class="dg">\u221220%</span><a href="${BUYB}" target="_blank" rel="noopener">${T.prBuy}</a></div>
+      <div class="price-card best"><span class="badge-best">${T.prBest}</span><span class="nm">\ud83d\udc51 ${T.prAll}</span><b>399 DH</b><span class="dg">${T.prDig} \u00d725</span><a href="${BUYB}" target="_blank" rel="noopener">${T.prBuy}</a></div>
+      <div class="price-free">${T.prFree}</div>
+    </div>` : "";
+
   document.getElementById("modal-projects").innerHTML = `
-    ${heroHTML}
+    ${heroHTML}${priceHTML}
     ${listHTML}
 
     <button class="add-toggle" onclick="toggleForm()">${T.addProj}</button>
