@@ -504,6 +504,14 @@
     padding:6px 14px; border-radius:999px; text-transform:uppercase;
   }
 
+  /* ===== ETSY-STYLE INFO + DOWNLOADS ===== */
+  .dz-block{grid-column:1/-1;background:rgba(255,255,255,.05);border:1px solid rgba(255,140,190,.28);border-radius:12px;padding:12px 18px;color:#ffd9e8;font-size:13px;text-align:start;line-height:1.75}
+  .dz-block .dz-by{font-weight:800;font-size:14px}
+  .dz-block .dz-by a{color:#ff9ec7;text-decoration:underline}
+  .dz-block ul{margin:4px 0 0;padding-inline-start:20px}
+  .dl-row{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap}
+  .dl-row a{background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.5);color:#ffd98a;font-size:11.5px;padding:4px 11px;border-radius:14px;text-decoration:none;font-weight:700;transition:.25s}
+  .dl-row a:hover{background:rgba(212,175,55,.32);transform:translateY(-1px)}
   /* ===== PRICING (books) ===== */
   .price-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 18px}
   .price-title{grid-column:1/-1;text-align:center;font-weight:800;font-size:17px;color:#ff9ec7;letter-spacing:.5px}
@@ -804,7 +812,7 @@
 
 /* ================= I18N — AR / FR / EN ================= */
 const I18N={
- fr:{prT:"\ud83d\udc9c Tarifs des Books",prOne:"1 Book",prTri:"3 Books",prAll:"Collection 25 Books",prBest:"\u2b50 Meilleure offre",prFree:"\ud83c\udf81 Ocean Notebook \u2014 GRATUIT pour tester la qualit\u00e9 !",prBuy:"Commander",prDig:"PDF digital \u00b7 cover + 7 pages",contactH:"Contact",contactP:"Un projet en tête ? Parlons-en.",footer:"© 2025 — AREEJ",
+ fr:{prT:"\ud83d\udc9c Tarifs des Books",prOne:"1 Book",prTri:"3 Books",prAll:"Collection 25 Books",prBest:"\u2b50 Meilleure offre",prFree:"\ud83c\udf81 Ocean Notebook \u2014 GRATUIT pour tester la qualit\u00e9 !",prBuy:"Commander",prDig:"PDF digital \u00b7 cover + 7 pages",dzBy:"Designed by",dz1:"D\u00e9cor & carnets pour f\u00eates et c\u00e9l\u00e9brations",dz2:"T\u00e9l\u00e9chargement digital instantan\u00e9",dz3:"Type de fichiers : 2 PDF (digital + imprimable)",dlDig:"PDF Digital",dlPrn:"PDF \u00e0 imprimer",contactH:"Contact",contactP:"Un projet en tête ? Parlons-en.",footer:"© 2025 — AREEJ",
   addProj:"＋ Zid projet jdid",emptyFolder:"Ma kayn 7ta projet db 🤍",emptyProj:"Ma kayn 7ta fichier wla lien f had projet 🤍",
   lblTitle:"Titre *",phTitle:"Smiyat l projet",lblDesc:"Description",phDesc:"Wsef l projet dyalek",lblLink:"Lien",
   lblPrem:"💎 Pack Premium — lil bi3",lblPrice:"Prix *",lblBuy:"Lien d'achat (Gumroad, PayPal, Etsy...)",lblFiles:"Images / PDF",
@@ -817,7 +825,7 @@ const I18N={
   visit:"Visiter le lien →",voirLive:"▶ Voir Live",logosMeta:"logos",elemsMeta:"éléments · PNG HD",
   dlPng:"Télécharger PNG",openTab:"7ell f onglet jdid",openPdf:'📄 7ell "{n}" f onglet jdid',del:"Supprimer",openLink:"Ouvrir le lien",
   clickPack:"Klik bach tshof le pack",clickLive:"Klik bach tshof la page khdama",clickProj:"Klik bach t7ell l projet"},
- en:{prT:"\ud83d\udc9c Books Pricing",prOne:"1 Book",prTri:"3 Books",prAll:"Full 25-Book Collection",prBest:"\u2b50 Best deal",prFree:"\ud83c\udf81 Ocean Notebook \u2014 FREE to try the quality!",prBuy:"Order",prDig:"Digital PDF \u00b7 cover + 7 pages",contactH:"Contact",contactP:"Got a project in mind? Let's talk.",footer:"© 2025 — AREEJ",
+ en:{prT:"\ud83d\udc9c Books Pricing",prOne:"1 Book",prTri:"3 Books",prAll:"Full 25-Book Collection",prBest:"\u2b50 Best deal",prFree:"\ud83c\udf81 Ocean Notebook \u2014 FREE to try the quality!",prBuy:"Order",prDig:"Digital PDF \u00b7 cover + 7 pages",dzBy:"Designed by",dz1:"Party decor & notebooks for gatherings and celebrations",dz2:"Instant digital download",dz3:"Digital file type(s): 2 PDF (digital + printable)",dlDig:"Digital PDF",dlPrn:"Printable PDF",contactH:"Contact",contactP:"Got a project in mind? Let's talk.",footer:"© 2025 — AREEJ",
   addProj:"＋ Add a new project",emptyFolder:"No projects yet 🤍",emptyProj:"No files or links in this project 🤍",
   lblTitle:"Title *",phTitle:"Project name",lblDesc:"Description",phDesc:"Describe your project",lblLink:"Link",
   lblPrem:"💎 Premium pack — for sale",lblPrice:"Price *",lblBuy:"Purchase link (Gumroad, PayPal, Etsy...)",lblFiles:"Images / PDF",
@@ -830,7 +838,7 @@ const I18N={
   visit:"Visit link →",voirLive:"▶ View Live",logosMeta:"logos",elemsMeta:"elements · PNG HD",
   dlPng:"Download PNG",openTab:"Open in a new tab",openPdf:'📄 Open "{n}" in a new tab',del:"Delete",openLink:"Open link",
   clickPack:"Click to view the pack",clickLive:"Click to view the live page",clickProj:"Click to open the project"},
- ar:{prT:"\ud83d\udc9c أسعار الكتب",prOne:"كتاب واحد",prTri:"3 كتب",prAll:"المجموعة كاملة — 25 كتاباً",prBest:"\u2b50 أفضل عرض",prFree:"\ud83c\udf81 دفتر المحيط — مجاني لتجربة الجودة!",prBuy:"اطلب الآن",prDig:"PDF رقمي · غلاف + 7 صفحات",contactH:"تواصل معي",contactP:"لديك مشروع في بالك؟ لنتحدث عنه.",footer:"© 2025 — أريج",
+ ar:{prT:"\ud83d\udc9c أسعار الكتب",prOne:"كتاب واحد",prTri:"3 كتب",prAll:"المجموعة كاملة — 25 كتاباً",prBest:"\u2b50 أفضل عرض",prFree:"\ud83c\udf81 دفتر المحيط — مجاني لتجربة الجودة!",prBuy:"اطلب الآن",prDig:"PDF رقمي · غلاف + 7 صفحات",dzBy:"صممته",dz1:"ديكور حفلات ودفاتر للتجمعات والاحتفالات",dz2:"تحميل رقمي فوري",dz3:"نوع الملفات: 2 PDF (رقمي + للطباعة)",dlDig:"PDF رقمي",dlPrn:"PDF للطباعة",contactH:"تواصل معي",contactP:"لديك مشروع في بالك؟ لنتحدث عنه.",footer:"© 2025 — أريج",
   addProj:"＋ أضف مشروعاً جديداً",emptyFolder:"لا توجد مشاريع بعد 🤍",emptyProj:"لا ملفات أو روابط في هذا المشروع 🤍",
   lblTitle:"العنوان *",phTitle:"اسم المشروع",lblDesc:"الوصف",phDesc:"صِف مشروعك",lblLink:"الرابط",
   lblPrem:"💎 باقة مميزة — للبيع",lblPrice:"الثمن *",lblBuy:"رابط الشراء (Gumroad, PayPal, Etsy...)",lblFiles:"صور / PDF",
@@ -1336,7 +1344,7 @@ function renderProjects(i){
       </span>
       <img class="live-shot" src="${p.shot}" loading="lazy" alt="">
       <span class="live-body">
-        <span class="live-txt"><h3>${p.title}</h3><p>${trD(p)}</p></span>
+        <span class="live-txt"><h3>${p.title}</h3><p>${trD(p)}</p>${/heroes\/book-\d+\.html/.test(p.link||"")?`<span class="dl-row"><a href="downloads/${(p.link.match(/book-\d+/))[0]}-digital.pdf" download onclick="event.stopPropagation()">\ud83d\udcc4 ${T.dlDig}</a><a href="downloads/${(p.link.match(/book-\d+/))[0]}-print.pdf" download onclick="event.stopPropagation()">\ud83d\udda8\ufe0f ${T.dlPrn}</a></span>`:""}</span>
         <span class="live-btn">${T.voirLive}</span>
       </span>
     </div>` : `
@@ -1388,6 +1396,10 @@ function renderProjects(i){
       <div class="price-card"><span class="nm">\ud83d\udcda ${T.prTri}</span><b>119 DH</b><span class="dg">\u221220%</span><a href="${BUYB}" target="_blank" rel="noopener">${T.prBuy}</a></div>
       <div class="price-card best"><span class="badge-best">${T.prBest}</span><span class="nm">\ud83d\udc51 ${T.prAll}</span><b>399 DH</b><span class="dg">${T.prDig} \u00d725</span><a href="${BUYB}" target="_blank" rel="noopener">${T.prBuy}</a></div>
       <div class="price-free">${T.prFree}</div>
+      <div class="dz-block">
+        <span class="dz-by">\u270d\ufe0f ${T.dzBy} <a href="https://znadi953-commits.github.io/areej-portfolio/" target="_blank" rel="noopener">AREEJ</a></span>
+        <ul><li>${T.dz1}</li><li>${T.dz2}</li><li>${T.dz3}</li></ul>
+      </div>
     </div>` : "";
 
   document.getElementById("modal-projects").innerHTML = `
