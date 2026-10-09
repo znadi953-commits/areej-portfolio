@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Mini Zine — Le Petit Jeu</title>
+<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--pink:#ff2d78;--blue:#2742c8;--paper:#f4ecda}
+body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;font-family:'Gochi Hand',cursive;background:#e8ddc4;overflow-x:hidden;padding:36px 14px;color:var(--blue)}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(rgba(39,66,200,.05) 1.6px,transparent 2px);background-size:14px 14px;pointer-events:none}
+h1{font-size:34px;color:var(--pink);text-shadow:1.5px 1.5px 0 var(--blue);transform:rotate(-1.5deg)}
+.tog{display:flex;gap:10px}
+.tog button{font-family:'Gochi Hand',cursive;font-size:17px;padding:9px 22px;border-radius:30px;border:2.5px solid var(--blue);background:var(--paper);color:var(--blue);cursor:pointer;transform:rotate(-1deg);transition:.25s}
+.tog button.on{background:var(--pink);border-color:var(--pink);color:#fff;transform:rotate(1.5deg) scale(1.06)}
+/* ---------- DEPLIE ---------- */
+.flat{position:relative;background:var(--paper);box-shadow:0 14px 40px rgba(60,40,10,.35);padding:10px;transform:rotate(-1deg)}
+.grid{display:grid;grid-template-columns:repeat(4,150px);grid-template-rows:200px}
+.pan{border:1.8px dashed rgba(39,66,200,.5);position:relative;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;overflow:hidden}
+.top .pan{transform:rotate(180deg)}
+.cut{position:absolute;left:160px;right:160px;top:50%;height:0;border-top:3.5px dashed var(--pink);z-index:4}
+.cut::before{content:'✂️';position:absolute;left:-26px;top:-14px;font-size:22px}
+.num{position:absolute;bottom:4px;right:8px;font-size:13px;opacity:.55}
+.bigstar{font-size:54px;color:var(--blue);filter:drop-shadow(2px 2px 0 rgba(255,45,120,.5));animation:wob 3s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.bub{background:var(--pink);color:#fff;border-radius:50%;padding:14px 16px;font-size:16px;line-height:1.1;transform:rotate(-5deg);box-shadow:2px 2px 0 var(--blue)}
+.bub.b{background:var(--blue);box-shadow:2px 2px 0 var(--pink)}
+.tag{font-size:12.5px;opacity:.75}
+.ttl{font-size:21px;color:var(--pink);line-height:1}
+.doo{font-size:15px;line-height:1.25}
+.case{border:2px solid var(--pink);border-radius:8px;padding:3px 8px;font-size:13.5px;transform:rotate(-2deg);background:#fff6}
+.case.b{border-color:var(--blue);transform:rotate(2deg)}
+.arr{font-size:19px;color:var(--pink)}
+.frame{border:2.5px solid var(--blue);width:86%;height:66px;border-radius:5px;background:#fff8;display:flex;align-items:center;justify-content:center;font-size:12.5px;opacity:.85;transform:rotate(1.5deg)}
+.web{font-size:40px;filter:saturate(.4)}
+.chk{display:flex;align-items:center;gap:7px;font-size:17px}
+.chk input{width:16px;height:16px;accent-color:var(--pink)}
+.scrib{position:absolute;font-size:17px;opacity:.5}
+/* ---------- PLIE (booklet) ---------- */
+.scene{perspective:1800px;display:none}
+.zbook{position:relative;width:230px;height:316px;transform-style:preserve-3d;transition:transform .9s}
+.zbook.open{transform:translateX(115px)}
+.zsheet{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:left center;transition:transform 1s cubic-bezier(.35,.1,.25,1);cursor:pointer}
+.zsheet.flipped{transform:rotateY(-180deg)}
+.zface{position:absolute;inset:0;backface-visibility:hidden;background:var(--paper);border:1.5px solid rgba(39,66,200,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px;text-align:center;box-shadow:0 10px 26px rgba(60,40,10,.35);overflow:hidden}
+.zface.back{transform:rotateY(180deg)}
+.hint{font-size:15px;opacity:.8;text-align:center}
+.steps{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;max-width:740px}
+.step{background:var(--paper);border:2px dashed var(--blue);border-radius:12px;padding:10px 14px;width:165px;text-align:center;font-size:13.5px;transform:rotate(-1deg)}
+.step:nth-child(even){transform:rotate(1.2deg);border-color:var(--pink)}
+.step .ic{font-size:26px;display:block;margin-bottom:4px}
+@media(max-width:680px){.grid{grid-template-columns:repeat(4,22vw);grid-template-rows:29vw}.cut{left:22vw;right:22vw}}
+</style></head><body>
+<h1>★ LE PETIT JEU — mini zine ★</h1>
+<div class="tog">
+ <button id="bFlat" class="on">📄 Déplié (war9a)</button>
+ <button id="bBook">📖 Plié (ktiyeb)</button>
+</div>
+
+<div class="flat" id="flat">
+ <div class="cut"></div>
+ <div class="grid top">
+  <div class="pan"><div class="ttl">C'EST<br>SIN-TÉRESSÉ!</div><div class="doo">✶ ✷ ✶</div><span class="scrib" style="top:6px;left:8px">~~~</span><span class="num">5</span></div>
+  <div class="pan"><div class="case">☕ PAUSE — saute 1 tour</div><div class="arr">↷</div><div class="case b">🎲 rejoue!</div><span class="num">4</span></div>
+  <div class="pan"><div class="case b">DÉPART ➜</div><div class="arr">⇣</div><div class="case">avance de 2 ➜➜</div><span class="num">3</span></div>
+  <div class="pan"><div class="bub b" style="font-size:13.5px">RÈGLES:<br>never lose<br>ton sourire 😁</div><span class="num">2</span></div>
+ </div>
+ <div class="grid">
+  <div class="pan"><div class="ttl" style="color:var(--blue)">BONUS ✦</div><div class="frame">dessine ton humeur hna 🖍️</div><span class="num">6</span></div>
+  <div class="pan"><div class="web">🕸️</div><div class="bub" style="font-size:15px">PERDI!!</div><div class="doo">GAME OVER…</div><span class="num">7</span></div>
+  <div class="pan"><div class="ttl" style="font-size:17px">PLAY AGAIN?</div><div class="chk"><input type="checkbox">YES</div><div class="chk"><input type="checkbox">ONO 😜</div><span class="num">8</span></div>
+  <div class="pan"><div class="bigstar">✶</div><div class="bub">PLAY ▷</div><div class="tag">@areej.studio</div><span class="num">1 (front)</span></div>
+ </div>
+</div>
+
+<div class="scene" id="scene"><div class="zbook" id="zbook">
+ <div class="zsheet"><div class="zface"><div class="bigstar">✶</div><div class="bub">PLAY ▷</div><div class="tag">@areej.studio</div><div class="num">1</div></div>
+  <div class="zface back"><div class="bub b" style="font-size:14px">RÈGLES:<br>never lose<br>ton sourire 😁</div><div class="num">2</div></div></div>
+ <div class="zsheet"><div class="zface"><div class="case b">DÉPART ➜</div><div class="arr">⇣</div><div class="case">avance de 2 ➜➜</div><div class="num">3</div></div>
+  <div class="zface back"><div class="case">☕ PAUSE — saute 1 tour</div><div class="arr">↷</div><div class="case b">🎲 rejoue!</div><div class="num">4</div></div></div>
+ <div class="zsheet"><div class="zface"><div class="ttl">C'EST<br>SIN-TÉRESSÉ!</div><div class="doo">✶ ✷ ✶</div><div class="num">5</div></div>
+  <div class="zface back"><div class="ttl" style="color:var(--blue)">BONUS ✦</div><div class="frame">dessine ton humeur 🖍️</div><div class="num">6</div></div></div>
+ <div class="zsheet"><div class="zface"><div class="web">🕸️</div><div class="bub" style="font-size:15px">PERDI!!</div><div class="doo">GAME OVER…</div><div class="num">7</div></div>
+  <div class="zface back"><div class="ttl" style="font-size:17px">PLAY AGAIN?</div><div class="chk"><input type="checkbox">YES</div><div class="chk"><input type="checkbox">ONO 😜</div><div class="num">8</div></div></div>
+</div></div>
+
+<div class="hint" id="hint">✂️ Had l war9a kat-tplia 3la 8 → ktiyeb! Kbsi « Plié » bash tshofi l ktiyeb kay-t9elleb 📖</div>
+<div class="steps">
+ <div class="step"><span class="ic">📄</span>1. Plie la war9a 3la 8 (3 plis)</div>
+ <div class="step"><span class="ic">✂️</span>2. 9ess f lwest (l khett rose)</div>
+ <div class="step"><span class="ic">🤏</span>3. Dfe3 les deux jnab l dakhel</div>
+ <div class="step"><span class="ic">📖</span>4. Plie → ktiyeb dyal 8 pages!</div>
+</div>
+<script>
+const bF=document.getElementById('bFlat'),bB=document.getElementById('bBook');
+const flat=document.getElementById('flat'),scene=document.getElementById('scene');
+bF.onclick=()=>{bF.classList.add('on');bB.classList.remove('on');flat.style.display='block';scene.style.display='none';};
+bB.onclick=()=>{bB.classList.add('on');bF.classList.remove('on');flat.style.display='none';scene.style.display='block';};
+const sheets=[...document.querySelectorAll('.zsheet')];const zb=document.getElementById('zbook');
+function upd(){const n=sheets.filter(s=>s.classList.contains('flipped')).length;
+ zb.classList.toggle('open',n>0);
+ sheets.forEach((s,i)=>{s.style.zIndex=s.classList.contains('flipped')?10+i:100+sheets.length-i;});}
+sheets.forEach(s=>{s.addEventListener('click',e=>{
+ if(e.target.closest('input'))return;
+ const i=sheets.indexOf(s);
+ if(!s.classList.contains('flipped')){if(i>0&&!sheets[i-1].classList.contains('flipped'))return;}
+ else{if(i<sheets.length-1&&sheets[i+1].classList.contains('flipped'))return;}
+ s.classList.toggle('flipped');upd();});});
+upd();
+</script></body></html>
