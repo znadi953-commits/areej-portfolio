@@ -66,4 +66,24 @@ sheets.forEach(s=>{s.addEventListener('click',e=>{
  s.classList.toggle('flipped');upd();});});
 document.getElementById('seddBtn').addEventListener('click',()=>{sheets.forEach(s=>s.classList.remove('flipped'));upd();});
 upd();
-</script></body></html>
+</script><style>
+/* AUTO-FIT: l book kay tgada m3a ay ecran */
+body{overflow:auto!important;justify-content:flex-start!important;align-items:center;padding:14px 0 26px!important;min-height:100vh}
+h1{margin-top:4px}
+</style>
+<script>
+(function(){var sc=document.querySelector('.scene');if(!sc)return;
+var BW=800,BH=600;
+function fit(){var vw=window.innerWidth,vh=window.innerHeight;
+ var h1=document.querySelector('h1'),hint=document.querySelector('.hint'),btn=document.querySelector('.closebtn');
+ var other=(h1?h1.offsetHeight+22:60)+(hint?hint.offsetHeight+6:40)+(btn?btn.offsetHeight+14:40)+46;
+ var s=Math.min(1,(vw-20)/BW,(vh-other)/BH);
+ if(s<0.3)s=0.3;
+ sc.style.transform='scale('+s+')';
+ sc.style.transformOrigin='top center';
+ sc.style.marginBottom=(-580*(1-s))+'px';}
+window.addEventListener('resize',fit);
+window.addEventListener('orientationchange',fit);
+fit();setTimeout(fit,300);})();
+</script>
+</body></html>

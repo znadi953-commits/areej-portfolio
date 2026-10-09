@@ -69,4 +69,24 @@ document.querySelectorAll('.cal').forEach(el=>{const m=+el.dataset.m;
  for(let x=1;x<=days;x++){h+='<span class="'+(((start+x-1)%7)==6?'su':'')+'">'+x+'</span>';}
  el.innerHTML=h+'</div>';});
 for(let i=0;i<10;i++){const s=document.createElement('span');s.className='pt';s.textContent=['🌸','💗','🐾'][i%3];s.style.left=Math.random()*100+'vw';s.style.fontSize=(13+Math.random()*13)+'px';s.style.animationDuration=(7+Math.random()*8)+'s';s.style.animationDelay=(-Math.random()*10)+'s';document.body.appendChild(s);}
-</script></body></html>
+</script><style>
+/* AUTO-FIT: l book kay tgada m3a ay ecran */
+body{overflow:auto!important;justify-content:flex-start!important;align-items:center;padding:14px 0 26px!important;min-height:100vh}
+h1{margin-top:4px}
+</style>
+<script>
+(function(){var sc=document.querySelector('.scene');if(!sc)return;
+var BW=800,BH=600;
+function fit(){var vw=window.innerWidth,vh=window.innerHeight;
+ var h1=document.querySelector('h1'),hint=document.querySelector('.hint'),btn=document.querySelector('.closebtn');
+ var other=(h1?h1.offsetHeight+22:60)+(hint?hint.offsetHeight+6:40)+(btn?btn.offsetHeight+14:40)+46;
+ var s=Math.min(1,(vw-20)/BW,(vh-other)/BH);
+ if(s<0.3)s=0.3;
+ sc.style.transform='scale('+s+')';
+ sc.style.transformOrigin='top center';
+ sc.style.marginBottom=(-580*(1-s))+'px';}
+window.addEventListener('resize',fit);
+window.addEventListener('orientationchange',fit);
+fit();setTimeout(fit,300);})();
+</script>
+</body></html>
