@@ -719,10 +719,23 @@
     font-size:14px; color:#555;
     position:relative; z-index:2;
   }
+
+  /* ===== LANG SWITCHER ===== */
+  .lang-sw{position:fixed;top:14px;right:14px;z-index:3000;display:flex;gap:4px;background:rgba(20,8,12,.6);backdrop-filter:blur(8px);padding:5px;border-radius:30px;border:1px solid rgba(212,175,55,.55);box-shadow:0 4px 18px rgba(0,0,0,.4)}
+  .lang-sw button{border:0;background:transparent;color:#e8d9b0;font-size:13px;font-weight:700;padding:6px 13px;border-radius:20px;cursor:pointer;letter-spacing:1px;font-family:inherit;transition:.25s}
+  .lang-sw button.on{background:linear-gradient(135deg,#d4af37,#9a7b1e);color:#1c0f14}
+  html[dir=rtl] .lang-sw{right:auto;left:14px}
+  html[dir=rtl] .live-txt,html[dir=rtl] .pack-info,html[dir=rtl] .view-desc,html[dir=rtl] .project h3,html[dir=rtl] .project p,html[dir=rtl] .contact p,html[dir=rtl] .add-form label{text-align:right;direction:rtl}
+  html[dir=rtl] .view-title{direction:rtl}
 </style>
 </head>
 
 <body>
+<div class="lang-sw" id="langSw">
+  <button data-l="ar" onclick="setLang('ar')">ع</button>
+  <button data-l="fr" onclick="setLang('fr')" class="on">FR</button>
+  <button data-l="en" onclick="setLang('en')">EN</button>
+</div>
 
 <header>
   <h1 class="sr-only">Portfolio by AREEJ</h1>
@@ -738,8 +751,8 @@
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <h2>Contact</h2>
-  <p>Un projet en tête ? Parlons-en.</p>
+  <h2 id="cH">Contact</h2>
+  <p id="cP">Un projet en tête ? Parlons-en.</p>
   <div class="socials">
     <a href="mailto:ton@email.com" class="social">
       <img src="images/ico-email.png" alt="Email">
@@ -756,7 +769,7 @@
   </div>
 </section>
 
-<footer>© 2025 — AREEJ</footer>
+<footer id="ftr">© 2025 — AREEJ</footer>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
@@ -775,6 +788,66 @@
    gradient : lon dyal fallback
    projects : lista dyal projets dyal had folder
 ================================================= */
+
+/* ================= I18N — AR / FR / EN ================= */
+const I18N={
+ fr:{contactH:"Contact",contactP:"Un projet en tête ? Parlons-en.",footer:"© 2025 — AREEJ",
+  addProj:"＋ Zid projet jdid",emptyFolder:"Ma kayn 7ta projet db 🤍",emptyProj:"Ma kayn 7ta fichier wla lien f had projet 🤍",
+  lblTitle:"Titre *",phTitle:"Smiyat l projet",lblDesc:"Description",phDesc:"Wsef l projet dyalek",lblLink:"Lien",
+  lblPrem:"💎 Pack Premium — lil bi3",lblPrice:"Prix *",lblBuy:"Lien d'achat (Gumroad, PayPal, Etsy...)",lblFiles:"Images / PDF",
+  drop:"🖼 📄 Klik hna wla jbed fichiers (PNG · JPG · PDF — max {m} MB)",save:"Sauvegarder ✓",saving:"Sauvegarde…",cancel:"Annuler",
+  errType:"⚠️ Ghir PNG / JPG / WEBP / GIF / PDF msmou7in",errBig:'⚠️ "{n}" kbir bzaf (max {m} MB)',
+  errSave:"⚠️ Ma qdertsh nsauvegardi les fichiers (navigateur ma kay-supportish). L projet ghadi ytsjel bla fichiers.",
+  back:"← Rja3 l lista",buyNow:"👑 Acheter maintenant",packPrice:"Prix du pack",price:"Prix",
+  freeNote:"⬇️ Had les logos <b>FREE</b> — klik 3la ay wa7d bach t-téléchargih PNG bla khalfiya!",
+  extNote:"🔒 L'achat kay-dowz 3ber lien externe sécurisé — 3tini le lien dyalek (Gumroad, PayPal, Etsy...) bach nbedlo blast le lien d'exemple.",
+  visit:"Visiter le lien →",voirLive:"▶ Voir Live",logosMeta:"logos",elemsMeta:"éléments · PNG HD",
+  dlPng:"Télécharger PNG",openTab:"7ell f onglet jdid",openPdf:'📄 7ell "{n}" f onglet jdid',del:"Supprimer",openLink:"Ouvrir le lien",
+  clickPack:"Klik bach tshof le pack",clickLive:"Klik bach tshof la page khdama",clickProj:"Klik bach t7ell l projet"},
+ en:{contactH:"Contact",contactP:"Got a project in mind? Let's talk.",footer:"© 2025 — AREEJ",
+  addProj:"＋ Add a new project",emptyFolder:"No projects yet 🤍",emptyProj:"No files or links in this project 🤍",
+  lblTitle:"Title *",phTitle:"Project name",lblDesc:"Description",phDesc:"Describe your project",lblLink:"Link",
+  lblPrem:"💎 Premium pack — for sale",lblPrice:"Price *",lblBuy:"Purchase link (Gumroad, PayPal, Etsy...)",lblFiles:"Images / PDF",
+  drop:"🖼 📄 Click here or drop files (PNG · JPG · PDF — max {m} MB)",save:"Save ✓",saving:"Saving…",cancel:"Cancel",
+  errType:"⚠️ Only PNG / JPG / WEBP / GIF / PDF allowed",errBig:'⚠️ "{n}" is too big (max {m} MB)',
+  errSave:"⚠️ Could not save the files (browser not supported). The project will be saved without files.",
+  back:"← Back to list",buyNow:"👑 Buy now",packPrice:"Pack price",price:"Price",
+  freeNote:"⬇️ These logos are <b>FREE</b> — click any logo to download it as transparent PNG!",
+  extNote:"🔒 Purchase goes through a secure external link — send me your link (Gumroad, PayPal, Etsy...) to replace the sample one.",
+  visit:"Visit link →",voirLive:"▶ View Live",logosMeta:"logos",elemsMeta:"elements · PNG HD",
+  dlPng:"Download PNG",openTab:"Open in a new tab",openPdf:'📄 Open "{n}" in a new tab',del:"Delete",openLink:"Open link",
+  clickPack:"Click to view the pack",clickLive:"Click to view the live page",clickProj:"Click to open the project"},
+ ar:{contactH:"تواصل معي",contactP:"لديك مشروع في بالك؟ لنتحدث عنه.",footer:"© 2025 — أريج",
+  addProj:"＋ أضف مشروعاً جديداً",emptyFolder:"لا توجد مشاريع بعد 🤍",emptyProj:"لا ملفات أو روابط في هذا المشروع 🤍",
+  lblTitle:"العنوان *",phTitle:"اسم المشروع",lblDesc:"الوصف",phDesc:"صِف مشروعك",lblLink:"الرابط",
+  lblPrem:"💎 باقة مميزة — للبيع",lblPrice:"الثمن *",lblBuy:"رابط الشراء (Gumroad, PayPal, Etsy...)",lblFiles:"صور / PDF",
+  drop:"🖼 📄 انقر هنا أو اسحب الملفات (PNG · JPG · PDF — الحد الأقصى {m} MB)",save:"حفظ ✓",saving:"جارٍ الحفظ…",cancel:"إلغاء",
+  errType:"⚠️ يُسمح فقط بـ PNG / JPG / WEBP / GIF / PDF",errBig:'⚠️ "{n}" كبير جداً (الحد الأقصى {m} MB)',
+  errSave:"⚠️ تعذّر حفظ الملفات (المتصفح لا يدعم). سيُسجَّل المشروع بدون ملفات.",
+  back:"→ الرجوع إلى القائمة",buyNow:"👑 اشترِ الآن",packPrice:"ثمن الباقة",price:"الثمن",
+  freeNote:"⬇️ هذه الشعارات <b>مجانية</b> — انقر على أي شعار لتحميله PNG بدون خلفية!",
+  extNote:"🔒 يتم الشراء عبر رابط خارجي آمن — أرسلي لي رابطك (Gumroad, PayPal, Etsy...) لاستبدال الرابط التجريبي.",
+  visit:"زيارة الرابط ←",voirLive:"▶ شاهد مباشرة",logosMeta:"شعارات",elemsMeta:"عناصر · PNG HD",
+  dlPng:"تحميل PNG",openTab:"افتح في تبويب جديد",openPdf:'📄 افتح "{n}" في تبويب جديد',del:"حذف",openLink:"فتح الرابط",
+  clickPack:"انقر لرؤية الباقة",clickLive:"انقر لرؤية الصفحة مباشرة",clickProj:"انقر لفتح المشروع"}
+};
+const CAPT={
+ en:{"✨ Hero Section — Lucky Girl":"✨ Hero Sections — Lucky Girl","💻 Dashboards — UI Collection":"💻 Dashboards — UI Collection","📚 Books Interactifs — Collection":"📚 Interactive Books — Collection","🎨 Art & Branding — Collection":"🎨 Art & Branding — Collection","🎆 Events & Celebration — Collection":"🎆 Events & Celebration — Collection"},
+ ar:{"✨ Hero Section — Lucky Girl":"✨ واجهات رئيسية — لاكي غيرل","💻 Dashboards — UI Collection":"💻 لوحات تحكم — مجموعة واجهات","📚 Books Interactifs — Collection":"📚 كتب تفاعلية — المجموعة","🎨 Art & Branding — Collection":"🎨 فن وهوية بصرية — المجموعة","🎆 Events & Celebration — Collection":"🎆 مناسبات واحتفالات — المجموعة"}
+};
+let cur=localStorage.getItem("lang")||"fr";
+let T=I18N[cur];
+function trCap(c){return (CAPT[cur]&&CAPT[cur][c])||c;}
+function trD(p){return cur==="en"?(p.dEn||p.desc):cur==="ar"?(p.dAr||p.desc):p.desc;}
+function setLang(l){cur=l;T=I18N[l];localStorage.setItem("lang",l);
+ document.documentElement.lang=l;document.documentElement.dir=(l==="ar")?"rtl":"ltr";
+ document.querySelectorAll("#langSw button").forEach(b=>b.classList.toggle("on",b.dataset.l===l));
+ const cH=document.getElementById("cH"),cP=document.getElementById("cP"),ft=document.getElementById("ftr");
+ if(cH)cH.textContent=T.contactH;if(cP)cP.textContent=T.contactP;if(ft)ft.textContent=T.footer;
+ const m=document.getElementById("modal");
+ if(m&&m.classList.contains("open")&&window.curOpen>=0)renderProjects(window.curOpen);
+}
+
 const folders = [
   {
     name:"Leopard",
@@ -806,30 +879,30 @@ const folders = [
     hero:"images/hero-lucky.jpg",
     heroCap:"\u2728 Hero Section \u2014 Lucky Girl",
     projects:[
-      {title:"VELVET DROP \u2014 Poster Streetwear \ud83e\udde5", desc:"Hero style affiche grunge \u2014 doudoune lavande, typo brush g\u00e9ante, grain cin\u00e9ma. Klik bach tshofha khdama!", link:"heroes/hero-01.html", shot:"heroes/shots/shot-01.jpg", url:"areej.studio/velvet-drop"},
-      {title:"BUILD FUTURE \u2014 Robot Tech \ud83e\udd16", desc:"Hero agence tech \u2014 typo noire g\u00e9ante, robot 3D, chips flottants anim\u00e9s.", link:"heroes/hero-02.html", shot:"heroes/shots/shot-02.jpg", url:"areej.studio/build-future"},
-      {title:"COMFORT & STYLE U7 \u2014 Fashion Dark \ud83d\udd76\ufe0f", desc:"Hero e-commerce luxe sombre \u2014 lunettes futuristes, serif italique, thumbnails.", link:"heroes/hero-03.html", shot:"heroes/shots/shot-03.jpg", url:"areej.studio/comfort-style-u7"},
-      {title:"EMERGE \u2014 Next Begins Here \u26ab", desc:"Hero techwear noir \u2014 cartes arrondies bidat, typo Orbitron, casque futuriste.", link:"heroes/hero-04.html", shot:"heroes/shots/shot-04.jpg", url:"areej.studio/emerge"},
-      {title:"Aura Store \u2014 Minimal Cream \ud83e\udd0d", desc:"Hero e-commerce minimaliste \u2014 titre split, carte produit b ombre dure, style mono.", link:"heroes/hero-05.html", shot:"heroes/shots/shot-05.jpg", url:"areej.studio/aura-store"},
-      {title:"FREAK BUTIK \u2014 White E-commerce \ud83d\udd77\ufe0f", desc:"Hero boutique bida n9iya \u2014 mannequin latex, nav fine, catalogue thumbnails.", link:"heroes/hero-06.html", shot:"heroes/shots/shot-06.jpg", url:"areej.studio/freak-butik"},
-      {title:"LUMINESCENT Town \u2014 Artwork \ud83c\udf38", desc:"Hero portfolio artistique \u2014 typo bubble + script rose, palette, grille d'images.", link:"heroes/hero-07.html", shot:"heroes/shots/shot-07.jpg", url:"areej.studio/luminescent-town"},
-      {title:"Heart Blooms \u2014 Cardiac App \ud83e\ude77", desc:"Hero app m\u00e9dicale \u2014 c\u0153ur 3D iridescent, widgets glassmorphism flottants anim\u00e9s.", link:"heroes/hero-08.html", shot:"heroes/shots/shot-08.jpg", url:"areej.studio/heart-blooms"},
-      {title:"Street Ballers \u2014 Sport App \ud83c\udfc0", desc:"Hero app sportive \u2014 basketball cr\u00e8me, carte \u00e9v\u00e9nement mobile, style japonais minimal.", link:"heroes/hero-09.html", shot:"heroes/shots/shot-09.jpg", url:"areej.studio/street-ballers"},
-      {title:"Matcha Fusion \u2014 Caf\u00e9 Produit \ud83c\udf75", desc:"Hero page produit \u2014 boisson matcha, blobs verts organiques, ADD TO CART.", link:"heroes/hero-10.html", shot:"heroes/shots/shot-10.jpg", url:"areej.studio/matcha-fusion"},
-      {title:"MOONLITE \u2014 Glassmorphism \ud83e\ude90", desc:"Hero studio web-design \u2014 carte en verre flottante, titre chrome, sph\u00e8res roses 3D.", link:"heroes/hero-11.html", shot:"heroes/shots/shot-11.jpg", url:"areej.studio/moonlite"},
-      {title:"GLOBAL \u2014 Model Agency \ud83d\udc83", desc:"Hero agence de mannequins \u2014 split layout sombre, serif \u00e9l\u00e9gant, portrait \u00e9ditorial.", link:"heroes/hero-12.html", shot:"heroes/shots/shot-12.jpg", url:"areej.studio/global-models"},
-      {title:"NEONIX \u2014 Tech Crimson \ud83d\udc8e", desc:"Hero tech cramoisi \u2014 visi\u00e8re rose futuriste, typo Michroma, barre trailer + missions.", link:"heroes/hero-13.html", shot:"heroes/shots/shot-13.jpg", url:"areej.studio/neonix"},
-      {title:"RETROLITE \u2014 Get The Pug \ud83d\udc36", desc:"Hero dark UI \u2014 bouledogue f sac rouge, typo letterspaced, carte Our Residents.", link:"heroes/hero-14.html", shot:"heroes/shots/shot-14.jpg", url:"areej.studio/retrolite-pug"},
-      {title:"PHOENIX Livery \u2014 Car Wrap \ud83d\udd25", desc:"Hero studio livery \u2014 phoenix orange 3la coup\u00e9 blanc, \u00e9tincelles kay-tiro, marquee anim\u00e9.", link:"heroes/hero-15.html", shot:"heroes/shots/shot-15.jpg", url:"areej.studio/phoenix-livery"},
-      {title:"TOKYO DRIFT \u2014 Poster JDM \ud83c\udfce\ufe0f", desc:"Hero poster journal \u2014 2 marquees g\u00e9ants kay-mshiw f sens m3akssin, drift car rose chrome, lens flare.", link:"heroes/hero-16.html", shot:"heroes/shots/shot-16.jpg", url:"areej.studio/tokyo-drift"},
-      {title:"CASH KINGS \u2014 Art Print \ud83d\udcb0", desc:"Hero billet 100 \u2014 cadre or, lapin gangsta original, des billets kay-tiy7o, titre or shimmer.", link:"heroes/hero-17.html", shot:"heroes/shots/shot-17.jpg", url:"areej.studio/cash-kings"},
-      {title:"DRAGON SAKURA \u2014 Car Wrap \ud83c\udf38", desc:"Hero livery claire \u2014 dragon japonais + sakura, p\u00e9tales kay-tiy7o, watermark g\u00e9ant.", link:"heroes/hero-18.html", shot:"heroes/shots/shot-18.jpg", url:"areej.studio/dragon-sakura"},
-      {title:"CLARITY \u2014 Poster Graffiti \ud83c\udfa8", desc:"Hero poster \u2014 titre graffiti rose, figure 3D chrome, 2 anneaux de texte CLARITY kay-doro live.", link:"heroes/hero-19.html", shot:"heroes/shots/shot-19.jpg", url:"areej.studio/clarity"},
-      {title:"ARTVERSE \u2014 Owl \u21167 \ud83e\udd89", desc:"Hero artwork \u2014 hibou d\u00e9taill\u00e9, annotations techniques kay-banu wa7da b wa7da + effet glitch.", link:"heroes/hero-20.html", shot:"heroes/shots/shot-20.jpg", url:"areej.studio/artverse-owl"},
-      {title:"HEADSHOT KITTY \u2014 Sticker Bomb \ud83d\udc31", desc:"Hero pop comic \u2014 rayons kay-doro, chat kawaii original kay-n9ez, POW! MEOW! kay-pulsiw.", link:"heroes/hero-21.html", shot:"heroes/shots/shot-21.jpg", url:"areej.studio/headshot-kitty"},
-      {title:"WINTER JACKET \u2014 E-commerce \ud83e\udde5", desc:"Hero produit taupe \u2014 doudoune noire kat-floati b glow, typo g\u00e9ante derriha, tailles M L XL, Buy Now pulsant.", link:"heroes/hero-22.html", shot:"heroes/shots/shot-22.jpg", url:"areej.studio/winter-jacket"},
-      {title:"AREEJ WEAR \u2014 Hoodie Drop 3D \ud83e\udde5", desc:"Hero drop noir \u2014 3 hoodies 3D kay-floatiw kol wa7d bou7do, logo chrome, \u00e9toiles kay-wmdo.", link:"heroes/hero-23.html", shot:"heroes/shots/shot-23.jpg", url:"areej.studio/hoodie-drop"},
-      {title:"Sofa Blob \u2014 Furniture App \ud83d\udecb\ufe0f", desc:"Hero app meubles \u2014 blob violet kay-tbeddel chakl, sofa d\u00e9tour\u00e9e, boules 3D kay-tiro, liste storehouse animée.", link:"heroes/hero-24.html", shot:"heroes/shots/shot-24.jpg", url:"areej.studio/sofa-blob"}
+      {title:"VELVET DROP \u2014 Poster Streetwear \ud83e\udde5", desc:"Hero style affiche grunge \u2014 doudoune lavande, typo brush g\u00e9ante, grain cin\u00e9ma. Klik bach tshofha khdama!", link:"heroes/hero-01.html", shot:"heroes/shots/shot-01.jpg", url:"areej.studio/velvet-drop", dEn:"Velvet Drop — luxury e-shop hero with smooth modern animations.", dAr:"فيلفيت دروب — واجهة متجر فاخرة بحركات عصرية ناعمة."},
+      {title:"BUILD FUTURE \u2014 Robot Tech \ud83e\udd16", desc:"Hero agence tech \u2014 typo noire g\u00e9ante, robot 3D, chips flottants anim\u00e9s.", link:"heroes/hero-02.html", shot:"heroes/shots/shot-02.jpg", url:"areej.studio/build-future", dEn:"Construction landing — bold typography and animated stats.", dAr:"صفحة شركة بناء — خطوط قوية وإحصاءات متحركة."},
+      {title:"COMFORT & STYLE U7 \u2014 Fashion Dark \ud83d\udd76\ufe0f", desc:"Hero e-commerce luxe sombre \u2014 lunettes futuristes, serif italique, thumbnails.", link:"heroes/hero-03.html", shot:"heroes/shots/shot-03.jpg", url:"areej.studio/comfort-style-u7", dEn:"U7 sofa store hero — cozy design with animated showcase.", dAr:"واجهة متجر أرائك U7 — تصميم مريح وعرض متحرك."},
+      {title:"EMERGE \u2014 Next Begins Here \u26ab", desc:"Hero techwear noir \u2014 cartes arrondies bidat, typo Orbitron, casque futuriste.", link:"heroes/hero-04.html", shot:"heroes/shots/shot-04.jpg", url:"areej.studio/emerge", dEn:"EMERGE — dark fashion hero with reveal animations.", dAr:"إيمرج — واجهة أزياء داكنة بظهور متحرك أنيق."},
+      {title:"Aura Store \u2014 Minimal Cream \ud83e\udd0d", desc:"Hero e-commerce minimaliste \u2014 titre split, carte produit b ombre dure, style mono.", link:"heroes/hero-05.html", shot:"heroes/shots/shot-05.jpg", url:"areej.studio/aura-store", dEn:"Aura Store — clean shop hero with floating product.", dAr:"متجر أورا — واجهة نظيفة بمنتج عائم متحرك."},
+      {title:"FREAK BUTIK \u2014 White E-commerce \ud83d\udd77\ufe0f", desc:"Hero boutique bida n9iya \u2014 mannequin latex, nav fine, catalogue thumbnails.", link:"heroes/hero-06.html", shot:"heroes/shots/shot-06.jpg", url:"areej.studio/freak-butik", dEn:"Freak Butik — bold streetwear hero with playful motion.", dAr:"فريك بوتيك — واجهة ملابس جريئة وحركة مرحة."},
+      {title:"LUMINESCENT Town \u2014 Artwork \ud83c\udf38", desc:"Hero portfolio artistique \u2014 typo bubble + script rose, palette, grille d'images.", link:"heroes/hero-07.html", shot:"heroes/shots/shot-07.jpg", url:"areej.studio/luminescent-town", dEn:"Glowing night town hero with neon lights and motion.", dAr:"مدينة ليلية متوهجة بأضواء نيون وحركات ساحرة."},
+      {title:"Heart Blooms \u2014 Cardiac App \ud83e\ude77", desc:"Hero app m\u00e9dicale \u2014 c\u0153ur 3D iridescent, widgets glassmorphism flottants anim\u00e9s.", link:"heroes/hero-08.html", shot:"heroes/shots/shot-08.jpg", url:"areej.studio/heart-blooms", dEn:"Heart Blooms — romantic floral hero animation.", dAr:"قلوب متفتحة — واجهة رومانسية بأزهار متحركة."},
+      {title:"Street Ballers \u2014 Sport App \ud83c\udfc0", desc:"Hero app sportive \u2014 basketball cr\u00e8me, carte \u00e9v\u00e9nement mobile, style japonais minimal.", link:"heroes/hero-09.html", shot:"heroes/shots/shot-09.jpg", url:"areej.studio/street-ballers", dEn:"Street Ballers — urban sport hero with dynamic moves.", dAr:"ستريت بولرز — واجهة رياضية حضرية ديناميكية."},
+      {title:"Matcha Fusion \u2014 Caf\u00e9 Produit \ud83c\udf75", desc:"Hero page produit \u2014 boisson matcha, blobs verts organiques, ADD TO CART.", link:"heroes/hero-10.html", shot:"heroes/shots/shot-10.jpg", url:"areej.studio/matcha-fusion", dEn:"Matcha café hero — fresh green with smooth animations.", dAr:"مقهى ماتشا — أخضر منعش وحركات سلسة."},
+      {title:"MOONLITE \u2014 Glassmorphism \ud83e\ude90", desc:"Hero studio web-design \u2014 carte en verre flottante, titre chrome, sph\u00e8res roses 3D.", link:"heroes/hero-11.html", shot:"heroes/shots/shot-11.jpg", url:"areej.studio/moonlite", dEn:"Moonlite — dreamy dark hero with moon glow.", dAr:"مونلايت — واجهة حالمة داكنة بوهج القمر."},
+      {title:"GLOBAL \u2014 Model Agency \ud83d\udc83", desc:"Hero agence de mannequins \u2014 split layout sombre, serif \u00e9l\u00e9gant, portrait \u00e9ditorial.", link:"heroes/hero-12.html", shot:"heroes/shots/shot-12.jpg", url:"areej.studio/global-models", dEn:"Model agency hero — elegant slider and typography.", dAr:"وكالة عارضات — سلايدر أنيق وخطوط راقية."},
+      {title:"NEONIX \u2014 Tech Crimson \ud83d\udc8e", desc:"Hero tech cramoisi \u2014 visi\u00e8re rose futuriste, typo Michroma, barre trailer + missions.", link:"heroes/hero-13.html", shot:"heroes/shots/shot-13.jpg", url:"areej.studio/neonix", dEn:"NEONIX — cyber neon hero with electric animations.", dAr:"نيونكس — واجهة نيون كهربائية متحركة."},
+      {title:"RETROLITE \u2014 Get The Pug \ud83d\udc36", desc:"Hero dark UI \u2014 bouledogue f sac rouge, typo letterspaced, carte Our Residents.", link:"heroes/hero-14.html", shot:"heroes/shots/shot-14.jpg", url:"areej.studio/retrolite-pug", dEn:"Retro pug hero — fun vintage vibes and motion.", dAr:"واجهة ريترو مرحة مع كلب باغ وأجواء قديمة."},
+      {title:"PHOENIX Livery \u2014 Car Wrap \ud83d\udd25", desc:"Hero studio livery \u2014 phoenix orange 3la coup\u00e9 blanc, \u00e9tincelles kay-tiro, marquee anim\u00e9.", link:"heroes/hero-15.html", shot:"heroes/shots/shot-15.jpg", url:"areej.studio/phoenix-livery", dEn:"Phoenix sport livery hero with fire gradients.", dAr:"فينيكس — واجهة رياضية بتدرجات نارية."},
+      {title:"TOKYO DRIFT \u2014 Poster JDM \ud83c\udfce\ufe0f", desc:"Hero poster journal \u2014 2 marquees g\u00e9ants kay-mshiw f sens m3akssin, drift car rose chrome, lens flare.", link:"heroes/hero-16.html", shot:"heroes/shots/shot-16.jpg", url:"areej.studio/tokyo-drift", dEn:"Tokyo night drift hero — speed and neon.", dAr:"طوكيو دريفت — سرعة ونيون في ليل طوكيو."},
+      {title:"CASH KINGS \u2014 Art Print \ud83d\udcb0", desc:"Hero billet 100 \u2014 cadre or, lapin gangsta original, des billets kay-tiy7o, titre or shimmer.", link:"heroes/hero-17.html", shot:"heroes/shots/shot-17.jpg", url:"areej.studio/cash-kings", dEn:"CASH KINGS — bold cartoon money hero.", dAr:"كاش كينغز — واجهة كرتونية جريئة بطابع المال."},
+      {title:"DRAGON SAKURA \u2014 Car Wrap \ud83c\udf38", desc:"Hero livery claire \u2014 dragon japonais + sakura, p\u00e9tales kay-tiy7o, watermark g\u00e9ant.", link:"heroes/hero-18.html", shot:"heroes/shots/shot-18.jpg", url:"areej.studio/dragon-sakura", dEn:"Dragon and sakura hero — Japanese fantasy animation.", dAr:"تنين وساكورا — فانتازيا يابانية متحركة."},
+      {title:"CLARITY \u2014 Poster Graffiti \ud83c\udfa8", desc:"Hero poster \u2014 titre graffiti rose, figure 3D chrome, 2 anneaux de texte CLARITY kay-doro live.", link:"heroes/hero-19.html", shot:"heroes/shots/shot-19.jpg", url:"areej.studio/clarity", dEn:"Clarity — minimal glassmorphism hero.", dAr:"كلاريتي — واجهة زجاجية بسيطة وأنيقة."},
+      {title:"ARTVERSE \u2014 Owl \u21167 \ud83e\udd89", desc:"Hero artwork \u2014 hibou d\u00e9taill\u00e9, annotations techniques kay-banu wa7da b wa7da + effet glitch.", link:"heroes/hero-20.html", shot:"heroes/shots/shot-20.jpg", url:"areej.studio/artverse-owl", dEn:"Artverse — artistic owl hero, gallery style.", dAr:"أرتفيرس — واجهة فنية بأسلوب معرض مع بومة."},
+      {title:"HEADSHOT KITTY \u2014 Sticker Bomb \ud83d\udc31", desc:"Hero pop comic \u2014 rayons kay-doro, chat kawaii original kay-n9ez, POW! MEOW! kay-pulsiw.", link:"heroes/hero-21.html", shot:"heroes/shots/shot-21.jpg", url:"areej.studio/headshot-kitty", dEn:"HEADSHOT KITTY — gaming hero with pink energy.", dAr:"هيدشوت كيتي — واجهة ألعاب بطاقة وردية."},
+      {title:"WINTER JACKET \u2014 E-commerce \ud83e\udde5", desc:"Hero produit taupe \u2014 doudoune noire kat-floati b glow, typo g\u00e9ante derriha, tailles M L XL, Buy Now pulsant.", link:"heroes/hero-22.html", shot:"heroes/shots/shot-22.jpg", url:"areej.studio/winter-jacket", dEn:"Winter jacket e-shop hero with snowy animations.", dAr:"متجر معاطف شتوية بحركات ثلجية."},
+      {title:"AREEJ WEAR \u2014 Hoodie Drop 3D \ud83e\udde5", desc:"Hero drop noir \u2014 3 hoodies 3D kay-floatiw kol wa7d bou7do, logo chrome, \u00e9toiles kay-wmdo.", link:"heroes/hero-23.html", shot:"heroes/shots/shot-23.jpg", url:"areej.studio/hoodie-drop", dEn:"3D black hoodies drop — dark streetwear hero.", dAr:"هوديز سوداء ثلاثية الأبعاد — ستريت وير داكن."},
+      {title:"Sofa Blob \u2014 Furniture App \ud83d\udecb\ufe0f", desc:"Hero app meubles \u2014 blob violet kay-tbeddel chakl, sofa d\u00e9tour\u00e9e, boules 3D kay-tiro, liste storehouse animée.", link:"heroes/hero-24.html", shot:"heroes/shots/shot-24.jpg", url:"areej.studio/sofa-blob", dEn:"Purple blob sofa hero — soft 3D shapes.", dAr:"أريكة بنفسجية — أشكال ثلاثية الأبعاد ناعمة."}
     ]
   },
   {
@@ -842,16 +915,16 @@ const folders = [
     hero:"images/hero-dash.jpg",
     heroCap:"\ud83d\udcbb Dashboards \u2014 UI Collection",
     projects:[
-      {title:"Dashbird \u2014 Creative Suite \ud83c\udf38", desc:"Dashboard rose glassy \u2014 sidebar, donut 73% anim\u00e9, stats bars, activit\u00e9s b avatars.", link:"heroes/dash-01.html", shot:"heroes/shots/dash-01.jpg", url:"areej.studio/dashbird"},
-      {title:"Fenko \u2014 Finance \ud83c\udf43", desc:"Dashboard finance claire \u2014 compteur $38,729 kay-tla3 live, carte bancaire, donut 90%.", link:"heroes/dash-02.html", shot:"heroes/shots/dash-02.jpg", url:"areej.studio/fenko"},
-      {title:"Tracking \u2014 Logistics \ud83d\ude9a", desc:"Dashboard logistique \u2014 capacit\u00e9 camion 82% kat-tmla, route animée 3la carte, flotte.", link:"heroes/dash-03.html", shot:"heroes/shots/dash-03.jpg", url:"areej.studio/tracking"},
-      {title:"Drone Pro \u2014 Interface \ud83d\udef8", desc:"Interface drone dark \u2014 live feed, REC kay-wmd, batterie 75%, boussole kat-dor, histogram.", link:"heroes/dash-04.html", shot:"heroes/shots/dash-04.jpg", url:"areej.studio/drone-pro"},
-      {title:"Invoice \u2014 Billing Soft \ud83e\udde2", desc:"Facture gradient pastel \u2014 $68,575 compteur, barres paiement animées, lignes produits.", link:"heroes/dash-05.html", shot:"heroes/shots/dash-05.jpg", url:"areej.studio/invoice"},
-      {title:"Dei \u2014 Learning Plan \ud83c\udf93", desc:"Plan d'apprentissage m\u00e9dical \u2014 timeline cours, carte rose player, events color\u00e9s.", link:"heroes/dash-06.html", shot:"heroes/shots/dash-06.jpg", url:"areej.studio/dei-learning"},
-      {title:"TaskLab \u2014 Team Lime \u26a1", desc:"Gestion d'\u00e9quipe lime \u2014 Time Tracker kay-7seb LIVE, calendrier, equalizer, gantt.", link:"heroes/dash-07.html", shot:"heroes/shots/dash-07.jpg", url:"areej.studio/tasklab"},
-      {title:"AREEJ CRM \u2014 Invoices \ud83d\udcc8", desc:"CRM factures \u2014 stats cards, panneau dark unpaid, d\u00e9tail facture bleu, Pay out lime.", link:"heroes/dash-08.html", shot:"heroes/shots/dash-08.jpg", url:"areej.studio/crm-invoices"},
-      {title:"MED+ \u2014 Patient History \ud83e\udde0", desc:"Cabinet m\u00e9dical bleu \u2014 flow cards connect\u00e9s b khyout animés, cerveau 3D, scans CT.", link:"heroes/dash-09.html", shot:"heroes/shots/dash-09.jpg", url:"areej.studio/med-plus"},
-      {title:"ethereal \u2014 Dark Finance \ud83c\udf0c", desc:"Finance dark \u2014 balance 120,456$ compteur live, stack cartes 3D, donut multicolore.", link:"heroes/dash-10.html", shot:"heroes/shots/dash-10.jpg", url:"areej.studio/ethereal"}
+      {title:"Dashbird \u2014 Creative Suite \ud83c\udf38", desc:"Dashboard rose glassy \u2014 sidebar, donut 73% anim\u00e9, stats bars, activit\u00e9s b avatars.", link:"heroes/dash-01.html", shot:"heroes/shots/dash-01.jpg", url:"areej.studio/dashbird", dEn:"Dashbird — analytics dashboard with live charts.", dAr:"داشبيرد — لوحة تحليلات برسوم بيانية حية."},
+      {title:"Fenko \u2014 Finance \ud83c\udf43", desc:"Dashboard finance claire \u2014 compteur $38,729 kay-tla3 live, carte bancaire, donut 90%.", link:"heroes/dash-02.html", shot:"heroes/shots/dash-02.jpg", url:"areej.studio/fenko", dEn:"Fenko — finance dashboard with animated stats.", dAr:"فينكو — لوحة مالية بإحصاءات متحركة."},
+      {title:"Tracking \u2014 Logistics \ud83d\ude9a", desc:"Dashboard logistique \u2014 capacit\u00e9 camion 82% kat-tmla, route animée 3la carte, flotte.", link:"heroes/dash-03.html", shot:"heroes/shots/dash-03.jpg", url:"areej.studio/tracking", dEn:"Delivery tracking dashboard with live map.", dAr:"لوحة تتبع الشحنات بخريطة مباشرة."},
+      {title:"Drone Pro \u2014 Interface \ud83d\udef8", desc:"Interface drone dark \u2014 live feed, REC kay-wmd, batterie 75%, boussole kat-dor, histogram.", link:"heroes/dash-04.html", shot:"heroes/shots/dash-04.jpg", url:"areej.studio/drone-pro", dEn:"Drone Pro — flight control dashboard.", dAr:"درون برو — لوحة تحكم في الطيران."},
+      {title:"Invoice \u2014 Billing Soft \ud83e\udde2", desc:"Facture gradient pastel \u2014 $68,575 compteur, barres paiement animées, lignes produits.", link:"heroes/dash-05.html", shot:"heroes/shots/dash-05.jpg", url:"areej.studio/invoice", dEn:"Invoice manager — clean tables and stats.", dAr:"إدارة الفواتير — جداول نظيفة وإحصاءات."},
+      {title:"Dei \u2014 Learning Plan \ud83c\udf93", desc:"Plan d'apprentissage m\u00e9dical \u2014 timeline cours, carte rose player, events color\u00e9s.", link:"heroes/dash-06.html", shot:"heroes/shots/dash-06.jpg", url:"areej.studio/dei-learning", dEn:"Learning dashboard — courses and progress.", dAr:"لوحة تعلّم — دورات وتتبع التقدم."},
+      {title:"TaskLab \u2014 Team Lime \u26a1", desc:"Gestion d'\u00e9quipe lime \u2014 Time Tracker kay-7seb LIVE, calendrier, equalizer, gantt.", link:"heroes/dash-07.html", shot:"heroes/shots/dash-07.jpg", url:"areej.studio/tasklab", dEn:"TaskLab — team manager with LIVE time tracker.", dAr:"تاسك لاب — إدارة فريق بمؤقت مباشر."},
+      {title:"AREEJ CRM \u2014 Invoices \ud83d\udcc8", desc:"CRM factures \u2014 stats cards, panneau dark unpaid, d\u00e9tail facture bleu, Pay out lime.", link:"heroes/dash-08.html", shot:"heroes/shots/dash-08.jpg", url:"areej.studio/crm-invoices", dEn:"CRM and invoices dashboard.", dAr:"لوحة إدارة العملاء والفواتير."},
+      {title:"MED+ \u2014 Patient History \ud83e\udde0", desc:"Cabinet m\u00e9dical bleu \u2014 flow cards connect\u00e9s b khyout animés, cerveau 3D, scans CT.", link:"heroes/dash-09.html", shot:"heroes/shots/dash-09.jpg", url:"areej.studio/med-plus", dEn:"Med+ — medical dashboard, patients and charts.", dAr:"مِد+ — لوحة طبية للمرضى والرسوم."},
+      {title:"ethereal \u2014 Dark Finance \ud83c\udf0c", desc:"Finance dark \u2014 balance 120,456$ compteur live, stack cartes 3D, donut multicolore.", link:"heroes/dash-10.html", shot:"heroes/shots/dash-10.jpg", url:"areej.studio/ethereal", dEn:"Ethereal — elegant dark dashboard.", dAr:"إيثيريال — لوحة داكنة أنيقة."}
     ]
   },
   {
@@ -864,24 +937,24 @@ const folders = [
     hero:"images/hero-fur.jpg",
     heroCap:"\ud83d\udcda Books Interactifs \u2014 Collection",
     projects:[
-      {title:"Ocean Kingdom — Carnet Magique 🐉", desc:"Book 3D interactif — kay-t7ell w kay-tsedd! Cover dragon & ghost, pages à remplir, bulles & méduses animées.", link:"heroes/book-01.html", shot:"heroes/shots/book-01.jpg", url:"areej.studio/ocean-notebook"},
-      {title:"My Diary — Pixel Y2K 💗", desc:"Journal intime pixel-art b 9fel dyal l9elb — 7ell l cadenas 3ad yt7ell l book! Pages About Me, Thoughts, Guestbook.", link:"heroes/book-02.html", shot:"heroes/shots/book-02.jpg", url:"areej.studio/pixel-diary"},
-      {title:"MONSTA Slambook ⚡", desc:"Slambook comic b monstres originaux — About You, Favorites, Dedication. Pages kay-t9elbo b 3D flip!", link:"heroes/book-03.html", shot:"heroes/shots/book-03.jpg", url:"areej.studio/monsta-slambook"},
-      {title:"Girl Boss Planner 💗", desc:"Book 3D rose — Weekly Planner à remplir, Priorities, Tasks b checkboxes, Monthly grid & Goals. Plan. Do. Slay!", link:"heroes/book-04.html", shot:"heroes/shots/book-04.jpg", url:"areej.studio/girl-boss-planner"},
-      {title:"Study Planner Pastel 📚", desc:"Planner d'étude kawaii — tableau hebdo, horaires, goals & reminders + page مخطط شهري بالعربية RTL!", link:"heroes/book-05.html", shot:"heroes/shots/book-05.jpg", url:"areej.studio/study-planner"},
-      {title:"Lazy Cat Notebook 😼", desc:"Carnet humour — 9ett kaslan original, pages lignées, to-do «peut-être demain», pattes kay-tiro.", link:"heroes/book-06.html", shot:"heroes/shots/book-06.jpg", url:"areej.studio/lazy-cat"},
-      {title:"GLAM GIRLZ 💋", desc:"Notepad y2k b poupées fashion originales — Fits & Looks planner, Slay List, Diary of a Queen.", link:"heroes/book-07.html", shot:"heroes/shots/book-07.jpg", url:"areej.studio/glam-girlz"},
-      {title:"Calendrier 2027 🐾", desc:"Book calendrier kittens & puppies — les 12 mois RÉELS dyal 2027 générés b JS, dimanches en rose!", link:"heroes/book-08.html", shot:"heroes/shots/book-08.jpg", url:"areej.studio/calendrier-2027"},
-      {title:"Anime Name Labels ⚡", desc:"Book d'étiquettes scolaires style anime — 8 séries originales (Kitsune Legend, Shadow Blade…) Name/Subject/Grade à remplir.", link:"heroes/book-09.html", shot:"heroes/shots/book-09.jpg", url:"areej.studio/anime-labels"},
-      {title:"Monthly Planner Retro ❤️", desc:"Planner vintage polka dots rouge & noir — grille mensuelle, goals, dates importantes. She is strong, fearless & loved!", link:"heroes/book-10.html", shot:"heroes/shots/book-10.jpg", url:"areej.studio/retro-planner"},
-      {title:"Mystery Squad 🔍", desc:"Book groovy 70s — chien détective original, Clue Cruiser, 4 pages themed: Mystery, Spin & Chaos, Ninja, Jungle!", link:"heroes/book-11.html", shot:"heroes/shots/book-11.jpg", url:"areej.studio/mystery-squad"},
-      {title:"MONSTA School Kit ⚡", desc:"Emploi du temps à remplir, étiquettes cadeaux, stickers — les monstres MONSTA kay-mshiw l l'école!", link:"heroes/book-12.html", shot:"heroes/shots/book-12.jpg", url:"areej.studio/monsta-school"},
-      {title:"Katana Spirit 🌸", desc:"Aquarelle japonaise — katana, vagues ukiyo-e, masque kitsune, pétales kay-tiy7o, page éléments 水炎雷風岩!", link:"heroes/book-13.html", shot:"heroes/shots/book-13.jpg", url:"areej.studio/katana-spirit"},
-      {title:"Hero Zone 💥", desc:"90s radical — Mighty Force originale, grid néon rétro, Robo Notes, Comic Zone b POW! BAM! ZAP!", link:"heroes/book-14.html", shot:"heroes/shots/book-14.jpg", url:"areej.studio/hero-zone"},
-      {title:"Magical Stars 🌙", desc:"Magical girl originale b 2 9totat — Moon Notes, Star Idols k-pop, Puppy Love rose, Love Letter 💌", link:"heroes/book-15.html", shot:"heroes/shots/book-15.jpg", url:"areej.studio/magical-stars"},
-      {title:"Blocky World ⛏️", desc:"Monde voxel original — Crafting grid 3×3, inventaire, Quest Log b checkboxes w barre XP!", link:"heroes/book-16.html", shot:"heroes/shots/book-16.jpg", url:"areej.studio/blocky-world"},
-      {title:"Mini Zine — Le Petit Jeu ⭐", desc:"Zine riso rose & bleu — war9a wa7da kat-welli ktiyeb dyal 8 pages! View Déplié + Plié interactif b flip, étapes de pliage ✂️", link:"heroes/zine-01.html", shot:"heroes/shots/zine-01.jpg", url:"areej.studio/mini-zine"},
-      {title:"AREEJ Zine — Lucky Girl 🍒", desc:"Zine b thème AREEJ — rose & bordeaux, cerises, Mood du jour, Dream board 🧸, Plan.Do.Slay 👑 — déplié ↔ plié interactif!", link:"heroes/zine-02.html", shot:"heroes/shots/zine-02.jpg", url:"areej.studio/areej-zine"}
+      {title:"Ocean Kingdom — Carnet Magique 🐉", desc:"Book 3D interactif — kay-t7ell w kay-tsedd! Cover dragon & ghost, pages à remplir, bulles & méduses animées.", link:"heroes/book-01.html", shot:"heroes/shots/book-01.jpg", url:"areej.studio/ocean-notebook", dEn:"3D interactive book — dragon cover, fillable pages, bubbles.", dAr:"كتاب تفاعلي يفتح ويُغلق — غلاف التنين وصفحات للتعبئة وفقاعات."},
+      {title:"My Diary — Pixel Y2K 💗", desc:"Journal intime pixel-art b 9fel dyal l9elb — 7ell l cadenas 3ad yt7ell l book! Pages About Me, Thoughts, Guestbook.", link:"heroes/book-02.html", shot:"heroes/shots/book-02.jpg", url:"areej.studio/pixel-diary", dEn:"Y2K pixel diary with a heart lock — unlock it to open!", dAr:"مذكرات بكسل بقفل قلب — افتحي القفل أولاً لتتصفحي!"},
+      {title:"MONSTA Slambook ⚡", desc:"Slambook comic b monstres originaux — About You, Favorites, Dedication. Pages kay-t9elbo b 3D flip!", link:"heroes/book-03.html", shot:"heroes/shots/book-03.jpg", url:"areej.studio/monsta-slambook", dEn:"Comic slambook with original monsters — About You, Favorites, Dedication.", dAr:"سلام بوك بوحوش أصلية — صفحات عنك ومفضلاتك وإهداء."},
+      {title:"Girl Boss Planner 💗", desc:"Book 3D rose — Weekly Planner à remplir, Priorities, Tasks b checkboxes, Monthly grid & Goals. Plan. Do. Slay!", link:"heroes/book-04.html", shot:"heroes/shots/book-04.jpg", url:"areej.studio/girl-boss-planner", dEn:"Pink 3D planner — weekly, priorities, tasks and goals.", dAr:"مخطِّط وردي — أسبوعي وأولويات ومهام وأهداف."},
+      {title:"Study Planner Pastel 📚", desc:"Planner d'étude kawaii — tableau hebdo, horaires, goals & reminders + page مخطط شهري بالعربية RTL!", link:"heroes/book-05.html", shot:"heroes/shots/book-05.jpg", url:"areej.studio/study-planner", dEn:"Kawaii study planner + Arabic monthly page (RTL).", dAr:"مخطّط دراسة لطيف + صفحة مخطط شهري بالعربية."},
+      {title:"Lazy Cat Notebook 😼", desc:"Carnet humour — 9ett kaslan original, pages lignées, to-do «peut-être demain», pattes kay-tiro.", link:"heroes/book-06.html", shot:"heroes/shots/book-06.jpg", url:"areej.studio/lazy-cat", dEn:"Funny lazy cat notebook — maybe-tomorrow to-do list.", dAr:"دفتر القط الكسول — مهام ربما غداً!"},
+      {title:"GLAM GIRLZ 💋", desc:"Notepad y2k b poupées fashion originales — Fits & Looks planner, Slay List, Diary of a Queen.", link:"heroes/book-07.html", shot:"heroes/shots/book-07.jpg", url:"areej.studio/glam-girlz", dEn:"Y2K fashion dolls notepad — fits planner and slay list.", dAr:"دفتر دمى موضة — تخطيط إطلالات وقوائم."},
+      {title:"Calendrier 2027 🐾", desc:"Book calendrier kittens & puppies — les 12 mois RÉELS dyal 2027 générés b JS, dimanches en rose!", link:"heroes/book-08.html", shot:"heroes/shots/book-08.jpg", url:"areej.studio/calendrier-2027", dEn:"Kittens and puppies book — real 2027 months generated in JS.", dAr:"كتاب قطط وجراء — شهور 2027 الحقيقية مولّدة بالجافاسكربت."},
+      {title:"Anime Name Labels ⚡", desc:"Book d'étiquettes scolaires style anime — 8 séries originales (Kitsune Legend, Shadow Blade…) Name/Subject/Grade à remplir.", link:"heroes/book-09.html", shot:"heroes/shots/book-09.jpg", url:"areej.studio/anime-labels", dEn:"Anime school labels — 8 original series, fillable.", dAr:"ملصقات مدرسية أنمي — 8 سلاسل أصلية قابلة للتعبئة."},
+      {title:"Monthly Planner Retro ❤️", desc:"Planner vintage polka dots rouge & noir — grille mensuelle, goals, dates importantes. She is strong, fearless & loved!", link:"heroes/book-10.html", shot:"heroes/shots/book-10.jpg", url:"areej.studio/retro-planner", dEn:"Vintage polka-dot monthly planner.", dAr:"مخطّط شهري كلاسيكي بنقاط البولكا."},
+      {title:"Mystery Squad 🔍", desc:"Book groovy 70s — chien détective original, Clue Cruiser, 4 pages themed: Mystery, Spin & Chaos, Ninja, Jungle!", link:"heroes/book-11.html", shot:"heroes/shots/book-11.jpg", url:"areej.studio/mystery-squad", dEn:"Groovy 70s mystery book — 4 themed pages.", dAr:"كتاب غموض سبعيناتي — 4 صفحات بطابع مميز."},
+      {title:"MONSTA School Kit ⚡", desc:"Emploi du temps à remplir, étiquettes cadeaux, stickers — les monstres MONSTA kay-mshiw l l'école!", link:"heroes/book-12.html", shot:"heroes/shots/book-12.jpg", url:"areej.studio/monsta-school", dEn:"School kit — timetable, gift tags and stickers.", dAr:"طقم مدرسي — جدول حصص وبطاقات هدايا وملصقات."},
+      {title:"Katana Spirit 🌸", desc:"Aquarelle japonaise — katana, vagues ukiyo-e, masque kitsune, pétales kay-tiy7o, page éléments 水炎雷風岩!", link:"heroes/book-13.html", shot:"heroes/shots/book-13.jpg", url:"areej.studio/katana-spirit", dEn:"Japanese watercolor book — katana, waves and sakura.", dAr:"كتاب ياباني مائي — كاتانا وأمواج وساكورا."},
+      {title:"Hero Zone 💥", desc:"90s radical — Mighty Force originale, grid néon rétro, Robo Notes, Comic Zone b POW! BAM! ZAP!", link:"heroes/book-14.html", shot:"heroes/shots/book-14.jpg", url:"areej.studio/hero-zone", dEn:"90s neon heroes — robo notes and comic zone.", dAr:"أبطال التسعينات — نيون وروبوتات ومنطقة كوميكس."},
+      {title:"Magical Stars 🌙", desc:"Magical girl originale b 2 9totat — Moon Notes, Star Idols k-pop, Puppy Love rose, Love Letter 💌", link:"heroes/book-15.html", shot:"heroes/shots/book-15.jpg", url:"areej.studio/magical-stars", dEn:"Magical girl book — moon notes, idols and a love letter.", dAr:"فتاة سحرية — نجوم وأيدولز ورسالة حب."},
+      {title:"Blocky World ⛏️", desc:"Monde voxel original — Crafting grid 3×3, inventaire, Quest Log b checkboxes w barre XP!", link:"heroes/book-16.html", shot:"heroes/shots/book-16.jpg", url:"areej.studio/blocky-world", dEn:"Voxel world book — crafting grid and quest log.", dAr:"عالم المكعبات — شبكة تصنيع وسجل مهام."},
+      {title:"Mini Zine — Le Petit Jeu ⭐", desc:"Zine riso rose & bleu — war9a wa7da kat-welli ktiyeb dyal 8 pages! View Déplié + Plié interactif b flip, étapes de pliage ✂️", link:"heroes/zine-01.html", shot:"heroes/shots/zine-01.jpg", url:"areej.studio/mini-zine", dEn:"Riso mini zine — one sheet becomes an 8-page booklet, folded/unfolded views.", dAr:"زين صغير — ورقة واحدة تتحول إلى كتيّب من 8 صفحات."},
+      {title:"AREEJ Zine — Lucky Girl 🍒", desc:"Zine b thème AREEJ — rose & bordeaux, cerises, Mood du jour, Dream board 🧸, Plan.Do.Slay 👑 — déplié ↔ plié interactif!", link:"heroes/zine-02.html", shot:"heroes/shots/zine-02.jpg", url:"areej.studio/areej-zine", dEn:"AREEJ Lucky Girl zine — pink and burgundy, mood and dream board.", dAr:"زين أريج — وردي وعنابي، مزاج اليوم ولوحة الأحلام."}
     ]
   },
   {
@@ -894,9 +967,9 @@ const folders = [
     hero:"images/hero-palette.jpg",
     heroCap:"\ud83c\udfa8 Art & Branding \u2014 Collection",
     projects:[
-      {title:"Palette Studio \u2014 Generator \ud83c\udfa8", desc:"Outil INTERACTIF \u2014 kbss Generate wla Space: palette jdida kat-tiy7! Klik 3la lon = copi\u00e9.", link:"heroes/pal-01.html", shot:"heroes/shots/pal-01.jpg", url:"areej.studio/palette-studio"},
-      {title:"Identit\u00e9 de Marque \u2014 Studio \u2728", desc:"Branding \u2014 papeterie mockup, swatches kay-tiy7o mn lfo9, zoom lent, devis CTA.", link:"heroes/pal-02.html", shot:"heroes/shots/pal-02.jpg", url:"areej.studio/brand-identity"},
-      {title:"CHROMA \u2014 Gradient Poster \ud83c\udf08", desc:"Poster liquide \u2014 mesh gradient kay-dor ghir b CSS, grain, typo Unbounded kat-tnafess.", link:"heroes/pal-03.html", shot:"heroes/shots/pal-03.jpg", url:"areej.studio/chroma"}
+      {title:"Palette Studio \u2014 Generator \ud83c\udfa8", desc:"Outil INTERACTIF \u2014 kbss Generate wla Space: palette jdida kat-tiy7! Klik 3la lon = copi\u00e9.", link:"heroes/pal-01.html", shot:"heroes/shots/pal-01.jpg", url:"areej.studio/palette-studio", dEn:"Interactive palette generator — Space to regenerate, click to copy.", dAr:"مولّد ألوان تفاعلي — انقري على اللون لنسخه."},
+      {title:"Identit\u00e9 de Marque \u2014 Studio \u2728", desc:"Branding \u2014 papeterie mockup, swatches kay-tiy7o mn lfo9, zoom lent, devis CTA.", link:"heroes/pal-02.html", shot:"heroes/shots/pal-02.jpg", url:"areej.studio/brand-identity", dEn:"Brand identity showcase — stationery and swatches.", dAr:"هوية بصرية — قرطاسية وعينات ألوان."},
+      {title:"CHROMA \u2014 Gradient Poster \ud83c\udf08", desc:"Poster liquide \u2014 mesh gradient kay-dor ghir b CSS, grain, typo Unbounded kat-tnafess.", link:"heroes/pal-03.html", shot:"heroes/shots/pal-03.jpg", url:"areej.studio/chroma", dEn:"CHROMA — rotating pure-CSS gradient mesh poster.", dAr:"كروما — ملصق تدرجات دوّارة بـ CSS فقط."}
     ]
   },
   {
@@ -909,9 +982,9 @@ const folders = [
     hero:"images/hero-events.jpg",
     heroCap:"\ud83c\udf86 Events & Celebration \u2014 Collection",
     projects:[
-      {title:"R\u00e9veillon 2027 \u2014 Countdown \ud83c\udf86", desc:"Compte \u00e0 rebours LIVE 7tal 2027 + feux d'artifice kay-tfarq3o ghir b CSS, fus\u00e9es kay-tla3o!", link:"heroes/evt-01.html", shot:"heroes/shots/evt-01.jpg", url:"areej.studio/reveillon-2027"},
-      {title:"NOVA FEST '26 \u2014 Festival \ud83c\udfb6", desc:"Landing festival \u2014 foule + projecteurs violets, titre sheen, lineup marquee, equalizer.", link:"heroes/evt-02.html", shot:"heroes/shots/evt-02.jpg", url:"areej.studio/nova-fest"},
-      {title:"Soir\u00e9e Royale \u2014 Invitation \ud83d\udc8c", desc:"Invitation or & noir \u2014 titre or kay-shimmeri, \u00e9toiles kay-wmdo, particules kay-tla3o, RSVP.", link:"heroes/evt-03.html", shot:"heroes/shots/evt-03.jpg", url:"areej.studio/soiree-royale"}
+      {title:"R\u00e9veillon 2027 \u2014 Countdown \ud83c\udf86", desc:"Compte \u00e0 rebours LIVE 7tal 2027 + feux d'artifice kay-tfarq3o ghir b CSS, fus\u00e9es kay-tla3o!", link:"heroes/evt-01.html", shot:"heroes/shots/evt-01.jpg", url:"areej.studio/reveillon-2027", dEn:"LIVE countdown to 2027 with pure-CSS fireworks!", dAr:"عدّ تنازلي مباشر لعام 2027 مع ألعاب نارية CSS!"},
+      {title:"NOVA FEST '26 \u2014 Festival \ud83c\udfb6", desc:"Landing festival \u2014 foule + projecteurs violets, titre sheen, lineup marquee, equalizer.", link:"heroes/evt-02.html", shot:"heroes/shots/evt-02.jpg", url:"areej.studio/nova-fest", dEn:"NOVA FEST — festival hero, marquee lineup, equalizer.", dAr:"نوفا فيست — مهرجان بشريط أسماء وإيكولايزر."},
+      {title:"Soir\u00e9e Royale \u2014 Invitation \ud83d\udc8c", desc:"Invitation or & noir \u2014 titre or kay-shimmeri, \u00e9toiles kay-wmdo, particules kay-tla3o, RSVP.", link:"heroes/evt-03.html", shot:"heroes/shots/evt-03.jpg", url:"areej.studio/soiree-royale", dEn:"Gold and black royal invitation — shimmer and RSVP.", dAr:"دعوة ملكية ذهبية وسوداء — لمعان وتأكيد حضور."}
     ]
   },
   {
@@ -1138,12 +1211,12 @@ function pickFiles(input){
   err.style.display = "none";
   for(const f of input.files){
     if(!ALLOWED.includes(f.type)){
-      err.textContent = "⚠️ Ghir PNG / JPG / WEBP / GIF / PDF msmou7in";
+      err.textContent = T.errType;
       err.style.display = "block";
       continue;
     }
     if(f.size > MAX_MB*1024*1024){
-      err.textContent = `⚠️ "${f.name}" kbir bzaf (max ${MAX_MB} MB)`;
+      err.textContent = T.errBig.replace("{n}",f.name).replace("{m}",MAX_MB);
       err.style.display = "block";
       continue;
     }
@@ -1219,18 +1292,20 @@ function closeLive(){
   document.body.style.overflow = "";
 }
 document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeLive(); });
+setLang(cur);
 
 function renderProjects(i){
+  window.curOpen=i;
   const f = folders[i];
   const custom = getCustom(i);
 
   const packsHTML = (f.packs||[]).map((pk,k)=>`
-    <div class="pack-card" onclick="openPackView(${i},${k})" title="Klik bach tshof le pack">
+    <div class="pack-card" onclick="openPackView(${i},${k})" title="${T.clickPack}">
       <img class="pack-cover" src="${pk.cover}" alt="">
       <span class="pack-info">
         <h3>${pk.title} <span class="pro-badge">${pk.showcase ? "\u2b07 FREE" : "\ud83d\udc51 PRO"}</span></h3>
         <p>${pk.desc}</p>
-        <span class="pack-meta">${pk.elements.length} ${pk.showcase ? "logos" : "\u00e9l\u00e9ments \u00b7 PNG HD"}</span>
+        <span class="pack-meta">${pk.elements.length} ${pk.showcase ? T.logosMeta : T.elemsMeta}</span>
       </span>
       <span class="pack-right">
         ${pk.price ? `<span class="price-chip big">${pk.price}</span>` : ""}
@@ -1239,7 +1314,7 @@ function renderProjects(i){
     </div>`).join("");
 
   const baseHTML = f.projects.map((p,j)=> p.shot ? `
-    <div class="project live-card" onclick="openLiveProj(${i},${j})" title="Klik bach tshof la page khdama">
+    <div class="project live-card" onclick="openLiveProj(${i},${j})" title="${T.clickLive}">
       <span class="browser-bar">
         <span class="bdots"><i class="d r"></i><i class="d y"></i><i class="d g"></i></span>
         <span class="burl">\ud83d\udd12 ${p.url||""}</span>
@@ -1247,14 +1322,14 @@ function renderProjects(i){
       </span>
       <img class="live-shot" src="${p.shot}" loading="lazy" alt="">
       <span class="live-body">
-        <span class="live-txt"><h3>${p.title}</h3><p>${p.desc}</p></span>
-        <span class="live-btn">\u25b6 Voir Live</span>
+        <span class="live-txt"><h3>${p.title}</h3><p>${trD(p)}</p></span>
+        <span class="live-btn">${T.voirLive}</span>
       </span>
     </div>` : `
     <a class="project" href="${p.link}" target="_blank">
       <span>
         <h3>${p.title}</h3>
-        <p>${p.desc}</p>
+        <p>${trD(p)}</p>
       </span>
       <span class="arrow">→</span>
     </a>`).join("");
@@ -1269,58 +1344,58 @@ function renderProjects(i){
 
     const hasLink = p.link && p.link !== "#";
     return `
-    <div class="project custom" title="Klik bach t7ell l projet" onclick="openProjectView(event,${i},${j})">
+    <div class="project custom" title="${T.clickProj}" onclick="openProjectView(event,${i},${j})">
       <span class="pbody">
         <h3>${escapeHTML(p.title)} ${p.premium ? `<span class="pro-badge">\ud83d\udc51 PRO</span> <span class="price-chip">${escapeHTML(p.price||"\u2014")}</span>` : ""}</h3>
         <p>${escapeHTML(p.desc)}</p>
         ${atts ? `<span class="atts">${atts}</span>` : ""}
       </span>
-      ${hasLink ? `<a class="go-link" href="${escapeHTML(p.link)}" target="_blank" title="Ouvrir le lien">→</a>` : ""}
-      <button class="del" title="Supprimer" onclick="deleteProject(event,${i},${j})">🗑</button>
+      ${hasLink ? `<a class="go-link" href="${escapeHTML(p.link)}" target="_blank" title="${T.openLink}">→</a>` : ""}
+      <button class="del" title="${T.del}" onclick="deleteProject(event,${i},${j})">🗑</button>
     </div>`;
   }).join("");
 
   const listHTML = (packsHTML + baseHTML + customHTML) ||
-    `<p class="empty">Ma kayn 7ta projet db 🤍</p>`;
+    `<p class="empty">${T.emptyFolder}</p>`;
 
   pendingFiles = [];
 
   const heroHTML = f.hero ? `
     <div class="folder-hero">
       <img src="${f.hero}" alt="">
-      ${f.heroCap ? `<span class="folder-hero-cap">${f.heroCap}</span>` : ""}
+      ${f.heroCap ? `<span class="folder-hero-cap">${trCap(f.heroCap)}</span>` : ""}
     </div>` : "";
 
   document.getElementById("modal-projects").innerHTML = `
     ${heroHTML}
     ${listHTML}
 
-    <button class="add-toggle" onclick="toggleForm()">＋ Zid projet jdid</button>
+    <button class="add-toggle" onclick="toggleForm()">${T.addProj}</button>
 
     <form class="add-form" id="add-form" onsubmit="addProject(event,${i})">
-      <label>Titre *</label>
-      <input id="np-title" required maxlength="80" placeholder="Smiyat l projet">
-      <label>Description</label>
-      <textarea id="np-desc" rows="2" maxlength="200" placeholder="Wsef l projet dyalek"></textarea>
-      <label>Lien</label>
+      <label>${T.lblTitle}</label>
+      <input id="np-title" required maxlength="80" placeholder="${T.phTitle}">
+      <label>${T.lblDesc}</label>
+      <textarea id="np-desc" rows="2" maxlength="200" placeholder="${T.phDesc}"></textarea>
+      <label>${T.lblLink}</label>
       <input id="np-link" type="url" placeholder="https://...">
-      <label class="prem-toggle"><input type="checkbox" id="np-prem" onchange="document.getElementById('prem-fields').classList.toggle('on',this.checked)"> \ud83d\udc8e Pack Premium \u2014 lil bi3</label>
+      <label class="prem-toggle"><input type="checkbox" id="np-prem" onchange="document.getElementById('prem-fields').classList.toggle('on',this.checked)"> ${T.lblPrem}</label>
       <div class="prem-fields" id="prem-fields">
-        <label>Prix *</label>
+        <label>${T.lblPrice}</label>
         <input id="np-price" maxlength="30" placeholder="99 MAD">
-        <label>Lien d'achat (Gumroad, PayPal, Etsy...)</label>
+        <label>${T.lblBuy}</label>
         <input id="np-buy" type="url" placeholder="https://...">
       </div>
-      <label>Images / PDF</label>
+      <label>${T.lblFiles}</label>
       <label class="file-drop" id="file-drop">
-        🖼 📄 Klik hna wla jbed fichiers (PNG · JPG · PDF — max ${MAX_MB} MB)
+        ${T.drop.replace("{m}",MAX_MB)}
         <input type="file" multiple accept="image/png,image/jpeg,image/webp,image/gif,application/pdf" onchange="pickFiles(this)">
       </label>
       <div class="file-list" id="file-list"></div>
       <p class="form-err" id="form-err"></p>
       <div class="btns">
-        <button type="submit" class="save">Sauvegarder ✓</button>
-        <button type="button" class="cancel" onclick="toggleForm(false)">Annuler</button>
+        <button type="submit" class="save">${T.save}</button>
+        <button type="button" class="cancel" onclick="toggleForm(false)">${T.cancel}</button>
       </div>
     </form>
   `;
@@ -1357,7 +1432,7 @@ async function addProject(e, i){
 
   const saveBtn = e.target.querySelector(".save");
   saveBtn.disabled = true;
-  saveBtn.textContent = "Sauvegarde…";
+  saveBtn.textContent = T.saving;
 
   /* upload les fichiers l IndexedDB */
   const atts = [];
@@ -1367,7 +1442,7 @@ async function addProject(e, i){
     }
   }catch(err){
     const errEl = document.getElementById("form-err");
-    errEl.textContent = "⚠️ Ma qdertsh nsauvegardi les fichiers (navigateur ma kay-supportish). L projet ghadi ytsjel bla fichiers.";
+    errEl.textContent = T.errSave;
     errEl.style.display = "block";
   }
 
@@ -1386,18 +1461,18 @@ function openPackView(i, k){
   const pk = folders[i].packs[k];
   if(!pk) return;
   document.getElementById("modal-projects").innerHTML = `
-    <button class="back-btn" onclick="renderProjects(${i})">← Rja3 l lista</button>
+    <button class="back-btn" onclick="renderProjects(${i})">${T.back}</button>
     <h3 class="view-title">${pk.title} <span class="pro-badge">${pk.showcase ? "⬇ FREE" : "👑 PRO"}</span></h3>
     <p class="view-desc">${pk.desc}</p>
     <div class="pack-tags">${(pk.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("")}</div>
     <div class="elem-grid">
-      ${pk.elements.map(src=>pk.showcase ? `<a class="elem anim" href="${src}" download title="Télécharger PNG"><img src="${src}" loading="lazy" alt=""><span class="pro-chip free">⬇ FREE</span></a>` : `<span class="elem"><img src="${src}" loading="lazy" alt=""><span class="pro-chip">👑 PRO</span></span>`).join("")}
+      ${pk.elements.map(src=>pk.showcase ? `<a class="elem anim" href="${src}" download title="${T.dlPng}"><img src="${src}" loading="lazy" alt=""><span class="pro-chip free">⬇ FREE</span></a>` : `<span class="elem"><img src="${src}" loading="lazy" alt=""><span class="pro-chip">👑 PRO</span></span>`).join("")}
     </div>
-    ${pk.showcase ? `<p class="buy-note">⬇️ Had les logos <b>FREE</b> — klik 3la ay wa7d bach t-téléchargih PNG bla khalfiya!</p>` : `<div class="buy-box">
-      <span><p class="buy-label">Prix du pack</p><p class="buy-price">${pk.price}</p></span>
-      <a class="buy-btn" href="${pk.buyUrl}" target="_blank" rel="noopener">👑 Acheter maintenant</a>
+    ${pk.showcase ? `<p class="buy-note">${T.freeNote}</p>` : `<div class="buy-box">
+      <span><p class="buy-label">${T.packPrice}</p><p class="buy-price">${pk.price}</p></span>
+      <a class="buy-btn" href="${pk.buyUrl}" target="_blank" rel="noopener">${T.buyNow}</a>
     </div>
-    <p class="buy-note">🔒 L'achat kay-dowz 3ber lien externe sécurisé — 3tini le lien dyalek (Gumroad, PayPal, Etsy...) bach nbedlo blast le lien d'exemple.</p>`}
+    <p class="buy-note">${T.extNote}</p>`}
   `;
   document.querySelector(".modal-box").scrollTop = 0;
 }
@@ -1416,24 +1491,24 @@ async function openProjectView(e, i, j){
   const hasLink = p.link && p.link !== "#";
 
   document.getElementById("modal-projects").innerHTML = `
-    <button class="back-btn" onclick="renderProjects(${i})">← Rja3 l lista</button>
+    <button class="back-btn" onclick="renderProjects(${i})">${T.back}</button>
     <h3 class="view-title">${escapeHTML(p.title)}</h3>
     <p class="view-desc">${escapeHTML(p.desc)}</p>
 
-    ${p.premium && imgs.length ? `<div class="elem-grid">${imgs.map(a=>`<a class="elem" data-att="${a.id}" title="7ell f onglet jdid"><img data-att-img="${a.id}" alt="${escapeHTML(a.name)}"><span class="pro-chip">\ud83d\udc51 PRO</span></a>`).join("")}</div>`
-      : imgs.map(a=>`<a data-att="${a.id}" title="7ell f onglet jdid"><img class="view-img" data-att-img="${a.id}" alt="${escapeHTML(a.name)}"></a>`).join("")}
+    ${p.premium && imgs.length ? `<div class="elem-grid">${imgs.map(a=>`<a class="elem" data-att="${a.id}" title="${T.openTab}"><img data-att-img="${a.id}" alt="${escapeHTML(a.name)}"><span class="pro-chip">\ud83d\udc51 PRO</span></a>`).join("")}</div>`
+      : imgs.map(a=>`<a data-att="${a.id}" title="${T.openTab}"><img class="view-img" data-att-img="${a.id}" alt="${escapeHTML(a.name)}"></a>`).join("")}
 
     ${pdfs.map(a=>`
       <div class="pdf-block">
         <iframe class="view-pdf" data-att-frame="${a.id}" title="${escapeHTML(a.name)}"></iframe>
-        <a class="att-chip" data-att="${a.id}">📄 7ell "${escapeHTML(a.name)}" f onglet jdid</a>
+        <a class="att-chip" data-att="${a.id}">${T.openPdf.replace("{n}",escapeHTML(a.name))}</a>
       </div>`).join("")}
 
-    ${p.premium ? `<div class="buy-box"><span><p class="buy-label">Prix</p><p class="buy-price">${escapeHTML(p.price||"—")}</p></span><a class="buy-btn" href="${escapeHTML(p.buyUrl && p.buyUrl!=="#" ? p.buyUrl : "#")}"${p.buyUrl && p.buyUrl!=="#" ? ` target="_blank"` : ``}>👑 Acheter maintenant</a></div>` : ""}
+    ${p.premium ? `<div class="buy-box"><span><p class="buy-label">${T.price}</p><p class="buy-price">${escapeHTML(p.price||"—")}</p></span><a class="buy-btn" href="${escapeHTML(p.buyUrl && p.buyUrl!=="#" ? p.buyUrl : "#")}"${p.buyUrl && p.buyUrl!=="#" ? ` target="_blank"` : ``}>${T.buyNow}</a></div>` : ""}
 
-    ${hasLink ? `<a class="view-link" href="${escapeHTML(p.link)}" target="_blank">Visiter le lien →</a>` : ""}
+    ${hasLink ? `<a class="view-link" href="${escapeHTML(p.link)}" target="_blank">${T.visit}</a>` : ""}
 
-    ${(!atts.length && !hasLink && !p.premium) ? `<p class="empty">Ma kayn 7ta fichier wla lien f had projet 🤍</p>` : ""}
+    ${(!atts.length && !hasLink && !p.premium) ? `<p class="empty">${T.emptyProj}</p>` : ""}
   `;
 
   /* chargi les fichiers mn IndexedDB */
