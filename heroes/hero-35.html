@@ -1,0 +1,48 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ORPHÉE — BY AREEJ</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Grotesk:wght@400;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;overflow:hidden}
+.byareej{position:fixed;bottom:14px;right:16px;z-index:99;font:600 11px Poppins,sans-serif;letter-spacing:2px;color:#2a1430;opacity:.75}
+
+body{background:#f8f2fa;font-family:Poppins,sans-serif;position:relative}
+.ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font:900 24vw Playfair Display,serif;color:transparent;-webkit-text-stroke:1px #9c5fb033;white-space:nowrap;z-index:0;animation:gh 16s ease-in-out infinite alternate}
+@keyframes gh{to{transform:translate(-54%,-50%)}}
+nav{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:30px 54px}
+.logo{font:700 19px Playfair Display,serif;color:#2a1430;letter-spacing:4px}
+.menu{display:flex;gap:34px}.menu a{color:#2a143099;text-decoration:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;transition:.3s}.menu a:hover{color:#9c5fb0}
+.hero{position:relative;z-index:5;height:calc(100% - 100px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin-top:-20px}
+.rule{width:60px;height:1px;background:#9c5fb0;margin-bottom:26px;position:relative}
+.rule:after{content:"✦";position:absolute;top:-9px;left:50%;transform:translateX(-50%);color:#9c5fb0;font-size:12px;background:#f8f2fa;padding:0 8px}
+.eyeb{font-size:11px;letter-spacing:6px;color:#9c5fb0;text-transform:uppercase;margin-bottom:18px}
+h1{font:700 clamp(58px,8vw,104px)/1.04 Playfair Display,serif;color:#2a1430;animation:fadeu 1.1s ease both}
+h1 i{display:block;font-weight:700;color:#9c5fb0}
+@keyframes fadeu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.sub{color:#2a1430AA;font-size:16px;margin:24px auto 34px;max-width:480px;line-height:1.8;font-weight:400}
+.btns{display:flex;gap:22px;align-items:center}
+.bp{background:#2a1430;color:#f8f2fa;border:none;padding:16px 42px;font:600 13px Poppins;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:.4s}
+.bp:hover{background:#9c5fb0;letter-spacing:5px}
+.bs{background:none;border:none;color:#2a1430;font:600 13px Poppins;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-bottom:1px solid #9c5fb0;padding-bottom:5px;transition:.3s}
+.bs:hover{color:#9c5fb0}
+.cnum{position:absolute;font:700 13px Playfair Display;color:#9c5fb0;letter-spacing:2px}
+.n1{bottom:34px;left:54px}.n2{top:120px;right:54px;writing-mode:vertical-rl}
+</style></head><body>
+<div class="ghost prx" data-d="18" data-t=" translate(-50%,-50%)">N°9</div>
+<nav><div class="logo">ORPHÉE</div><div class="menu"><a href="#">Parfums</a><a href="#">Rituel</a><a href="#">Coffrets</a></div></nav>
+<div class="hero">
+<div class="eyeb">Eau de parfum n°9</div><div class="rule"></div>
+<h1>Un sillage qui<i>raconte une histoire.</i></h1>
+<p class="sub">Iris, santal et ambre gris — composé à Grasse, embouteillé à la main en édition numérotée.</p>
+<div class="btns"><button class="bp">Découvrir n°9</button><button class="bs">Trouver une boutique</button></div>
+</div>
+<div class="cnum n1">GRASSE — FRANCE</div><div class="cnum n2">50 ML — EXTRAIT</div>
+<div class="byareej">BY AREEJ ✦</div>
+<script>
+document.addEventListener("mousemove",function(e){
+ var cx=(e.clientX/innerWidth-0.5),cy=(e.clientY/innerHeight-0.5);
+ document.querySelectorAll(".prx").forEach(function(el){
+  var d=parseFloat(el.dataset.d||10);
+  el.style.transform="translate("+(cx*d)+"px,"+(cy*d)+"px)"+(el.dataset.t||"");
+ });
+});
+</script></body></html>

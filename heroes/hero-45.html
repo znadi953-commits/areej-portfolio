@@ -1,0 +1,62 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>fincha — BY AREEJ</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Grotesk:wght@400;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;overflow:hidden}
+.byareej{position:fixed;bottom:14px;right:16px;z-index:99;font:600 11px Poppins,sans-serif;letter-spacing:2px;color:#c8f0d8;opacity:.75}
+
+body{background:#0b0f1d;font-family:Poppins,sans-serif;position:relative}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:26px 26px}
+.ring{position:absolute;top:50%;right:-180px;width:560px;height:560px;border-radius:50%;background:conic-gradient(from 0deg,#19c86a,#4dd8ff,#19c86a);filter:blur(70px);opacity:.3;transform:translateY(-50%);animation:spin 14s linear infinite}
+@keyframes spin{to{transform:translateY(-50%) rotate(360deg)}}
+nav{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:24px 48px}
+.logo{font:800 20px Space Grotesk;color:#fff}.logo em{color:#19c86a;font-style:normal}
+.menu{display:flex;gap:28px}.menu a{color:#8b93b4;text-decoration:none;font-size:14px;transition:.3s}.menu a:hover{color:#fff}
+.ncta{background:linear-gradient(90deg,#19c86a,#4dd8ff);color:#fff;border:none;padding:11px 24px;border-radius:10px;font:600 13px Poppins;cursor:pointer;box-shadow:0 8px 24px #19c86a44;transition:.3s}.ncta:hover{transform:translateY(-2px)}
+.hero{position:relative;z-index:5;display:flex;align-items:center;gap:60px;padding:0 6vw;height:calc(100% - 92px)}
+.copy{flex:1;max-width:520px;animation:fadeu 1s ease both}
+@keyframes fadeu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.eyeb{display:inline-flex;align-items:center;gap:8px;color:#19c86a;background:#19c86a18;border:1px solid #19c86a44;font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:30px;margin-bottom:22px}
+.pulse{width:8px;height:8px;border-radius:50%;background:#19c86a;animation:pu 1.6s infinite}
+@keyframes pu{50%{box-shadow:0 0 0 7px #19c86a33}}
+h1{font:800 54px/1.12 Space Grotesk;color:#fff}
+h1 span{background:linear-gradient(90deg,#19c86a,#4dd8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:#8b93b4;font-size:16px;line-height:1.7;margin:20px 0 28px}
+.btns{display:flex;gap:16px}
+.bp{background:linear-gradient(90deg,#19c86a,#4dd8ff);color:#fff;border:none;padding:15px 34px;border-radius:12px;font:700 15px Poppins;cursor:pointer;box-shadow:0 14px 34px #19c86a55;transition:.3s}.bp:hover{transform:translateY(-3px)}
+.bs{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.16);padding:15px 34px;border-radius:12px;font:600 15px Poppins;cursor:pointer;transition:.3s}.bs:hover{background:rgba(255,255,255,.12)}
+.bento{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:460px}
+.tile{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:26px 24px;backdrop-filter:blur(8px);transition:.35s;animation:fadeu 1s ease both}
+.tile:hover{transform:translateY(-8px);border-color:#19c86a77;box-shadow:0 20px 44px rgba(0,0,0,.4)}
+.tile .ic{font-size:26px}
+.tile b{display:block;font:700 30px Space Grotesk;color:#fff;margin:10px 0 4px}
+.tile span{font-size:13px;color:#8b93b4}
+.tile.feat{grid-column:span 2;background:linear-gradient(120deg,#19c86a22,#4dd8ff22);border-color:#19c86a55}
+.t2{animation-delay:.12s}.t3{animation-delay:.24s}.t4{animation-delay:.36s}
+</style></head><body>
+<div class="dots"></div><div class="ring"></div>
+<nav><div class="logo">fin<em>cha</em></div><div class="menu"><a href="#">Compte</a><a href="#">Cartes</a><a href="#">Épargne</a></div><button class="ncta">Ouvrir un compte</button></nav>
+<div class="hero">
+<div class="copy">
+<span class="eyeb"><span class="pulse"></span>Banque 100% mobile</span>
+<h1>Votre argent, <span>enfin clair</span></h1>
+<p class="sub">Compte gratuit, cartes virtuelles instantanées et coffres d'épargne automatiques — en 8 minutes chrono.</p>
+<div class="btns"><button class="bp">Ouvrir mon compte</button><button class="bs">Voir les tarifs</button></div>
+</div>
+<div class="bento">
+<div class="tile feat"><span class="ic">💳</span><b>0 DH</b><span>de frais sur le compte standard</span></div>
+<div class="tile t2"><span class="ic">📊</span><b>Auto</b><span>Catégorisation</span></div>
+<div class="tile t3"><span class="ic">🔐</span><b>3-D</b><span>Secure partout</span></div>
+<div class="tile t4 feat"><span class="ic">🐷</span><b>+900 M DH</b><span>épargnés dans les coffres</span></div>
+</div>
+</div>
+<div class="byareej">BY AREEJ ✦</div>
+<script>
+document.addEventListener("mousemove",function(e){
+ var cx=(e.clientX/innerWidth-0.5),cy=(e.clientY/innerHeight-0.5);
+ document.querySelectorAll(".prx").forEach(function(el){
+  var d=parseFloat(el.dataset.d||10);
+  el.style.transform="translate("+(cx*d)+"px,"+(cy*d)+"px)"+(el.dataset.t||"");
+ });
+});
+</script></body></html>

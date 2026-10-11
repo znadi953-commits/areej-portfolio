@@ -1,0 +1,49 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MIAMI_VYBE — BY AREEJ</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Space+Grotesk:wght@400;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;overflow:hidden}
+.byareej{position:fixed;bottom:14px;right:16px;z-index:99;font:600 11px Poppins,sans-serif;letter-spacing:2px;color:#b8f0ff;opacity:.75}
+
+body{background:linear-gradient(180deg,#0d0221 0%,#1b0b3a 55%,#0d0221 100%);font-family:Space Grotesk,sans-serif;position:relative;overflow:hidden}
+.stars{position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1.4px);background-size:120px 90px;opacity:.5;animation:tw 3s ease-in-out infinite alternate}
+@keyframes tw{to{opacity:.2}}
+.sun{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:380px;height:380px;border-radius:50%;background:linear-gradient(180deg,#4dd8ff,#b03cff);box-shadow:0 0 90px #b03cff88;-webkit-mask:linear-gradient(#000 0 58%,transparent 58% 62%,#000 62% 70%,transparent 70% 73%,#000 73% 80%,transparent 80% 82%,#000 82% 88%,transparent 88% 90%,#000 90% 100%);mask:linear-gradient(#000 0 58%,transparent 58% 62%,#000 62% 70%,transparent 70% 73%,#000 73% 80%,transparent 80% 82%,#000 82% 88%,transparent 88% 90%,#000 90% 100%);animation:rise 6s ease-in-out infinite alternate}
+@keyframes rise{to{transform:translate(-50%,-54%)}}
+.floor{position:absolute;bottom:0;left:-50%;right:-50%;height:42%;background:
+ repeating-linear-gradient(90deg,#b03cff55 0 2px,transparent 2px 70px),
+ repeating-linear-gradient(0deg,#b03cff55 0 2px,transparent 2px 70px);
+ transform:perspective(380px) rotateX(64deg);transform-origin:top;animation:fl 2.8s linear infinite;box-shadow:inset 0 40px 60px #0d0221}
+@keyframes fl{to{background-position:0 70px,0 70px}}
+nav{position:relative;z-index:6;display:flex;justify-content:space-between;align-items:center;padding:24px 46px}
+.logo{font:700 19px JetBrains Mono;color:#4dd8ff;text-shadow:0 0 14px #4dd8ff}
+.menu{display:flex;gap:26px}.menu a{color:#b9a8e8;font:400 13px JetBrains Mono;text-decoration:none}.menu a:hover{color:#4dd8ff}
+.hero{position:relative;z-index:6;height:calc(100% - 90px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;margin-top:-26px}
+.eyeb{font:400 13px JetBrains Mono;letter-spacing:5px;color:#4dd8ff;margin-bottom:18px;text-transform:uppercase}
+h1{font:400 clamp(56px,8.6vw,108px)/1 Archivo Black;text-transform:uppercase;letter-spacing:3px;background:linear-gradient(180deg,#fff 18%,#cfd4ff 38%,#4dd8ff 58%,#b03cff 90%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 18px #b03cff88);transform:perspective(300px) rotateX(10deg)}
+.sub{color:#b9a8e8;font-size:16px;margin:22px auto 30px;max-width:520px;line-height:1.7}
+.btns{display:flex;gap:18px}
+.bp{background:linear-gradient(90deg,#4dd8ff,#b03cff);color:#0d0221;border:none;padding:15px 38px;border-radius:8px;font:700 15px Space Grotesk;cursor:pointer;text-transform:uppercase;letter-spacing:2px;box-shadow:0 0 26px #b03cff99;transition:.3s}.bp:hover{box-shadow:0 0 50px #b03cff}
+.bs{background:transparent;color:#4dd8ff;border:1.5px solid #4dd8ff;padding:15px 38px;border-radius:8px;font:700 15px Space Grotesk;cursor:pointer;text-transform:uppercase;letter-spacing:2px;transition:.3s}.bs:hover{background:#4dd8ff22}
+.deco{position:absolute;font:400 12px JetBrains Mono;color:#4dd8ff;letter-spacing:3px;z-index:6}
+.d1{bottom:30px;left:46px}.d2{bottom:30px;right:46px}
+</style></head><body>
+<div class="stars"></div><div class="sun prx" data-d="12" data-t=" translate(-50%,-50%)"></div><div class="floor"></div>
+<nav><div class="logo">MIAMI_VYBE</div><div class="menu"><a href="#">Direct</a><a href="#">Émissions</a><a href="#">Mix</a></div></nav>
+<div class="hero">
+<div class="eyeb">Webradio — 24/7</div>
+<h1>FEEL THE<br>VYBE</h1>
+<p class="sub">Synthwave, funk et nu-disco en continu — mixée depuis un studio face à l'océan.</p>
+<div class="btns"><button class="bp">Écouter le direct</button><button class="bs">Derniers mix</button></div>
+</div>
+<div class="deco d1">ON AIR ● 128 KBPS</div><div class="deco d2">FM 101.6</div>
+<div class="byareej">BY AREEJ ✦</div>
+<script>
+document.addEventListener("mousemove",function(e){
+ var cx=(e.clientX/innerWidth-0.5),cy=(e.clientY/innerHeight-0.5);
+ document.querySelectorAll(".prx").forEach(function(el){
+  var d=parseFloat(el.dataset.d||10);
+  el.style.transform="translate("+(cx*d)+"px,"+(cy*d)+"px)"+(el.dataset.t||"");
+ });
+});
+</script></body></html>

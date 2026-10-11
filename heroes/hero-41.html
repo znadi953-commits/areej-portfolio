@@ -1,0 +1,60 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SNKR CLUB — BY AREEJ</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Grotesk:wght@400;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;overflow:hidden}
+.byareej{position:fixed;bottom:14px;right:16px;z-index:99;font:600 11px Poppins,sans-serif;letter-spacing:2px;color:#1a2a4a;opacity:.75}
+
+body{background:linear-gradient(135deg,#dfeaff,#cfd9ff);font-family:Poppins,sans-serif;position:relative}
+nav{display:flex;justify-content:space-between;align-items:center;padding:26px 50px}
+.logo{font:800 22px Poppins;color:#14214a}
+.menu{display:flex;gap:28px}.menu a{color:#14214aAA;text-decoration:none;font-size:14px;font-weight:600;transition:.3s}.menu a:hover{color:#14214a}
+.cart{background:#fff;border:none;width:44px;height:44px;border-radius:50%;font-size:18px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.12);transition:.3s}.cart:hover{transform:scale(1.1)}
+.hero{display:flex;align-items:center;justify-content:space-between;padding:0 8vw;height:calc(100% - 96px)}
+.copy{max-width:470px;animation:fadeu 1s ease both}
+@keyframes fadeu{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+.eyeb{display:inline-block;background:#fff;color:#2a5cff;font-size:12px;font-weight:700;letter-spacing:2px;padding:8px 18px;border-radius:30px;box-shadow:0 6px 18px rgba(0,0,0,.08);margin-bottom:20px}
+h1{font:800 56px/1.1 Poppins;color:#14214a}
+h1 span{color:#2a5cff}
+.sub{color:#14214aAA;font-size:16px;line-height:1.7;margin:18px 0 24px}
+.price{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+.pnew{font:800 34px Poppins;color:#2a5cff}.pold{font-size:18px;color:#14214a66;text-decoration:line-through}
+.poff{background:#2a5cff;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px}
+.btns{display:flex;gap:16px;align-items:center}
+.bp{background:#2a5cff;color:#fff;border:none;padding:16px 36px;border-radius:40px;font:700 15px Poppins;cursor:pointer;box-shadow:0 14px 34px #2a5cff66;transition:.3s}.bp:hover{transform:translateY(-3px) scale(1.03)}
+.bs{background:#fff;color:#14214a;border:none;padding:16px 32px;border-radius:40px;font:700 15px Poppins;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.1);transition:.3s}.bs:hover{transform:translateY(-3px)}
+.trust{margin-top:24px;font-size:13px;color:#14214a99}.trust b{color:#f5a623}
+.stage{position:relative;width:420px;height:460px;perspective:900px}
+.prod{position:absolute;inset:30px;background:#fff;border-radius:36px;display:flex;align-items:center;justify-content:center;font-size:150px;box-shadow:0 40px 90px rgba(0,0,0,.18);animation:rot 7s ease-in-out infinite alternate}
+@keyframes rot{from{transform:rotateY(-14deg) rotateX(4deg) translateY(0)}to{transform:rotateY(14deg) rotateX(-4deg) translateY(-18px)}}
+.tagp{position:absolute;top:8%;right:-4%;background:#14214a;color:#fff;font:700 15px Poppins;padding:12px 20px;border-radius:16px;box-shadow:0 12px 28px rgba(0,0,0,.25);animation:bob 3s ease-in-out infinite alternate;z-index:5}
+.orb{position:absolute;font-size:34px;animation:bob 3.6s ease-in-out infinite alternate}
+.o1{top:4%;left:2%}.o2{bottom:10%;right:0;animation-delay:.8s}.o3{bottom:2%;left:10%;animation-delay:.4s;font-size:28px}
+@keyframes bob{to{transform:translateY(-24px)}}
+</style></head><body>
+<nav><div class="logo">SNKR CLUB</div><div class="menu"><a href="#">Nouveautés</a><a href="#">Marques</a><a href="#">Membres</a></div><button class="cart">🛒</button></nav>
+<div class="hero">
+<div class="copy">
+<span class="eyeb">DROP DE LA SEMAINE</span>
+<h1>Marche en <span>première</span></h1>
+<p class="sub">La paire AERO-9 en exclusivité membre — amorti cloud, édition limitée à 500 paires numérotées.</p>
+<div class="price"><span class="pnew">1 190 DH</span><span class="pold">1 490 DH</span><span class="poff">-20%</span></div>
+<div class="btns"><button class="bp">Acheter la paire</button><button class="bs">Guide des tailles</button></div>
+<div class="trust"><b>★★★★★</b> 4.9 · 912 membres l'ont achetée</div>
+</div>
+<div class="stage prx" data-d="14">
+<span class="orb o1">⚡</span><span class="orb o2">🔥</span><span class="orb o3">💙</span>
+<div class="prod">👟</div>
+<div class="tagp">500 paires only</div>
+</div>
+</div>
+<div class="byareej">BY AREEJ ✦</div>
+<script>
+document.addEventListener("mousemove",function(e){
+ var cx=(e.clientX/innerWidth-0.5),cy=(e.clientY/innerHeight-0.5);
+ document.querySelectorAll(".prx").forEach(function(el){
+  var d=parseFloat(el.dataset.d||10);
+  el.style.transform="translate("+(cx*d)+"px,"+(cy*d)+"px)"+(el.dataset.t||"");
+ });
+});
+</script></body></html>
