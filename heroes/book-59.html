@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Mes Limites 🛡️</title>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Baloo+2:wght@500;700&family=Dancing+Script:wght@700&family=Special+Elite&family=Playfair+Display:wght@600;800&family=Gochi+Hand&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;overflow:hidden;padding:40px 0;background:linear-gradient(160deg,#ffd9ec,#ffb9da 55%,#f79ac4)}
+.book{--paper:#fff4f9;--ink:#6e2e4e;--acc:#e8338a;--line:#f5bcd8;--hf:'Dancing Script';--bb:linear-gradient(140deg,#8a1e52,#440f2a)}
+h1{font-family:var(--hf,'Luckiest Guy'),cursive;font-size:34px;margin-bottom:16px;position:relative;z-index:5;color:#1c1c1c;--hf:'Dancing Script';font-size:42px;text-shadow:0 2px 8px #fff}
+.cover{background:url('img/b24.jpg') center/cover}
+.backboard{background:var(--bb,#222);border:2px solid var(--acc)}
+
+
+.scene{perspective:2600px;position:relative;z-index:5}
+.book{position:relative;width:380px;height:580px;transform-style:preserve-3d;transition:transform 1s ease}
+.book.open{transform:translateX(190px)}
+.sheet{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:left center;transition:transform 1.1s cubic-bezier(.35,.1,.25,1);cursor:pointer}
+.sheet.flipped{transform:rotateY(-180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:6px 14px 14px 6px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.face.back{transform:rotateY(180deg);border-radius:14px 6px 6px 14px}
+.backboard{position:absolute;inset:0;border-radius:6px 14px 14px 6px;z-index:1}
+.hint{margin-top:24px;text-align:center;font-size:14px;opacity:.9;position:relative;z-index:5}
+.closebtn{margin-top:10px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:inherit;padding:8px 22px;border-radius:30px;cursor:pointer;font-size:13px;position:relative;z-index:5}
+input,textarea{border:0;background:transparent;outline:none;font-family:inherit}
+.pg{background:var(--paper);color:var(--ink);padding:22px 20px;display:flex;flex-direction:column}
+.pg h2{font-family:var(--hf,inherit);font-size:21px;color:var(--acc);text-align:center;margin-bottom:10px}
+.lin{flex:1;background:repeating-linear-gradient(transparent 0 30px,var(--line) 30px 31px);border-radius:4px}
+.ft{text-align:center;margin-top:9px;font-size:14px;font-weight:700;color:var(--acc)}
+.tk{display:flex;align-items:center;gap:9px;margin:9px 0;font-size:15px}
+.tk input[type=checkbox]{width:17px;height:17px;accent-color:var(--acc)}
+.tk input[type=text]{flex:1;border-bottom:2px dotted var(--line);font-size:14px;color:var(--ink)}
+.fld{display:flex;align-items:flex-end;gap:8px;margin:11px 0;font-weight:700;font-size:14px}
+.fld input{flex:1;border-bottom:2px dotted var(--line);font-size:14px;color:var(--ink)}
+.quote{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:30px;font-size:24px;font-weight:700;font-family:var(--hf,inherit);color:var(--acc)}
+.stk{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;align-content:center}
+.stk span{aspect-ratio:1;border-radius:50%;border:2.5px dashed var(--acc);display:flex;align-items:center;justify-content:center;font-size:34px;background:rgba(255,255,255,.4)}
+.fl2{position:fixed;animation:bob ease-in-out infinite alternate;pointer-events:none}
+@keyframes bob{from{transform:translateY(0) rotate(-7deg)}to{transform:translateY(-24px) rotate(7deg)}}
+</style></head><style>
+.cover{background:url("img/b59.jpg") center/cover no-repeat!important;}
+
+.jpg{position:absolute;inset:0;background:linear-gradient(170deg,#eefaf8,#dcf2ee);display:flex;flex-direction:column;padding:13px 15px 8px;box-sizing:border-box;overflow:hidden;}
+.jpg:before{content:"";position:absolute;inset:6px;border:2px solid #a8ddd2;border-radius:12px;pointer-events:none;}
+.jh{font-family:"Baloo 2",cursive;font-weight:800;color:#0e5a50;font-size:15px;margin:2px 0 7px;text-align:center;border:none;}
+.jtx{font-family:"Baloo 2",cursive;font-size:10.8px;color:#4a443a;margin:3px 2px 1px;line-height:1.4;}
+.jtx.ctr{text-align:center;}.jtx.sm2{font-size:10px;color:#8a8070;}
+.wl{height:16px;border-bottom:1.5px dashed #c8bca4;margin:3px 4px;}
+.ws{border-radius:12px;padding:7px 10px 8px;margin:5px 0;}
+.wst{font-family:"Baloo 2",cursive;font-weight:800;font-size:11.5px;color:#2a2a2a;margin-bottom:3px;}
+.ws.rose{background:#fde8ec;border:1.5px solid #f5c2cf;}
+.ws.peach{background:#fdeede;border:1.5px solid #f5d2a8;}
+.ws.mint{background:#e6f5e9;border:1.5px solid #bfe3c8;}
+.ws.sky{background:#e6f1fb;border:1.5px solid #bcd8f0;}
+.ws.lilac{background:#f0e8fa;border:1.5px solid #d4c2ee;}
+.ws.lemon{background:#fdf8dc;border:1.5px solid #ecdf9a;}
+.ckrow{display:flex;align-items:center;font-family:"Baloo 2",cursive;font-size:10.4px;color:#4a443a;margin:3.2px 2px;}
+.ckb{width:13px;height:13px;border:2px solid #9a8f7a;border-radius:4px;margin-right:7px;flex:none;background:#fff;}
+.jft{margin-top:auto;text-align:center;font-size:10.5px;letter-spacing:2px;padding:4px 0 1px;font-family:"Baloo 2",cursive;color:#6ab8ac;}
+.certin{display:block;width:78%;margin:6px auto;border:none;border-bottom:2px dashed #14897a;background:transparent;font-family:"Dancing Script",cursive;font-size:19px;color:#4a443a;text-align:center;outline:none;}
+.certin.sm{width:42%;font-size:14px;}
+.grid7{display:grid;grid-template-columns:70px repeat(7,1fr);gap:2px;margin:5px 0;}
+.g7{height:20px;background:#fff;border:1px solid #d8ccb4;border-radius:4px;}
+.g7.h{background:#14897a;color:#fff;font-family:"Baloo 2",cursive;font-size:9.5px;text-align:center;line-height:20px;border-color:#14897a;}
+.g7.l{background:#e6f6f2;font-family:"Baloo 2",cursive;font-size:9px;color:#4a443a;line-height:20px;padding-left:4px;box-sizing:border-box;white-space:nowrap;overflow:hidden;}
+.cert2{border:3px double #14897a;border-radius:14px;padding:14px 10px;margin:12px 6px;background:#fffdf6;}
+.two{display:flex;gap:6px;}
+.two .ws{flex:1;}
+body{background:linear-gradient(160deg,#07201d,#0e4a42 55%,#051815)!important;}
+h1{color:#c2f0e8!important;text-shadow:0 2px 14px rgba(60,210,190,.4)!important;}
+.hint{color:#8cc8be!important;}
+.closebtn{background:#0a332d!important;color:#c2f0e8!important;border:1px solid rgba(90,220,200,.45)!important;}
+.backboard{background:linear-gradient(160deg,#0a332d,#14605a)!important;border-color:rgba(90,220,200,.45)!important;}
+
+</style>
+<body>
+<h1>Mes Limites 🛡️</h1>
+<div class="scene"><div class="book" id="book"><div class="backboard"></div>
+<div class="sheet"><div class="face front cover"></div><div class="face back pg"><div class="jpg"><h2 class="jh">🛡️ Ce cahier appartient à…</h2><input class="noflip certin" placeholder="Ton prénom…"><p class="jtx ctr">On commence le:</p><input class="noflip certin sm" placeholder="date…"><div class="ws lemon"><div class="wst">💡 Avant de commencer</div><p class="jtx ctr">Une limite, c'est ta barrière invisible qui dit: « Voilà comment on me traite. » Ce cahier t'apprend à la poser avec le sourire. 😊</p></div><div class="jft">tes limites te protègent 🛡️</div></div></div></div>
+<div class="sheet"><div class="face front pg"><div class="jpg"><h2 class="jh">🚧 C'est quoi une Limite?</h2><div class="ws sky"><div class="wst">Définition</div><p class="jtx ">C'est ce qui est OK pour toi… et ce qui ne l'est PAS. Chacun a les siennes, et elles méritent le respect! ✋</p></div><div class="ws mint"><div class="wst">Poser une limite c'est…</div><div class="ckrow"><span class="ckb"></span>Se respecter soi-même 💛</div><div class="ckrow"><span class="ckb"></span>PAS être méchant·e</div><div class="ckrow"><span class="ckb"></span>Protéger son énergie 🔋</div><div class="ckrow"><span class="ckb"></span>Aider les autres à te connaître</div></div><div class="jft">🚧 ✋ 💛</div></div></div><div class="face back pg"><div class="jpg"><h2 class="jh">🗂️ Les Types de Limites</h2><div class="ws rose"><div class="wst">💛 Émotionnelles</div><p class="jtx ">Mes sentiments ne sont pas des jouets.</p></div><div class="ws sky"><div class="wst">🫧 Physiques</div><p class="jtx ">Mon corps, mon espace, mes câlins — c'est moi qui décide.</p></div><div class="ws lemon"><div class="wst">⏰ Mon temps</div><p class="jtx ">J'ai le droit de garder du temps pour moi.</p></div><div class="ws lilac"><div class="wst">🎒 Mes affaires</div><p class="jtx ">On demande avant d'emprunter!</p></div><div class="jft">4 familles 🗂️</div></div></div></div>
+<div class="sheet"><div class="face front pg"><div class="jpg"><h2 class="jh">🚨 Mes Signaux d'Alarme</h2><div class="ws peach"><div class="wst">Une limite est franchie quand…</div><div class="ckrow"><span class="ckb"></span>Je me sens mal à l'aise 😖</div><div class="ckrow"><span class="ckb"></span>J'ai envie de dire non mais je dis oui</div><div class="ckrow"><span class="ckb"></span>Je me sens utilisé·e</div><div class="ckrow"><span class="ckb"></span>Je suis épuisé·e après avoir vu quelqu'un</div><div class="ckrow"><span class="ckb"></span>J'ai une boule au ventre</div></div><div class="ws mint"><div class="wst">La dernière fois que j'ai senti ça</div><div class="wl"></div><div class="wl"></div></div><div class="jft">écoute ton ventre 🚨</div></div></div><div class="face back pg"><div class="jpg"><h2 class="jh">💬 Dire NON Gentiment</h2><div class="ws mint"><div class="wst">Phrases magiques</div><div class="ckrow"><span class="ckb"></span>« Non merci, je ne préfère pas. »</div><div class="ckrow"><span class="ckb"></span>« Je ne suis pas à l'aise avec ça. »</div><div class="ckrow"><span class="ckb"></span>« Pas aujourd'hui, une autre fois! »</div><div class="ckrow"><span class="ckb"></span>« Laisse-moi réfléchir d'abord. »</div><div class="ckrow"><span class="ckb"></span>« Non — et je t'aime quand même! »</div></div><div class="ws lemon"><div class="wst">Mon NON à moi</div><div class="wl"></div><div class="wl"></div></div><div class="jft">non = phrase complète 💬</div></div></div></div>
+<div class="sheet"><div class="face front pg"><div class="jpg"><h2 class="jh">📝 Mes Limites à Moi</h2><div class="ws rose"><div class="wst">Avec mes amis</div><div class="wl"></div><div class="wl"></div></div><div class="ws sky"><div class="wst">Avec les écrans/réseaux</div><div class="wl"></div><div class="wl"></div></div><div class="ws lemon"><div class="wst">Avec mon temps</div><div class="wl"></div><div class="wl"></div></div><div class="jft">écris-les noir sur blanc 📝</div></div></div><div class="face back pg"><div class="jpg"><h2 class="jh">🤝 Respecter Celles des Autres</h2><div class="ws sky"><div class="wst">Les limites, ça marche dans les 2 sens!</div><div class="ckrow"><span class="ckb"></span>Je demande avant de prendre 🎒</div><div class="ckrow"><span class="ckb"></span>J'accepte un « non » sans bouder 😤→😊</div><div class="ckrow"><span class="ckb"></span>Je demande avant un câlin 🤗</div><div class="ckrow"><span class="ckb"></span>Je ne lis pas les messages des autres 📱</div></div><p class="jtx ctr sm2">Un « non » des autres n'est pas contre toi 💙</p><div class="jft">🤝 💙 ✋</div></div></div></div>
+<div class="sheet"><div class="face front pg"><div class="jpg"><h2 class="jh">🎭 Petits Scénarios</h2><div class="ws peach"><div class="wst">On copie toujours tes devoirs…</div><p class="jtx ">Je dis:</p><div class="wl"></div></div><div class="ws lilac"><div class="wst">On insiste pour que tu prêtes ton tel…</div><p class="jtx ">Je dis:</p><div class="wl"></div></div><div class="ws mint"><div class="wst">On te taquine et ça ne te fait pas rire…</div><p class="jtx ">Je dis:</p><div class="wl"></div></div><div class="jft">entraîne-toi 🎭</div></div></div><div class="face back pg"><div class="jpg"><h2 class="jh">💪 La Phrase Bouclier</h2><div class="ws mint"><div class="wst">La formule en 3 parties</div><p class="jtx ">« Je me sens … 💛<br>quand tu … 🎯<br>j'ai besoin de … 🛡️ »</p></div><div class="ws lemon"><div class="wst">Ma phrase bouclier</div><div class="wl"></div><div class="wl"></div><div class="wl"></div></div><p class="jtx ctr sm2">Calme, claire, sans crier: c'est ça la force! 😌</p><div class="jft">💪 🛡️ 😌</div></div></div></div>
+<div class="sheet"><div class="face front pg"><div class="jpg"><h2 class="jh">🏅 Certificat du Gardien de ses Limites</h2><div class="cert2"><p class="jtx ctr">décerné à</p><input class="noflip certin" placeholder="ton prénom…"><p class="jtx ctr">pour avoir appris à dire NON avec amour<br>et à protéger son espace! 🛡️💛</p><input class="noflip certin sm" placeholder="date…"></div><div class="jft">🏅 RESPECT! 🏅</div></div></div><div class="face back pg"><div class="jpg"><h2 class="jh" style="margin-top:120px">Mes Limites 🛡️</h2><p class="jtx ctr">Cahier original — Life Skills<br><br>BY AREEJ<br>areej.studio</p><div class="jft">✦ BY AREEJ ✦</div></div></div></div>
+</div></div>
+<div class="hint">🖱️ Klik bash t7ell · klik 3la la page lisr bash tsedd — 10 pages ldakhel!</div>
+<button class="closebtn" id="seddBtn">↺ Sedd l book</button>
+<script>
+const sheets=[...document.querySelectorAll('.sheet')];
+const book=document.getElementById('book');
+function upd(){const n=sheets.filter(s=>s.classList.contains('flipped')).length;
+ book.classList.toggle('open',n>0);
+ sheets.forEach((s,i)=>{s.style.zIndex=s.classList.contains('flipped')?10+i:100+sheets.length-i;});}
+sheets.forEach(s=>{s.addEventListener('click',e=>{
+ if(e.target.closest('input,textarea,.noflip'))return;
+ const i=sheets.indexOf(s);
+ if(!s.classList.contains('flipped')){if(i>0&&!sheets[i-1].classList.contains('flipped'))return;}
+ else{if(i<sheets.length-1&&sheets[i+1].classList.contains('flipped'))return;}
+ s.classList.toggle('flipped');upd();});});
+document.getElementById('seddBtn').addEventListener('click',()=>{sheets.forEach(s=>s.classList.remove('flipped'));upd();});
+upd();
+</script><style>
+/* AUTO-FIT: l book kay tgada m3a ay ecran */
+body{overflow:auto!important;justify-content:flex-start!important;align-items:center;padding:14px 0 26px!important;min-height:100vh}
+h1{margin-top:4px}
+</style>
+<script>
+(function(){var sc=document.querySelector('.scene');if(!sc)return;
+var BW=800,BH=600;
+function fit(){var vw=window.innerWidth,vh=window.innerHeight;
+ var h1=document.querySelector('h1'),hint=document.querySelector('.hint'),btn=document.querySelector('.closebtn');
+ var other=(h1?h1.offsetHeight+22:60)+(hint?hint.offsetHeight+6:40)+(btn?btn.offsetHeight+14:40)+46;
+ var s=Math.min(1,(vw-20)/BW,(vh-other)/BH);
+ if(s<0.3)s=0.3;
+ sc.style.transform='scale('+s+')';
+ sc.style.transformOrigin='top center';
+ sc.style.marginBottom=(-580*(1-s))+'px';}
+window.addEventListener('resize',fit);
+window.addEventListener('orientationchange',fit);
+fit();setTimeout(fit,300);})();
+</script>
+</body></html>

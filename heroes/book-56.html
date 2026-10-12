@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Ma Boîte à Outils 🧰</title>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Baloo+2:wght@500;700&family=Dancing+Script:wght@700&family=Special+Elite&family=Playfair+Display:wght@600;800&family=Gochi+Hand&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;overflow:hidden;padding:40px 0;background:linear-gradient(160deg,#ffd9ec,#ffb9da 55%,#f79ac4)}
+.book{--paper:#fff4f9;--ink:#6e2e4e;--acc:#e8338a;--line:#f5bcd8;--hf:'Dancing Script';--bb:linear-gradient(140deg,#8a1e52,#440f2a)}
+h1{font-family:var(--hf,'Luckiest Guy'),cursive;font-size:34px;margin-bottom:16px;position:relative;z-index:5;color:#1c1c1c;--hf:'Dancing Script';font-size:42px;text-shadow:0 2px 8px #fff}
+.cover{background:url('img/b24.jpg') center/cover}
+.backboard{background:var(--bb,#222);border:2px solid var(--acc)}
+
+
+.scene{perspective:2600px;position:relative;z-index:5}
+.book{position:relative;width:380px;height:580px;transform-style:preserve-3d;transition:transform 1s ease}
+.book.open{transform:translateX(190px)}
+.sheet{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:left center;transition:transform 1.1s cubic-bezier(.35,.1,.25,1);cursor:pointer}
+.sheet.flipped{transform:rotateY(-180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:6px 14px 14px 6px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.face.back{transform:rotateY(180deg);border-radius:14px 6px 6px 14px}
+.backboard{position:absolute;inset:0;border-radius:6px 14px 14px 6px;z-index:1}
+.hint{margin-top:24px;text-align:center;font-size:14px;opacity:.9;position:relative;z-index:5}
+.closebtn{margin-top:10px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:inherit;padding:8px 22px;border-radius:30px;cursor:pointer;font-size:13px;position:relative;z-index:5}
+input,textarea{border:0;background:transparent;outline:none;font-family:inherit}
+.pg{background:var(--paper);color:var(--ink);padding:22px 20px;display:flex;flex-direction:column}
+.pg h2{font-family:var(--hf,inherit);font-size:21px;color:var(--acc);text-align:center;margin-bottom:10px}
+.lin{flex:1;background:repeating-linear-gradient(transparent 0 30px,var(--line) 30px 31px);border-radius:4px}
+.ft{text-align:center;margin-top:9px;font-size:14px;font-weight:700;color:var(--acc)}
+.tk{display:flex;align-items:center;gap:9px;margin:9px 0;font-size:15px}
+.tk input[type=checkbox]{width:17px;height:17px;accent-color:var(--acc)}
+.tk input[type=text]{flex:1;border-bottom:2px dotted var(--line);font-size:14px;color:var(--ink)}
+.fld{display:flex;align-items:flex-end;gap:8px;margin:11px 0;font-weight:700;font-size:14px}
+.fld input{flex:1;border-bottom:2px dotted var(--line);font-size:14px;color:var(--ink)}
+.quote{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:30px;font-size:24px;font-weight:700;font-family:var(--hf,inherit);color:var(--acc)}
+.stk{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;align-content:center}
+.stk span{aspect-ratio:1;border-radius:50%;border:2.5px dashed var(--acc);display:flex;align-items:center;justify-content:center;font-size:34px;background:rgba(255,255,255,.4)}
+.fl2{position:fixed;animation:bob ease-in-out infinite alternate;pointer-events:none}
+@keyframes bob{from{transform:translateY(0) rotate(-7deg)}to{transform:translateY(-24px) rotate(7deg)}}
+</style></head><style>
+.cover{background:url("img/b56.jpg") center/cover no-repeat!important;}
+
+.jpg{position:absolute;inset:0;background:linear-gradient(170deg,#fff8ef,#fdeeda);display:flex;flex-direction:column;padding:13px 15px 8px;box-sizing:border-box;overflow:hidden;}
+.jpg:before{content:"";position:absolute;inset:6px;border:2px solid #eeD2a8;border-radius:12px;pointer-events:none;}
+.jh{font-family:"Baloo 2",cursive;font-weight:800;color:#8a4a1e;font-size:15px;margin:2px 0 7px;text-align:center;border:none;}
+.jtx{font-family:"Baloo 2",cursive;font-size:10.8px;color:#4a443a;margin:3px 2px 1px;line-height:1.4;}
+.jtx.ctr{text-align:center;}.jtx.sm2{font-size:10px;color:#8a8070;}
+.wl{height:16px;border-bottom:1.5px dashed #c8bca4;margin:3px 4px;}
+.ws{border-radius:12px;padding:7px 10px 8px;margin:5px 0;}
+.wst{font-family:"Baloo 2",cursive;font-weight:800;font-size:11.5px;color:#2a2a2a;margin-bottom:3px;}
+.ws.rose{background:#fde8ec;border:1.5px solid #f5c2cf;}
+.ws.peach{background:#fdeede;border:1.5px solid #f5d2a8;}
+.ws.mint{background:#e6f5e9;border:1.5px solid #bfe3c8;}
+.ws.sky{background:#e6f1fb;border:1.5px solid #bcd8f0;}
+.ws.lilac{background:#f0e8fa;border:1.5px solid #d4c2ee;}
+.ws.lemon{background:#fdf8dc;border:1.5px solid #ecdf9a;}
+.ckrow{display:flex;align-items:center;font-family:"Baloo 2",cursive;font-size:10.4px;color:#4a443a;margin:3.2px 2px;}
+.ckb{width:13px;height:13px;border:2px solid #9a8f7a;border-radius:4px;margin-right:7px;flex:none;background:#fff;}
+.jft{margin-top:auto;text-align:center;font-size:10.5px;letter-spacing:2px;padding:4px 0 1px;font-family:"Baloo 2",cursive;color:#e0a86a;}
+.certin{display:block;width:78%;margin:6px auto;border:none;border-bottom:2px dashed #d87a2a;background:transparent;font-family:"Dancing Script",cursive;font-size:19px;color:#4a443a;text-align:center;outline:none;}
+.certin.sm{width:42%;font-size:14px;}
+.grid7{display:grid;grid-template-columns:70px repeat(7,1fr);gap:2px;margin:5px 0;}
+.g7{height:20px;background:#fff;border:1px solid #d8ccb4;border-radius:4px;}
+.g7.h{background:#d87a2a;color:#fff;font-family:"Baloo 2",cursive;font-size:9.5px;text-align:center;line-height:20px;border-color:#d87a2a;}
+.g7.l{background:#fdf2e2;font-family:"Baloo 2",cursive;font-size:9px;color:#4a443a;line-height:20px;padding-left:4px;box-sizing:border-box;white-space:nowrap;overflow:hidden;}
+.cert2{border:3px double #d87a2a;border-radius:14px;padding:14px 10px;margin:12px 6px;background:#fffdf6;}
+.two{display:flex;gap:6px;}
+.two .ws{flex:1;}
+body{background:linear-gradient(160deg,#2a1a0e,#6a3a1a 55%,#20120a)!important;}
+h1{color:#ffd9ae!important;text-shadow:0 2px 14px rgba(255,170,90,.4)!important;}
+.hint{color:#e0b088!important;}
+.closebtn{background:#3a2210!important;color:#ffd9ae!important;border:1px solid rgba(255,190,120,.45)!important;}
+.backboard{background:linear-gradient(160deg,#3a2210,#6a3a1a)!important;border-color:rgba(255,190,120,.45)!important;}
+
+</style>
+<body>
+<h1>Ma Boîte à Outils 🧰</h1>
+<div class="scene"><div class="book" id="book"><div class="backboard"></div>
+<div class="sheet"><div class="face front cover"></div><div class="face back pg"><div class="jpg"><h2 class="jh">🧰 Ce cahier appartient à…</h2><input class="noflip certin" placeholder="Ton prénom…"><p class="jtx ctr">On commence le:</p><input class="noflip certin sm" placeholder="date…"><div class="ws lemon"><div class="wst">💡 Avant de commencer</div><p class="jtx ctr">Quand une grosse émotion arrive, tu ouvres ta boîte et tu choisis un outil! 🛠️</p></div><div class="jft">tes outils, ta force 💪</div></div></div></div>
+<div class="sheet"><div class="face front pg"><div class="jpg"><h2 class="jh">🛠️ C'est quoi un Outil d'Émotion?</h2><div class="ws peach"><div class="wst">Un outil c'est…</div><p class="jtx ">une petite action qui t'aide à traverser un gros sentiment sans exploser ni tout garder dedans. 🌋→🧘</p></div><div class="ws mint"><div class="wst">La règle d'or</div><p class="jtx ">Il n'y a pas UN bon outil — il y a TES outils. Ce cahier t'aide à les trouver! ✨</p></div><div class="jft">🧰 💛 🔧</div></div></div><div class="face back pg"><div class="jpg"><h2 class="jh">🏃 Outils du Corps</h2><div class="ws sky"><div class="wst">Quand l'énergie déborde…</div><div class="ckrow"><span class="ckb"></span>⚽ Jouer au sport</div><div class="ckrow"><span class="ckb"></span>🤸 S'étirer comme un chat</div><div class="ckrow"><span class="ckb"></span>🚴 Faire un tour de vélo</div><div class="ckrow"><span class="ckb"></span>💃 Danser à fond</div><div class="ckrow"><span class="ckb"></span>🛁 Bain ou douche chaude</div><div class="ckrow"><span class="ckb"></span>🫁 5 grandes respirations</div></div><div class="ws lemon"><div class="wst">Mon préféré</div><div class="wl"></div></div><div class="jft">bouge pour évacuer ⚡</div></div></div></div>
+<div class="sheet"><div class="face front pg"><div class="jpg"><h2 class="jh">💛 Outils du Cœur</h2><div class="ws rose"><div class="wst">Quand le cœur est lourd…</div><div class="ckrow"><span class="ckb"></span>🤗 Demander un câlin</div><div class="ckrow"><span class="ckb"></span>☎️ Parler à quelqu'un de confiance</div><div class="ckrow"><span class="ckb"></span>🧸 Serrer son doudou</div><div class="ckrow"><span class="ckb"></span>💌 Écrire ce qu'on ressent</div><div class="ckrow"><span class="ckb"></span>😢 Pleurer — c'est OK!</div><div class="ckrow"><span class="ckb"></span>🐱 Caresser un animal</div></div><div class="ws mint"><div class="wst">La personne à qui je parle</div><div class="wl"></div></div><div class="jft">ton cœur compte 💛</div></div></div><div class="face back pg"><div class="jpg"><h2 class="jh">🧠 Outils de la Tête</h2><div class="ws lilac"><div class="wst">Quand les pensées tournent…</div><div class="ckrow"><span class="ckb"></span>🎨 Dessiner son émotion</div><div class="ckrow"><span class="ckb"></span>📖 Lire une histoire</div><div class="ckrow"><span class="ckb"></span>🎵 Écouter sa musique</div><div class="ckrow"><span class="ckb"></span>🧩 Puzzle ou jeu calme</div><div class="ckrow"><span class="ckb"></span>✍️ Écrire dans son journal</div><div class="ckrow"><span class="ckb"></span>🔢 Compter à rebours de 20</div></div><div class="ws lemon"><div class="wst">Mon calme-tête</div><div class="wl"></div></div><div class="jft">🧠 ☁️ ✨</div></div></div></div>
+<div class="sheet"><div class="face front pg"><div class="jpg"><h2 class="jh">💔 Ma Boîte Spéciale Chagrin</h2><div class="ws sky"><div class="wst">Quand on perd quelqu'un ou quelque chose…</div><div class="ckrow"><span class="ckb"></span>Regarder des photos souvenirs 📷</div><div class="ckrow"><span class="ckb"></span>Raconter un souvenir drôle 😊</div><div class="ckrow"><span class="ckb"></span>Faire un dessin pour la personne 🎨</div><div class="ckrow"><span class="ckb"></span>Pleurer avec quelqu'un 🤝</div><div class="ckrow"><span class="ckb"></span>Garder un objet précieux 🎁</div></div><p class="jtx ctr sm2">Le chagrin est une preuve d'amour. Prends ton temps. 💙</p><div class="jft">💙 🕊️ 📷</div></div></div><div class="face back pg"><div class="jpg"><h2 class="jh">😊 Comment je me sens?</h2><div class="ws peach"><div class="wst">Aujourd'hui je suis…</div><div class="ckrow"><span class="ckb"></span>😊 Calme</div><div class="ckrow"><span class="ckb"></span>😡 Fâché·e</div><div class="ckrow"><span class="ckb"></span>😰 Nerveux·se</div><div class="ckrow"><span class="ckb"></span>😢 Triste</div><div class="ckrow"><span class="ckb"></span>😄 Content·e</div><div class="ckrow"><span class="ckb"></span>🥱 Fatigué·e</div><div class="ckrow"><span class="ckb"></span>🙈 Timide</div><div class="ckrow"><span class="ckb"></span>🤩 Excité·e</div></div><div class="ws mint"><div class="wst">Donc l'outil qu'il me faut c'est…</div><div class="wl"></div><div class="wl"></div></div><div class="jft">choisis ton outil 🔧</div></div></div></div>
+<div class="sheet"><div class="face front pg"><div class="jpg"><h2 class="jh">📊 Mon Tracker d'Outils</h2><p class="jtx ">Note ce qui marche pour TOI:</p><div class="grid7"><div class="g7 h"></div><div class="g7 h">L</div><div class="g7 h">M</div><div class="g7 h">M</div><div class="g7 h">J</div><div class="g7 h">V</div><div class="g7 h">S</div><div class="g7 h">D</div><div class="g7 l">Outil du corps</div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7 l">Outil du cœur</div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7 l">Outil de la tête</div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div><div class="g7"></div></div><div class="ws lemon"><div class="wst">L'outil qui marche le mieux</div><div class="wl"></div></div><div class="jft">deviens ton propre expert 🏆</div></div></div><div class="face back pg"><div class="jpg"><h2 class="jh">🧰 Remplis TA Boîte!</h2><div class="ws peach"><div class="wst">Mes 5 outils d'urgence</div><p class="jtx ">1.</p><div class="wl"></div><p class="jtx ">2.</p><div class="wl"></div><p class="jtx ">3.</p><div class="wl"></div><p class="jtx ">4.</p><div class="wl"></div><p class="jtx ">5.</p><div class="wl"></div></div><div class="jft">ta boîte est prête! 🎉</div></div></div></div>
+<div class="sheet"><div class="face front pg"><div class="jpg"><h2 class="jh">🏅 Certificat du Petit Bricoleur d'Émotions</h2><div class="cert2"><p class="jtx ctr">décerné à</p><input class="noflip certin" placeholder="ton prénom…"><p class="jtx ctr">pour avoir construit sa boîte à outils<br>et appris à s'en servir! 🧰💛</p><input class="noflip certin sm" placeholder="date…"></div><div class="jft">🏅 BRAVO! 🏅</div></div></div><div class="face back pg"><div class="jpg"><h2 class="jh" style="margin-top:120px">Ma Boîte à Outils 🧰</h2><p class="jtx ctr">Cahier original — Life Skills<br><br>BY AREEJ<br>areej.studio</p><div class="jft">✦ BY AREEJ ✦</div></div></div></div>
+</div></div>
+<div class="hint">🖱️ Klik bash t7ell · klik 3la la page lisr bash tsedd — 10 pages ldakhel!</div>
+<button class="closebtn" id="seddBtn">↺ Sedd l book</button>
+<script>
+const sheets=[...document.querySelectorAll('.sheet')];
+const book=document.getElementById('book');
+function upd(){const n=sheets.filter(s=>s.classList.contains('flipped')).length;
+ book.classList.toggle('open',n>0);
+ sheets.forEach((s,i)=>{s.style.zIndex=s.classList.contains('flipped')?10+i:100+sheets.length-i;});}
+sheets.forEach(s=>{s.addEventListener('click',e=>{
+ if(e.target.closest('input,textarea,.noflip'))return;
+ const i=sheets.indexOf(s);
+ if(!s.classList.contains('flipped')){if(i>0&&!sheets[i-1].classList.contains('flipped'))return;}
+ else{if(i<sheets.length-1&&sheets[i+1].classList.contains('flipped'))return;}
+ s.classList.toggle('flipped');upd();});});
+document.getElementById('seddBtn').addEventListener('click',()=>{sheets.forEach(s=>s.classList.remove('flipped'));upd();});
+upd();
+</script><style>
+/* AUTO-FIT: l book kay tgada m3a ay ecran */
+body{overflow:auto!important;justify-content:flex-start!important;align-items:center;padding:14px 0 26px!important;min-height:100vh}
+h1{margin-top:4px}
+</style>
+<script>
+(function(){var sc=document.querySelector('.scene');if(!sc)return;
+var BW=800,BH=600;
+function fit(){var vw=window.innerWidth,vh=window.innerHeight;
+ var h1=document.querySelector('h1'),hint=document.querySelector('.hint'),btn=document.querySelector('.closebtn');
+ var other=(h1?h1.offsetHeight+22:60)+(hint?hint.offsetHeight+6:40)+(btn?btn.offsetHeight+14:40)+46;
+ var s=Math.min(1,(vw-20)/BW,(vh-other)/BH);
+ if(s<0.3)s=0.3;
+ sc.style.transform='scale('+s+')';
+ sc.style.transformOrigin='top center';
+ sc.style.marginBottom=(-580*(1-s))+'px';}
+window.addEventListener('resize',fit);
+window.addEventListener('orientationchange',fit);
+fit();setTimeout(fit,300);})();
+</script>
+</body></html>
