@@ -1202,7 +1202,7 @@
     .prod-hover { position: absolute; inset: 0; opacity: 0; transition: opacity .4s; }
     .product-card:hover .prod-hover { opacity: 1; }
     .new-dot { background: var(--accent-coral); color: #fff; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 999px; margin-left: 6px; letter-spacing: .5px; }
-    .cat-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; max-width: 1100px; margin: 0 auto; }
+    .cat-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px; max-width: 1100px; margin: 0 auto; }
     .cat-card { cursor: pointer; text-align: center; transition: transform .25s; }
     .cat-card:hover { transform: translateY(-6px); }
     .cat-img { width: 150px; height: 150px; margin: 0 auto 12px; border-radius: 50%; overflow: hidden; border: 4px solid #fff; box-shadow: var(--shadow-md), 0 0 0 3px #E8B84B; }
@@ -1456,6 +1456,10 @@
         <div class="cat-img"><img src="heroes/img/b4.jpg" alt="Carnets" loading="lazy"></div>
         <h4>Carnets & Planners</h4>
       </div>
+      <div class="cat-card" onclick="shopCat('design')">
+        <div class="cat-img"><img src="images/mock/prem-rg.jpg" alt="Design" loading="lazy"></div>
+        <h4>Design & Digital 🎨</h4>
+      </div>
       <div class="cat-card" onclick="shopCat('new')">
         <div class="cat-img"><img src="heroes/img/hw-00.jpg" alt="Nouveautés" loading="lazy"></div>
         <h4>Nouveautés 🚀</h4>
@@ -1478,6 +1482,7 @@
       <button class="filter-btn" onclick="filterCategory('ecole', this)">Langues & École</button>
         <button class="filter-btn" onclick="filterCategory('new', this)">Nouveautés 🚀</button>
         <button class="filter-btn" onclick="filterCategory('carnet', this)">Carnets & Planners 📒</button>
+        <button class="filter-btn" onclick="filterCategory('design', this)">Design & Digital 🎨</button>
     </div>
 
     <!-- Products Grid -->
@@ -1899,6 +1904,91 @@
       {id:"b78", title:"Le Royaume des Labyrinthes — Vol. 3", subtitle:"20 labyrinthes dessinés main", category:"livre", ageGroup:"6-9", priceMAD:49, origPriceMAD:69, priceUSD:4.90, origPriceUSD:6.90, priceEUR:4.81, origPriceEUR:6.81, badge:"Recommandé", badgeClass:"badge-recommended", reviews:47, rating:5, icon:"📚", bg:"#E0F2FE", fg:"#0284C7", img:"heroes/shots/book-78.jpg", cover:"images/mock/b78.jpg", flip:"heroes/book-78.html", description:"Le final de la trilogie : 20 labyrinthes dans la forêt magique, avec solutions."},
       {id:"b80", title:"Sudoku Cube 3D", subtitle:"Sudoku en perspective", category:"livre", ageGroup:"9-14", priceMAD:49, origPriceMAD:69, priceUSD:4.90, origPriceUSD:6.90, priceEUR:4.81, origPriceEUR:6.81, badge:"Recommandé", badgeClass:"badge-recommended", reviews:61, rating:5, icon:"📚", bg:"#DCFCE7", fg:"#16A34A", img:"heroes/shots/book-80.jpg", cover:"images/mock/b80.jpg", flip:"heroes/book-80.html", description:"Le sudoku passe en 3D : des cubes en perspective pour tordre ta logique autrement."},
       {id:"b81", title:"Les Croisés des Nombres", subtitle:"Mots croisés... en calculs", category:"ecole", ageGroup:"9-14", priceMAD:49, origPriceMAD:69, priceUSD:4.90, origPriceUSD:6.90, priceEUR:4.81, origPriceEUR:6.81, badge:"Recommandé", badgeClass:"badge-recommended", reviews:68, rating:5, icon:"✏️", bg:"#EDE9FE", fg:"#7C3AED", img:"heroes/shots/book-81.jpg", cover:"images/mock/b81.jpg", flip:"heroes/book-81.html", description:"Des grilles croisées où les mots sont des nombres : calcule, croise, vérifie !"},
+      {id:"prem-logo", title:"AREEJ — Logo Collection", subtitle:"19 logos 3D premium", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
+       badge:"Best Seller", badgeClass:"badge-bestseller", reviews:48, rating:5, icon:"✨", bg:"#FEF3C7", fg:"#B45309",
+       img:"images/prem/logo-01.png", cover:"images/mock/prem-logo.jpg", flip:"images/prem/cover-logo.jpg",
+       description:"19 logos 3D premium en PNG fond transparent : fourrure, ballons, cristal... Parfaits pour marques, chaines et boutiques."},
+      {id:"prem-tee", title:"Maroc T-Shirt Designs — 40 Designs", subtitle:"MEGA bundle prêt à imprimer", category:"design", ageGroup:"ados", isnew:true,
+       priceMAD:99, origPriceMAD:199, priceUSD:9.99, origPriceUSD:19.99, priceEUR:9.90, origPriceEUR:19.90,
+       badge:"Best Seller", badgeClass:"badge-bestseller", reviews:39, rating:5, icon:"🇲🇦", bg:"#FEE2E2", fg:"#B91C1C",
+       img:"images/prem/tee-01.jpg", cover:"images/mock/prem-tee.jpg", flip:"images/prem/cover-tee.jpg",
+       description:"40 designs t-shirt Maroc en 300 DPI : calligraphie, zellige, symboles. Prêts pour impression et print-on-demand."},
+      {id:"prem-beauty", title:"Beauty & Cosmetics 3D Pack", subtitle:"12 éléments design 3D", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:27, rating:5, icon:"💄", bg:"#FDF0F4", fg:"#B4295B",
+       img:"images/prem/beauty-01.jpg", cover:"images/mock/prem-beauty.jpg", flip:"images/prem/cover-beauty.jpg",
+       description:"12 visuels 3D beauté et cosmétiques en haute résolution pour vos designs, boutiques et réseaux sociaux."},
+      {id:"prem-med", title:"Medical Healthcare 3D Pack", subtitle:"12 éléments santé 3D", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:22, rating:5, icon:"🩺", bg:"#E0F2FE", fg:"#0369A1",
+       img:"images/prem/med-01.jpg", cover:"images/mock/prem-med.jpg", flip:"images/prem/cover-med.jpg",
+       description:"12 visuels 3D médicaux et santé, qualité studio 300 DPI, pour cliniques, pharmacies et contenus éducatifs."},
+      {id:"prem-pink", title:"Pink Health Awareness 3D Pack", subtitle:"12 éléments roses 3D", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:19, rating:5, icon:"🎀", bg:"#FDF0F4", fg:"#B4295B",
+       img:"images/prem/pink-01.jpg", cover:"images/mock/prem-pink.jpg", flip:"images/prem/cover-pink.jpg",
+       description:"12 visuels 3D roses pour campagnes de sensibilisation santé : rubans, coeurs et éléments délicats en 300 DPI."},
+      {id:"prem-bf", title:"Black Fur Alphabet 3D", subtitle:"Alphabet fourrure PNG", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:24, rating:5, icon:"🖤", bg:"#E5E7EB", fg:"#111827",
+       img:"images/prem/bf-a.jpg", cover:"images/mock/prem-bf.jpg", flip:"images/prem/cover-bf.jpg",
+       description:"Alphabet complet en fourrure noire 3D, lettres PNG fond transparent, rendu luxe 300 DPI."},
+      {id:"prem-lp", title:"Leopard Fur Alphabet 3D", subtitle:"Alphabet léopard PNG", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
+       badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:31, rating:5, icon:"🐆", bg:"#FEF3C7", fg:"#B45309",
+       img:"images/prem/lp-a.jpg", cover:"images/mock/prem-lp.jpg", flip:"images/prem/cover-lp.jpg",
+       description:"Alphabet complet en fourrure léopard 3D, lettres PNG fond transparent, parfait pour typographies audacieuses."},
+      {id:"prem-dl", title:"Dalmatian Fluffy Alphabet 3D", subtitle:"Alphabet dalmatien PNG", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:17, rating:5, icon:"🐾", bg:"#F3F4F6", fg:"#374151",
+       img:"images/prem/dl-a.jpg", cover:"images/mock/prem-dl.jpg", flip:"images/prem/cover-dl.jpg",
+       description:"Alphabet fluffy motif dalmatien en 3D, lettres PNG transparentes pour créations fun et modernes."},
+      {id:"prem-ic", title:"Ice Crystal Alphabet 3D", subtitle:"Alphabet cristal PNG", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:21, rating:5, icon:"❄️", bg:"#E0F2FE", fg:"#0369A1",
+       img:"images/prem/ic-a.jpg", cover:"images/mock/prem-ic.jpg", flip:"images/prem/cover-ic.jpg",
+       description:"Alphabet en cristal de glace 3D, lettres PNG transparentes au rendu glacé spectaculaire."},
+      {id:"prem-pp", title:"Pink Puffy Y2K Alphabet 3D", subtitle:"Alphabet Y2K PNG", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
+       badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:28, rating:5, icon:"💗", bg:"#FDF0F4", fg:"#B4295B",
+       img:"images/prem/pp-a.jpg", cover:"images/mock/prem-pp.jpg", flip:"images/prem/cover-pp.jpg",
+       description:"Alphabet puffy rose style Y2K en 3D, lettres PNG transparentes pour designs girly et tendance."},
+      {id:"prem-rb", title:"Red Balloon Alphabet 3D", subtitle:"Alphabet ballons PNG", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:18, rating:5, icon:"🎈", bg:"#FEE2E2", fg:"#B91C1C",
+       img:"images/prem/rb-a.jpg", cover:"images/mock/prem-rb.jpg", flip:"images/prem/cover-rb.jpg",
+       description:"Alphabet ballons rouges 3D, lettres PNG transparentes pour anniversaires, promos et affiches."},
+      {id:"prem-rg", title:"Rose Gold Balloon Alphabet 3D", subtitle:"Alphabet rose gold PNG", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
+       badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:26, rating:5, icon:"🌹", bg:"#FDF0F4", fg:"#B4295B",
+       img:"images/prem/rg-a.jpg", cover:"images/mock/prem-rg.jpg", flip:"images/prem/cover-rg.jpg",
+       description:"Alphabet ballons rose gold 3D, lettres PNG transparentes au rendu métallique élégant."},
+      {id:"gold-01", title:"Pack Art Islamique — Médaillons Dorés", subtitle:"Art mural à imprimer", category:"design", ageGroup:"ados",
+       priceMAD:59, origPriceMAD:99, priceUSD:5.99, origPriceUSD:9.99, priceEUR:5.90, origPriceEUR:9.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:33, rating:5, icon:"🕌", bg:"#FEF3C7", fg:"#B45309",
+       img:"heroes/shots/gold-01.jpg", cover:"images/mock/gold-01.jpg", flip:"heroes/gold-01.html",
+       description:"Médaillons et ornements islamiques dorés, sans texte, prêts à imprimer et encadrer. PDF haute qualité."},
+      {id:"gold-02", title:"Oulama de la Oumma — Coloriage & Citations", subtitle:"Pages de coloriage + citations", category:"design", ageGroup:"9-14",
+       priceMAD:39, origPriceMAD:69, priceUSD:3.99, origPriceUSD:6.99, priceEUR:3.90, origPriceEUR:6.90,
+       badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:29, rating:5, icon:"🖋️", bg:"#FEF3C7", fg:"#B45309",
+       img:"heroes/shots/gold-02.jpg", cover:"images/mock/gold-02.jpg", flip:"heroes/gold-02.html",
+       description:"Pack de pages de coloriage et citations inspirées des grands savants de la Oumma. PDF prêt à imprimer en A4."},
+      {id:"covers-01", title:"Couvertures de Livres Premade", subtitle:"Pour auteurs & éditeurs", category:"design", ageGroup:"ados",
+       priceMAD:149, origPriceMAD:249, priceUSD:14.99, origPriceUSD:24.99, priceEUR:14.90, origPriceEUR:24.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:16, rating:5, icon:"📚", bg:"#FDF0F4", fg:"#B4295B",
+       img:"heroes/shots/covers-01.jpg", cover:"images/mock/covers-01.jpg", flip:"heroes/covers-01.html",
+       description:"Couvertures de livres premade professionnelles : il suffit d ajouter votre titre et votre nom d auteur."},
+      {id:"covers-02", title:"Jaquettes DVD — Animation", subtitle:"Collection jaquettes design", category:"design", ageGroup:"ados",
+       priceMAD:99, origPriceMAD:169, priceUSD:9.99, origPriceUSD:16.99, priceEUR:9.90, origPriceEUR:16.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:13, rating:5, icon:"🎬", bg:"#E0F2FE", fg:"#0369A1",
+       img:"heroes/shots/covers-02.jpg", cover:"images/mock/covers-02.jpg", flip:"heroes/covers-02.html",
+       description:"Jaquettes DVD style animation, compositions colorées haute résolution pour studios et projets créatifs."},
+      {id:"covers-04", title:"Couvertures Premade — Dark Romance", subtitle:"Série noire & rose", category:"design", ageGroup:"ados",
+       priceMAD:149, origPriceMAD:249, priceUSD:14.99, origPriceUSD:24.99, priceEUR:14.90, origPriceEUR:24.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:14, rating:5, icon:"🥀", bg:"#F3F4F6", fg:"#374151",
+       img:"heroes/shots/covers-04.jpg", cover:"images/mock/covers-04.jpg", flip:"heroes/covers-04.html",
+       description:"Série de couvertures premade dark romance : esthétique noire et rose, typographies élégantes, prêtes à personnaliser."},
       {id:"pack-mejor", title:"Pack EL MEJOR — Trilogie Complète", subtitle:"Les 3 volumes espagnol bac", category:"pack", ageGroup:"ados",
        priceMAD:149, origPriceMAD:207, priceUSD:14.99, origPriceUSD:20.97, priceEUR:14.90, origPriceEUR:20.70,
        badge:"Super Économie", badgeClass:"badge-bestseller", reviews:26, rating:5, icon:"🎓", bg:"#FFEDD5", fg:"#EA580C",
@@ -1909,6 +1999,31 @@
        badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:21, rating:5, icon:"🎨", bg:"#FDF0F4", fg:"#B4295B",
        img:"heroes/shots/book-88.jpg", cover:"images/mock/pack-createurs.jpg", flip:"heroes/book-88.html",
        description:"3 livres créatifs pour des après-midis magiques : jouets en papier 3D, théâtre de marionnettes et alphabet marocain à colorier. 6 PDFs inclus."},
+      {id:"covers-03", title:"Kit 5 E-books pour Elle", subtitle:"5 e-books complets", category:"pack", ageGroup:"ados", isnew:true,
+       priceMAD:129, origPriceMAD:199, priceUSD:12.99, origPriceUSD:19.99, priceEUR:12.90, origPriceEUR:19.90,
+       badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:23, rating:5, icon:"💖", bg:"#FDF0F4", fg:"#B4295B",
+       img:"heroes/shots/covers-03.jpg", cover:"images/mock/covers-03.jpg", flip:"heroes/covers-03.html",
+       description:"Kit de 5 e-books complets pour elle : confiance, bien-être, organisation. 5 PDFs élégants, cadeau parfait."},
+      {id:"pack-lifeskills", title:"Pack Life Skills — Les 9 Livres", subtitle:"Émotions & habitudes de vie", category:"pack", ageGroup:"6-9",
+       priceMAD:169, origPriceMAD:370, priceUSD:16.99, origPriceUSD:37.0, priceEUR:16.90, origPriceEUR:37.0,
+       badge:"Super Économie", badgeClass:"badge-bestseller", reviews:34, rating:5, icon:"🧠", bg:"#E0F2FE", fg:"#0369A1",
+       img:"heroes/shots/book-55.jpg", cover:"images/mock/pack-lifeskills.jpg", flip:"heroes/book-55.html",
+       description:"Les 9 livres Life Skills : sommeil, limites, écrans, confiance, force intérieure... 18 PDFs. Économisez 55% !"},
+      {id:"pack-histoire", title:"Pack Histoire — 3 Livres Complets", subtitle:"Sultans + Civilisations", category:"pack", ageGroup:"9-14",
+       priceMAD:129, origPriceMAD:209, priceUSD:12.99, origPriceUSD:20.97, priceEUR:12.90, origPriceEUR:20.70,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:19, rating:5, icon:"🏛️", bg:"#FEF3C7", fg:"#B45309",
+       img:"heroes/shots/book-85.jpg", cover:"images/mock/pack-histoire.jpg", flip:"heroes/book-85.html",
+       description:"Les Sultans du Maroc + Civilisations du Maroc + Civilisation Islamique : 3 livres complets, 6 PDFs. Économisez 80 DH !"},
+      {id:"pack-crafts", title:"Pack Crafts & Papier", subtitle:"Château + Fusée + Bateau pirate", category:"pack", ageGroup:"6-9",
+       priceMAD:119, origPriceMAD:179, priceUSD:11.99, origPriceUSD:17.97, priceEUR:11.90, origPriceEUR:17.70,
+       badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:17, rating:5, icon:"✂️", bg:"#FDF0F4", fg:"#B4295B",
+       img:"heroes/shots/book-70.jpg", cover:"images/mock/pack-crafts.jpg", flip:"heroes/book-70.html",
+       description:"3 ateliers papier 3D : château fort, fusée spatiale et bateau pirate. Des heures de découpage et de jeu, 6 PDFs."},
+      {id:"pack-jeux", title:"Pack Jeux & Puzzles — 5 Livres", subtitle:"Labyrinthes + Sudoku + Croisés", category:"pack", ageGroup:"6-9",
+       priceMAD:149, origPriceMAD:299, priceUSD:14.99, origPriceUSD:29.95, priceEUR:14.90, origPriceEUR:29.90,
+       badge:"Super Économie", badgeClass:"badge-bestseller", reviews:25, rating:5, icon:"🧩", bg:"#E0F2FE", fg:"#0369A1",
+       img:"heroes/shots/book-75.jpg", cover:"images/mock/pack-jeux.jpg", flip:"heroes/book-75.html",
+       description:"5 livres de jeux : Royaume des Labyrinthes, Sudoku Cube 3D, Croisés des Nombres et plus. 10 PDFs. Économisez 50% !"},
       {id:"mega-pack", title:"MEGA PACK — Les 101 Livres", subtitle:"Toute la librairie AREEJ", category:"pack", ageGroup:"9-14",
        priceMAD:399, origPriceMAD:999, priceUSD:39.99, origPriceUSD:99.99, priceEUR:39.90, origPriceEUR:99.90,
        badge:"🏆 Super Économie", badgeClass:"badge-bestseller", reviews:14, rating:5, icon:"👑", bg:"#FEF3C7", fg:"#B45309",
