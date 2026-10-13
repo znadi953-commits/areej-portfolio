@@ -1233,6 +1233,33 @@
       .collage-grid { grid-template-columns: repeat(4, 1fr); }
       .collage-grid img:nth-child(n+5) { display: none; }
     }
+  
+    /* HERO v3 */
+    .hero-section { position: relative; overflow: hidden; }
+    .hero-section::before { content: ""; position: absolute; width: 460px; height: 460px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,184,75,.28), transparent 68%); top: -130px; right: -90px; pointer-events: none; }
+    .hero-section::after { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(180,41,91,.15), transparent 68%); bottom: -150px; left: -110px; pointer-events: none; }
+    .showcase { position: relative; height: 520px; display: flex; align-items: center; justify-content: center; }
+    .sc-img { position: absolute; border-radius: 14px; box-shadow: 0 20px 45px rgba(0,0,0,.28); background: #fff; }
+    .sc-main { width: 295px; z-index: 3; }
+    .sc-side { width: 225px; opacity: .88; z-index: 2; filter: brightness(.9); transition: all .6s; }
+    .sc-l { transform: translateX(-168px) rotate(-11deg); }
+    .sc-r { transform: translateX(168px) rotate(11deg); }
+    .sc-pop { animation: scpop .65s cubic-bezier(.22,1.2,.36,1); }
+    @keyframes scpop { 0% { transform: scale(.9); opacity: .3; } 100% { transform: scale(1); opacity: 1; } }
+    .sc-chip { position: absolute; background: #fff; padding: 10px 18px; border-radius: 999px; font-weight: 800;
+      font-size: 13.5px; box-shadow: 0 10px 24px rgba(0,0,0,.16); z-index: 4; animation: scfloat 3.6s ease-in-out infinite; white-space: nowrap; }
+    .sc-chip1 { top: 14px; left: -6px; }
+    .sc-chip2 { bottom: 44px; right: -10px; animation-delay: 1.2s; background: linear-gradient(135deg, #FFD166, #FFB55E); }
+    .sc-chip3 { bottom: -4px; left: 26px; animation-delay: 2.1s; }
+    @keyframes scfloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-11px); } }
+    .hero-stats { display: flex; gap: 30px; margin: 20px 0 8px; }
+    .hero-stats b { display: block; font-family: 'Fredoka', sans-serif; font-size: 26px; color: var(--primary); line-height: 1.1; }
+    .hero-stats span { font-size: 12px; color: var(--text-muted); font-weight: 700; }
+    @media (max-width: 900px) { .showcase { height: 420px; } .sc-main { width: 230px; } .sc-side { width: 170px; }
+      .sc-l { transform: translateX(-120px) rotate(-11deg); } .sc-r { transform: translateX(120px) rotate(11deg); }
+      .hero-stats { gap: 18px; flex-wrap: wrap; } }
   </style>
 </head>
 <body>
@@ -1289,6 +1316,12 @@
         <p class="hero-desc">
           101 livres d'activités créés avec amour : coloriage, labyrinthes, paper toys, grammaire, espagnol du bac, histoire et guides de carrière. Feuilletez-les en ligne, téléchargez 2 PDFs (écran + impression A4) et imprimez à volonté.
         </p>
+        <div class="hero-stats">
+          <div><b>101</b><span>livres créés</span></div>
+          <div><b>+2000</b><span>pages à imprimer</span></div>
+          <div><b>4.9★</b><span>avis des parents</span></div>
+          <div><b>20</b><span>thèmes différents</span></div>
+        </div>
         <div class="hero-buttons">
           <a href="#bestsellers" class="btn-primary">
             Découvrir la collection ➔
@@ -1313,20 +1346,13 @@
 
       <!-- Hero Visual Art -->
       <div class="hero-visual">
-        <div class="hero-card-main">
-          <div class="hero-preview-box">
-            <span class="hero-preview-badge">NOUVEAU : LIVRE N°101 🏢</span>
-            <!-- Cute SVG Binder Illustration -->
-            <img class="interactive-binder-svg" src="heroes/img/hy-00.jpg" alt="LE LIVRE D&#39;OR" style="width:100%;max-width:235px;border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.28);">
-            <div style="margin-top: 15px; font-weight: 700; color: #1E293B;">LE LIVRE D&#39;OR · Notre 100ᵉ livre 🏆</div>
-          </div>
-          <div class="floating-review">
-            <div style="font-size: 26px;">📖</div>
-            <div>
-              <div class="stars">★★★★★</div>
-              <div style="font-size: 12px; font-weight: 700; color: #111827;">101 livres créés BY AREEJ</div>
-            </div>
-          </div>
+        <div class="showcase" id="showcase">
+          <img class="sc-img sc-side sc-l" id="scL" src="heroes/img/ht-00.jpg" alt="Livre AREEJ">
+          <img class="sc-img sc-main" id="scM" src="heroes/img/az-00.jpg" alt="Livre AREEJ">
+          <img class="sc-img sc-side sc-r" id="scR" src="heroes/img/hg-00.jpg" alt="Livre AREEJ">
+          <div class="sc-chip sc-chip1">⭐ 4.9/5 — les familles adorent</div>
+          <div class="sc-chip sc-chip2">🎁 1 livre OFFERT dès 3 achetés</div>
+          <div class="sc-chip sc-chip3">📥 Téléchargement instantané</div>
         </div>
       </div>
     </div>
@@ -2072,6 +2098,22 @@
     // Initialize
     renderProducts();
     renderNewRail();
+
+    // Hero showcase carousel
+    const scCovers = ["az","ht","hp","ca","hg","hr","hn","hw","hs","ws","hq","hx"].map(x => "heroes/img/" + x + "-00.jpg");
+    let scI = 1;
+    function scTick() {
+      const L = document.getElementById("scL"), M = document.getElementById("scM"), R = document.getElementById("scR");
+      if (!M) return;
+      scI = (scI + 1) % scCovers.length;
+      const n = scCovers.length;
+      M.classList.remove("sc-pop"); void M.offsetWidth;
+      L.src = scCovers[(scI + n - 1) % n];
+      M.src = scCovers[scI];
+      R.src = scCovers[(scI + 1) % n];
+      M.classList.add("sc-pop");
+    }
+    setInterval(scTick, 3200);
   </script>
 </body>
 </html>
