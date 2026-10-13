@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AREEJ Studio — Librairie de Livres d'Activités & Jeux Éducatifs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #B4295B;
+      --primary-dark: #7E1340;
+      --primary-light: #FDF0F4;
+      --accent-coral: #FF6B6B;
+      --accent-yellow: #FFD166;
+      --accent-teal: #06D6A0;
+      --accent-purple: #8B5CF6;
+      --bg-warm: #FAF8F5;
+      --text-main: #1F2937;
+      --text-muted: #6B7280;
+      --border-color: #E5E7EB;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+      --shadow-lg: 0 20px 30px -10px rgba(180, 41, 91, 0.15);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-warm);
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Fredoka', cursive, sans-serif;
+      font-weight: 600;
+    }
+
+    /* Top Announcement Bar */
+    .announcement-bar {
+      background: linear-gradient(90deg, #7E1340, #C94C74, #E08AA8);
+      color: white;
+      text-align: center;
+      padding: 9px 16px;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    .announcement-bar .badge-pill {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    /* Main Header */
+    header {
+      background: white;
+      border-bottom: 1px solid #F0ECE4;
+      position: sticky;
+      top: 38px;
+      z-index: 40;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #FF6B6B, #FFD166);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.35);
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .logo-text span:first-child {
+      font-family: 'Fredoka', cursive;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1F2937;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .logo-text span:last-child {
+      font-size: 11px;
+      color: #7C3AED;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    nav.nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    nav.nav-links a {
+      text-decoration: none;
+      color: #4B5563;
+      font-size: 14.5px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav.nav-links a:hover, nav.nav-links a.active {
+      color: var(--primary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .currency-selector {
+      background: #F3F4F6;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+      outline: none;
+    }
+    .cart-btn {
+      position: relative;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-full);
+      padding: 8px 18px;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.15s, background-color 0.2s;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+    }
+    .cart-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    .cart-badge {
+      background: var(--accent-coral);
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 1px 7px;
+    }
+
+    /* Hero Banner */
+    .hero-section {
+      position: relative;
+      background: linear-gradient(135deg, #FDF4E3 0%, #F5EEFF 50%, #E8F7FF 100%);
+      padding: 50px 20px 60px;
+      overflow: hidden;
+      border-bottom: 1px solid #F3EBDD;
+    }
+    .hero-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 40px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      border: 1px solid rgba(255, 107, 107, 0.25);
+      color: #E11D48;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-title {
+      font-size: 46px;
+      line-height: 1.15;
+      color: #111827;
+      margin-bottom: 18px;
+    }
+    .hero-title span {
+      background: linear-gradient(120deg, #B4295B, #9333EA, #FF6B6B);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 17px;
+      color: #4B5563;
+      margin-bottom: 28px;
+      max-width: 530px;
+      line-height: 1.6;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .btn-primary {
+      background: #B4295B;
+      color: white;
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: #7E1340;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(79, 70, 229, 0.4);
+    }
+    .btn-secondary {
+      background: white;
+      color: #1F2937;
+      border: 1.5px solid #E5E7EB;
+      padding: 13px 24px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover {
+      border-color: #B4295B;
+      color: #B4295B;
+      background: #F9FAFB;
+    }
+
+    .hero-features-chips {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      color: #374151;
+      font-weight: 600;
+    }
+    .chip-icon {
+      width: 26px;
+      height: 26px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    /* Hero Visual Card */
+    .hero-visual {
+      position: relative;
+    }
+    .hero-card-main {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255,255,255,0.8);
+      position: relative;
+    }
+    .hero-preview-box {
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      border-radius: 18px;
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-preview-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #EF4444;
+      color: white;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      box-shadow: 0 4px 10px rgba(239, 68, 68, 0.35);
+    }
+    .interactive-binder-svg {
+      width: 240px;
+      max-width: 90%;
+      filter: drop-shadow(0 12px 20px rgba(0,0,0,0.15));
+      transition: transform 0.3s;
+    }
+    .interactive-binder-svg:hover {
+      transform: scale(1.04) rotate(-1deg);
+    }
+
+    .floating-review {
+      position: absolute;
+      bottom: -15px;
+      left: -15px;
+      background: white;
+      padding: 12px 18px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #F3F4F6;
+    }
+    .stars {
+      color: #F59E0B;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    /* Trust bar */
+    .trust-bar {
+      background: white;
+      border-bottom: 1px solid #ECEEEF;
+      padding: 20px 0;
+    }
+    .trust-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .trust-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .trust-item:nth-child(1) .trust-icon { background: #FDF0F4; color: #B4295B; }
+    .trust-item:nth-child(2) .trust-icon { background: #FEF3C7; color: #D97706; }
+    .trust-item:nth-child(3) .trust-icon { background: #DCFCE7; color: #16A34A; }
+    .trust-item:nth-child(4) .trust-icon { background: #FCE7F3; color: #DB2777; }
+    .trust-text h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 2px;
+    }
+    .trust-text p {
+      font-size: 12.5px;
+      color: #6B7280;
+    }
+
+    /* Section container */
+    .section-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 55px 20px;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 38px;
+    }
+    .section-subtitle {
+      color: #B4295B;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .section-title {
+      font-size: 32px;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+    .section-desc {
+      font-size: 15px;
+      color: #6B7280;
+    }
+
+    /* Shop by Age */
+    .age-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .age-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      border: 2px solid transparent;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .age-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    .age-card.c1 { border-color: #E0E7FF; background: linear-gradient(180deg, #F5F7FF 0%, #FFFFFF 60%); }
+    .age-card.c2 { border-color: #FEF3C7; background: linear-gradient(180deg, #FFFDF5 0%, #FFFFFF 60%); }
+    .age-card.c3 { border-color: #DCFCE7; background: linear-gradient(180deg, #F4FDF7 0%, #FFFFFF 60%); }
+    .age-card.c4 { border-color: #FCE7F3; background: linear-gradient(180deg, #FFF5F9 0%, #FFFFFF 60%); }
+    
+    .age-card .age-circle {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      background: white;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+    .age-card h3 {
+      font-size: 20px;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+    .age-card p {
+      font-size: 13px;
+      color: #6B7280;
+    }
+    .age-card .view-pill {
+      margin-top: 14px;
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Filters for Catalog */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: white;
+      border: 1.5px solid #E5E7EB;
+      padding: 9px 20px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 14px;
+      color: #4B5563;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover {
+      border-color: #9CA3AF;
+      color: #111827;
+    }
+    .filter-btn.active {
+      background: #B4295B;
+      color: white;
+      border-color: #B4295B;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      background: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #F0ECE4;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+    .product-badge-flag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-bestseller { background: #F59E0B; color: white; }
+    .badge-recommended { background: #10B981; color: white; }
+    .badge-gift { background: #8B5CF6; color: white; }
+
+    .product-image-box {
+      width: 100%;
+      height: 230px;
+      background: #F9FAFB;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .product-svg-art {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.3s;
+    }
+    .product-card:hover .product-svg-art {
+      transform: scale(1.05);
+    }
+    .quick-view-btn {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      color: #1F2937;
+      padding: 7px 16px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .product-card:hover .quick-view-btn {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .product-details {
+      padding: 18px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .product-category-tag {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #8B5CF6;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .product-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      min-height: 42px;
+    }
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .product-rating .stars-count {
+      color: #F59E0B;
+      font-size: 12px;
+    }
+    .product-rating .review-num {
+      font-size: 12px;
+      color: #6B7280;
+      font-weight: 500;
+    }
+    .product-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: auto;
+      margin-bottom: 14px;
+    }
+    .price-current {
+      font-size: 19px;
+      font-weight: 800;
+      color: #111827;
+      font-family: 'Fredoka', cursive;
+    }
+    .price-original {
+      font-size: 13.5px;
+      color: #9CA3AF;
+      text-decoration: line-through;
+    }
+    .discount-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: #DC2626;
+      background: #FEE2E2;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .add-to-cart-action {
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.2s;
+      width: 100%;
+    }
+    .add-to-cart-action:hover {
+      background: #B4295B;
+    }
+
+    /* Why Parents Love Us */
+    .benefits-section {
+      background: white;
+      padding: 60px 20px;
+      border-top: 1px solid #ECEEEF;
+      border-bottom: 1px solid #ECEEEF;
+    }
+    .benefits-grid {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .benefit-card {
+      background: var(--bg-warm);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      text-align: center;
+      border: 1px solid #F0ECE4;
+    }
+    .benefit-icon-circle {
+      width: 64px;
+      height: 64px;
+      background: white;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
+    .benefit-card h3 {
+      font-size: 19px;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+    .benefit-card p {
+      font-size: 14px;
+      color: #6B7280;
+      line-height: 1.6;
+    }
+
+    /* Testimonials */
+    .testimonials-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 26px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #F0ECE4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .testimonial-card p {
+      font-style: italic;
+      color: #4B5563;
+      font-size: 14.5px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .reviewer-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .avatar-char {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #E0E7FF;
+      color: #B4295B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .reviewer-info h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #111827;
+    }
+    .reviewer-info span {
+      font-size: 12px;
+      color: #9CA3AF;
+    }
+
+    /* Call to Action Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, #B4295B, #7C3AED);
+      border-radius: var(--radius-lg);
+      padding: 45px 40px;
+      color: white;
+      text-align: center;
+      margin: 40px auto 60px;
+      max-width: 1200px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+    .cta-banner p {
+      font-size: 16px;
+      opacity: 0.9;
+      max-width: 580px;
+      margin: 0 auto 24px;
+    }
+    .cta-banner .cta-btn-white {
+      background: white;
+      color: #B4295B;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 13px 32px;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+    .cta-banner .cta-btn-white:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      color: #9CA3AF;
+      padding: 55px 20px 25px;
+    }
+    .footer-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 35px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #1F2937;
+    }
+    .footer-col h4 {
+      color: white;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col ul li a {
+      color: #9CA3AF;
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover {
+      color: white;
+    }
+    .footer-desc {
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin-top: 12px;
+      max-width: 300px;
+    }
+    .newsletter-box input {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 8px;
+      border: 1px solid #374151;
+      background: #1F2937;
+      color: white;
+      font-size: 13px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+    .newsletter-box button {
+      width: 100%;
+      background: #B4295B;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-size: 13.5px;
+    }
+    .bottom-bar {
+      max-width: 1240px;
+      margin: 25px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12.5px;
+      color: #6B7280;
+    }
+
+    /* Slide Cart Drawer */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .cart-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 90vw;
+      height: 100vh;
+      background: white;
+      z-index: 100;
+      box-shadow: -6px 0 25px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cart-drawer.open {
+      right: 0;
+    }
+    .cart-header {
+      padding: 20px;
+      border-bottom: 1px solid #E5E7EB;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-header h3 {
+      font-size: 18px;
+      color: #111827;
+    }
+    .close-cart-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #6B7280;
+    }
+    .cart-items-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cart-item {
+      display: flex;
+      gap: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #F3F4F6;
+    }
+    .cart-item-img {
+      width: 65px;
+      height: 65px;
+      background: #F3F4F6;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .cart-item-info {
+      flex: 1;
+    }
+    .cart-item-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+    .cart-item-price {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #B4295B;
+    }
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .qty-btn {
+      width: 24px;
+      height: 24px;
+      background: #F3F4F6;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .cart-footer {
+      padding: 20px;
+      border-top: 1px solid #E5E7EB;
+      background: #FAF8F5;
+    }
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .checkout-btn {
+      width: 100%;
+      background: #10B981;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    .checkout-btn:hover {
+      background: #059669;
+    }
+    .cart-empty-text {
+      text-align: center;
+      color: #9CA3AF;
+      padding: 40px 10px;
+      font-size: 15px;
+    }
+
+    /* Modal Quick View */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-box {
+      background: white;
+      border-radius: var(--radius-lg);
+      max-width: 650px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+      position: relative;
+      animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes popIn {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #F3F4F6;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    /* Toast notification */
+    .toast-notice {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #111827;
+      color: white;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 2000;
+    }
+    .toast-notice.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-desc {
+        margin: 0 auto 28px;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .hero-features-chips {
+        justify-content: center;
+      }
+      .trust-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .announcement-bar {
+        font-size: 12px;
+      }
+      nav.nav-links {
+        display: none;
+      }
+      .hero-title {
+        font-size: 32px;
+      }
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      .trust-container {
+        grid-template-columns: 1fr;
+      }
+      .benefits-grid, .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+      .bottom-bar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
+  
+    /* AREEJ overrides */
+    .product-image-box { position: relative; height: 235px; overflow: hidden; padding: 0 !important; }
+    .prod-shot { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform .35s; }
+    .product-card:hover .prod-shot { transform: scale(1.05); }
+    .flip-link { display: block; text-align: center; margin-top: 8px; font-size: 13.5px; font-weight: 700;
+      color: var(--primary); text-decoration: none; border: 2px dashed #E8B84B; border-radius: 10px; padding: 8px; transition: all .2s; }
+    .flip-link:hover { background: #FEF3C7; border-style: solid; }
+    .cart-item-img { border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <span>✨ Téléchargement instantané | 1 livre OFFERT dès 3 livres achetés | 101 livres créés avec amour 🇲🇦</span>
+    <span class="badge-pill">100% DIGITAL</span>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo-container">
+        <div class="logo-badge">📚</div>
+        <div class="logo-text">
+          <span>AREEJ</span>
+          <span>STUDIO</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#bestsellers" class="active">Best-Sellers</a>
+        <a href="#ages">Par Âge</a>
+        <a href="#categories">Packs & Bundles</a>
+        <a href="#why-us">Pourquoi Nous</a>
+        <a href="#reviews">Avis Clients</a>
+      </nav>
+
+      <div class="header-actions">
+        <select class="currency-selector" id="currencySelect" onchange="changeCurrency(this.value)">
+          <option value="MAD" selected>🇲🇦 MAD (DH)</option>
+          <option value="EUR">🇪🇺 EUR (€)</option>
+          <option value="USD">🇺🇸 USD ($)</option>
+        </select>
+        <button class="cart-btn" onclick="toggleCart(true)">
+          🛒 Panier <span class="cart-badge" id="cartCountBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div>
+        <div class="hero-tag">
+          <span>⭐</span> La librairie créative BY AREEJ 🇲🇦
+        </div>
+        <h1 class="hero-title">
+          Développez l'esprit de vos enfants <span>sans écrans</span> avec nos livres d'activités imprimables.
+        </h1>
+        <p class="hero-desc">
+          101 livres d'activités créés avec amour : coloriage, labyrinthes, paper toys, grammaire, espagnol du bac, histoire et guides de carrière. Feuilletez-les en ligne, téléchargez 2 PDFs (écran + impression A4) et imprimez à volonté.
+        </p>
+        <div class="hero-buttons">
+          <a href="#bestsellers" class="btn-primary">
+            Découvrir la collection ➔
+          </a>
+          <a href="#ages" class="btn-secondary">
+            Explorer par Âge 🎯
+          </a>
+        </div>
+
+        <div class="hero-features-chips">
+          <div class="chip">
+            <span class="chip-icon">✨</span> Téléchargement instantané
+          </div>
+          <div class="chip">
+            <span class="chip-icon">🔄</span> 2 PDFs par livre (écran + print)
+          </div>
+          <div class="chip">
+            <span class="chip-icon">👶</span> Touches marocaines authentiques
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Art -->
+      <div class="hero-visual">
+        <div class="hero-card-main">
+          <div class="hero-preview-box">
+            <span class="hero-preview-badge">NOUVEAU : LIVRE N°101 🏢</span>
+            <!-- Cute SVG Binder Illustration -->
+            <img class="interactive-binder-svg" src="heroes/shots/book-100.jpg" alt="LE LIVRE D&#39;OR" style="width:100%;max-width:340px;border-radius:14px;">
+            <div style="margin-top: 15px; font-weight: 700; color: #1E293B;">LE LIVRE D&#39;OR · Notre 100ᵉ livre 🏆</div>
+          </div>
+          <div class="floating-review">
+            <div style="font-size: 26px;">📖</div>
+            <div>
+              <div class="stars">★★★★★</div>
+              <div style="font-size: 12px; font-weight: 700; color: #111827;">101 livres créés BY AREEJ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Badges Bar -->
+  <section class="trust-bar">
+    <div class="trust-container">
+      <div class="trust-item">
+        <div class="trust-icon">📥</div>
+        <div class="trust-text">
+          <h4>Téléchargement Instantané</h4>
+          <p>Recevez vos PDF immédiatement après commande</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🎁</div>
+        <div class="trust-text">
+          <h4>1 Livre OFFERT 🎁</h4>
+          <p>Dès 3 livres achetés — au choix !</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🖨️</div>
+        <div class="trust-text">
+          <h4>2 PDFs par Livre</h4>
+          <p>Version écran + impression A4 haute qualité</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">💬</div>
+        <div class="trust-text">
+          <h4>Support Client WhatsApp</h4>
+          <p>Équipe à votre écoute 7j/7</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop by Age Section -->
+  <section class="section-wrap" id="ages">
+    <div class="section-header">
+      <span class="section-subtitle">Progression par étape</span>
+      <h2 class="section-title">Choisissez selon l'Âge</h2>
+      <p class="section-desc">Chaque livre est calibré pour une étape clé — du coloriage créatif au guide de carrière professionnel.</p>
+    </div>
+
+    <div class="age-grid">
+      <div class="age-card c1" onclick="filterByAge('3-6')">
+        <div class="age-circle">🖍️</div>
+        <h3>3 - 6 Ans</h3>
+        <p>Coloriage, alphabet marocain, défis sans écran & éveil social.</p>
+        <span class="view-pill">Voir les livres ➔</span>
+      </div>
+
+      <div class="age-card c2" onclick="filterByAge('6-9')">
+        <div class="age-circle">🧩</div>
+        <h3>6 - 9 Ans</h3>
+        <p>Labyrinthes, paper toys, marionnettes & mots cachés.</p>
+        <span class="view-pill">Voir les livres ➔</span>
+      </div>
+
+      <div class="age-card c3" onclick="filterByAge('9-14')">
+        <div class="age-circle">📖</div>
+        <h3>9 - 14 Ans</h3>
+        <p>Grammaire française, langue arabe, histoire & maths.</p>
+        <span class="view-pill">Voir les livres ➔</span>
+      </div>
+
+      <div class="age-card c4" onclick="filterByAge('ados')">
+        <div class="age-circle">🎓</div>
+        <h3>Ados & Adultes</h3>
+        <p>Espagnol du bac, carrière & développement professionnel.</p>
+        <span class="view-pill">Voir les livres ➔</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Sellers Catalog Section -->
+  <section class="section-wrap" id="bestsellers" style="padding-top: 10px;">
+    <div class="section-header">
+      <span class="section-subtitle">Les Favoris des Familles</span>
+      <h2 class="section-title">Nos Meilleurs Livres (Best-Sellers)</h2>
+      <p class="section-desc">Feuilletez chaque livre en ligne avant de l'acheter — cliquez sur « 📖 Feuilleter » !</p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterCategory('all', this)">Tous les produits</button>
+      <button class="filter-btn" onclick="filterCategory('livre', this)">Livres d'Activités & Jeux</button>
+      <button class="filter-btn" onclick="filterCategory('pack', this)">Packs & Bundles</button>
+      <button class="filter-btn" onclick="filterCategory('ecole', this)">Langues & École</button>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="product-grid" id="productGridContainer">
+      <!-- Injected by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Why Parents Love Us -->
+  <section class="benefits-section" id="why-us">
+    <div class="section-header">
+      <span class="section-subtitle">La Différence AREEJ</span>
+      <h2 class="section-title">Pourquoi les Familles Nous Adorent</h2>
+      <p class="section-desc">Nous concevons des livres pensés pour occuper intelligemment les enfants — et inspirer les grands.</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon-circle">📵</div>
+        <h3>Zéro Écran, 100% Fun</h3>
+        <p>100 défis sans écran, coloriages et jeux qui éloignent naturellement vos enfants des téléphones tout en stimulant leur curiosité.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon-circle">🖨️</div>
+        <h3>Imprimable à Volonté</h3>
+        <p>Imprimez uniquement les pages qu'il vous faut, autant de fois que vous voulez. Parfait pour la maison, l'école et les voyages.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon-circle">💛</div>
+        <h3>Créé au Maroc avec Amour</h3>
+        <p>Couscous de la semaine, zellige, souk et thé à la menthe — nos livres parlent la langue de nos enfants. 🇲🇦</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-wrap" id="reviews">
+    <div class="section-header">
+      <span class="section-subtitle">Témoignages authentiques</span>
+      <h2 class="section-title">Ce que disent les parents</h2>
+      <p class="section-desc">Retours d'expérience de mamans et papas au quotidien.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div>
+          <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
+          <p>"Mon fils ne lâche plus LE LIVRE D'OR des 100 défis sans écran ! Chaque jour il coche un défi avec sa case dorée. C'est la seule chose qui le canalise plus de 45 minutes sans télé !"</p>
+        </div>
+        <div class="reviewer-meta">
+          <div class="avatar-char">SM</div>
+          <div class="reviewer-info">
+            <h4>Sara M.</h4>
+            <span>Maman d'Adam (6 ans) • Casablanca</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div>
+          <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
+          <p>"Les labyrinthes enchantés et les paper toys nous ont sauvés pendant notre voyage ! J'ai imprimé les pages avant de partir — zéro écran, zéro pleurs. Je recommande à 1000%."</p>
+        </div>
+        <div class="reviewer-meta">
+          <div class="avatar-char">KB</div>
+          <div class="reviewer-info">
+            <h4>Kenza B.</h4>
+            <span>Maman de Sofia (3 ans) • Rabat</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div>
+          <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
+          <p>"En tant qu'enseignante, j'utilise Ma Grammaire Française et les mots cachés dans ma classe. Les exercices sont progressifs, et le pack espagnol EL MEJOR a sauvé mes élèves du bac !"</p>
+        </div>
+        <div class="reviewer-meta">
+          <div class="avatar-char">YL</div>
+          <div class="reviewer-info">
+            <h4>Yasmine L.</h4>
+            <span>Enseignante • Marrakech</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <div class="cta-banner">
+    <h2>Prêt à offrir le meilleur à votre enfant ?</h2>
+    <p>Téléchargez aujourd'hui, imprimez chez vous — et offrez des heures de créativité sans écran, partout au Maroc et ailleurs.</p>
+    <button class="cta-btn-white" onclick="document.getElementById('bestsellers').scrollIntoView({behavior: 'smooth'})">
+      Découvrir les 101 Livres ➔
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="logo-container" style="color:white; margin-bottom: 12px;">
+          <div class="logo-badge">📚</div>
+          <div class="logo-text">
+            <span style="color:white">AREEJ</span>
+            <span style="color:#A78BFA">STUDIO</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          AREEJ Studio crée des livres d'activités imprimables — coloriage, labyrinthes, langues, histoire et guides de carrière — qui éveillent l'esprit des enfants (et des grands) tout en favorisant des moments complices en famille.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#bestsellers">Tous les Best-Sellers</a></li>
+          <li><a href="#ages">Par Âge (3 ans à adulte)</a></li>
+          <li><a href="#categories">Packs & Économies</a></li>
+          <li><a href="#why-us">Nos Valeurs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Aide & Infos</h4>
+        <ul>
+          <li><a href="#">Téléchargement instantané 📥</a></li>
+          <li><a href="#">2 PDFs par livre (écran + print)</a></li>
+          <li><a href="index.html">Portfolio AREEJ ✨</a></li>
+          <li><a href="#">Support WhatsApp 7j/7 💬</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Recevez nos astuces</h4>
+        <p style="font-size: 13px; margin-bottom: 14px;">Inscrivez-vous pour recevoir -10% sur votre première commande et des pages d'activités gratuites.</p>
+        <div class="newsletter-box">
+          <input type="email" placeholder="Votre adresse email...">
+          <button onclick="alert('Merci pour votre inscription ! Code promo : BIENVENUE10')">S'inscrire</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <div>© 2026 AREEJ · areej.studio. Tous droits réservés.</div>
+      <div>Fabriqué avec amour au Maroc 🤍🇲🇦</div>
+    </div>
+  </footer>
+
+  <!-- Slide Cart Drawer -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Mon Panier (<span id="cartDrawerCount">0</span>)</h3>
+      <button class="close-cart-btn" onclick="toggleCart(false)">✕</button>
+    </div>
+    <div class="cart-items-list" id="cartItemsContainer">
+      <!-- Dynamic cart items -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span>Total estimé :</span>
+        <span id="cartTotalDisplay">0 DH</span>
+      </div>
+      <p style="font-size: 12px; color: #6B7280; margin-bottom: 12px;">Produits 100% digitaux · liens de téléchargement envoyés après confirmation.</p>
+      <button class="checkout-btn" onclick="proceedCheckout()">
+        Commander via WhatsApp 💬 ➔
+      </button>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quickModal" onclick="closeModalOnOverlay(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeQuickModal()">✕</button>
+      <div id="quickModalContent" style="padding: 24px;"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notice -->
+  <div class="toast-notice" id="toastNotice">
+    <span>✅</span>
+    <span id="toastMsg">Produit ajouté au panier !</span>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Product Database modeled directly on littlemindsatwork.in
+    const productsData = [
+      {id:"livre-dor-100", title:"LE LIVRE D'OR — 100 Défis Sans Écran", subtitle:"Édition spéciale 100ᵉ livre · Français", category:"livre", ageGroup:"3-6",
+       priceMAD:59, origPriceMAD:79, priceUSD:5.99, origPriceUSD:7.99, priceEUR:5.90, origPriceEUR:7.90,
+       badge:"★ 100ᵉ Livre", badgeClass:"badge-bestseller", reviews:142, rating:5, icon:"🏆", bg:"#FEF3C7", fg:"#B45309",
+       img:"heroes/shots/book-100.jpg", flip:"heroes/book-100.html",
+       description:"100 défis sans écran numérotés en 20 familles : nature, cuisine, art, science... Cases dorées à cocher, une étoile tous les 10 défis, touches marocaines et DIPLÔME DU CHAMPION D'OR. 23 pages + 2 PDFs."},
+      {id:"organizations-101", title:"How Organizations Actually Work", subtitle:"Guide professionnel · English", category:"ecole", ageGroup:"ados",
+       priceMAD:79, origPriceMAD:99, priceUSD:7.99, origPriceUSD:9.99, priceEUR:7.90, origPriceEUR:9.90,
+       badge:"Nouveau 🏢", badgeClass:"badge-recommended", reviews:12, rating:5, icon:"🏢", bg:"#FDF0F4", fg:"#B4295B",
+       img:"heroes/shots/book-101.jpg", flip:"heroes/book-101.html",
+       description:"L'entreprise comme un immeuble de 8 étages : People, Strategy, Finance, Operations, Marketing, Technology, Risk & Your Future. Vérités cachées, workbook par étage, Elevator Test et certificat. 23 pages + 2 PDFs."},
+      {id:"alphabet-maroc", title:"Mon Alphabet Marocain A-Z", subtitle:"Abécédaire illustré · Français", category:"livre", ageGroup:"3-6",
+       priceMAD:49, origPriceMAD:69, priceUSD:4.99, origPriceUSD:6.99, priceEUR:4.90, origPriceEUR:6.90,
+       badge:"Best Seller", badgeClass:"badge-bestseller", reviews:96, rating:5, icon:"🔤", bg:"#FDF0F4", fg:"#B4295B",
+       img:"heroes/shots/book-83.jpg", flip:"heroes/book-83.html",
+       description:"L'alphabet de A à Z avec un contenu 100% marocain : zellige, couscous, souk, thé à la menthe. Lettres à tracer, coloriages détaillés et activités. 2 PDFs inclus."},
+      {id:"paper-toys", title:"Paper Toys — Jouets en Papier 3D", subtitle:"Découpe, plie, colle · Dès 6 ans", category:"livre", ageGroup:"6-9",
+       priceMAD:49, origPriceMAD:69, priceUSD:4.99, origPriceUSD:6.99, priceEUR:4.90, origPriceEUR:6.90,
+       badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:64, rating:5, icon:"🎁", bg:"#DCFCE7", fg:"#16A34A",
+       img:"heroes/shots/book-88.jpg", flip:"heroes/book-88.html",
+       description:"Des jouets en papier 3D à construire : gabarits prêts à découper, pliages guidés et personnages adorables. Des heures de bricolage sans écran !"},
+      {id:"marionnettes", title:"Marionnettes à Doigts", subtitle:"Théâtre en papier · Dès 4 ans", category:"livre", ageGroup:"3-6",
+       priceMAD:49, origPriceMAD:69, priceUSD:4.99, origPriceUSD:6.99, priceEUR:4.90, origPriceEUR:6.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:51, rating:5, icon:"🎭", bg:"#EDE9FE", fg:"#7C3AED",
+       img:"heroes/shots/book-89.jpg", flip:"heroes/book-89.html",
+       description:"Un théâtre complet au bout des doigts : marionnettes à découper, décors et petites histoires à jouer en famille. Imagination et langage garantis !"},
+      {id:"labyrinthes", title:"Labyrinthes Enchantés", subtitle:"20 labyrinthes dessinés main", category:"livre", ageGroup:"6-9",
+       priceMAD:49, origPriceMAD:69, priceUSD:4.99, origPriceUSD:6.99, priceEUR:4.90, origPriceEUR:6.90,
+       badge:"Best Seller", badgeClass:"badge-bestseller", reviews:88, rating:5, icon:"🌀", bg:"#E0F2FE", fg:"#0284C7",
+       img:"heroes/shots/book-79.jpg", flip:"heroes/book-79.html",
+       description:"20 labyrinthes artistiques dessinés à la main, du facile au champion. Concentration, logique et patience — avec les solutions à la fin !"},
+      {id:"math-labyrinthes", title:"Math-Labyrinthes", subtitle:"Calcul mental qui amuse", category:"ecole", ageGroup:"6-9",
+       priceMAD:49, origPriceMAD:69, priceUSD:4.99, origPriceUSD:6.99, priceEUR:4.90, origPriceEUR:6.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:43, rating:5, icon:"➗", bg:"#FFEDD5", fg:"#EA580C",
+       img:"heroes/shots/book-82.jpg", flip:"heroes/book-82.html",
+       description:"Des labyrinthes où l'on avance en calculant ! Additions, soustractions et multiplications déguisées en jeu. Vérifiés un par un + pages solutions."},
+      {id:"mots-caches", title:"Mots Cachés Magiques", subtitle:"Vocabulaire & concentration", category:"livre", ageGroup:"6-9",
+       priceMAD:49, origPriceMAD:69, priceUSD:4.99, origPriceUSD:6.99, priceEUR:4.90, origPriceEUR:6.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:39, rating:5, icon:"🔍", bg:"#FEF9C3", fg:"#CA8A04",
+       img:"heroes/shots/book-84.jpg", flip:"heroes/book-84.html",
+       description:"Des grilles de mots cachés thématiques (animaux, Maroc, école, nature...) générées et vérifiées : chaque mot est vraiment dans la grille ! Solutions incluses."},
+      {id:"grammaire-fr", title:"Ma Grammaire Française", subtitle:"Leçons + exercices illustrés", category:"ecole", ageGroup:"9-14",
+       priceMAD:59, origPriceMAD:79, priceUSD:5.99, origPriceUSD:7.99, priceEUR:5.90, origPriceEUR:7.90,
+       badge:"Best Seller", badgeClass:"badge-bestseller", reviews:71, rating:5, icon:"📝", bg:"#FDF0F4", fg:"#B4295B",
+       img:"heroes/shots/book-90.jpg", flip:"heroes/book-90.html",
+       description:"La grammaire française enfin claire : leçons illustrées, astuces mnémotechniques, exercices corrigés et bilans. Parfait pour le primaire et le collège."},
+      {id:"qawaid-ar", title:"قواعد اللغة العربية", subtitle:"Grammaire arabe illustrée", category:"ecole", ageGroup:"9-14",
+       priceMAD:59, origPriceMAD:79, priceUSD:5.99, origPriceUSD:7.99, priceEUR:5.90, origPriceEUR:7.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:33, rating:5, icon:"✒️", bg:"#DCFCE7", fg:"#16A34A",
+       img:"heroes/shots/book-95.jpg", flip:"heroes/book-95.html",
+       description:"Les règles essentielles de la langue arabe expliquées simplement, avec exemples, tableaux et exercices corrigés. En arabe, pour le primaire et le collège."},
+      {id:"andalus", title:"الأندلس — Voyage dans l'Histoire", subtitle:"Histoire illustrée · العربية", category:"livre", ageGroup:"9-14",
+       priceMAD:59, origPriceMAD:79, priceUSD:5.99, origPriceUSD:7.99, priceEUR:5.90, origPriceEUR:7.90,
+       badge:"Coup de Cœur", badgeClass:"badge-gift", reviews:27, rating:5, icon:"🕌", bg:"#FEF3C7", fg:"#B45309",
+       img:"heroes/shots/book-94.jpg", flip:"heroes/book-94.html",
+       description:"L'épopée d'Al-Andalus racontée aux jeunes : Cordoue, sciences, architecture et grandes figures, avec cartes-repères et quiz. Un bijou d'histoire en arabe."},
+      {id:"eveil-social", title:"Éveil Social — Mes Premières Émotions", subtitle:"Compétences sociales · 3-6 ans", category:"livre", ageGroup:"3-6",
+       priceMAD:49, origPriceMAD:69, priceUSD:4.99, origPriceUSD:6.99, priceEUR:4.90, origPriceEUR:6.90,
+       badge:"Recommandé", badgeClass:"badge-recommended", reviews:36, rating:5, icon:"💛", bg:"#FEF9C3", fg:"#CA8A04",
+       img:"heroes/shots/book-93.jpg", flip:"heroes/book-93.html",
+       description:"Reconnaître ses émotions, dire bonjour, partager, s'excuser : des situations illustrées et des activités douces pour grandir avec un cœur en or."},
+      {id:"mejor-1", title:"EL MEJOR 1 — Grammaire Espagnole", subtitle:"Espagnol lycée & bac · Vol. 1", category:"ecole", ageGroup:"ados",
+       priceMAD:69, origPriceMAD:89, priceUSD:6.99, origPriceUSD:8.99, priceEUR:6.90, origPriceEUR:8.90,
+       badge:"Spécial Bac", badgeClass:"badge-bestseller", reviews:58, rating:5, icon:"🇪🇸", bg:"#FFEDD5", fg:"#EA580C",
+       img:"heroes/shots/book-96.jpg", flip:"heroes/book-96.html",
+       description:"Toute la grammaire espagnole du lycée : conjugaisons, ser/estar, temps du passé... méthode claire + exercices corrigés, avec notes d'appui en arabe."},
+      {id:"mejor-2", title:"EL MEJOR 2 — Vocabulaire & Écrit", subtitle:"Espagnol lycée & bac · Vol. 2", category:"ecole", ageGroup:"ados",
+       priceMAD:69, origPriceMAD:89, priceUSD:6.99, origPriceUSD:8.99, priceEUR:6.90, origPriceEUR:8.90,
+       badge:"Spécial Bac", badgeClass:"badge-bestseller", reviews:44, rating:5, icon:"✍️", bg:"#E0F2FE", fg:"#0284C7",
+       img:"heroes/shots/book-97.jpg", flip:"heroes/book-97.html",
+       description:"Le vocabulaire essentiel par thèmes + la méthode pour rédiger une production écrite qui impressionne le correcteur. Modèles, connecteurs et sujets corrigés."},
+      {id:"mejor-3", title:"EL MEJOR 3 — Compréhension & Oral", subtitle:"Espagnol lycée & bac · Vol. 3", category:"ecole", ageGroup:"ados",
+       priceMAD:69, origPriceMAD:89, priceUSD:6.99, origPriceUSD:8.99, priceEUR:6.90, origPriceEUR:8.90,
+       badge:"Spécial Bac", badgeClass:"badge-bestseller", reviews:31, rating:5, icon:"🎤", bg:"#EDE9FE", fg:"#7C3AED",
+       img:"heroes/shots/book-99.jpg", flip:"heroes/book-99.html",
+       description:"Lire comme un détective et briller à l'oral : textes type examen, script de présentation en or, méthode 4D de description d'image et simulation complète."},
+      {id:"tadrib", title:"رحلة التدريب الذكي", subtitle:"Apprendre à apprendre · العربية", category:"ecole", ageGroup:"ados",
+       priceMAD:59, origPriceMAD:79, priceUSD:5.99, origPriceUSD:7.99, priceEUR:5.90, origPriceEUR:7.90,
+       badge:"Nouveau", badgeClass:"badge-recommended", reviews:18, rating:5, icon:"🧭", bg:"#DCFCE7", fg:"#16A34A",
+       img:"heroes/shots/book-98.jpg", flip:"heroes/book-98.html",
+       description:"Un parcours d'entraînement intelligent en arabe : méthodes de mémorisation, organisation, objectifs et fiches pratiques pour étudier mieux, pas plus."},
+      {id:"pack-mejor", title:"Pack EL MEJOR — Trilogie Complète", subtitle:"Les 3 volumes espagnol bac", category:"pack", ageGroup:"ados",
+       priceMAD:149, origPriceMAD:207, priceUSD:14.99, origPriceUSD:20.97, priceEUR:14.90, origPriceEUR:20.70,
+       badge:"Super Économie", badgeClass:"badge-bestseller", reviews:26, rating:5, icon:"🎓", bg:"#FFEDD5", fg:"#EA580C",
+       img:"heroes/shots/book-99.jpg", flip:"heroes/book-96.html",
+       description:"Le pack bac complet : Grammaire + Vocabulaire & Écrit + Compréhension & Oral. 69 pages de méthode, 6 PDFs, et le diplôme de la trilogie. Économisez 58 DH !"},
+      {id:"pack-createurs", title:"Pack Petits Créateurs", subtitle:"Paper toys + Marionnettes + Alphabet", category:"pack", ageGroup:"3-6",
+       priceMAD:119, origPriceMAD:147, priceUSD:11.99, origPriceUSD:14.97, priceEUR:11.90, origPriceEUR:14.70,
+       badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:21, rating:5, icon:"🎨", bg:"#FDF0F4", fg:"#B4295B",
+       img:"heroes/shots/book-88.jpg", flip:"heroes/book-88.html",
+       description:"3 livres créatifs pour des après-midis magiques : jouets en papier 3D, théâtre de marionnettes et alphabet marocain à colorier. 6 PDFs inclus."},
+      {id:"mega-pack", title:"MEGA PACK — Les 101 Livres", subtitle:"Toute la librairie AREEJ", category:"pack", ageGroup:"9-14",
+       priceMAD:399, origPriceMAD:999, priceUSD:39.99, origPriceUSD:99.99, priceEUR:39.90, origPriceEUR:99.90,
+       badge:"🏆 Super Économie", badgeClass:"badge-bestseller", reviews:14, rating:5, icon:"👑", bg:"#FEF3C7", fg:"#B45309",
+       img:"heroes/shots/book-100.jpg", flip:"heroes/book-100.html",
+       description:"La collection complète : 101 livres d'activités, de jeux et de méthodes (plus de 200 PDFs). Coloriage, puzzles, langues, histoire, carrière — tout AREEJ Studio !"}
+    ];
+
+    let currentCurrency = 'MAD';
+    let currentFilter = 'all';
+    let cart = [];
+
+    // Helper for currency formatting
+    function formatPrice(product) {
+      if (currentCurrency === 'MAD') {
+        return {
+          current: `${product.priceMAD} DH`,
+          orig: `${product.origPriceMAD} DH`,
+          raw: product.priceMAD
+        };
+      } else if (currentCurrency === 'EUR') {
+        return {
+          current: `${product.priceEUR.toFixed(2)} €`,
+          orig: `${product.origPriceEUR.toFixed(2)} €`,
+          raw: product.priceEUR
+        };
+      } else {
+        return {
+          current: `$${product.priceUSD.toFixed(2)}`,
+          orig: `$${product.origPriceUSD.toFixed(2)}`,
+          raw: product.priceUSD
+        };
+      }
+    }
+
+    function renderProducts() {
+      const container = document.getElementById('productGridContainer');
+      const filtered = productsData.filter(p => {
+        if (currentFilter === 'all') return true;
+        if (currentFilter.startsWith('age-')) {
+          const age = currentFilter.replace('age-', '');
+          return p.ageGroup === age;
+        }
+        return p.category === currentFilter;
+      });
+
+      container.innerHTML = filtered.map(p => {
+        const prices = formatPrice(p);
+        return `
+          <div class="product-card">
+            <span class="product-badge-flag ${p.badgeClass}">${p.badge}</span>
+            <div class="product-image-box" style="background:${p.bg}">
+              <img class="prod-shot" src="${p.img}" alt="${p.title}" loading="lazy">
+              <button class="quick-view-btn" onclick="openQuickModal('${p.id}')">Aperçu rapide 👁️</button>
+            </div>
+            <div class="product-details">
+              <span class="product-category-tag">${p.subtitle}</span>
+              <h3 class="product-title">${p.title}</h3>
+              <div class="product-rating">
+                <span class="stars-count">★★★★★</span>
+                <span class="review-num">(${p.reviews} avis)</span>
+              </div>
+              <div class="product-price-row">
+                <span class="price-current">${prices.current}</span>
+                <span class="price-original">${prices.orig}</span>
+                <span class="discount-tag">PROMO</span>
+              </div>
+              <button class="add-to-cart-action" onclick="addToCart('${p.id}')">
+                <span>Ajouter au panier</span> <span>🛒</span>
+              </button>
+              <a class="flip-link" href="${p.flip}" target="_blank" rel="noopener">📖 Feuilleter le livre</a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterCategory(cat, btn) {
+      currentFilter = cat;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderProducts();
+    }
+
+    function filterByAge(age) {
+      currentFilter = 'age-' + age;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      renderProducts();
+      document.getElementById('bestsellers').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function changeCurrency(curr) {
+      currentCurrency = curr;
+      renderProducts();
+      updateCartDrawer();
+    }
+
+    // Cart management
+    function addToCart(productId) {
+      const prod = productsData.find(p => p.id === productId);
+      if (!prod) return;
+
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...prod, qty: 1 });
+      }
+
+      showToast(`"${prod.title}" a été ajouté au panier !`);
+      updateCartCount();
+      updateCartDrawer();
+      toggleCart(true);
+    }
+
+    function updateCartCount() {
+      const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+      document.getElementById('cartCountBadge').textContent = totalCount;
+      document.getElementById('cartDrawerCount').textContent = totalCount;
+    }
+
+    function updateCartDrawer() {
+      const container = document.getElementById('cartItemsContainer');
+      const totalDisplay = document.getElementById('cartTotalDisplay');
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="cart-empty-text">
+            <div style="font-size: 40px; margin-bottom: 10px;">🧺</div>
+            Votre panier est actuellement vide.<br>Découvrez nos livres d'activités et commencez l'aventure !
+          </div>
+        `;
+        totalDisplay.textContent = currentCurrency === 'MAD' ? '0 DH' : (currentCurrency === 'EUR' ? '0.00 €' : '$0.00');
+        return;
+      }
+
+      let subtotal = 0;
+      container.innerHTML = cart.map(item => {
+        const prices = formatPrice(item);
+        const itemTotal = prices.raw * item.qty;
+        subtotal += itemTotal;
+
+        const formattedItemTotal = currentCurrency === 'MAD' 
+          ? `${itemTotal} DH` 
+          : (currentCurrency === 'EUR' ? `${itemTotal.toFixed(2)} €` : `$${itemTotal.toFixed(2)}`);
+
+        return `
+          <div class="cart-item">
+            <div class="cart-item-img" style="background:${item.bg} url(${item.img}) center/cover no-repeat;"></div>
+            <div class="cart-item-info">
+              <div class="cart-item-title">${item.title}</div>
+              <div class="cart-item-price">${formattedItemTotal}</div>
+              <div class="cart-item-controls">
+                <button class="qty-btn" onclick="changeQty('${item.id}', -1)">-</button>
+                <span style="font-size: 13px; font-weight: 700;">${item.qty}</span>
+                <button class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+              </div>
+            </div>
+            <button onclick="removeFromCart('${item.id}')" style="background:none; border:none; cursor:pointer; color:#9CA3AF; font-size:16px;">✕</button>
+          </div>
+        `;
+      }).join('');
+
+      totalDisplay.textContent = currentCurrency === 'MAD' 
+        ? `${subtotal} DH` 
+        : (currentCurrency === 'EUR' ? `${subtotal.toFixed(2)} €` : `$${subtotal.toFixed(2)}`);
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+      }
+      updateCartCount();
+      updateCartDrawer();
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(i => i.id !== id);
+      updateCartCount();
+      updateCartDrawer();
+    }
+
+    function toggleCart(open) {
+      const overlay = document.getElementById('cartOverlay');
+      const drawer = document.getElementById('cartDrawer');
+      if (open) {
+        overlay.classList.add('open');
+        drawer.classList.add('open');
+      } else {
+        overlay.classList.remove('open');
+        drawer.classList.remove('open');
+      }
+    }
+
+    function proceedCheckout() {
+      if (cart.length === 0) {
+        alert("Votre panier est vide ! Ajoutez d'abord des articles.");
+        return;
+      }
+      const lines = cart.map(i => "• " + i.title + " x" + i.qty + " — " + formatPrice(i).current);
+      const totalTxt = document.getElementById("cartTotalDisplay").textContent;
+      const msg = "🛍️ Commande AREEJ Studio\n\n" + lines.join("\n") + "\n\nTOTAL : " + totalTxt + "\n\nMerci de me confirmer la commande, les liens de téléchargement arrivent juste après 💛";
+      window.open("https://wa.me/?text=" + encodeURIComponent(msg), "_blank");
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotice');
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Modal
+    function openQuickModal(id) {
+      const p = productsData.find(item => item.id === id);
+      if (!p) return;
+      const prices = formatPrice(p);
+      const content = document.getElementById('quickModalContent');
+      content.innerHTML = `
+        <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px;">
+          <div style="width:110px;height:110px;background:${p.bg} url(${p.img}) center/cover no-repeat;border-radius:16px;flex-shrink:0;"></div>
+          <div>
+            <span class="product-badge-flag ${p.badgeClass}" style="position:static; display:inline-block; margin-bottom:6px;">${p.badge}</span>
+            <h2 style="font-size: 22px; color: #111827;">${p.title}</h2>
+            <div style="font-size: 14px; color: #B4295B; font-weight: 700;">Âge recommandé : ${p.ageGroup} ans</div>
+          </div>
+        </div>
+        <p style="font-size: 15px; color: #4B5563; line-height: 1.6; margin-bottom: 20px;">${p.description}</p>
+        <div style="background: #F9FAFB; padding: 14px 18px; border-radius: 12px; margin-bottom: 20px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <span style="font-size: 13px; color: #6B7280; display:block;">Prix spécial :</span>
+            <span style="font-size: 24px; font-weight:800; color:#111827; font-family:'Fredoka'">${prices.current}</span>
+            <span style="font-size: 14px; color: #9CA3AF; text-decoration:line-through; margin-left: 6px;">${prices.orig}</span>
+          </div>
+          <button class="btn-primary" onclick="addToCart('${p.id}'); closeQuickModal();">
+            Ajouter au panier 🛒
+          </button>
+        </div>
+        <div style="font-size: 12px; color: #6B7280; display:flex; gap:16px;">
+          <span>✓ Plastifié indéchirable</span>
+          <span>✓ Velcros réutilisables</span>
+          <span>✓ Satisfait ou remboursé</span>
+        </div>
+      `;
+      document.getElementById('quickModal').classList.add('active');
+    }
+
+    function closeQuickModal() {
+      document.getElementById('quickModal').classList.remove('active');
+    }
+
+    function closeModalOnOverlay(e) {
+      if (e.target.id === 'quickModal') {
+        closeQuickModal();
+      }
+    }
+
+    // Initialize
+    renderProducts();
+  </script>
+</body>
+</html>
