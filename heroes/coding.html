@@ -30,7 +30,7 @@ body{font-family:'Baloo 2',cursive;background:linear-gradient(175deg,#1BA7E8,#0B
 .blocks{display:flex;flex-wrap:wrap;gap:8px}
 .blk{border:none;cursor:pointer;font-family:'Baloo 2',cursive;font-weight:800;font-size:16px;padding:10px 16px;border-radius:14px;color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.25);transition:transform .1s}
 .blk:active{transform:translateY(3px);box-shadow:none}
-.bF{background:#2563EB}.bL{background:#EC4899}.bR{background:#F97316}.bREP3,.bREP5{background:#EAB308;color:#422006}
+.bF{background:#2563EB}.bL{background:#EC4899}.bR{background:#F97316}.bREP3,.bREP5{background:#EAB308;color:#422006}.bIF{background:#7C3AED}.bREPI6,.bREPI8,.bREPI10,.bREPI12,.bREPI25{background:#14B8A6}
 .prog{min-height:56px;display:flex;flex-wrap:wrap;gap:7px;background:rgba(0,0,0,.22);border-radius:14px;padding:9px;border:2px dashed rgba(255,255,255,.35)}
 .prog .blk{font-size:14px;padding:8px 12px}
 .prog .blk.bad{outline:3px solid #ff5252;animation:pulse .8s infinite}
@@ -67,7 +67,7 @@ body{font-family:'Baloo 2',cursive;background:linear-gradient(175deg,#1BA7E8,#0B
   </div>
 
   <div class="hud">
-    <div class="lvl">Niveau <span id="ln">1</span>/10</div>
+    <div class="lvl">Niveau <span id="ln">1</span>/25</div>
     <div class="phase" id="ph">SÉQUENCES</div>
     <div class="stars" id="st"></div>
   </div>
@@ -113,14 +113,29 @@ var LV=[
  {s:[0,4,0],g:[4,0],w:[],m:12,p:['F','L','R'],dbg:null,ph:'SÉQUENCES'},
  {s:[0,0,0],g:[5,5],w:[[3,0],[3,1],[3,2]],m:15,p:['F','L','R'],dbg:null,ph:'SÉQUENCES'},
  {s:[5,5,2],g:[0,0],w:[[1,2],[3,3],[4,1]],m:13,p:['F','L','R'],dbg:null,ph:'SÉQUENCES'},
+ {s:[0,0,1],g:[2,2],w:[[0,2],[1,0]],m:8,p:['F','L','R'],dbg:null,ph:'SÉQUENCES'},
  {s:[0,2,0],g:[5,2],w:[],m:2, p:['F','L','R','REP3','REP5'],dbg:null,ph:'BOUCLES'},
  {s:[0,5,0],g:[5,0],w:[],m:4, p:['F','L','R','REP3','REP5'],dbg:null,ph:'BOUCLES'},
  {s:[0,0,1],g:[4,4],w:[[2,2]],m:6,p:['F','L','R','REP3','REP5'],dbg:null,ph:'BOUCLES'},
+ {s:[1,1,0],g:[4,4],w:[[3,2]],m:3,p:['F','L','R','REP3','REP5'],dbg:null,ph:'BOUCLES'},
+ {s:[0,0,1],g:[5,4],w:[[2,3]],m:5,p:['F','L','R','REP3','REP5'],dbg:null,ph:'BOUCLES'},
+ {s:[0,0,0],g:[5,0],w:[],m:2,p:['IF','REPI6'],dbg:null,ph:'CONDITIONS'},
+ {s:[0,0,0],g:[5,5],w:[],m:2,p:['IF','REPI6','REPI12'],dbg:null,ph:'CONDITIONS'},
+ {s:[0,0,0],g:[0,5],w:[],m:2,p:['IF','REPI6','REPI12'],dbg:null,ph:'CONDITIONS'},
+ {s:[0,0,0],g:[5,4],w:[[2,1],[3,5]],m:2,p:['IF','REPI6','REPI10'],dbg:null,ph:'CONDITIONS'},
+ {s:[0,0,0],g:[2,5],w:[],m:3,p:['F','L','R','REP3','REPI12'],dbg:null,ph:'CONDITIONS'},
  {s:[0,4,0],g:[4,0],w:[],m:9, p:['F','L','R'],dbg:['F','F','F','F','R','F','F','F','F'],ph:'DEBUG'},
  {s:[0,5,0],g:[5,0],w:[],m:3, p:['F','L','R','REP3','REP5'],dbg:['REP5','R','REP5'],ph:'DEBUG'},
- {s:[0,0,0],g:[5,5],w:[[3,0],[3,1],[3,2]],m:13,p:['F','L','R'],dbg:['F','F','R','F','F','F','L','F','F','F','L','F','F'],ph:'DEBUG'}
+ {s:[0,0,0],g:[5,5],w:[[3,0],[3,1],[3,2]],m:13,p:['F','L','R'],dbg:['F','F','R','F','F','F','L','F','F','F','L','F','F'],ph:'DEBUG'},
+ {s:[1,1,0],g:[4,4],w:[[3,2]],m:3,p:['F','L','R','REP3'],dbg:['REP3','L','REP3'],ph:'DEBUG'},
+ {s:[5,5,2],g:[0,0],w:[[1,2],[3,3],[4,1]],m:11,p:['F','L','R'],dbg:['F','F','F','F','F','L','F','F','F','F','F'],ph:'DEBUG'},
+ {s:[0,0,0],g:[5,2],w:[],m:9,p:['F','L','R','REP5'],dbg:null,ph:'EXPERT'},
+ {s:[0,0,0],g:[3,2],w:[[0,1],[1,1]],m:2,p:['IF','REPI12','REPI25'],dbg:null,ph:'EXPERT'},
+ {s:[0,0,1],g:[5,0],w:[[1,4],[4,3]],m:7,p:['F','L','R','REP5'],dbg:null,ph:'EXPERT'},
+ {s:[0,0,0],g:[2,5],w:[[2,1],[4,3]],m:3,p:['IF','L','R','REPI8'],dbg:null,ph:'EXPERT'},
+ {s:[0,5,3],g:[5,5],w:[[2,3],[3,1]],m:6,p:['F','L','R','REP5'],dbg:null,ph:'EXPERT'}
 ];
-var NAMES={F:'⬆️ Avancer',L:'↩️ Gauche',R:'↪️ Droite',REP3:'🔁 3× Avancer',REP5:'🔁 5× Avancer'};
+var NAMES={F:'⬆️ Avancer',L:'↩️ Gauche',R:'↪️ Droite',REP3:'🔁 3× Avancer',REP5:'🔁 5× Avancer',IF:'🔀 Si mur ➜ Droite',REPI6:'🔁 6× 🔀',REPI8:'🔁 8× 🔀',REPI10:'🔁 10× 🔀',REPI12:'🔁 12× 🔀',REPI25:'🔁 25× 🔀'};
 var JSMAP={F:'robot.<span class="fn">avancer</span>();',L:'robot.<span class="fn">tourneGauche</span>();',R:'robot.<span class="fn">tourneDroite</span>();'};
 var cur=0,prog=[],won=[],running=false;
 var bd=document.getElementById('bd'),progEl=document.getElementById('prog'),palEl=document.getElementById('pal');
@@ -133,8 +148,8 @@ function load(i){
   prog = lv.dbg? lv.dbg.slice() : [];
   document.getElementById('ln').textContent=i+1;
   document.getElementById('ph').textContent=lv.ph;
-  var s='';for(var k=0;k<10;k++)s+= won[k]?'⭐':'☆';
-  document.getElementById('st').textContent=s;
+  var nw=0;for(var k=0;k<LV.length;k++)if(won[k])nw++;
+  document.getElementById('st').textContent='⭐ '+nw+'/'+LV.length;
   document.getElementById('msg').textContent= lv.dbg? 'Had programme fih GHALAT wa7ed... l9ah o sal7o! 🐞' : '';
   document.getElementById('progTitle').textContent = lv.dbg? '🐞 PROGRAMME CASSÉ — clique sur un bloc pour le CHANGER :' : "📜 TON PROGRAMME — clique sur un bloc pour l'enlever :";
   document.getElementById('palPanel').style.display = lv.dbg? 'none':'block';
@@ -178,9 +193,13 @@ function draw(){
   });
   document.getElementById('lim').textContent='Blocs : '+prog.length+' / '+lv.m;
   var js='';
+  var IFJS='<span class="kw">if</span> (robot.<span class="fn">murDevant</span>()) { robot.<span class="fn">tourneDroite</span>(); }\n<span class="kw">else</span> { robot.<span class="fn">avancer</span>(); }';
   prog.forEach(function(b){
-    if(b==='REP3'||b==='REP5'){var n=b==='REP3'?3:5;
-      js+='<span class="kw">for</span> (<span class="kw">let</span> i = 0; i < '+n+'; i++) {\n  '+JSMAP.F+'\n}\n';}
+    if(b.indexOf('REPI')===0){var n=parseInt(b.slice(4));
+      js+='<span class="kw">for</span> (<span class="kw">let</span> i = 0; i < '+n+'; i++) {\n  '+IFJS.split('\n').join('\n  ')+'\n}\n';}
+    else if(b.indexOf('REP')===0){var n2=parseInt(b.slice(3));
+      js+='<span class="kw">for</span> (<span class="kw">let</span> i = 0; i < '+n2+'; i++) {\n  '+JSMAP.F+'\n}\n';}
+    else if(b==='IF'){js+=IFJS+'\n';}
     else js+=JSMAP[b]+'\n';
   });
   document.getElementById('js').innerHTML=js||'// ajoute des blocs pour voir ton code ici...';
@@ -188,8 +207,8 @@ function draw(){
 function flash(t){document.getElementById('msg').textContent=t;}
 function expand(p){
   var out=[];p.forEach(function(b){
-    if(b==='REP3'){for(var i=0;i<3;i++)out.push('F');}
-    else if(b==='REP5'){for(var i=0;i<5;i++)out.push('F');}
+    if(b.indexOf('REPI')===0){var n=parseInt(b.slice(4));for(var i=0;i<n;i++)out.push('IF');}
+    else if(b.indexOf('REP')===0){var n2=parseInt(b.slice(3));for(var j=0;j<n2;j++)out.push('F');}
     else out.push(b);
   });return out;
 }
@@ -208,6 +227,11 @@ document.getElementById('go').onclick=function(){
     var b=steps[k++];
     if(b==='L'){bdir=(bdir+3)%4;place();}
     else if(b==='R'){bdir=(bdir+1)%4;place();}
+    else if(b==='IF'){
+      var fx=bx+DX[bdir],fy=by+DY[bdir];
+      if(fx<0||fx>5||fy<0||fy>5||wset[fx+'_'+fy]){bdir=(bdir+1)%4;place();}
+      else{bx=fx;by=fy;place();}
+    }
     else{
       var nx=bx+DX[bdir],ny=by+DY[bdir];
       if(nx<0||nx>5||ny<0||ny>5||wset[nx+'_'+ny]){
@@ -229,7 +253,7 @@ function win(){
   var last=cur===LV.length-1;
   document.getElementById('ovEmo').textContent=last?'🏆':'🎉';
   document.getElementById('ovT').textContent=last?'CHAMPION DU CODE !':'BRAVO !';
-  document.getElementById('ovP').textContent=last?'Tu as fini les 10 niveaux ! Nta wa7ed codeur wa3er ! 🤖':'Niveau '+(cur+1)+' réussi — nta top !';
+  document.getElementById('ovP').textContent=last?'Tu as fini les 25 niveaux ! Nta wa7ed codeur wa3er ! 🤖':'Niveau '+(cur+1)+' réussi — nta top !';
   document.getElementById('ovB').textContent=last?'↺ Rejouer':'Niveau suivant ➜';
   document.getElementById('ov').classList.add('on');
 }
