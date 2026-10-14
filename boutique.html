@@ -1229,6 +1229,9 @@
     .action-strip a { flex: 0 0 300px; position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,.4); transition: transform .25s; }
     .action-strip a:hover { transform: scale(1.04); }
     .action-strip img { width: 100%; display: block; }
+.action-strip .action-vid { flex: 0 0 300px; position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,.4); transition: transform .25s; }
+.action-strip .action-vid:hover { transform: scale(1.04); }
+.action-strip .action-vid video { width: 100%; display: block; }
     .action-strip span { position: absolute; bottom: 10px; left: 10px; background: rgba(255,255,255,.92); color: #1F2937; font-weight: 800; font-size: 13px; padding: 6px 14px; border-radius: 999px; }
     .collage-banner { position: relative; overflow: hidden; }
     .collage-grid { display: grid; grid-template-columns: repeat(8, 1fr); filter: brightness(.38); }
@@ -1518,6 +1521,7 @@
       <p class="section-desc">Cliquez sur un livre pour le feuilleter en ligne, page par page.</p>
     </div>
     <div class="action-strip">
+      <div class="action-vid"><video src="heroes/video/rb-promo.mp4" autoplay muted loop playsinline preload="metadata"></video><span>🎬 Mon Robot à Émotions</span></div>
       <a href="heroes/book-100.html" target="_blank" rel="noopener"><img src="heroes/shots/book-100.jpg" alt="Livre d&#39;Or" loading="lazy"><span>▶ Feuilleter</span></a>
       <a href="heroes/book-101.html" target="_blank" rel="noopener"><img src="heroes/shots/book-101.jpg" alt="Organizations" loading="lazy"><span>▶ Feuilleter</span></a>
       <a href="heroes/book-88.html" target="_blank" rel="noopener"><img src="heroes/shots/book-88.jpg" alt="Paper Toys" loading="lazy"><span>▶ Feuilleter</span></a>
@@ -1750,7 +1754,7 @@
       {id:"robot-book-107", isnew:true, title:"Mon Robot à Émotions — Arduino + OLED 🤖", subtitle:"Guide robotique complet · 9-14 ans", category:"ecole", ageGroup:"9-14",
        priceMAD:79, origPriceMAD:119, priceUSD:7.99, origPriceUSD:11.99, priceEUR:7.90, origPriceEUR:11.90,
        badge:"Nouveau 🤖", badgeClass:"badge-recommended", reviews:3, rating:5, icon:"🤖", bg:"#CFFAFE", fg:"#155E75",
-       img:"heroes/thumbs/rb-00.jpg", cover:"heroes/img/rb-00.jpg", flip:"heroes/book-107.html", video:"heroes/video/rb-promo.mp4",
+       img:"heroes/thumbs/rb-00.jpg", cover:"heroes/img/rb-00.jpg", flip:"heroes/book-107.html",
        description:"Construis un VRAI robot avec un visage OLED qui change d'émotions : content, amoureux, fâché, surpris... 6 visages + sons pour chaque humeur 💙. Le guide complet pas à pas : matériel petit budget, schéma de câblage couleur (6 fils, sans soudure), CODE ARDUINO COMPLET expliqué ligne par ligne, mode IA bonus (humeur automatique), dépannage, défis, quiz et certificat de Roboticien 🏆. Parfait pour les exposés à l'école ! 22 pages A4, PDF print + écran."},
       {id:"logic-book-106", isnew:true, title:"Pensée Logique — 80 Défis à Relier 🧠", subtitle:"Puzzles Numberlink · 3 niveaux · 7-12 ans", category:"ecole", ageGroup:"7-12",
        priceMAD:59, origPriceMAD:89, priceUSD:5.99, origPriceUSD:8.99, priceEUR:5.90, origPriceEUR:8.90,
@@ -2379,7 +2383,6 @@
           </div>
         </div>
         <p style="font-size: 15px; color: #4B5563; line-height: 1.6; margin-bottom: 20px;">${p.description}</p>
-        ${p.video ? `<video src="${p.video}" controls autoplay muted loop playsinline style="width:100%;border-radius:14px;margin-bottom:20px;box-shadow:0 8px 24px rgba(0,0,0,0.18);"></video>` : ``}
         <div style="background: #F9FAFB; padding: 14px 18px; border-radius: 12px; margin-bottom: 20px; display:flex; justify-content:space-between; align-items:center;">
           <div>
             <span style="font-size: 13px; color: #6B7280; display:block;">Prix spécial :</span>
