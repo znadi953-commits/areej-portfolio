@@ -1154,12 +1154,25 @@
     }
 
     @media (max-width: 640px) {
+      html, body { overflow-x: hidden; }
+      .hero-section, .benefits-section, .testimonials-wrap, .action-strip { overflow-x: hidden; max-width: 100vw; }
       .announcement-bar {
         font-size: 12px;
       }
       nav.nav-links {
         display: none;
       }
+      .nav-container { padding: 10px 10px; gap: 6px; }
+      .logo-container { gap: 6px; }
+      .logo-container img { max-height: 34px; }
+      .header-actions { gap: 6px; flex-shrink: 0; }
+      .currency-selector { padding: 5px 4px; font-size: 11px; max-width: 86px; }
+      .cart-btn { padding: 8px 10px; font-size: 12px; }
+    }
+    @media (max-width: 420px) {
+      .logo-text { display: none; }
+      .cart-btn .cart-label { display: none; }
+      .currency-selector { max-width: 72px; }
       .hero-title {
         font-size: 32px;
       }
@@ -1298,7 +1311,7 @@
           <option value="USD">🇺🇸 USD ($)</option>
         </select>
         <button class="cart-btn" onclick="toggleCart(true)">
-          🛒 Panier <span class="cart-badge" id="cartCountBadge">0</span>
+          🛒 <span class="cart-label">Panier</span> <span class="cart-badge" id="cartCountBadge">0</span>
         </button>
       </div>
     </div>
@@ -1903,7 +1916,7 @@
        badge:"Nouveau 🐶", badgeClass:"badge-recommended", reviews:6, rating:5, icon:"🐶", bg:"#ECECF4", fg:"#565A80",
        img:"heroes/thumbs/di27-01.jpg", cover:"images/mock/diary-2027.jpg", flip:"heroes/diary27.html",
        description:"Un agenda 2027 paysage tout mignon : 12 pages mensuelles avec collines ondulées et petit chien fluffy, 5 semainiers colorés, année en un coup d\u2019oeil et page souvenirs. Calendriers 2027 exacts. 20 pages A4 paysage + 2 PDFs."},
-      {id:"kit-scrapbook", isnew:true, title:"Kit Scrapbook Kids — 15 Planches à Imprimer 🦖", subtitle:"Kit scrapbook KIDS · PDF", category:"design", ageGroup:"enfants",
+      {id:"kit-scrapbook", isnew:true, title:"Kit Scrapbook Kids — 15 Planches à Imprimer 🦖", subtitle:"Kit scrapbook KIDS · PDF", category:"design", ageGroup:"6-9",
        priceMAD:79, origPriceMAD:149, priceUSD:7.99, origPriceUSD:14.99, priceEUR:7.90, origPriceEUR:14.90,
        badge:"Nouveau 🌈", badgeClass:"badge-recommended", reviews:7, rating:5, icon:"🦖", bg:"#E3F2FD", fg:"#1565C0",
        img:"heroes/thumbs/sc27-02.jpg", cover:"images/mock/kit-scrapbook.jpg", flip:"heroes/scrap27.html",
