@@ -1219,8 +1219,11 @@
     .cat-card { cursor: pointer; text-align: center; transition: transform .25s; }
     .cat-card:hover { transform: translateY(-6px); }
     .cat-img { width: 150px; height: 150px; margin: 0 auto 12px; border-radius: 50%; overflow: hidden; border: 4px solid #fff; box-shadow: var(--shadow-md), 0 0 0 3px #E8B84B; }
-    .cat-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .3s; }
-    .cat-card:hover .cat-img img { transform: scale(1.1); }
+    .cat-img { position: relative; }
+    .cat-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: 0; transition: opacity .4s ease; }
+    .cat-img img.on { opacity: 1; animation: catkb 1.15s linear forwards; }
+    @keyframes catkb { from { transform: scale(1.02); } to { transform: scale(1.16); } }
+    .cat-card::after { content: "▶ aperçu"; display: inline-block; font-size: 10.5px; font-weight: 800; color: #fff; background: rgba(139,92,246,.85); border-radius: 20px; padding: 2px 9px; margin-top: 6px; letter-spacing: .4px; }
     .cat-card h4 { font-size: 16px; color: var(--text-main); }
     .action-strip-wrap { padding: 50px 20px; background: linear-gradient(135deg, #1a1030, #2a1535); }
     .action-strip-wrap .section-title, .action-strip-wrap .section-desc { color: #fff; }
@@ -1466,43 +1469,43 @@
       <h2 class="section-title">Shop par Catégorie</h2>
     </div>
     <div class="cat-grid">
-      <div class="cat-card" onclick="shopCat('mode')">
+      <div class="cat-card" data-cat="mode" onclick="shopCat('mode')">
         <div class="cat-img"><img src="heroes/thumbs/pl-00.jpg" alt="Mode & Perlage 👗" loading="lazy"></div>
         <h4>Mode & Perlage 👗<br><span style="font-size:12px;color:#8B5CF6;font-weight:800;">3 produits</span></h4>
       </div>
-      <div class="cat-card" onclick="shopCat('kits')">
+      <div class="cat-card" data-cat="kits" onclick="shopCat('kits')">
         <div class="cat-img"><img src="heroes/thumbs/sp-00.jpg" alt="Kits & Maquettes 3D ✂️" loading="lazy"></div>
         <h4>Kits & Maquettes 3D ✂️<br><span style="font-size:12px;color:#8B5CF6;font-weight:800;">16 produits</span></h4>
       </div>
-      <div class="cat-card" onclick="shopCat('jeux')">
+      <div class="cat-card" data-cat="jeux" onclick="shopCat('jeux')">
         <div class="cat-img"><img src="heroes/thumbs/ch-00.jpg" alt="Jeux & Puzzles 🧩" loading="lazy"></div>
         <h4>Jeux & Puzzles 🧩<br><span style="font-size:12px;color:#8B5CF6;font-weight:800;">28 produits</span></h4>
       </div>
-      <div class="cat-card" onclick="shopCat('coloriage')">
+      <div class="cat-card" data-cat="coloriage" onclick="shopCat('coloriage')">
         <div class="cat-img"><img src="heroes/thumbs/sy-00.jpg" alt="Coloriage & Dessin 🎨" loading="lazy"></div>
         <h4>Coloriage & Dessin 🎨<br><span style="font-size:12px;color:#8B5CF6;font-weight:800;">16 produits</span></h4>
       </div>
-      <div class="cat-card" onclick="shopCat('histoires')">
+      <div class="cat-card" data-cat="histoires" onclick="shopCat('histoires')">
         <div class="cat-img"><img src="heroes/shots/book-85.jpg" alt="Histoires & Bien-être 📖" loading="lazy"></div>
         <h4>Histoires & Bien-être 📖<br><span style="font-size:12px;color:#8B5CF6;font-weight:800;">27 produits</span></h4>
       </div>
-      <div class="cat-card" onclick="shopCat('ecole')">
+      <div class="cat-card" data-cat="ecole" onclick="shopCat('ecole')">
         <div class="cat-img"><img src="heroes/thumbs/bm-00.jpg" alt="École & Langues 🏫" loading="lazy"></div>
         <h4>École & Langues 🏫<br><span style="font-size:12px;color:#8B5CF6;font-weight:800;">17 produits</span></h4>
       </div>
-      <div class="cat-card" onclick="shopCat('planner')">
+      <div class="cat-card" data-cat="planner" onclick="shopCat('planner')">
         <div class="cat-img"><img src="heroes/thumbs/pl27-03.jpg" alt="Planners & Agendas 📅" loading="lazy"></div>
         <h4>Planners & Agendas 📅<br><span style="font-size:12px;color:#8B5CF6;font-weight:800;">2 produits</span></h4>
       </div>
-      <div class="cat-card" onclick="shopCat('design')">
+      <div class="cat-card" data-cat="design" onclick="shopCat('design')">
         <div class="cat-img"><img src="images/thumbs/rg-a.jpg" alt="Design & Digital 🖌️" loading="lazy"></div>
         <h4>Design & Digital 🖌️<br><span style="font-size:12px;color:#8B5CF6;font-weight:800;">26 produits</span></h4>
       </div>
-      <div class="cat-card" onclick="shopCat('pack')">
+      <div class="cat-card" data-cat="pack" onclick="shopCat('pack')">
         <div class="cat-img"><img src="heroes/shots/book-100.jpg" alt="Packs & Bundles 🎁" loading="lazy"></div>
         <h4>Packs & Bundles 🎁<br><span style="font-size:12px;color:#8B5CF6;font-weight:800;">11 produits</span></h4>
       </div>
-      <div class="cat-card" onclick="shopCat('new')">
+      <div class="cat-card" data-cat="new" onclick="shopCat('new')">
         <div class="cat-img"><img src="heroes/thumbs/pl-00.jpg" alt="Nouveautés" loading="lazy"></div>
         <h4>Nouveautés 🚀</h4>
       </div>
@@ -2491,6 +2494,46 @@
     renderProducts();
     renderNewRail();
     renderTopRail();
+
+        // Mini-videos "Shop par Categorie" - defile sari3 les covers de chaque categorie
+    (function catVideos(){
+      const cards = document.querySelectorAll('.cat-card[data-cat]');
+      if (!cards.length) return;
+      const timers = new Map();
+      function slidesFor(cat){
+        let list = cat === 'new' ? productsData.filter(p => p.isnew) : productsData.filter(p => p.category === cat);
+        return list.slice(0, 6).map(p => p.img);
+      }
+      function build(card){
+        if (card.dataset.built) return;
+        card.dataset.built = '1';
+        const box = card.querySelector('.cat-img');
+        const srcs = slidesFor(card.dataset.cat);
+        if (srcs.length < 2) return;
+        box.innerHTML = srcs.map((s,i) => `<img src="${s}" alt="" class="${i===0?'on':''}" loading="lazy">`).join('');
+      }
+      function start(card){
+        if (timers.has(card)) return;
+        build(card);
+        const imgs = card.querySelectorAll('.cat-img img');
+        if (imgs.length < 2) return;
+        let idx = 0;
+        const t = setInterval(() => {
+          imgs[idx].classList.remove('on');
+          idx = (idx + 1) % imgs.length;
+          imgs[idx].classList.add('on');
+        }, 1150 + Math.floor(Math.random()*250));
+        timers.set(card, t);
+      }
+      function stop(card){
+        const t = timers.get(card);
+        if (t) { clearInterval(t); timers.delete(card); }
+      }
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => e.isIntersecting ? start(e.target) : stop(e.target));
+      }, { rootMargin: '80px' });
+      cards.forEach(c => io.observe(c));
+    })();
 
     // Hero showcase carousel
     const scCovers = ["az","ht","hp","ca","hg","hr","hn","hw","hs","ws","hq","hx"].map(x => "heroes/img/" + x + "-00.jpg");
