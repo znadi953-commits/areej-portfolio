@@ -547,7 +547,7 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
     }
-    .product-card {
+    .product-card { content-visibility:auto; contain-intrinsic-size: 300px 480px;
       background: white;
       border-radius: var(--radius-md);
       overflow: hidden;
@@ -1348,9 +1348,9 @@
       <!-- Hero Visual Art -->
       <div class="hero-visual">
         <div class="showcase" id="showcase">
-          <img class="sc-img sc-side sc-l" id="scL" src="heroes/img/ht-00.jpg" alt="Livre AREEJ">
-          <img class="sc-img sc-main" id="scM" src="heroes/img/az-00.jpg" alt="Livre AREEJ">
-          <img class="sc-img sc-side sc-r" id="scR" src="heroes/img/hg-00.jpg" alt="Livre AREEJ">
+          <img class="sc-img sc-side sc-l" id="scL" src="heroes/thumbs/ht-00.jpg" alt="Livre AREEJ">
+          <img class="sc-img sc-main" id="scM" src="heroes/thumbs/az-00.jpg" alt="Livre AREEJ">
+          <img class="sc-img sc-side sc-r" id="scR" src="heroes/thumbs/hg-00.jpg" alt="Livre AREEJ">
           <div class="sc-chip sc-chip1">⭐ 4.9/5 — les familles adorent</div>
           <div class="sc-chip sc-chip2">🎁 1 livre OFFERT dès 3 achetés</div>
           <div class="sc-chip sc-chip3">📥 Téléchargement instantané</div>
@@ -1441,15 +1441,15 @@
     </div>
     <div class="cat-grid">
       <div class="cat-card" onclick="shopCat('livre')">
-        <div class="cat-img"><img src="heroes/img/ht-00.jpg" alt="Livres" loading="lazy"></div>
+        <div class="cat-img"><img src="heroes/thumbs/ht-00.jpg" alt="Livres" loading="lazy"></div>
         <h4>Livres d'Activités & Jeux</h4>
       </div>
       <div class="cat-card" onclick="shopCat('ecole')">
-        <div class="cat-img"><img src="heroes/img/hr-00.jpg" alt="École" loading="lazy"></div>
+        <div class="cat-img"><img src="heroes/thumbs/hr-00.jpg" alt="École" loading="lazy"></div>
         <h4>Langues & École</h4>
       </div>
       <div class="cat-card" onclick="shopCat('pack')">
-        <div class="cat-img"><img src="heroes/img/hy-00.jpg" alt="Packs" loading="lazy"></div>
+        <div class="cat-img"><img src="heroes/thumbs/hy-00.jpg" alt="Packs" loading="lazy"></div>
         <h4>Packs & Bundles</h4>
       </div>
       <div class="cat-card" onclick="shopCat('design')">
@@ -1457,7 +1457,7 @@
         <h4>Design & Digital 🎨</h4>
       </div>
       <div class="cat-card" onclick="shopCat('new')">
-        <div class="cat-img"><img src="heroes/img/hw-00.jpg" alt="Nouveautés" loading="lazy"></div>
+        <div class="cat-img"><img src="heroes/thumbs/hw-00.jpg" alt="Nouveautés" loading="lazy"></div>
         <h4>Nouveautés 🚀</h4>
       </div>
     </div>
@@ -1519,10 +1519,10 @@
   <!-- Collage banner -->
   <section class="collage-banner">
     <div class="collage-grid">
-      <img src="heroes/img/hy-00.jpg" alt="" loading="lazy"><img src="heroes/img/az-00.jpg" alt="" loading="lazy">
-      <img src="heroes/img/ht-00.jpg" alt="" loading="lazy"><img src="heroes/img/hn-00.jpg" alt="" loading="lazy">
-      <img src="heroes/img/hg-00.jpg" alt="" loading="lazy"><img src="heroes/img/hr-00.jpg" alt="" loading="lazy">
-      <img src="heroes/img/hs-00.jpg" alt="" loading="lazy"><img src="heroes/img/hw-00.jpg" alt="" loading="lazy">
+      <img src="heroes/thumbs/hy-00.jpg" alt="" loading="lazy"><img src="heroes/thumbs/az-00.jpg" alt="" loading="lazy">
+      <img src="heroes/thumbs/ht-00.jpg" alt="" loading="lazy"><img src="heroes/thumbs/hn-00.jpg" alt="" loading="lazy">
+      <img src="heroes/thumbs/hg-00.jpg" alt="" loading="lazy"><img src="heroes/thumbs/hr-00.jpg" alt="" loading="lazy">
+      <img src="heroes/thumbs/hs-00.jpg" alt="" loading="lazy"><img src="heroes/thumbs/hw-00.jpg" alt="" loading="lazy">
     </div>
     <div class="collage-overlay">
       <h2>Adorés par des milliers de familles 🤍</h2>
@@ -1569,7 +1569,7 @@
 
     <div class="testimonials-grid">
       <div class="testimonial-card">
-        <img class="testi-img" src="heroes/img/hy-00.jpg" alt="" loading="lazy">
+        <img class="testi-img" src="heroes/thumbs/hy-00.jpg" alt="" loading="lazy">
         <div>
           <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
           <p>"Mon fils ne lâche plus LE LIVRE D'OR des 100 défis sans écran ! Chaque jour il coche un défi avec sa case dorée. C'est la seule chose qui le canalise plus de 45 minutes sans télé !"</p>
@@ -1584,7 +1584,7 @@
       </div>
 
       <div class="testimonial-card">
-        <img class="testi-img" src="heroes/img/ca-00.jpg" alt="" loading="lazy">
+        <img class="testi-img" src="heroes/thumbs/ca-00.jpg" alt="" loading="lazy">
         <div>
           <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
           <p>"Les labyrinthes enchantés et les paper toys nous ont sauvés pendant notre voyage ! J'ai imprimé les pages avant de partir — zéro écran, zéro pleurs. Je recommande à 1000%."</p>
@@ -1599,7 +1599,7 @@
       </div>
 
       <div class="testimonial-card">
-        <img class="testi-img" src="heroes/img/hg-00.jpg" alt="" loading="lazy">
+        <img class="testi-img" src="heroes/thumbs/hg-00.jpg" alt="" loading="lazy">
         <div>
           <div class="stars" style="margin-bottom: 10px;">★★★★★</div>
           <p>"En tant qu'enseignante, j'utilise Ma Grammaire Française et les mots cachés dans ma classe. Les exercices sont progressifs, et le pack espagnol EL MEJOR a sauvé mes élèves du bac !"</p>
@@ -1896,137 +1896,137 @@
       {id:"planner-2027", title:"Planner 2027 — Agenda Complet", subtitle:"80 pages · Finances & Trackers", category:"livre", ageGroup:"ados", isnew:true,
        priceMAD:59, origPriceMAD:99, priceUSD:5.99, origPriceUSD:9.99, priceEUR:5.90, origPriceEUR:9.90,
        badge:"Nouveau 📒", badgeClass:"badge-recommended", reviews:9, rating:5, icon:"📒", bg:"#DFF0ED", fg:"#2F6B64",
-       img:"heroes/img/pl27-03.jpg", cover:"images/mock/planner-2027.jpg", flip:"heroes/planner27.html",
+       img:"heroes/thumbs/pl27-03.jpg", cover:"images/mock/planner-2027.jpg", flip:"heroes/planner27.html",
        description:"Le planner 2027 complet : calendriers 2027 exacts, jours fériés France & Maroc, finances mensuelles et annuelles, objectifs, trackers habitudes / humeur / bien-être, menus, challenge 52 semaines... 80 pages A4 + 2 PDFs (écran + impression)."},
       {id:"diary-2027", title:"Diary & Weekly Planner 2027", subtitle:"Calendrier kawaii + semainiers", category:"livre", ageGroup:"ados", isnew:true,
        priceMAD:49, origPriceMAD:89, priceUSD:4.99, origPriceUSD:8.99, priceEUR:4.90, origPriceEUR:8.90,
        badge:"Nouveau 🐶", badgeClass:"badge-recommended", reviews:6, rating:5, icon:"🐶", bg:"#ECECF4", fg:"#565A80",
-       img:"heroes/img/di27-01.jpg", cover:"images/mock/diary-2027.jpg", flip:"heroes/diary27.html",
+       img:"heroes/thumbs/di27-01.jpg", cover:"images/mock/diary-2027.jpg", flip:"heroes/diary27.html",
        description:"Un agenda 2027 paysage tout mignon : 12 pages mensuelles avec collines ondulées et petit chien fluffy, 5 semainiers colorés, année en un coup d\u2019oeil et page souvenirs. Calendriers 2027 exacts. 20 pages A4 paysage + 2 PDFs."},
       {id:"kit-scrapbook", isnew:true, title:"Kit Scrapbook Kids — 15 Planches à Imprimer 🦖", subtitle:"Kit scrapbook KIDS · PDF", category:"design", ageGroup:"enfants",
        priceMAD:79, origPriceMAD:149, priceUSD:7.99, origPriceUSD:14.99, priceEUR:7.90, origPriceEUR:14.90,
        badge:"Nouveau 🌈", badgeClass:"badge-recommended", reviews:7, rating:5, icon:"🦖", bg:"#E3F2FD", fg:"#1565C0",
-       img:"heroes/img/sc27-02.jpg", cover:"images/mock/kit-scrapbook.jpg", flip:"heroes/scrap27.html",
+       img:"heroes/thumbs/sc27-02.jpg", cover:"images/mock/kit-scrapbook.jpg", flip:"heroes/scrap27.html",
        description:"Kit stickers rigolos pour enfants : animaux mignons, dinosaures, fusées, océan, véhicules, safari, robots + mots d'encouragement & alphabet coloré. 15 planches A4, 2 PDFs HD."},
 {id:"collage-bundle", isnew:true, title:"Mega Collage Bundle 10-en-1 — 400+ Éléments 🎨", subtitle:"Méga bundle 10-en-1 · PDF", category:"pack", ageGroup:"ados",
        priceMAD:149, origPriceMAD:299, priceUSD:14.99, origPriceUSD:29.99, priceEUR:14.90, origPriceEUR:29.90,
        badge:"Bundle 🎨", badgeClass:"badge-recommended", reviews:9, rating:5, icon:"🎨", bg:"#F1EEE9", fg:"#5A5248",
-       img:"heroes/img/cb-02.jpg", cover:"images/mock/collage-bundle.jpg", flip:"heroes/collage20.html",
+       img:"heroes/thumbs/cb-02.jpg", cover:"images/mock/collage-bundle.jpg", flip:"heroes/collage20.html",
        description:"10 packs collage complets : botanique, rétro 70s, coquette, papiers vintage, fashion, café, voyage, minimal, été & automne. 400+ éléments découpés, print & digital, licence à vie. 2 PDFs HD."},
 {id:"pack-automne", isnew:true, title:"Autumn Mood — Pack Collage Automne 🍂", subtitle:"Pack collage automne · PDF", category:"design", ageGroup:"ados",
        priceMAD:79, origPriceMAD:149, priceUSD:7.99, origPriceUSD:14.99, priceEUR:7.90, origPriceEUR:14.90,
        badge:"Nouveau 🍂", badgeClass:"badge-recommended", reviews:8, rating:5, icon:"🍂", bg:"#EFEDE2", fg:"#5C5A3C",
-       img:"heroes/img/am-02.jpg", cover:"images/mock/pack-automne.jpg", flip:"heroes/autumn.html",
+       img:"heroes/thumbs/am-02.jpg", cover:"images/mock/pack-automne.jpg", flip:"heroes/autumn.html",
        description:"Pack collage automne slow living : 30+ objets découpés, 13 papiers vintage, 10 cadres, 26 brush strokes, 24 backgrounds + compositions d'exemple. 150+ éléments, print & digital, 2 PDFs HD."},
 {id:"pack-amour", isnew:true, title:"Amour Ardent — Pack Collage Love ❤️‍🔥", subtitle:"Pack collage romantique · PDF", category:"design", ageGroup:"ados",
        priceMAD:79, origPriceMAD:149, priceUSD:7.99, origPriceUSD:14.99, priceEUR:7.90, origPriceEUR:14.90,
        badge:"Nouveau ❤️‍🔥", badgeClass:"badge-recommended", reviews:9, rating:5, icon:"❤️‍🔥", bg:"#FBE7EA", fg:"#A12833",
-       img:"heroes/img/bl-02.jpg", cover:"images/mock/pack-amour.jpg", flip:"heroes/lovepack.html",
+       img:"heroes/thumbs/bl-02.jpg", cover:"images/mock/pack-amour.jpg", flip:"heroes/lovepack.html",
        description:"Pack collage romantique : 50+ objets découpés, 30+ papiers déchirés, 17 cadres & coeurs, 45 doodles à la main, textures, backgrounds & wallpapers téléphone. 180+ éléments, 2 PDFs HD."},
 {id:"pack-girls", isnew:true, title:"Girl Gang — Pack Collage Girly 💖", subtitle:"Pack collage girly · PDF", category:"design", ageGroup:"ados",
        priceMAD:79, origPriceMAD:149, priceUSD:7.99, origPriceUSD:14.99, priceEUR:7.90, origPriceEUR:14.90,
        badge:"Nouveau 💖", badgeClass:"badge-recommended", reviews:8, rating:5, icon:"💅", bg:"#FCE9F0", fg:"#B03A6B",
-       img:"heroes/img/gg-02.jpg", cover:"images/mock/pack-girls.jpg", flip:"heroes/girlgang.html",
+       img:"heroes/thumbs/gg-02.jpg", cover:"images/mock/pack-girls.jpg", flip:"heroes/girlgang.html",
        description:"Pack collage rose & vert rétro : 50+ objets découpés, photos vintage girl power, cadres & polaroids, 30 papiers & motifs, stickers rétro + stories téléphone. 150+ éléments, 2 PDFs HD."},
 {id:"bundle-6en1", isnew:true, title:"Collage Bundle 6-en-1 — 1500+ Éléments 🤎", subtitle:"Bundle collage 6-en-1 · PDF", category:"pack", ageGroup:"ados",
        priceMAD:129, origPriceMAD:249, priceUSD:12.99, origPriceUSD:24.99, priceEUR:12.90, origPriceEUR:24.90,
        badge:"Bundle 🤎", badgeClass:"badge-recommended", reviews:9, rating:5, icon:"🤎", bg:"#EFE7DD", fg:"#5C4636",
-       img:"heroes/img/cs-03.jpg", cover:"images/mock/bundle-6en1.jpg", flip:"heroes/bundle6.html",
+       img:"heroes/thumbs/cs-03.jpg", cover:"images/mock/bundle-6en1.jpg", flip:"heroes/bundle6.html",
        description:"6 packs, 6 ambiances : Romantic Inspo, Classic Romance, Casual Day, Office Siren, Swag Y2K & Do Not Pass. 1500+ cutouts, papiers & textures — moodboards, posters, stories, zines. 2 PDFs HD."},
 {id:"pack-oriental", isnew:true, title:"Nuits d'Orient — Pack Collage Oriental 🌙", subtitle:"Pack collage oriental · PDF", category:"design", ageGroup:"ados",
        priceMAD:79, origPriceMAD:149, priceUSD:7.99, origPriceUSD:14.99, priceEUR:7.90, origPriceEUR:14.90,
        badge:"Nouveau 🌙", badgeClass:"badge-recommended", reviews:9, rating:5, icon:"🏮", bg:"#E3F0EE", fg:"#136462",
-       img:"heroes/img/or-02.jpg", cover:"images/mock/pack-oriental.jpg", flip:"heroes/orient.html",
+       img:"heroes/thumbs/or-02.jpg", cover:"images/mock/pack-oriental.jpg", flip:"heroes/orient.html",
        description:"Pack collage style arabe/marocain : thé à la menthe, artisanat & cuivre, caftans & bijoux, zellige & motifs, portes & arches, jardin & épices, papiers dorés + wallpapers téléphone. 150+ éléments, 2 PDFs HD."},
 {id:"clipart-bundle", isnew:true, title:"Clipart Bundle 9-en-1 — Collections Populaires 🎀", subtitle:"Bundle clipart 9-en-1 · PDF", category:"design", ageGroup:"ados",
        priceMAD:129, origPriceMAD:249, priceUSD:12.99, origPriceUSD:24.99, priceEUR:12.90, origPriceEUR:24.90,
        badge:"Bundle 🎀", badgeClass:"badge-recommended", reviews:9, rating:5, icon:"🎀", bg:"#FBE8E3", fg:"#B3472F",
-       img:"heroes/img/mp-04.jpg", cover:"images/mock/clipart-9en1.jpg", flip:"heroes/clipart9.html",
+       img:"heroes/thumbs/mp-04.jpg", cover:"images/mock/clipart-9en1.jpg", flip:"heroes/clipart9.html",
        description:"9 collections trendy en 1 bundle : botanique, girl boss, party, dog mom, bébé, voyage & camping, mariage, self-care + patterns & papiers. 900+ illustrations pastel haute résolution, 2 PDFs HD."},
 {id:"quotes-coloring", isnew:true, title:"Quotes Coloring Book — 25 Pages Motivation 🎨", subtitle:"Coloriage citations · PDF", category:"design", ageGroup:"ados",
        priceMAD:49, origPriceMAD:99, priceUSD:4.99, origPriceUSD:9.99, priceEUR:4.90, origPriceEUR:9.90,
        badge:"Nouveau 🎨", badgeClass:"badge-recommended", reviews:8, rating:5, icon:"🎨", bg:"#E7F4EA", fg:"#1B6B3C",
-       img:"heroes/img/qc-03.jpg", cover:"images/mock/quotes-coloring.jpg", flip:"heroes/quotescolor.html",
+       img:"heroes/thumbs/qc-03.jpg", cover:"images/mock/quotes-coloring.jpg", flip:"heroes/quotescolor.html",
        description:"25 pages de coloriage quotes : lettres bubble + patterns détaillés (mandalas, kaléidoscopes, chevrons). Motivation & bonnes vibes — à colorier, encadrer ou offrir. Haute résolution A4, 2 PDFs HD."},
 {id:"fleurs-maroc", isnew:true, title:"Fleurs du Maroc — Botanical Clipart Bundle 🌸", subtitle:"Clipart fleurs du Maroc · PDF", category:"design", ageGroup:"ados",
        priceMAD:79, origPriceMAD:149, priceUSD:7.99, origPriceUSD:14.99, priceEUR:7.90, origPriceEUR:14.90,
        badge:"Nouveau 🌸", badgeClass:"badge-recommended", reviews:9, rating:5, icon:"🌸", bg:"#EAF2E6", fg:"#3E6B3A",
-       img:"heroes/img/fm-02.jpg", cover:"images/mock/fleurs-maroc.jpg", flip:"heroes/fleursmaroc.html",
+       img:"heroes/thumbs/fm-02.jpg", cover:"images/mock/fleurs-maroc.jpg", flip:"heroes/fleursmaroc.html",
        description:"12 fleurs emblématiques du Maroc en couleur + line art : rose de Damas, safran, fleur d'oranger, arganier, henné, iris de Tanger... + tableau des 12 régions & leurs fleurs, 6 patterns, papiers floraux & couronne. 80+ éléments, 2 PDFs HD."},
 {id:"pack-matcha", isnew:true, title:"Matcha & Café — Pack Collage Aesthetic 🍵", subtitle:"Pack collage matcha & café · PDF", category:"design", ageGroup:"ados",
        priceMAD:79, origPriceMAD:149, priceUSD:7.99, origPriceUSD:14.99, priceEUR:7.90, origPriceEUR:14.90,
        badge:"Nouveau 🍵", badgeClass:"badge-recommended", reviews:8, rating:5, icon:"🍵", bg:"#EAF1DE", fg:"#4A7040",
-       img:"heroes/img/mt-02.jpg", cover:"images/mock/pack-matcha.jpg", flip:"heroes/matcha.html",
+       img:"heroes/thumbs/mt-02.jpg", cover:"images/mock/pack-matcha.jpg", flip:"heroes/matcha.html",
        description:"Pack collage cosy tendance : matcha lattes, café & viennoiseries, desserts verts, cosy essentials, papiers & gingham, 100+ doodles à la main, cadres & polaroids + 3 wallpapers téléphone. 150+ éléments, 2 PDFs HD."},
 {id:"wallart-oriental", isnew:true, title:"Wall Art Bundle Oriental — 10 Collections 🖼️", subtitle:"Wall art oriental · PDF", category:"design", ageGroup:"ados",
        priceMAD:129, origPriceMAD:249, priceUSD:12.99, origPriceUSD:24.99, priceEUR:12.90, origPriceEUR:24.90,
        badge:"Bundle 🖼️", badgeClass:"badge-recommended", reviews:9, rating:5, icon:"🖼️", bg:"#F8E8DC", fg:"#B4502A",
-       img:"heroes/img/wa-02.jpg", cover:"images/mock/wallart-oriental.jpg", flip:"heroes/wallart.html",
+       img:"heroes/thumbs/wa-02.jpg", cover:"images/mock/wallart-oriental.jpg", flip:"heroes/wallart.html",
        description:"60+ posters style Matisse oriental à imprimer : arches & portes, zellige abstrait, atay, désert & palmiers, lune & fanous, femmes au caftan, botanique & arabesques + exemple gallery wall. A4 300 dpi, 2 PDFs HD."},
 {id:"souk-cutouts", isnew:true, title:"Souks & Ruelles أسواق وأزقة — 100+ Cutouts Marocains 🫖", subtitle:"Cutouts marocains · PDF", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:199, priceUSD:9.99, origPriceUSD:19.99, priceEUR:9.90, origPriceEUR:19.90,
        badge:"Nouveau 🫖", badgeClass:"badge-recommended", reviews:9, rating:5, icon:"🫖", bg:"#F6EDD9", fg:"#8C2B20",
-       img:"heroes/img/sk-03.jpg", cover:"images/mock/souk-cutouts.jpg", flip:"heroes/souk.html",
+       img:"heroes/thumbs/sk-03.jpg", cover:"images/mock/souk-cutouts.jpg", flip:"heroes/souk.html",
        description:"100+ objets marocains découpés : petit taxi, souk & épices, msemen & thé à la menthe, café, gens anonymes, nostalgie (cassette, derbouka, télé), chats des ruelles & ephemera vintage. Titres en arabe classique. 2 PDFs HD."},
 {id:"prem-logo", title:"AREEJ — Logo Collection", subtitle:"19 logos 3D premium", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
        badge:"Best Seller", badgeClass:"badge-bestseller", reviews:48, rating:5, icon:"✨", bg:"#FEF3C7", fg:"#B45309",
-       img:"images/prem/logo-01.png", cover:"images/mock/prem-logo.jpg", flip:"images/prem/cover-logo.jpg",
+       img:"images/thumbs/logo-01.jpg", cover:"images/mock/prem-logo.jpg", flip:"images/prem/cover-logo.jpg",
        description:"19 logos 3D premium en PNG fond transparent : fourrure, ballons, cristal... Parfaits pour marques, chaines et boutiques."},
       {id:"prem-tee", title:"Maroc T-Shirt Designs — 40 Designs", subtitle:"MEGA bundle prêt à imprimer", category:"design", ageGroup:"ados", isnew:true,
        priceMAD:99, origPriceMAD:199, priceUSD:9.99, origPriceUSD:19.99, priceEUR:9.90, origPriceEUR:19.90,
        badge:"Best Seller", badgeClass:"badge-bestseller", reviews:39, rating:5, icon:"🇲🇦", bg:"#FEE2E2", fg:"#B91C1C",
-       img:"images/prem/tee-01.jpg", cover:"images/mock/prem-tee.jpg", flip:"images/prem/cover-tee.jpg",
+       img:"images/thumbs/tee-01.jpg", cover:"images/mock/prem-tee.jpg", flip:"images/prem/cover-tee.jpg",
        description:"40 designs t-shirt Maroc en 300 DPI : calligraphie, zellige, symboles. Prêts pour impression et print-on-demand."},
       {id:"prem-beauty", title:"Beauty & Cosmetics 3D Pack", subtitle:"12 éléments design 3D", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
        badge:"Recommandé", badgeClass:"badge-recommended", reviews:27, rating:5, icon:"💄", bg:"#FDF0F4", fg:"#B4295B",
-       img:"images/prem/beauty-01.jpg", cover:"images/mock/prem-beauty.jpg", flip:"images/prem/cover-beauty.jpg",
+       img:"images/thumbs/beauty-01.jpg", cover:"images/mock/prem-beauty.jpg", flip:"images/prem/cover-beauty.jpg",
        description:"12 visuels 3D beauté et cosmétiques en haute résolution pour vos designs, boutiques et réseaux sociaux."},
       {id:"prem-med", title:"Medical Healthcare 3D Pack", subtitle:"12 éléments santé 3D", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
        badge:"Recommandé", badgeClass:"badge-recommended", reviews:22, rating:5, icon:"🩺", bg:"#E0F2FE", fg:"#0369A1",
-       img:"images/prem/med-01.jpg", cover:"images/mock/prem-med.jpg", flip:"images/prem/cover-med.jpg",
+       img:"images/thumbs/med-01.jpg", cover:"images/mock/prem-med.jpg", flip:"images/prem/cover-med.jpg",
        description:"12 visuels 3D médicaux et santé, qualité studio 300 DPI, pour cliniques, pharmacies et contenus éducatifs."},
       {id:"prem-pink", title:"Pink Health Awareness 3D Pack", subtitle:"12 éléments roses 3D", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
        badge:"Recommandé", badgeClass:"badge-recommended", reviews:19, rating:5, icon:"🎀", bg:"#FDF0F4", fg:"#B4295B",
-       img:"images/prem/pink-01.jpg", cover:"images/mock/prem-pink.jpg", flip:"images/prem/cover-pink.jpg",
+       img:"images/thumbs/pink-01.jpg", cover:"images/mock/prem-pink.jpg", flip:"images/prem/cover-pink.jpg",
        description:"12 visuels 3D roses pour campagnes de sensibilisation santé : rubans, coeurs et éléments délicats en 300 DPI."},
       {id:"prem-bf", title:"Black Fur Alphabet 3D", subtitle:"Alphabet fourrure PNG", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
        badge:"Recommandé", badgeClass:"badge-recommended", reviews:24, rating:5, icon:"🖤", bg:"#E5E7EB", fg:"#111827",
-       img:"images/prem/bf-a.jpg", cover:"images/mock/prem-bf.jpg", flip:"images/prem/cover-bf.jpg",
+       img:"images/thumbs/bf-a.jpg", cover:"images/mock/prem-bf.jpg", flip:"images/prem/cover-bf.jpg",
        description:"Alphabet complet en fourrure noire 3D, lettres PNG fond transparent, rendu luxe 300 DPI."},
       {id:"prem-lp", title:"Leopard Fur Alphabet 3D", subtitle:"Alphabet léopard PNG", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
        badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:31, rating:5, icon:"🐆", bg:"#FEF3C7", fg:"#B45309",
-       img:"images/prem/lp-a.jpg", cover:"images/mock/prem-lp.jpg", flip:"images/prem/cover-lp.jpg",
+       img:"images/thumbs/lp-a.jpg", cover:"images/mock/prem-lp.jpg", flip:"images/prem/cover-lp.jpg",
        description:"Alphabet complet en fourrure léopard 3D, lettres PNG fond transparent, parfait pour typographies audacieuses."},
       {id:"prem-dl", title:"Dalmatian Fluffy Alphabet 3D", subtitle:"Alphabet dalmatien PNG", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
        badge:"Recommandé", badgeClass:"badge-recommended", reviews:17, rating:5, icon:"🐾", bg:"#F3F4F6", fg:"#374151",
-       img:"images/prem/dl-a.jpg", cover:"images/mock/prem-dl.jpg", flip:"images/prem/cover-dl.jpg",
+       img:"images/thumbs/dl-a.jpg", cover:"images/mock/prem-dl.jpg", flip:"images/prem/cover-dl.jpg",
        description:"Alphabet fluffy motif dalmatien en 3D, lettres PNG transparentes pour créations fun et modernes."},
       {id:"prem-ic", title:"Ice Crystal Alphabet 3D", subtitle:"Alphabet cristal PNG", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
        badge:"Recommandé", badgeClass:"badge-recommended", reviews:21, rating:5, icon:"❄️", bg:"#E0F2FE", fg:"#0369A1",
-       img:"images/prem/ic-a.jpg", cover:"images/mock/prem-ic.jpg", flip:"images/prem/cover-ic.jpg",
+       img:"images/thumbs/ic-a.jpg", cover:"images/mock/prem-ic.jpg", flip:"images/prem/cover-ic.jpg",
        description:"Alphabet en cristal de glace 3D, lettres PNG transparentes au rendu glacé spectaculaire."},
       {id:"prem-pp", title:"Pink Puffy Y2K Alphabet 3D", subtitle:"Alphabet Y2K PNG", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
        badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:28, rating:5, icon:"💗", bg:"#FDF0F4", fg:"#B4295B",
-       img:"images/prem/pp-a.jpg", cover:"images/mock/prem-pp.jpg", flip:"images/prem/cover-pp.jpg",
+       img:"images/thumbs/pp-a.jpg", cover:"images/mock/prem-pp.jpg", flip:"images/prem/cover-pp.jpg",
        description:"Alphabet puffy rose style Y2K en 3D, lettres PNG transparentes pour designs girly et tendance."},
       {id:"prem-rb", title:"Red Balloon Alphabet 3D", subtitle:"Alphabet ballons PNG", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
        badge:"Recommandé", badgeClass:"badge-recommended", reviews:18, rating:5, icon:"🎈", bg:"#FEE2E2", fg:"#B91C1C",
-       img:"images/prem/rb-a.jpg", cover:"images/mock/prem-rb.jpg", flip:"images/prem/cover-rb.jpg",
+       img:"images/thumbs/rb-a.jpg", cover:"images/mock/prem-rb.jpg", flip:"images/prem/cover-rb.jpg",
        description:"Alphabet ballons rouges 3D, lettres PNG transparentes pour anniversaires, promos et affiches."},
       {id:"prem-rg", title:"Rose Gold Balloon Alphabet 3D", subtitle:"Alphabet rose gold PNG", category:"design", ageGroup:"ados",
        priceMAD:99, origPriceMAD:149, priceUSD:9.99, origPriceUSD:14.99, priceEUR:9.90, origPriceEUR:14.90,
        badge:"Cadeau Idéal", badgeClass:"badge-gift", reviews:26, rating:5, icon:"🌹", bg:"#FDF0F4", fg:"#B4295B",
-       img:"images/prem/rg-a.jpg", cover:"images/mock/prem-rg.jpg", flip:"images/prem/cover-rg.jpg",
+       img:"images/thumbs/rg-a.jpg", cover:"images/mock/prem-rg.jpg", flip:"images/prem/cover-rg.jpg",
        description:"Alphabet ballons rose gold 3D, lettres PNG transparentes au rendu métallique élégant."},
       {id:"gold-01", title:"Pack Art Islamique — Médaillons Dorés", subtitle:"Art mural à imprimer", category:"design", ageGroup:"ados",
        priceMAD:59, origPriceMAD:99, priceUSD:5.99, origPriceUSD:9.99, priceEUR:5.90, origPriceEUR:9.90,
@@ -2066,7 +2066,7 @@
       {id:"pack-planners-68", title:"MEGA Pack — 68 Planners Imprimables", subtitle:"Quotidien, budget, école, Ramadan...", category:"pack", ageGroup:"ados", isnew:true,
        priceMAD:99, origPriceMAD:199, priceUSD:9.99, origPriceUSD:19.99, priceEUR:9.90, origPriceEUR:19.90,
        badge:"Nouveau 🌸", badgeClass:"badge-recommended", reviews:7, rating:5, icon:"🌸", bg:"#FDF0F4", fg:"#B4295B",
-       img:"heroes/img/pk68-01.jpg", cover:"images/mock/pack-planners-68.jpg", flip:"heroes/planners68.html",
+       img:"heroes/thumbs/pk68-01.jpg", cover:"images/mock/pack-planners-68.jpg", flip:"heroes/planners68.html",
        description:"68 planners imprimables en français, chacun avec son propre design pastel : quotidien, hebdo, budget et épargne, école & examens, cuisine, santé, Ramadan, voyage, objectifs... A4, à imprimer à volonté. 2 PDFs inclus."},
       {id:"covers-03", title:"Kit 5 E-books pour Elle", subtitle:"5 e-books complets", category:"pack", ageGroup:"ados", isnew:true,
        priceMAD:129, origPriceMAD:199, priceUSD:12.99, origPriceUSD:19.99, priceEUR:12.90, origPriceEUR:19.90,
