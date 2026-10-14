@@ -95,7 +95,7 @@ body{font-family:'Baloo 2',cursive;background:linear-gradient(175deg,#1BA7E8,#0B
     <div class="jscode" id="js">// ajoute des blocs pour voir ton code ici...</div>
   </div>
 
-  <div class="foot">🤖 AREEJ CODING · areej.studio · b7al les pros walakin b la3b!</div>
+  <div class="foot">🤖 AREEJ CODING · areej.studio · comme les pros, mais en jouant !</div>
 </div>
 
 <div class="overlay" id="ov">
@@ -150,7 +150,7 @@ function load(i){
   document.getElementById('ph').textContent=lv.ph;
   var nw=0;for(var k=0;k<LV.length;k++)if(won[k])nw++;
   document.getElementById('st').textContent='⭐ '+nw+'/'+LV.length;
-  document.getElementById('msg').textContent= lv.dbg? 'Had programme fih GHALAT wa7ed... l9ah o sal7o! 🐞' : '';
+  document.getElementById('msg').textContent= lv.dbg? 'Ce programme contient UNE erreur... trouve-la et corrige-la ! 🐞' : '';
   document.getElementById('progTitle').textContent = lv.dbg? '🐞 PROGRAMME CASSÉ — clique sur un bloc pour le CHANGER :' : "📜 TON PROGRAMME — clique sur un bloc pour l'enlever :";
   document.getElementById('palPanel').style.display = lv.dbg? 'none':'block';
   bd.innerHTML='';
@@ -221,7 +221,7 @@ document.getElementById('go').onclick=function(){
     if(k>=steps.length){
       clearInterval(t);running=false;
       if(bx===lv.g[0]&&by===lv.g[1])win();
-      else{bd.classList.add('shake');setTimeout(function(){bd.classList.remove('shake')},500);flash('Mazal ma wselti l ⭐ ... 3awed jarreb ! 💪');}
+      else{bd.classList.add('shake');setTimeout(function(){bd.classList.remove('shake')},500);flash('Pas encore arrivé à la ⭐ ... réessaie ! 💪');}
       return;
     }
     var b=steps[k++];

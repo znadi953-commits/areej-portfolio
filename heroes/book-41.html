@@ -70,34 +70,34 @@ input{outline:none;border:0;background:none;font-family:inherit}
 <h1>Détective Consultant 🔎</h1>
 <div class="scene"><div class="book" id="book"><div class="backboard"></div>
 <div class="sheet"><div class="face front cover"></div><div class="face back pg"><h2>🗂️ Le Dossier</h2><div class="story" style="font-size:12.5px">
-<b>Riverside, 1891.</b> L bare7 f 21h00, f la gare: <b>la montre en or</b> dyal Lord Pemberton tsserqat! ⌚<br><br>
+<b>Riverside, 1891.</b> Hier à 21h00, à la gare : <b>la montre en or</b> de Lord Pemberton a été volée ! ⌚<br><br>
 <b>4 suspects:</b> ⚓ Capt. Morse (marin) · 🎭 Mlle Vera (chanteuse) · 🎩 M. Griffin (horloger) · 💼 Sir Banks (banquier).<br><br>
-Zour <b>les lieux</b>, 9ra <b>le journal</b>, sewwel <b>les témoins</b>… w lqa l coupable! 🔎</div>
+Zour <b>les lieux</b>, 9ra <b>le journal</b>, interroge <b>les témoins</b>… w lqa l coupable! 🔎</div>
 <div style="text-align:center;font-size:38px;margin-top:auto">🗺️⌚🔎</div></div></div>
 <div class="sheet"><div class="face front pg"><h2>🗺️ La Carte — Zour les lieux</h2>
-<p style="font-size:11.5px;font-weight:700;text-align:center;margin-bottom:6px">Klik 3la kol blasa bash tlqa indice — <b id="vc">0</b>/6</p>
+<p style="font-size:11.5px;font-weight:700;text-align:center;margin-bottom:6px">Clique sur chaque lieu pour trouver un indice — <b id="vc">0</b>/6</p>
 <div class="loc noflip">
-<button data-c="🚂 La Gare: témoin shaf rajel b chapeau haut-de-forme kayjri!">🚂 Gare</button>
-<button data-c="🍺 La Taverne: Capt. Morse kan hna 7tal 22h — ALIBI! ✅">🍺 Taverne</button>
-<button data-c="🎭 Le Théâtre: Mlle Vera kant 3la la scène f 21h — ALIBI! ✅">🎭 Théâtre</button>
-<button data-c="🏦 La Banque: Sir Banks kan f Paris had l'usbou3 — ALIBI! ✅">🏦 Banque</button>
-<button data-c="⚓ Les Docks: traces dyal boue fraîche mn les docks 7da la gare...">⚓ Docks</button>
-<button data-c="🕰️ L'Horlogerie: l boutique dyal Griffin seddat bekri l bare7... bizarre!">🕰️ Horlogerie</button>
+<button data-c="🚂 La Gare: un témoin a vu un homme en chapeau haut-de-forme courir !">🚂 Gare</button>
+<button data-c="🍺 La Taverne: Capt. Morse était ici jusqu'à 22h — ALIBI ! ✅">🍺 Taverne</button>
+<button data-c="🎭 Le Théâtre: Mlle Vera était sur scène à 21h — ALIBI ! ✅">🎭 Théâtre</button>
+<button data-c="🏦 La Banque: Sir Banks était à Paris cette semaine — ALIBI ! ✅">🏦 Banque</button>
+<button data-c="⚓ Les Docks: traces de boue fraîche venant des docks près de la gare...">⚓ Docks</button>
+<button data-c="🕰️ L'Horlogerie: la boutique de Griffin a fermé tôt hier... bizarre !">🕰️ Horlogerie</button>
 </div>
-<div class="clue noflip" id="clue">👆 Klik 3la blasa...</div>
+<div class="clue noflip" id="clue">👆 Clique sur un lieu...</div>
 <p class="res" id="rL"></p></div><div class="face back pg"><h2>📰 Le Journal</h2>
 <div class="news"><div class="nh">THE DAILY CHRONICLE — 1891</div>
 «Hier soir vers <b>21 heures</b>, la fameuse <b>montre en or</b> de Lord Pemberton a disparu à la gare de Riverside. La police cherche un homme élégant au chapeau noir…»</div>
 <div class="noflip">
 <p class="qq">1. Fo9ash w9e3 l vol?</p>
 <div data-q="j1"><span class="chip" data-v="a">20h</span><span class="chip" data-v="b">21h</span><span class="chip" data-v="c">22h</span></div>
-<p class="qq">2. Shno tserq?</p>
+<p class="qq">2. Qu'a-t-on volé ?</p>
 <div data-q="j2"><span class="chip" data-v="a">Bague 💍</span><span class="chip" data-v="b">Montre ⌚</span><span class="chip" data-v="c">Collier 📿</span></div>
 <button class="chk" onclick="jQ()">✓ Vérifier</button><p class="res" id="rJ"></p></div></div></div>
 <div class="sheet"><div class="face front pg"><h2>📖 L'Annuaire 1891</h2>
 <div class="dir">🌹 10A Rose Lane — <b>Mme Plum</b>, couturière<br>🕰️ 12B Baker Lane — <b>M. Griffin</b>, horloger<br>⚓ 14C Dock Street — <b>Capt. Morse</b>, marin</div>
 <div class="noflip">
-<p class="qq">Shkoun kay3ref les montres mzyan?</p>
+<p class="qq">Qui connaît bien les montres ?</p>
 <div data-q="d1"><span class="chip" data-v="a">Mme Plum</span><span class="chip" data-v="b">M. Griffin</span><span class="chip" data-v="c">Capt. Morse</span></div>
 <button class="chk" onclick="dQ()">✓ Vérifier</button><p class="res" id="rD"></p>
 <div class="codebox" id="cbD">🕰️ Un horloger... intéressant!</div></div></div><div class="face back pg"><h2>🗣️ Les Témoins</h2><div class="noflip">
@@ -109,14 +109,14 @@ Zour <b>les lieux</b>, 9ra <b>le journal</b>, sewwel <b>les témoins</b>… w lq
 <div data-q="w3"><span class="chip" data-v="a">telj</span><span class="chip" data-v="b">boue ⚓</span><span class="chip" data-v="c">sbagha</span></div>
 <button class="chk" onclick="wQ()">✓ Vérifier</button><p class="res" id="rW"></p></div></div></div>
 <div class="sheet"><div class="face front pg"><h2>⌚ Le Code de la Montre</h2>
-<p style="font-size:12px;font-weight:700;text-align:center">Les chiffres romains dyal la montre l9dima:</p>
+<p style="font-size:12px;font-weight:700;text-align:center">Les chiffres romains de la vieille montre :</p>
 <div style="text-align:center;font-size:40px;margin:4px 0">🕰️</div>
 <div class="noflip">
 <div class="fld2">IX =<input id="n1" inputmode="numeric"></div>
 <div class="fld2">IV =<input id="n2" inputmode="numeric"></div>
 <button class="chk" onclick="nQ()">✓ Vérifier</button><p class="res" id="rN"></p>
 <div class="codebox" id="cbN">📦 CONSIGNE N° 94 — la gare!</div></div></div><div class="face back pg"><h2>🔎 La Déduction</h2>
-<p style="font-size:12px;font-weight:700;text-align:center">Haut-de-forme 🎩 + pipe + boue + expert des montres…<br>Shkoun serq la montre? Klik 3lih!</p>
+<p style="font-size:12px;font-weight:700;text-align:center">Haut-de-forme 🎩 + pipe + boue + expert des montres…<br>Qui a volé la montre ? Clique dessus !</p>
 <div class="sus noflip" id="susp">
 <div class="card" data-s="morse"><span>⚓</span>Capt. Morse</div>
 <div class="card" data-s="vera"><span>🎭</span>Mlle Vera</div>
@@ -131,17 +131,17 @@ Zour <b>les lieux</b>, 9ra <b>le journal</b>, sewwel <b>les témoins</b>… w lq
 <div style="font-size:36px">🔎</div>
 <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:15px;color:#7a2030">DÉTECTIVE CONSULTANT</div>
 <input placeholder="Détective ..." maxlength="25">
-<div style="font-size:12.5px;line-height:1.7">Zar les lieux, 9ra le journal,<br>sewwel les témoins… w 7ell l'affaire<br>dyal la Montre d'Or! ⌚🎉<br><i>«Élémentaire!»</i></div>
+<div style="font-size:12.5px;line-height:1.7">Visité les lieux, lu le journal,<br>interroge les témoins… et résous l'affaire<br>de la Montre d'Or ! ⌚🎉<br><i>«Élémentaire!»</i></div>
 <div style="font-size:11px;opacity:.6">RIVERSIDE 1891 · BY AREEJ</div></div></div></div>
 <div class="sheet"><div class="face front pg"><h2>✏️ Ton Propre Cas</h2>
-<p style="font-size:12.5px;font-weight:700;margin-bottom:6px">Shno tserq? Shkoun les suspects? Shno les indices? Ekteb l'affaire dyalek:</p>
+<p style="font-size:12.5px;font-weight:700;margin-bottom:6px">Qu'a-t-on volé ? Qui sont les suspects ? Quels indices ? Écris ton affaire :</p>
 <div class="lined"></div>
-<p style="text-align:center;font-size:11.5px;font-weight:700;color:#7a2030;margin-top:8px">«F kol zen9a, kayna 7ikaya.» 🔎</p></div><div class="face back pg"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center">
+<p style="text-align:center;font-size:11.5px;font-weight:700;color:#7a2030;margin-top:8px">« Dans chaque rue, il y a une histoire. » 🔎</p></div><div class="face back pg"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center">
 <div style="font-size:48px">🔎⌚</div><div style="font-family:'Playfair Display',serif;font-weight:900;font-size:19px;color:#7a2030">AFFAIRE CLASSÉE</div>
 <div style="font-size:13px;font-weight:700;opacity:.7">DÉTECTIVE CONSULTANT · BY AREEJ 💜</div></div></div></div>
 </div></div>
-<div class="hint">🖱️ Klik bash t7ell — 10 pages ldakhel, kolhom khddamin! ✨</div>
-<button class="closebtn" id="seddBtn">↺ Sedd l book</button>
+<div class="hint">🖱️ Clique pour ouvrir — 10 pages à l'intérieur, tout fonctionne ! ✨</div>
+<button class="closebtn" id="seddBtn">↺ Fermer le livre</button>
 <script>
 const sheets=[...document.querySelectorAll('.sheet')];
 const book=document.getElementById('book');
@@ -161,7 +161,7 @@ document.querySelectorAll('[data-q] .chip').forEach(c=>c.addEventListener('click
  c.parentElement.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));c.classList.add('sel');}));
 function val(q){const s=document.querySelector('[data-q="'+q+'"] .chip.sel');return s?s.dataset.v:null;}
 function ok(el,id,msg){const r=document.getElementById(el);r.textContent=msg;r.style.color='#2fa94e';if(id)document.getElementById(id).classList.add('on');}
-function bad(el){const r=document.getElementById(el);r.textContent='❌ Mazal... 3awd jerreb!';r.style.color='#d8544f';}
+function bad(el){const r=document.getElementById(el);r.textContent='❌ Pas encore... réessaie !';r.style.color='#d8544f';}
 
 let VC=0;
 document.querySelectorAll('.loc button').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();

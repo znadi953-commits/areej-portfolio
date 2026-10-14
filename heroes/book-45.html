@@ -45,10 +45,10 @@ canvas{max-width:100%;max-height:100%;border:2px solid #0003;border-radius:8px;c
 <h1>Cherche &amp; Trouve 2 🔍</h1>
 <div class="scene"><div class="book" id="book"><div class="backboard"></div>
 <div class="sheet"><div class="face front cover"></div><div class="face back pg"><h2 style="font-size:17px">🔍 Comment Jouer?</h2><div class="story">
-Marhba f <b>CHERCHE & TROUVE</b>! 🕵️<br><br>
-🔍 <b>Cherche</b> les 6 objets li f la liste ta7t kol scène — melli tlqa wa7ed, <b>klik 3lih f la liste</b> bash t-cocher ✓!<br><br>
-🎨 <b>Colorie</b> la scène: khtar loun mn la palette w klik 3la ay zone!<br><br>
-🏠 F lekher: <b>labyrinthe</b> — rsem triqek b la souris! ✏️<br><br>
+Bienvenue dans <b>CHERCHE & TROUVE</b>! 🕵️<br><br>
+🔍 <b>Cherche</b> les 6 objets li f la liste ta7t kol scène — melli tlqa wa7ed, <b>clique 3lih f la liste</b> pour cocher ✓ !<br><br>
+🎨 <b>Colorie</b> la scène : choisis une couleur dans la palette et clique sur une zone !<br><br>
+🏠 F lekher: <b>labyrinthe</b> — trace ton chemin avec la souris ! ✏️<br><br>
 <b>8 scènes géantes</b> kaytsennawk... yalla! 👀</div>
 <div style="text-align:center;font-size:36px;margin-top:auto">🔍🎨🏠</div></div></div>
 <div class="sheet"><div class="face front pg"><h2>🦁 Le Zoo</h2><div class="pal noflip"><span class="sw" data-n="1" style="background:#aee3f5"></span><span class="sw" data-n="2" style="background:#ffd84a"></span><span class="sw" data-n="3" style="background:#f7a8c4"></span><span class="sw" data-n="4" style="background:#7fc97a"></span><span class="sw" data-n="5" style="background:#b8c0cc"></span><span class="sw" data-n="6" style="background:#c98a5a"></span><span class="sw" data-n="7" style="background:#e05252"></span><span class="sw" data-n="8" style="background:#8adcd2"></span></div>
@@ -80,15 +80,15 @@ Marhba f <b>CHERCHE & TROUVE</b>! 🕵️<br><br>
 <div class="fi-row noflip" data-done="0"><span class="fi">🧸 nounours</span><span class="fi">⭐ étoile</span><span class="fi">🥨 bretzel</span><span class="fi">🪄 baguette</span><span class="fi">🐠 poisson</span><span class="fi">🎺 trompette</span></div>
 <p class="res" id="rs7">Lqa les 6 objets w colorie! 🔍</p></div></div>
 <div class="sheet"><div class="face front pg"><h2>🏰 Le Labyrinthe du Château</h2>
-<p style="font-size:11px;font-weight:700;text-align:center">Mn l fou9 (🟢) 7tal l te7t (🔴) — rsem triqek b la souris!</p>
+<p style="font-size:11px;font-weight:700;text-align:center">Du haut (🟢) jusqu'en bas (🔴) — trace ton chemin avec la souris !</p>
 <div class="cwrap noflip"><canvas id="mz" data-img="img/mz-02.png" style="cursor:crosshair"></canvas></div>
 <div class="tools noflip"><button id="mzClr">🧽 Effacer</button></div>
 <p class="res" style="color:#2a6e3c">Deghya deghya... bla ma tqis l 7iout! 😄</p></div><div class="face back pg"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center">
 <div style="font-size:48px">🔍🎉</div><div style="font-family:'Luckiest Guy';font-size:19px;color:#e8338a">TOUT TROUVÉ!</div>
 <div style="font-size:13px;font-weight:700;opacity:.7">CHERCHE & TROUVE · BY AREEJ 💜</div></div></div></div>
 </div></div>
-<div class="hint">🖱️ Klik bash t7ell — Vol. 2 — 8 scènes jdad + labyrinthe, kolchi interactif! ✨</div>
-<button class="closebtn" id="seddBtn">↺ Sedd l book</button>
+<div class="hint">🖱️ Clique pour ouvrir — Vol. 2 — 8 scènes jdad + labyrinthe, tout est interactif ! ✨</div>
+<button class="closebtn" id="seddBtn">↺ Fermer le livre</button>
 <script>
 const sheets=[...document.querySelectorAll('.sheet')];
 const book=document.getElementById('book');
@@ -135,7 +135,7 @@ document.querySelectorAll('.fi-row').forEach(row=>{
   f.classList.toggle('done');
   const n=row.querySelectorAll('.fi.done').length;
   const res=row.parentElement.querySelector('.res');
-  if(n===6){res.textContent='🎉 BRAVO! Lqiti les 6 objets! 🔍';res.style.color='#2fa94e';}
+  if(n===6){res.textContent='🎉 BRAVO ! Tu as trouvé les 6 objets ! 🔍';res.style.color='#2fa94e';}
   else{res.textContent=n+' / 6 objets mlqiyin...';res.style.color='#8a6a3a';}}));});
 // maze pen
 const mz=document.getElementById('mz');

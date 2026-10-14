@@ -71,8 +71,8 @@ input{outline:none;border:0;background:none;font-family:inherit}
 <h1>Mystery Classroom 🕵️</h1>
 <div class="scene"><div class="book" id="book"><div class="backboard"></div>
 <div class="sheet"><div class="face front cover"></div><div class="face back pg"><h2>📜 L'Enquête</h2><div class="story" style="font-size:12.5px">
-Sba7 had nhar… <b>l gâteau dyal l classe khwa!</b> 🍰😱 B9at ghir l fretat!<br>
-Kayn <b>4 suspects</b>. Jma3 <b>3 indices</b> (M · A · X?) w chouf shkoun l coupable f la page 7! 🕵️</div><div class="sus noflip" id="susP1" style="pointer-events:none">
+Ce matin… <b>le gâteau de la classe a disparu !</b> 🍰😱 Il ne reste que des miettes !<br>
+Il y a <b>4 suspects</b>. Rassemble <b>3 indices</b> (M · A · X ?) et découvre le coupable à la page 7 ! 🕵️</div><div class="sus noflip" id="susP1" style="pointer-events:none">
 <div class="card"><span>🐹</span>Max l hamster</div><div class="card"><span>🐱</span>Léo l 9ett</div>
 <div class="card"><span>🐰</span>Mia l arnab</div><div class="card"><span>🐢</span>Sam l fekroun</div></div></div></div>
 <div class="sheet"><div class="face front pg"><h2>🔐 Indice 1 — Math Lock</h2><div class="noflip">
@@ -86,7 +86,7 @@ Kayn <b>4 suspects</b>. Jma3 <b>3 indices</b> (M · A · X?) w chouf shkoun l co
 <div class="codebox noflip" id="cb2">INDICE 2 = lettre A</div></div></div>
 <div class="sheet"><div class="face front pg"><h2>🧩 Indice 3 — Pattern</h2>
 <div style="text-align:center;font-size:34px;letter-spacing:6px;margin:12px 0">🔴🔵🔵🔴🔵🔵🔴<span style="opacity:.3">❓</span></div>
-<p class="qq" style="text-align:center">Shno ja mn ba3d?</p>
+<p class="qq" style="text-align:center">Qu'est-ce qui vient après ?</p>
 <div class="noflip" style="text-align:center" data-q="q3">
 <span class="chip" data-v="a" style="font-size:22px">🔴</span><span class="chip" data-v="b" style="font-size:22px">🔵</span><span class="chip" data-v="c" style="font-size:22px">🟡</span>
 <button class="chk" onclick="yPat()">✓ Vérifier</button><p class="res" id="rP3"></p>
@@ -96,7 +96,7 @@ Kayn <b>4 suspects</b>. Jma3 <b>3 indices</b> (M · A · X?) w chouf shkoun l co
 <div class="fld2 noflip">L'ism howa:<input id="sec" style="text-transform:uppercase"></div>
 <div class="noflip"><button class="chk" onclick="ySec()">✓ Vérifier</button><p class="res" id="rX"></p></div></div></div>
 <div class="sheet"><div class="face front pg"><h2>👀 Trouve la Différence</h2>
-<p style="font-size:12px;font-weight:700;text-align:center">Klik 3la li mkhalf f kol star!</p>
+<p style="font-size:12px;font-weight:700;text-align:center">Clique sur l'intrus de chaque ligne !</p>
 <div class="noflip">
 <div class="dr" data-d="1">📘📘📘📘📘📘</div>
 <div class="dr" data-d="x1">📘📘📙📘📘📘</div>
@@ -105,31 +105,31 @@ Kayn <b>4 suspects</b>. Jma3 <b>3 indices</b> (M · A · X?) w chouf shkoun l co
 <div class="dr" data-d="x2">🧁🧁🧁🧁🍩🧁</div>
 <p class="res" id="rDf"></p>
 <div class="codebox" id="cb4">🌻 Graines 7da l cage!</div></div></div><div class="face back pg"><h2>🕵️ ACCUSE!</h2>
-<p style="font-size:12.5px;font-weight:700;text-align:center">M · A · X … Shkoun kla l gâteau? Klik 3lih!</p>
+<p style="font-size:12.5px;font-weight:700;text-align:center">M · A · X … Qui a mangé le gâteau ? Clique dessus !</p>
 <div class="sus noflip" id="susp">
 <div class="card" data-s="max"><span>🐹</span>Max l hamster</div><div class="card" data-s="leo"><span>🐱</span>Léo l 9ett</div>
 <div class="card" data-s="mia"><span>🐰</span>Mia l arnab</div><div class="card" data-s="sam"><span>🐢</span>Sam l fekroun</div></div>
 <p class="bigres" id="rAcc" style="font-size:15px"></p></div></div>
 <div class="sheet"><div class="face front pg"><h2>⚡ Bonus — Devinettes</h2><div class="noflip">
-<p class="qq">1. Kay7mel kolchi w howa 3la dahrek. Shnou howa?</p>
+<p class="qq">1. Il porte tout et il est sur ton dos. Qu'est-ce que c'est ?</p>
 <div class="fld2"><input id="g1" style="text-transform:uppercase"></div>
-<p class="qq">2. Fih klam bzf w ma kayhdarch. Shnou howa?</p>
+<p class="qq">2. Plein de mots mais il ne parle jamais. Qu'est-ce que c'est ?</p>
 <div class="fld2"><input id="g2" style="text-transform:uppercase"></div>
 <button class="chk" onclick="yBon()">✓ Vérifier</button><p class="res" id="rB"></p>
 <p style="font-size:11.5px;opacity:.6;text-align:center;margin-top:6px">Indices: 🎒 · 📖</p></div></div><div class="face back pg"><h2>🏆 Certificat de Détective</h2><div class="cert noflip">
 <div style="font-size:38px">🕵️</div>
 <div style="font-family:'Luckiest Guy';font-size:15px;color:#d86a1e">DÉTECTIVE OFFICIEL!</div>
 <input placeholder="Détective ..." maxlength="25">
-<div style="font-size:12.5px;line-height:1.7">Jma3 l indices M·A·X,<br>w lqa l coupable: Max l hamster! 🐹🍰<br>Case closed! 🎉</div>
+<div style="font-size:12.5px;line-height:1.7">Rassemble les indices M·A·X,<br>w lqa l coupable: Max l hamster! 🐹🍰<br>Case closed! 🎉</div>
 <div style="font-size:11px;opacity:.6">MYSTERY CLASSROOM · BY AREEJ</div></div></div></div>
-<div class="sheet"><div class="face front pg"><h2>✏️ Sawb Mystère dyalek!</h2>
-<p style="font-size:12.5px;font-weight:700;margin-bottom:6px">Shkoun? Shnou dar? Fin khebba l indices? Ekteb l'histoire:</p>
+<div class="sheet"><div class="face front pg"><h2>✏️ Crée ton propre Mystère !</h2>
+<p style="font-size:12.5px;font-weight:700;margin-bottom:6px">Qui ? Qu'a-t-il fait ? Où a-t-il caché les indices ? Écris l'histoire :</p>
 <div class="lined"></div></div><div class="face back pg"><div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center">
 <div style="font-size:48px">🕵️🐹</div><div style="font-family:'Luckiest Guy';font-size:19px;color:#d86a1e">CASE CLOSED!</div>
 <div style="font-size:13px;font-weight:700;opacity:.7">MYSTERY CLASSROOM · BY AREEJ 💜</div></div></div></div>
 </div></div>
-<div class="hint">🖱️ Klik bash t7ell — 10 pages ldakhel, kolhom khddamin! ✨</div>
-<button class="closebtn" id="seddBtn">↺ Sedd l book</button>
+<div class="hint">🖱️ Clique pour ouvrir — 10 pages à l'intérieur, tout fonctionne ! ✨</div>
+<button class="closebtn" id="seddBtn">↺ Fermer le livre</button>
 <script>
 const sheets=[...document.querySelectorAll('.sheet')];
 const book=document.getElementById('book');
@@ -149,14 +149,14 @@ document.querySelectorAll('[data-q] .chip').forEach(c=>c.addEventListener('click
  c.parentElement.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));c.classList.add('sel');}));
 function val(q){const s=document.querySelector('[data-q="'+q+'"] .chip.sel');return s?s.dataset.v:null;}
 function ok(el,id,msg){const r=document.getElementById(el);r.textContent=msg;r.style.color='#2fa94e';if(id)document.getElementById(id).classList.add('on');}
-function bad(el){const r=document.getElementById(el);r.textContent='❌ Mazal... 3awd jerreb!';r.style.color='#d8544f';}
+function bad(el){const r=document.getElementById(el);r.textContent='❌ Pas encore... réessaie !';r.style.color='#d8544f';}
 
 function yMath(){(+m1.value===12&&+m2.value===9&&+m3.value===9)?ok('rM','cb1','🎉 S7i7!'):bad('rM');}
 let HC=0;
 document.querySelectorAll('.ho span').forEach(s=>s.addEventListener('click',e=>{e.stopPropagation();
  if(s.classList.contains('found'))return;
  if(s.dataset.t==='1'){s.classList.add('found');HC++;document.getElementById('hc').textContent=HC;
-  if(HC===5){ok('rO','cb2','🎉 Lqitihom kolhom!');}}
+  if(HC===5){ok('rO','cb2','🎉 Tu les as tous trouvés !');}}
  else{s.style.opacity=.35;setTimeout(()=>s.style.opacity=1,400);}}));
 function yPat(){(val('q3')==='b')?ok('rP3','cb3','🎉 S7i7!'):bad('rP3');}
 function ySec(){(norm(sec.value)==='MAX')?ok('rX',null,'🎉 M·A·X ... hmm! 🐹'):bad('rX');}

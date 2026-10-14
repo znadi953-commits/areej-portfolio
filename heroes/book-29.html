@@ -47,9 +47,9 @@ input{outline:none;border:0;background:none}
 <b>2.</b> Kol <b>ligne</b> khassha t-contenir 1→9 bla tikrar.<br>
 <b>3.</b> Kol <b>colonne</b> khassha t-contenir 1→9 bla tikrar.<br>
 <b>4.</b> Kol <b>carré 3×3</b> khasso y-contenir 1→9 bla tikrar.<br>
-<b>5.</b> Klik <b>✓ Vérifier</b> bash tchofi wach s7i7a! ✅<br><br>
+<b>5.</b> Clique <b>✓ Vérifier</b> pour voir si c'est correct ! ✅<br><br>
 <b>5 niveaux:</b> ★ Débutant → ★★★★★ Expert<br>
-📄 <b>Les solutions</b> kaynin f PDF à imprimer (b7al les livres l7a9i9iyin!)</div>
+📄 <b>Les solutions</b> sont dans le PDF à imprimer (comme les vrais livres !)</div>
 <div style="text-align:center;font-size:44px;margin-top:auto">🧩✨</div></div></div>
 <div class="sheet"><div class="face front pg"><h2>SUDOKU</h2><div class="shead"><span class="lvl">Niveau 1 — Débutant</span><span class="st">★☆☆☆☆</span></div>
 <div class="tmr">⏱ ____ min</div>
@@ -81,8 +81,8 @@ input{outline:none;border:0;background:none}
 <div class="scf">★★★★★ Expert<input placeholder="⏱ temps..."></div>
 <div style="text-align:center;margin-top:auto;font-size:13px;font-weight:700;color:#7a3fd0">Brain Training · BY AREEJ 💜</div></div></div>
 </div></div>
-<div class="hint">🖱️ Klik bash t7ell · 5 grilles khddamin — jerrbi w vérifiiw! 🧩</div>
-<button class="closebtn" id="seddBtn">↺ Sedd l book</button>
+<div class="hint">🖱️ Clique pour ouvrir · 5 grilles jouables — essaie et vérifie ! 🧩</div>
+<button class="closebtn" id="seddBtn">↺ Fermer le livre</button>
 <script>
 const sheets=[...document.querySelectorAll('.sheet')];
 const book=document.getElementById('book');
@@ -114,9 +114,9 @@ function chk(i){const el=document.getElementById('g'+i),sol=PZ[i].sol;
   if(v===sol[k])inp.parentElement.classList.add('ok2');
   else{inp.parentElement.classList.add('bad');good=false;}});
  const r=document.getElementById('r'+i);
- if(!good){r.textContent='❌ Kayn chi ghalat — les cases 7omrin';r.style.color='#d8282f';}
- else if(!all){r.textContent='👍 Mzyan tal daba — kemmli!';r.style.color='#e8a81e';}
- else{r.textContent='🎉 BRAVO! Grille kamla s7i7a!';r.style.color='#2fa94e';}}
+ if(!good){r.textContent='❌ Il y a une erreur — regarde les cases rouges';r.style.color='#d8282f';}
+ else if(!all){r.textContent='👍 Très bien — continue !';r.style.color='#e8a81e';}
+ else{r.textContent='🎉 BRAVO ! Grille complète et correcte !';r.style.color='#2fa94e';}}
 </script>
 <style>
 body{overflow:auto!important;justify-content:flex-start!important;align-items:center;padding:14px 0 26px!important;min-height:100vh}
