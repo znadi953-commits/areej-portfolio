@@ -1499,7 +1499,7 @@
       </div>
       <div class="cat-card" data-cat="design" onclick="shopCat('design')">
         <div class="cat-img"><img src="images/thumbs/rg-a.jpg" alt="Design & Digital 🖌️" loading="lazy"></div>
-        <h4>Design & Digital 🖌️<br><span style="font-size:12px;color:#8B5CF6;font-weight:800;">26 produits</span></h4>
+        <h4>Design & Digital 🖌️<br><span style="font-size:12px;color:#8B5CF6;font-weight:800;">27 produits</span></h4>
       </div>
       <div class="cat-card" data-cat="pack" onclick="shopCat('pack')">
         <div class="cat-img"><img src="heroes/shots/book-100.jpg" alt="Packs & Bundles 🎁" loading="lazy"></div>
@@ -1785,6 +1785,11 @@
   <script>
     // Product Database modeled directly on littlemindsatwork.in
     const productsData = [
+      {id:"archi-book", isnew:true, title:"Carnet d'Architecte — AREEJ ARCHI 🏙️", subtitle:"20 croquis encre & aquarelle · Maroc & villes du monde", category:"design", ageGroup:"ados",
+       priceMAD:119, origPriceMAD:199, priceUSD:11.99, origPriceUSD:19.99, priceEUR:11.50, origPriceEUR:18.50,
+       badge:"Nouveau 🏙️", badgeClass:"badge-new", reviews:0, rating:5, icon:"🏙️", bg:"#FAF9F6", fg:"#1B3A6B",
+       img:"heroes/thumbs/ar-00.jpg", cover:"heroes/img/ar-00.jpg", flip:"heroes/archi.html",
+       description:"Le carnet de croquis d'un architecte voyageur : 20 planches A4 qualité galerie, encre fine + aquarelle, avec les annotations techniques, les mini-diagrammes de construction et les mesures griffonnées dans les marges — comme un vrai carnet de terrain. Côté Maroc : la Tour Mohammed VI la nuit sur le Bouregreg, la Mosquée Hassan II au crépuscule, la Koutoubia à l'heure dorée, une ruelle de la médina de Fès aux lanternes, le boulevard Art Déco de Casablanca sous la pluie, la kasbah d'Aït Ben Haddou, l'escalier bleu de Chefchaouen, un patio de riad, le Grand Théâtre de Rabat et le souk aux rayons de lumière. Côté monde : le Flatiron de New York sous la pluie, un café parisien à l'heure bleue, les néons de Tokyo, un canal de Venise, Tower Bridge à Londres... et la terrasse de Marrakech face à l'Atlas pour finir. Chaque planche est une leçon de dessin urbain : perspective, lavis de nuit, fenêtres qui brillent."},
       {id:"gemmes-kit", isnew:true, title:"AREEJ Gemmes — La Table de la Créatrice 💠", subtitle:"3 dames de cristal · 14 pages de travail · zwaq & tarz", category:"mode", ageGroup:"ados",
        priceMAD:79, origPriceMAD:149, priceUSD:7.99, origPriceUSD:14.99, priceEUR:7.50, origPriceEUR:14.50,
        badge:"Nouveau 💠", badgeClass:"badge-new", reviews:0, rating:5, icon:"💠", bg:"#FAF9F6", fg:"#2458C5",
@@ -2293,7 +2298,7 @@
     function renderTopRail() {
       const rail = document.getElementById('topRailContainer');
       if (!rail) return;
-      const TOP_IDS = ['gemmes-kit','perlage-kit','couture-kit','fashion-kit','supportrice-kit','musee-kit','ville-kit','livre-dor-100','mega-pack'];
+      const TOP_IDS = ['archi-book','gemmes-kit','perlage-kit','couture-kit','fashion-kit','supportrice-kit','musee-kit','ville-kit','livre-dor-100','mega-pack'];
       rail.innerHTML = TOP_IDS.map(id => productsData.find(p => p.id === id)).filter(Boolean).map(p => productCard(p)).join('');
     }
 
