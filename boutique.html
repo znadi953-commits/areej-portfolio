@@ -1102,6 +1102,42 @@
       z-index: 10;
     }
 
+    /* ===== Vue Produit (style Etsy) ===== */
+    .modal-box.pv-box{max-width:1060px;max-height:92vh;overflow-y:auto}
+    .pv-wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:28px;padding:26px}
+    .pv-main{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;background:#F6F3EC;border:1px solid #EEE9DF}
+    .pv-thumbs{display:flex;gap:10px;margin-top:12px}
+    .pv-thumb{width:72px;height:72px;object-fit:cover;border-radius:10px;border:2px solid #E5E0D6;cursor:pointer;background:#F6F3EC}
+    .pv-thumb.active{border-color:#111827}
+    .pv-shop{display:flex;align-items:center;gap:8px;font-size:13px;color:#6B7280;margin-bottom:8px;font-weight:700}
+    .pv-title{font-size:24px;line-height:1.25;color:#111827;margin:8px 0;font-weight:800}
+    .pv-rating{font-size:14px;color:#111827;margin-bottom:12px}
+    .pv-rating .s{color:#F59E0B;letter-spacing:1px}
+    .pv-price{font-size:30px;font-weight:800;color:#047857;font-family:'Fredoka'}
+    .pv-orig{font-size:16px;color:#9CA3AF;text-decoration:line-through;margin-left:8px}
+    .pv-off{display:inline-block;background:#FDEAD7;color:#B45309;font-size:12px;font-weight:800;border-radius:999px;padding:3px 10px;margin-left:8px}
+    .pv-promo{font-size:12.5px;color:#B4295B;font-weight:700;margin:6px 0 12px}
+    .pv-digital{display:flex;align-items:center;gap:8px;font-size:13px;color:#4B5563;background:#F9FAFB;border:1px solid #EEF0F3;border-radius:10px;padding:9px 12px;margin-bottom:14px}
+    .pv-cta{width:100%;border:none;border-radius:999px;padding:15px 20px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;box-sizing:border-box}
+    .pv-cta.buy{background:#111827;color:#fff;margin-bottom:10px}
+    .pv-cta.buy:hover{background:#000}
+    .pv-cta.flipb{background:#fff;color:#111827;border:2px solid #111827;display:block;text-align:center;text-decoration:none;margin-bottom:16px}
+    .pv-trust{display:grid;gap:7px;font-size:13px;color:#374151;margin-bottom:16px}
+    .pv-desc h4{font-size:14px;text-transform:uppercase;letter-spacing:.5px;color:#111827;margin-bottom:8px}
+    .pv-desc p{font-size:14.5px;color:#4B5563;line-height:1.75}
+    .pv-related{padding:4px 26px 28px}
+    .pv-related h4{font-size:16px;color:#111827;margin:10px 0 14px}
+    .pv-rel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .pv-rel-card{cursor:pointer;border:1px solid #F0ECE4;border-radius:12px;overflow:hidden;background:#fff;transition:.2s}
+    .pv-rel-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .pv-rel-card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#F6F3EC}
+    .pv-rel-card .t{font-size:12.5px;font-weight:700;color:#111827;padding:8px 10px 2px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .pv-rel-card .pr{font-size:13px;font-weight:800;color:#047857;padding:0 10px 10px;display:block}
+    .product-image-box{cursor:pointer}
+    .product-title{cursor:pointer}
+    .product-title:hover{color:#B4295B}
+    @media(max-width:860px){.pv-wrap{grid-template-columns:1fr;padding:18px}.pv-rel-grid{grid-template-columns:repeat(2,1fr)}.pv-related{padding:0 18px 22px}}
+
     /* Toast notification */
     .toast-notice {
       position: fixed;
@@ -1769,9 +1805,9 @@
 
   <!-- Quick View Modal -->
   <div class="modal-overlay" id="quickModal" onclick="closeModalOnOverlay(event)">
-    <div class="modal-box">
+    <div class="modal-box pv-box">
       <button class="modal-close" onclick="closeQuickModal()">✕</button>
-      <div id="quickModalContent" style="padding: 24px;"></div>
+      <div id="quickModalContent"></div>
     </div>
   </div>
 
@@ -2311,14 +2347,14 @@
       return `
         <div class="product-card">
           <span class="product-badge-flag ${p.badgeClass}">${p.badge}</span>
-          <div class="product-image-box" style="background:${p.bg}">
+          <div class="product-image-box" style="background:${p.bg}" onclick="openQuickModal('${p.id}')">
             <img class="prod-shot" src="${p.cover}" alt="${p.title}" loading="lazy">
             <img class="prod-shot prod-hover" src="${p.img}" alt="" loading="lazy">
-            <button class="quick-view-btn" onclick="openQuickModal('${p.id}')">Aperçu rapide 👁️</button>
+            <button class="quick-view-btn" onclick="event.stopPropagation();openQuickModal('${p.id}')">Aperçu rapide 👁️</button>
           </div>
           <div class="product-details">
             <span class="product-category-tag">${p.subtitle} ${newtag}</span>
-            <h3 class="product-title">${p.title}</h3>
+            <h3 class="product-title" onclick="openQuickModal('${p.id}')">${p.title}</h3>
             <div class="product-rating">
               <span class="stars-count">★★★★★</span>
               <span class="review-num">(${p.reviews} avis)</span>
@@ -2516,33 +2552,64 @@
       if (!p) return;
       const prices = formatPrice(p);
       const content = document.getElementById('quickModalContent');
+      const rel = productsData.filter(x => x.category === p.category && x.id !== p.id).slice(0, 4);
+      const relHtml = rel.length ? `
+        <div class="pv-related">
+          <h4>Vous aimerez aussi ✨</h4>
+          <div class="pv-rel-grid">
+            ${rel.map(r => `
+              <div class="pv-rel-card" onclick="openQuickModal('${r.id}')">
+                <img src="${r.cover}" alt="${r.title}" loading="lazy">
+                <span class="t">${r.title}</span>
+                <span class="pr">${formatPrice(r).current}</span>
+              </div>`).join('')}
+          </div>
+        </div>` : '';
       content.innerHTML = `
-        <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 20px;">
-          <div style="width:110px;height:110px;background:${p.bg} url(${p.cover}) center/cover no-repeat;border-radius:16px;flex-shrink:0;"></div>
-          <div>
-            <span class="product-badge-flag ${p.badgeClass}" style="position:static; display:inline-block; margin-bottom:6px;">${p.badge}</span>
-            <h2 style="font-size: 22px; color: #111827;">${p.title}</h2>
-            <div style="font-size: 14px; color: #B4295B; font-weight: 700;">Âge recommandé : ${p.ageGroup} ans</div>
+        <div class="pv-wrap">
+          <div class="pv-gallery">
+            <img class="pv-main" id="pvMainImg" src="${p.cover}" alt="${p.title}">
+            <div class="pv-thumbs">
+              <img class="pv-thumb active" src="${p.cover}" alt="" onclick="pvSwap(this)">
+              <img class="pv-thumb" src="${p.img}" alt="" onclick="pvSwap(this)">
+            </div>
+          </div>
+          <div class="pv-info">
+            <div class="pv-shop">🏪 AREEJ ATELIER <span style="color:#F59E0B">★ 4.9</span> · Maroc</div>
+            <span class="product-badge-flag ${p.badgeClass}" style="position:static;display:inline-block;">${p.badge}</span>
+            <h2 class="pv-title">${p.title}</h2>
+            <div class="pv-rating"><span class="s">★★★★★</span> ${p.rating}${p.reviews > 0 ? ` · ${p.reviews} avis` : ' · Nouveauté'} · ${p.subtitle}</div>
+            <div>
+              <span class="pv-price">${prices.current}</span>
+              <span class="pv-orig">${prices.orig}</span>
+              <span class="pv-off">PROMO -50%</span>
+            </div>
+            <div class="pv-promo">⏳ Prix de lancement — pour une durée limitée</div>
+            <div class="pv-digital">📩 <b>Téléchargement numérique</b> · PDF A4 haute qualité · Âge : ${p.ageGroup}</div>
+            <button class="pv-cta buy" onclick="addToCart('${p.id}'); closeQuickModal();">Ajouter au panier 🛒</button>
+            <a class="pv-cta flipb" href="${p.flip}" target="_blank" rel="noopener">📖 Feuilleter le livre</a>
+            <div class="pv-trust">
+              <span>✅ Téléchargement instantané après commande</span>
+              <span>✅ Impression illimitée à la maison</span>
+              <span>✅ Satisfait ou remboursé sous 14 jours</span>
+            </div>
+            <div class="pv-desc">
+              <h4>Description</h4>
+              <p>${p.description}</p>
+            </div>
           </div>
         </div>
-        <p style="font-size: 15px; color: #4B5563; line-height: 1.6; margin-bottom: 20px;">${p.description}</p>
-        <div style="background: #F9FAFB; padding: 14px 18px; border-radius: 12px; margin-bottom: 20px; display:flex; justify-content:space-between; align-items:center;">
-          <div>
-            <span style="font-size: 13px; color: #6B7280; display:block;">Prix spécial :</span>
-            <span style="font-size: 24px; font-weight:800; color:#111827; font-family:'Fredoka'">${prices.current}</span>
-            <span style="font-size: 14px; color: #9CA3AF; text-decoration:line-through; margin-left: 6px;">${prices.orig}</span>
-          </div>
-          <button class="btn-primary" onclick="addToCart('${p.id}'); closeQuickModal();">
-            Ajouter au panier 🛒
-          </button>
-        </div>
-        <div style="font-size: 12px; color: #6B7280; display:flex; gap:16px;">
-          <span>✓ Plastifié indéchirable</span>
-          <span>✓ Velcros réutilisables</span>
-          <span>✓ Satisfait ou remboursé</span>
-        </div>
-      `;
+        ${relHtml}`;
       document.getElementById('quickModal').classList.add('active');
+      const box = document.querySelector('#quickModal .modal-box');
+      if (box) box.scrollTop = 0;
+    }
+
+    function pvSwap(el) {
+      const main = document.getElementById('pvMainImg');
+      if (main) main.src = el.src;
+      document.querySelectorAll('.pv-thumb').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
     }
 
     function closeQuickModal() {
