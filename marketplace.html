@@ -3,172 +3,270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AREEJ Market — Marketplace de Livres, Kits & Fichiers à Imprimer</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<title>AREEJ Fabrica - Livres premium de création, kits & fiches à imprimer</title>
 <style>
 :root{
- --primary:#E5247E; --primary-hover:#C41351; --indigo:#4E54C8; --accent-yellow:#F39C12;
- --bg-light:#F8FAFC; --card-bg:#fff; --text-dark:#0F172A; --text-muted:#64748B;
- --border-color:#E2E8F0; --badge-green:#10B981;
- --shadow-sm:0 2px 8px rgba(0,0,0,.04); --shadow-md:0 10px 25px -5px rgba(0,0,0,.10);
- --radius-md:14px; --radius-lg:20px;
+ --green:#2E9E5B; --green-d:#23824A; --purple:#6D2D91; --dark:#222326; --muted:#6B6F76;
+ --line:#E6E7EA; --bg:#fff; --bg2:#F7F7F9; --gold:#F5A623; --pink:#C41351;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg-light);color:var(--text-dark);line-height:1.5}
-h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
-.promo-bar{background:linear-gradient(90deg,#C41351,#E5247E,#8E44EC);color:#fff;text-align:center;padding:9px 16px;font-size:13.5px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
-.promo-pill{background:rgba(255,255,255,.25);padding:2px 10px;border-radius:20px;font-size:11.5px;text-transform:uppercase}
-header{background:#fff;border-bottom:1px solid var(--border-color);position:sticky;top:0;z-index:100}
-.nav-container{max-width:1320px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.logo-wrap{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
-.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,#E5247E,#8E44EC);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:21px;font-weight:800;font-family:'Space Grotesk';box-shadow:0 4px 12px rgba(229,36,126,.3)}
-.logo-name{font-size:19px;font-weight:800;font-family:'Space Grotesk'}
-.logo-name span{color:var(--primary)}
-.searchbar{flex:1;min-width:220px;display:flex;align-items:center;background:var(--bg-light);border:1.5px solid var(--border-color);border-radius:30px;padding:9px 18px;gap:10px}
-.searchbar input{border:0;outline:0;background:none;font-family:inherit;font-size:14px;width:100%}
-.hbtn{background:var(--primary);color:#fff;border:0;font-family:inherit;font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:30px;cursor:pointer;text-decoration:none;white-space:nowrap}
-.hbtn.ghost{background:#fff;color:var(--text-dark);border:1.5px solid var(--border-color)}
-.catbar{max-width:1320px;margin:0 auto;padding:10px 20px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
-.catbar::-webkit-scrollbar{display:none}
-.cpill{border:1.5px solid var(--border-color);background:#fff;color:var(--text-dark);font-family:inherit;font-size:13px;font-weight:600;padding:7px 15px;border-radius:30px;cursor:pointer;white-space:nowrap}
-.cpill.on{background:var(--text-dark);color:#fff;border-color:var(--text-dark)}
-.hero{background:linear-gradient(135deg,#1c0a2e 0%,#4E1060 45%,#C41351 100%);color:#fff;padding:52px 20px 60px;text-align:center}
-.hero h1{font-size:clamp(26px,4.5vw,44px);max-width:820px;margin:0 auto 14px}
-.hero h1 em{font-style:normal;color:#FFD166}
-.hero p{color:rgba(255,255,255,.85);max-width:640px;margin:0 auto 26px;font-size:16px}
-.hstats{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-.hstat b{font-size:22px;font-family:'Space Grotesk';display:block}
-.hstat span{font-size:12.5px;color:rgba(255,255,255,.7)}
-.wrap{max-width:1320px;margin:0 auto;padding:0 20px}
-.sechead{display:flex;align-items:baseline;justify-content:space-between;margin:38px 0 18px;gap:14px;flex-wrap:wrap}
-.sechead h2{font-size:24px}
-.sechead select{font-family:inherit;font-size:13px;font-weight:600;padding:8px 12px;border-radius:10px;border:1.5px solid var(--border-color);background:#fff;cursor:pointer}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;margin-bottom:50px}
-.card{background:#fff;border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;transition:.18s;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
-.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
-.thumb{position:relative;aspect-ratio:3/3.6;background:#f1f5f9;overflow:hidden}
-.thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
-.bdg{position:absolute;top:10px;left:10px;background:var(--primary);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;text-transform:uppercase}
-.bdg.green{background:var(--badge-green)} .bdg.indigo{background:var(--indigo)} .bdg.gold{background:var(--accent-yellow)}
-.cbody{padding:12px 13px 14px;display:flex;flex-direction:column;gap:5px;flex:1}
-.ctitle{font-size:14px;font-weight:700;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.cby{font-size:11.5px;color:var(--text-muted)}
-.cby b{color:var(--primary)}
-.crate{font-size:12px;color:#F59E0B;font-weight:700}
-.crate span{color:var(--text-muted);font-weight:500}
-.cprice{margin-top:auto;display:flex;align-items:center;gap:8px}
-.cprice b{font-size:16.5px}
-.cprice s{color:var(--text-muted);font-size:12.5px}
-.cprice .eur{font-size:11px;color:var(--text-muted);margin-left:auto}
-.allaccess{background:linear-gradient(135deg,#140b22,#3b1060);border-radius:var(--radius-lg);color:#fff;padding:36px 30px;margin:10px 0 50px;display:flex;gap:28px;align-items:center;flex-wrap:wrap}
-.allaccess .aa-l{flex:1;min-width:260px}
-.allaccess h3{font-size:25px;margin-bottom:8px}
-.allaccess h3 span{color:#FFD166}
-.allaccess p{color:rgba(255,255,255,.8);font-size:14.5px;margin-bottom:16px}
-.aa-price{font-size:34px;font-family:'Space Grotesk';font-weight:700}
-.aa-price small{font-size:14px;color:rgba(255,255,255,.65);font-weight:400}
-footer{background:#0F172A;color:#94A3B8;padding:40px 20px;text-align:center;font-size:13px}
-footer b{color:#fff}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--dark);line-height:1.5}
+a{color:inherit}
+.container{max-width:1280px;margin:0 auto;padding:0 20px}
+/* ===== bandeau promo annuel (haut) ===== */
+.yearly{background:linear-gradient(100deg,#2A0B45 0%,#4B1468 55%,#7A1C53 100%);color:#fff;padding:26px 20px}
+.yearly-in{max-width:1280px;margin:0 auto;display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.yearly h2{font-size:21px;line-height:1.3;max-width:430px}
+.yearly ul{list-style:none;font-size:13px;color:rgba(255,255,255,.88);display:flex;flex-direction:column;gap:5px}
+.yearly ul li::before{content:"✓";color:#7BE495;font-weight:700;margin-right:8px}
+.y-cta{margin-left:auto;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center}
+.count{display:flex;gap:6px;font-weight:700;font-size:18px}
+.count span{background:rgba(255,255,255,.14);border-radius:8px;padding:6px 9px;min-width:46px;text-align:center}
+.count small{display:block;font-size:9px;font-weight:400;color:rgba(255,255,255,.6);text-transform:uppercase}
+.btn-green{display:inline-block;background:var(--green);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:13px 26px;border-radius:8px;box-shadow:0 4px 14px rgba(46,158,91,.4);border:0;cursor:pointer}
+.btn-green:hover{background:var(--green-d)}
+.y-note{font-size:11.5px;color:rgba(255,255,255,.6)}
+/* ===== header ===== */
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:200}
+.hrow1{display:flex;align-items:center;gap:18px;padding:12px 20px;max-width:1280px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo .ic{width:38px;height:38px;border-radius:50%;background:conic-gradient(from 20deg,#C41351,#F5A623,#2E9E5B,#6D2D91,#C41351);display:flex;align-items:center;justify-content:center}
+.logo .ic b{width:30px;height:30px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:#C41351;font-size:17px}
+.logo .nm{font-size:18px;font-weight:800}
+.logo .nm span{font-weight:400;color:var(--muted)}
+.srch{flex:1;display:flex;border:2px solid #D8DADF;border-radius:8px;overflow:hidden;min-width:180px}
+.srch input{flex:1;border:0;outline:0;padding:10px 14px;font-size:14px;font-family:inherit}
+.srch button{border:0;background:var(--green);color:#fff;padding:0 16px;font-size:16px;cursor:pointer}
+.hlinks{display:flex;gap:14px;align-items:center;font-size:13.5px;font-weight:600}
+.hlinks a{text-decoration:none;color:var(--dark)}
+.hlinks a.hl{color:var(--purple)}
+.hrow2{border-top:1px solid var(--line)}
+.nav2{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.nav2::-webkit-scrollbar{display:none}
+.nav2 button{background:none;border:0;border-bottom:3px solid transparent;font-family:inherit;font-size:13.5px;font-weight:600;color:#45484E;padding:11px 13px;cursor:pointer;white-space:nowrap}
+.nav2 button:hover{color:var(--purple)}
+.nav2 button.on{color:var(--purple);border-bottom-color:var(--purple)}
+/* ===== hero ===== */
+.hero{background:linear-gradient(180deg,#FDF6EF 0%,#FAEDE2 100%);text-align:center;padding:46px 20px 50px;border-bottom:1px solid var(--line)}
+.hero .insp{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#B08968;font-weight:700;margin-bottom:10px}
+.hero h1{font-size:clamp(26px,4vw,40px);margin-bottom:10px}
+.hero p{color:var(--muted);font-size:16px;max-width:620px;margin:0 auto 22px}
+.hero .mini{font-size:12px;color:var(--muted);margin-top:8px}
+/* ===== sections ===== */
+.sec{padding:34px 0 8px}
+.sechead{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:4px}
+.sechead h2{font-size:21px}
+.sechead .sub{color:var(--muted);font-size:13.5px}
+.tabs{display:flex;gap:2px;margin:12px 0 18px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tabs button{background:none;border:0;border-bottom:3px solid transparent;font-family:inherit;font-size:14px;font-weight:600;color:#45484E;padding:9px 14px;cursor:pointer;white-space:nowrap}
+.tabs button.on{color:var(--purple);border-bottom-color:var(--purple)}
+.rowgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:26px}
+@media(max-width:1000px){.rowgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.rowgrid{grid-template-columns:repeat(2,1fr)}}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;cursor:pointer;transition:.15s;display:flex;flex-direction:column}
+.pcard:hover{box-shadow:0 8px 22px rgba(0,0,0,.09);transform:translateY(-2px)}
+.pthumb{aspect-ratio:580/387;background:#F1F2F4;overflow:hidden;position:relative}
+.pthumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.pfree{position:absolute;top:8px;left:8px;background:var(--gold);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px;text-transform:uppercase}
+.pbody{padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px;flex:1}
+.ptitle{font-size:13.5px;font-weight:700;line-height:1.3;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.pin{font-size:11.5px;color:var(--muted)}
+.pin a{color:var(--purple);text-decoration:none}
+.pprice{margin-top:auto;font-size:12.5px;padding-top:5px}
+.pprice b{color:var(--green);font-size:14px}
+.pprice s{color:#9AA0A8;margin-left:6px;font-size:11.5px}
+.pprice .gr{color:var(--green);font-weight:700}
+/* categories tiles */
+.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:16px 0 30px}
+@media(max-width:1000px){.cats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.cats{grid-template-columns:repeat(2,1fr)}}
+.cat{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:18px 14px;text-align:center;cursor:pointer;transition:.15s}
+.cat:hover{border-color:var(--purple);background:#FAF5FF}
+.cat .e{font-size:28px}
+.cat b{display:block;font-size:14px;margin-top:6px}
+.cat span{font-size:11.5px;color:var(--muted)}
+/* all access */
+.alla{background:linear-gradient(100deg,#2A0B45,#4B1468 60%,#7A1C53);border-radius:14px;color:#fff;padding:34px 30px;margin:26px 0 40px;display:flex;gap:30px;align-items:center;flex-wrap:wrap}
+.alla .l{flex:1;min-width:260px}
+.alla h3{font-size:24px;margin-bottom:10px}
+.alla ul{list-style:none;font-size:13.5px;color:rgba(255,255,255,.88);display:flex;flex-direction:column;gap:6px;margin-bottom:0}
+.alla ul li::before{content:"✓";color:#7BE495;font-weight:700;margin-right:8px}
+.pricecard{background:#fff;color:var(--dark);border-radius:12px;padding:22px 24px;text-align:center;min-width:250px}
+.pricecard .t{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--purple)}
+.pricecard .p{font-size:38px;font-weight:800;margin:6px 0 2px}
+.pricecard .p small{font-size:14px;color:var(--muted);font-weight:400}
+.pricecard s{color:#9AA0A8;font-size:14px}
+.pricecard .btn-green{margin-top:12px;width:100%}
+/* temoignages */
+.tst{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:14px 0 40px}
+@media(max-width:860px){.tst{grid-template-columns:1fr}}
+.tcard{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:18px}
+.tcard .st{color:#F5A623;font-size:15px;letter-spacing:2px}
+.tcard p{font-size:13.5px;margin:8px 0 10px}
+.tcard b{font-size:12.5px}
+/* footer */
+footer{background:#1B1C1F;color:#A6AAB2;margin-top:30px}
+.frow{max-width:1280px;margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;font-size:13px}
+@media(max-width:860px){.frow{grid-template-columns:repeat(2,1fr)}}
+footer h4{color:#fff;font-size:13.5px;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
+footer a{display:block;color:#A6AAB2;text-decoration:none;margin-bottom:7px;cursor:pointer}
+footer a:hover{color:#fff}
+.fbot{border-top:1px solid #33353A;text-align:center;font-size:12px;padding:16px;color:#7A7E86}
+/* modal */
 .modal{position:fixed;inset:0;background:rgba(10,8,20,.72);z-index:300;display:none;align-items:flex-start;justify-content:center;padding:28px 14px;overflow-y:auto}
 .modal.open{display:flex}
-.mbox{background:#fff;border-radius:var(--radius-lg);max-width:980px;width:100%;display:grid;grid-template-columns:1.05fr 1fr;overflow:hidden;position:relative}
-.mclose{position:absolute;top:12px;right:14px;background:#fff;border:1px solid var(--border-color);width:38px;height:38px;border-radius:50%;font-size:17px;cursor:pointer;z-index:2}
-.mimgs{background:#F1F5F9;padding:18px}
-.mmain{width:100%;aspect-ratio:1/1.1;object-fit:contain;background:#fff;border-radius:12px;border:1px solid var(--border-color)}
+.mbox{background:#fff;border-radius:12px;max-width:980px;width:100%;display:grid;grid-template-columns:1.05fr 1fr;overflow:hidden;position:relative}
+@media(max-width:760px){.mbox{grid-template-columns:1fr}}
+.mclose{position:absolute;top:12px;right:14px;background:#fff;border:1px solid var(--line);width:38px;height:38px;border-radius:50%;font-size:17px;cursor:pointer;z-index:2}
+.mimgs{background:#F1F2F4;padding:18px}
+.mmain{width:100%;aspect-ratio:1/1.05;object-fit:contain;background:#fff;border-radius:10px;border:1px solid var(--line)}
 .mthumbs{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.mthumbs img{width:62px;height:62px;object-fit:cover;border-radius:8px;border:2px solid transparent;cursor:pointer;background:#fff}
-.mthumbs img.on{border-color:var(--primary)}
-.minfo{padding:26px 24px;display:flex;flex-direction:column;gap:12px}
-.minfo h3{font-size:21px;line-height:1.25}
-.msub{color:var(--text-muted);font-size:13.5px}
-.mprice{display:flex;align-items:center;gap:10px}
-.mprice b{font-size:28px;color:var(--primary)}
-.mprice s{color:var(--text-muted)}
-.mdesc{font-size:13.5px;color:#334155;max-height:210px;overflow-y:auto;line-height:1.6;border-top:1px solid var(--border-color);padding-top:12px;white-space:pre-line}
+.mthumbs img{width:60px;height:60px;object-fit:cover;border-radius:6px;border:2px solid transparent;cursor:pointer;background:#fff}
+.mthumbs img.on{border-color:var(--purple)}
+.minfo{padding:26px 24px;display:flex;flex-direction:column;gap:11px}
+.minfo h3{font-size:20px;line-height:1.3}
+.msub{color:var(--muted);font-size:13.5px}
+.mrate{color:#F5A623;font-size:13.5px;font-weight:700}
+.mrate span{color:var(--muted);font-weight:400}
+.mprice b{font-size:27px;color:var(--green)}
+.mprice s{color:#9AA0A8;margin-left:8px}
 .mtags{display:flex;gap:7px;flex-wrap:wrap}
-.mtag{background:var(--bg-light);border:1px solid var(--border-color);font-size:11.5px;font-weight:600;padding:4px 11px;border-radius:20px;color:#475569}
-.mcta{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
-.mcta a{flex:1;text-align:center;text-decoration:none;font-weight:800;font-size:14px;padding:13px 16px;border-radius:12px;min-width:150px}
-.cta1{background:var(--primary);color:#fff;box-shadow:0 6px 16px rgba(229,36,126,.35)}
-.cta2{background:#10B981;color:#fff}
-.mnote{font-size:11.5px;color:var(--text-muted)}
-@media(max-width:760px){.mbox{grid-template-columns:1fr}.hero{padding:38px 16px 44px}}
+.mtag{background:var(--bg2);border:1px solid var(--line);font-size:11.5px;font-weight:600;padding:4px 11px;border-radius:20px;color:#55595F}
+.mdesc{font-size:13.5px;color:#3C4046;max-height:200px;overflow-y:auto;line-height:1.6;border-top:1px solid var(--line);padding-top:12px;white-space:pre-line}
+.mcta{display:flex;gap:10px;flex-wrap:wrap}
+.mcta a{flex:1;text-align:center;text-decoration:none;font-weight:800;font-size:14px;padding:13px 16px;border-radius:8px;min-width:150px}
+.cta1{background:var(--green);color:#fff}
+.cta2{background:#25D366;color:#fff}
+.mnote{font-size:11.5px;color:var(--muted)}
+.hidden{display:none}
 </style>
 </head>
 <body>
 
-<div class="promo-bar"><span class="promo-pill">Offre de lancement</span> -50% SUR TOUT LE MARKETPLACE · PDF instantané 🎉</div>
+<!-- bandeau promo type All Access annuel -->
+<div class="yearly">
+ <div class="yearly-in">
+  <h2>Accédez à Tous les Livres, Kits et Fiches Dont Vous Rêvez — avec le MEGA Pack</h2>
+  <ul>
+    <li>Les livres d'activités AREEJ en un seul achat</li>
+    <li>399 DH une seule fois (valeur réelle <s>2000+ DH</s>)</li>
+    <li>Licence famille — impression illimitée</li>
+    <li>Usage personnel & éducatif inclus</li>
+  </ul>
+  <div class="y-cta">
+    <div style="font-size:12px;color:rgba(255,255,255,.75)">L'offre de lancement se termine dans :</div>
+    <div class="count"><span id="ch">23<small>heures</small></span><span id="cm">59<small>min</small></span><span id="cs">59<small>s</small></span></div>
+    <a class="btn-green" href="boutique.html">Découvrir le MEGA Pack (399 DH)</a>
+    <div class="y-note">Paiement unique · PDF instantané</div>
+  </div>
+ </div>
+</div>
 
 <header>
-  <div class="nav-container">
-    <a class="logo-wrap" href="#">
-      <div class="logo-icon">A</div>
-      <div class="logo-name">AREEJ<span>market</span></div>
-    </a>
-    <div class="searchbar">🔍 <input id="q" type="text" placeholder="Rechercher parmi 139 créations : kits, livres, thérapie, coloriage…" oninput="render()"></div>
-    <a class="hbtn ghost" href="boutique.html">🛍️ Boutique</a>
-    <a class="hbtn" href="#all">⭐ Tout AREEJ — 399 DH</a>
+  <div class="hrow1">
+    <a class="logo" href="#"><span class="ic"><b>A</b></span><span class="nm">AREEJ<span> Fabrica</span></span></a>
+    <div class="srch"><input id="q" placeholder="Rechercher kits, livres, coloriage, thérapie…" oninput="doSearch()"><button>🔍</button></div>
+    <div class="hlinks">
+      <a href="boutique.html">🛍️ Boutique</a>
+      <a href="index.html">🏠 Portfolio</a>
+      <a class="hl" href="boutique.html">⭐ MEGA Pack</a>
+    </div>
   </div>
-  <div class="catbar" id="catbar"></div>
+  <div class="hrow2"><div class="nav2" id="nav2"></div></div>
 </header>
 
-<section class="hero">
-  <h1>Le marketplace créatif <em>marocain</em> — livres, kits & fichiers à imprimer</h1>
-  <p>139 créations originales en français : kits de fête, jeux éducatifs, cahiers de thérapie, coloriage, scrapbook… Téléchargement instantané, impression illimitée.</p>
-  <div class="hstats">
-    <div class="hstat"><b>139</b><span>créations</span></div>
-    <div class="hstat"><b>9</b><span>catégories</span></div>
-    <div class="hstat"><b>PDF A4</b><span>haute résolution</span></div>
-    <div class="hstat"><b>🇲🇦</b><span>conçu au Maroc</span></div>
-  </div>
+<!-- hero -->
+<section class="hero" id="heroS">
+  <div class="insp">Laissez-vous inspirer</div>
+  <h1>Plus de 139 Ressources Créatives</h1>
+  <p>Livres d'activités, Kits de fête, Fiches thérapie, Coloriage, et plus encore.<br>Toujours en français, toujours à imprimer chez vous.</p>
+  <a class="btn-green" href="#reco">Explorer les créations</a>
+  <div class="mini">Conçu au Maroc 🇲🇦 · PDF A4 haute résolution · Téléchargement instantané</div>
 </section>
 
-<div class="wrap">
-  <div class="sechead">
-    <h2 id="counts">Toutes les créations</h2>
-    <select id="sort" onchange="render()">
-      <option value="pop">Les plus populaires</option>
-      <option value="new">Nouveautés</option>
-      <option value="pmin">Prix croissant</option>
-      <option value="pmax">Prix décroissant</option>
-      <option value="rate">Mieux notés</option>
-    </select>
-  </div>
-  <div class="grid" id="grid"></div>
+<div class="container">
 
-  <div class="allaccess" id="all">
-    <div class="aa-l">
-      <h3>⭐ LE MEGA PACK — <span>tout AREEJ en un seul achat</span></h3>
-      <p>L'équivalent du "All Access" : la collection complète des livres AREEJ + les bonus, pour moins que le prix de 4 kits. Licence famille, impression illimitée.</p>
-      <div class="aa-price">399 DH <small>· paiement unique · valeur réelle 2000+ DH</small></div>
-    </div>
-    <a class="hbtn" style="font-size:16px;padding:14px 26px" href="boutique.html">Découvrir le MEGA Pack →</a>
+  <!-- resultats recherche -->
+  <div class="sec hidden" id="resS">
+    <div class="sechead"><h2 id="resT">Résultats</h2></div>
+    <div class="rowgrid" id="resG" style="grid-template-columns:repeat(5,1fr)"></div>
   </div>
+
+  <div id="homeS">
+  <!-- recommandé / tendances -->
+  <div class="sec" id="reco">
+    <div class="sechead"><h2>Recommandé pour vous</h2><span class="sub">Les tendances du moment</span></div>
+    <div class="tabs" id="tabs"></div>
+    <div class="rowgrid" id="tabGrid"></div>
+  </div>
+
+  <!-- cadeaux du jour -->
+  <div class="sec" id="giftS">
+    <div class="sechead"><h2>🎁 Cadeaux du jour</h2><span class="sub">Gratuit aujourd'hui — comme chaque jour chez AREEJ</span></div>
+    <div class="rowgrid" id="giftGrid"></div>
+  </div>
+
+  <!-- categories -->
+  <div class="sec">
+    <div class="sechead"><h2>Parcourir par catégorie</h2></div>
+    <div class="cats" id="catTiles"></div>
+  </div>
+
+  <!-- all access -->
+  <div class="alla">
+    <div class="l">
+      <h3>L'Accès Illimité, version AREEJ : <span style="color:#FFD166">LE MEGA PACK</span></h3>
+      <ul>
+        <li>La collection complète des livres d'activités AREEJ</li>
+        <li>Nature, cuisine, art, science, logique, émotions…</li>
+        <li>Licence famille : imprimez autant de fois que vous voulez</li>
+        <li>Les nouveautés de la collection ajoutées régulièrement</li>
+        <li>Téléchargement instantané après confirmation</li>
+      </ul>
+    </div>
+    <div class="pricecard">
+      <div class="t">Mega Pack · paiement unique</div>
+      <div class="p">399 DH <small>/ une fois</small></div>
+      <s>valeur 2000+ DH</s>
+      <a class="btn-green" href="boutique.html">Je prends le MEGA Pack</a>
+    </div>
+  </div>
+
+  <!-- temoignages -->
+  <div class="sec" style="padding-top:0">
+    <div class="sechead"><h2>Elles nous recommandent</h2><span class="sub">⭐ 4,9/5 de satisfaction</span></div>
+    <div class="tst">
+      <div class="tcard"><div class="st">★★★★★</div><p>« Le Livre d'Or des 100 défis a sauvé nos week-ends. Mes enfants réclament les défis chaque samedi ! »</p><b>Salma · Casablanca</b></div>
+      <div class="tcard"><div class="st">★★★★★</div><p>« En tant que psychologue, je cherchais des fiches TCC sérieuses en français. La qualité est au niveau des ressources américaines. »</p><b>Dr. Yasmine · Rabat</b></div>
+      <div class="tcard"><div class="st">★★★★★</div><p>« L'anniversaire KOUBIK de mon fils était magique. J'ai tout imprimé la veille, tout était prêt en une soirée. »</p><b>Imane · Marrakech</b></div>
+    </div>
+  </div>
+  </div><!-- /homeS -->
 </div>
 
 <footer>
-  <b>AREEJ market</b> · le marketplace créatif d'AREEJ ATELIER · @areej.atelier · conçu au Maroc 🇲🇦<br><br>
-  Produits 100% numériques · téléchargement instantané · usage familial & éducatif
+  <div class="frow">
+    <div><h4>Catégories</h4><a onclick="goCat('kits')">Kits créatifs</a><a onclick="goCat('jeux')">Jeux & activités</a><a onclick="goCat('ecole')">École & apprentissage</a><a onclick="goCat('histoires')">Histoires</a><a onclick="goCat('coloriage')">Coloriage</a><a onclick="goCat('design')">Design & déco</a></div>
+    <div><h4>Collections</h4><a onclick="goCat('pack')">Offres groupées</a><a onclick="goCat('mode')">Mode & perlage</a><a onclick="goCat('planner')">Planners</a><a href="boutique.html">Thérapie & émotions</a></div>
+    <div><h4>AREEJ</h4><a href="index.html">Le portfolio</a><a href="boutique.html">La boutique</a><a href="marketplace.html">Le marketplace</a><a href="https://www.instagram.com/" target="_blank">Instagram @areej.atelier</a></div>
+    <div><h4>Aide</h4><a>Comment ça marche : choisissez → commandez → recevez vos PDF → imprimez</a><a>Produits 100% numériques</a><a>Licence famille & éducative</a></div>
+  </div>
+  <div class="fbot">© AREEJ Fabrica · AREEJ ATELIER — conçu au Maroc 🇲🇦 avec amour · PDF A4 · impression illimitée</div>
 </footer>
 
+<!-- modal produit -->
 <div class="modal" id="modal" onclick="if(event.target===this)closeM()">
   <div class="mbox">
     <button class="mclose" onclick="closeM()">✕</button>
-    <div class="mimgs">
-      <img class="mmain" id="mmain" src="" alt="">
-      <div class="mthumbs" id="mthumbs"></div>
-    </div>
+    <div class="mimgs"><img class="mmain" id="mmain" src="" alt=""><div class="mthumbs" id="mthumbs"></div></div>
     <div class="minfo">
       <h3 id="mtitle"></h3>
       <div class="msub" id="msub"></div>
-      <div class="crate" id="mrate"></div>
-      <div class="mprice"><b id="mp"></b><s id="mop"></s><span class="mtag" id="meur"></span></div>
+      <div class="mrate" id="mrate"></div>
+      <div class="mprice"><b id="mp"></b><s id="mop"></s></div>
       <div class="mtags" id="mtags"></div>
       <div class="mdesc" id="mdesc"></div>
-      <div class="mcta">
-        <a class="cta1" id="mbuy" href="boutique.html">🛍️ Commander sur la boutique</a>
-        <a class="cta2" id="mwa" href="#" target="_blank">💬 WhatsApp</a>
-      </div>
+      <div class="mcta"><a class="cta1" id="mbuy" href="boutique.html">🛍️ Commander sur la boutique</a><a class="cta2" id="mwa" href="#" target="_blank">💬 WhatsApp</a></div>
       <div class="mnote">📩 Produit numérique — les fichiers PDF sont envoyés après confirmation de la commande.</div>
     </div>
   </div>
@@ -669,67 +767,116 @@ const productsData = [
        description:"Jaquettes DVD style animation, compositions colorées haute résolution pour studios et projets créatifs.",gallery:["pv/covers-02-c1.jpg","pv/covers-02-c2.jpg","pv/_c/design-f.jpg","pv/_c/design-c.jpg"]}
     ];
 
-const CATS=[["all","✨ Tout"],["pack","🎁 Packs"],["kits","✂️ Kits"],["jeux","🎲 Jeux"],["ecole","🏫 École"],["histoires","📖 Histoires"],["coloriage","🖍️ Coloriage"],["design","🎨 Design"],["mode","👗 Mode"],["planner","📅 Planners"]];
-let cat="all";
-const cb=document.getElementById("catbar");
-CATS.forEach(c=>{
+const CATN={kits:"Kits créatifs",jeux:"Jeux & activités",ecole:"École",histoires:"Histoires",coloriage:"Coloriage",design:"Design & déco",mode:"Mode & perlage",pack:"Offres Groupées",planner:"Planners"};
+const CATE={kits:"✂️",jeux:"🎲",ecole:"🏫",histoires:"📖",coloriage:"🖍️",design:"🎨",mode:"👗",pack:"🎁",planner:"📅"};
+
+/* countdown jusqu'a minuit */
+function tick(){
+  const n=new Date(), mid=new Date(n); mid.setHours(24,0,0,0);
+  let s=Math.floor((mid-n)/1000);
+  const H=Math.floor(s/3600); s-=H*3600; const M=Math.floor(s/60); s-=M*60;
+  document.getElementById("ch").childNodes[0].nodeValue=String(H).padStart(2,"0");
+  document.getElementById("cm").childNodes[0].nodeValue=String(M).padStart(2,"0");
+  document.getElementById("cs").childNodes[0].nodeValue=String(s).padStart(2,"0");
+}
+setInterval(tick,1000); tick();
+
+/* nav categories (header rang 2) */
+const nav2=document.getElementById("nav2");
+[["all","Tout"]].concat(Object.keys(CATN).map(c=>[c,CATE[c]+" "+CATN[c]])).forEach(c=>{
   const b=document.createElement("button");
-  b.className="cpill"+(c[0]==="all"?" on":"");
+  if(c[0]==="all")b.classList.add("on");
   b.textContent=c[1];
-  b.onclick=()=>{cat=c[0];document.querySelectorAll(".cpill").forEach(x=>x.classList.remove("on"));b.classList.add("on");render();window.scrollTo({top:document.querySelector(".wrap").offsetTop-130,behavior:"smooth"});};
-  cb.appendChild(b);
+  b.onclick=()=>{document.querySelectorAll(".nav2 button").forEach(x=>x.classList.remove("on"));b.classList.add("on");goCat(c[0]);};
+  nav2.appendChild(b);
 });
-function stars(r){const f=Math.round(r);return "★★★★★".slice(0,f)+"☆☆☆☆☆".slice(0,5-f);}
-function bclass(b){
-  if(!b)return "";
-  const t=b.toLowerCase();
-  if(t.includes("best")||t.includes("top"))return "gold";
-  if(t.includes("new")||t.includes("nouveau"))return "green";
-  return "";
+
+function card(p,freeLabel){
+  const free=!p.priceMAD;
+  const priceHtml=free?'<span class="gr">0 DH — Gratuit aujourd\'hui chez AREEJ</span>'
+    :'<b>'+p.priceMAD+' DH</b>'+(p.origPriceMAD?'<s>'+p.origPriceMAD+' DH</s>':'')+' <span style="color:#9AA0A8">· ≈ '+p.priceEUR+' €</span>';
+  return '<div class="pcard" onclick="openM(\''+p.id+'\')">'+
+   '<div class="pthumb">'+(free?'<span class="pfree">Gratuit</span>':'')+'<img loading="lazy" src="'+(p.cover||p.img)+'"></div>'+
+   '<div class="pbody"><div class="ptitle">'+p.title+'</div>'+
+   '<div class="pin">Dans <a onclick="event.stopPropagation();goCat(\''+p.category+'\')">'+(CATN[p.category]||p.category)+'</a></div>'+
+   '<div class="pprice">'+priceHtml+'</div></div></div>';
 }
-function render(){
-  const q=(document.getElementById("q").value||"").toLowerCase();
-  const sort=document.getElementById("sort").value;
-  let list=productsData.filter(p=>(cat==="all"||p.category===cat)&&(!q||(p.title+" "+(p.subtitle||"")+" "+(p.description||"")).toLowerCase().includes(q)));
-  if(sort==="pop")list.sort((a,b)=>(b.reviews||0)-(a.reviews||0));
-  if(sort==="new")list.sort((a,b)=>(b.isnew?1:0)-(a.isnew?1:0));
-  if(sort==="pmin")list.sort((a,b)=>a.priceMAD-b.priceMAD);
-  if(sort==="pmax")list.sort((a,b)=>b.priceMAD-a.priceMAD);
-  if(sort==="rate")list.sort((a,b)=>(b.rating||0)-(a.rating||0));
-  document.getElementById("counts").textContent=(cat==="all"?"Toutes les créations":CATS.find(c=>c[0]===cat)[1])+" · "+list.length;
-  const g=document.getElementById("grid");
-  g.innerHTML=list.map(p=>`
-   <div class="card" onclick="openM('${p.id}')">
-     <div class="thumb">${p.badge?`<span class="bdg ${bclass(p.badge)}">${p.badge}</span>`:(p.isnew?`<span class="bdg green">Nouveau</span>`:"")}
-       <img loading="lazy" src="${p.cover||p.img}" alt=""></div>
-     <div class="cbody">
-       <div class="ctitle">${p.title}</div>
-       <div class="cby">Par <b>AREEJ Atelier</b></div>
-       <div class="crate">${stars(p.rating||5)} <span>${p.reviews?("("+p.reviews+")"):"Nouveauté"}</span></div>
-       <div class="cprice"><b>${p.priceMAD} DH</b>${p.origPriceMAD?`<s>${p.origPriceMAD} DH</s>`:""}<span class="eur">≈ ${p.priceEUR} €</span></div>
-     </div>
-   </div>`).join("");
+
+/* tabs tendances */
+const TABS=[["pop","Les tendances"],["kits","Kits"],["jeux","Jeux"],["ecole","École"],["coloriage","Coloriage"],["pack","Offres Groupées"]];
+let tab="pop";
+const tabsEl=document.getElementById("tabs");
+TABS.forEach(t=>{
+  const b=document.createElement("button");
+  if(t[0]==="pop")b.classList.add("on");
+  b.textContent=t[1];
+  b.onclick=()=>{tab=t[0];document.querySelectorAll("#tabs button").forEach(x=>x.classList.remove("on"));b.classList.add("on");renderTab();};
+  tabsEl.appendChild(b);
+});
+function renderTab(){
+  let list=tab==="pop"?productsData.slice():productsData.filter(p=>p.category===tab);
+  list.sort((a,b)=>(b.reviews||0)-(a.reviews||0));
+  document.getElementById("tabGrid").innerHTML=list.slice(0,10).map(p=>card(p)).join("");
 }
+renderTab();
+
+/* cadeaux du jour = produits gratuits */
+const free=productsData.filter(p=>!p.priceMAD);
+if(free.length){document.getElementById("giftGrid").innerHTML=free.slice(0,5).map(p=>card(p)).join("");}
+else{document.getElementById("giftS").classList.add("hidden");}
+
+/* tuiles categories */
+const counts={};
+productsData.forEach(p=>counts[p.category]=(counts[p.category]||0)+1);
+document.getElementById("catTiles").innerHTML=Object.keys(CATN).map(c=>
+ '<div class="cat" onclick="goCat(\''+c+'\')"><div class="e">'+CATE[c]+'</div><b>'+CATN[c]+'</b><span>'+(counts[c]||0)+' créations</span></div>').join("");
+
+/* recherche + vue categorie */
+function showRes(list,title){
+  document.getElementById("homeS").classList.add("hidden");
+  document.getElementById("heroS").classList.add("hidden");
+  document.getElementById("resS").classList.remove("hidden");
+  document.getElementById("resT").textContent=title+" · "+list.length;
+  document.getElementById("resG").innerHTML=list.map(p=>card(p)).join("");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function backHome(){
+  document.getElementById("homeS").classList.remove("hidden");
+  document.getElementById("heroS").classList.remove("hidden");
+  document.getElementById("resS").classList.add("hidden");
+}
+function doSearch(){
+  const q=(document.getElementById("q").value||"").toLowerCase().trim();
+  if(!q){backHome();return;}
+  const list=productsData.filter(p=>(p.title+" "+(p.subtitle||"")+" "+(p.description||"")).toLowerCase().includes(q));
+  showRes(list,'Résultats pour « '+q+' »');
+}
+function goCat(c){
+  document.getElementById("q").value="";
+  if(c==="all"){backHome();return;}
+  showRes(productsData.filter(p=>p.category===c).sort((a,b)=>(b.reviews||0)-(a.reviews||0)),(CATE[c]||"")+" "+(CATN[c]||c));
+}
+
+/* modal */
+function stars(r){const f=Math.round(r||5);return "★★★★★".slice(0,f)+"☆☆☆☆☆".slice(0,5-f);}
 function openM(id){
   const p=productsData.find(x=>x.id===id); if(!p)return;
   const gal=(p.gallery&&p.gallery.length)?p.gallery.concat([p.cover]):[p.cover,p.img];
   document.getElementById("mmain").src=gal[0];
-  document.getElementById("mthumbs").innerHTML=gal.map((u,i)=>`<img src="${u}" class="${i===0?'on':''}" onclick="document.getElementById('mmain').src='${u}';document.querySelectorAll('.mthumbs img').forEach(x=>x.classList.remove('on'));this.classList.add('on')">`).join("");
+  document.getElementById("mthumbs").innerHTML=gal.map((u,i)=>'<img src="'+u+'" class="'+(i===0?"on":"")+'" onclick="document.getElementById(\'mmain\').src=\''+u+'\';document.querySelectorAll(\'.mthumbs img\').forEach(x=>x.classList.remove(\'on\'));this.classList.add(\'on\')">').join("");
   document.getElementById("mtitle").textContent=p.title;
   document.getElementById("msub").textContent=p.subtitle||"";
-  document.getElementById("mrate").innerHTML=stars(p.rating||5)+" <span>"+(p.reviews?p.reviews+" avis":"Nouveauté")+"</span>";
-  document.getElementById("mp").textContent=p.priceMAD+" DH";
+  document.getElementById("mrate").innerHTML=stars(p.rating)+' <span>'+(p.reviews?p.reviews+" avis":"Nouveauté")+'</span>';
+  document.getElementById("mp").textContent=p.priceMAD?p.priceMAD+" DH":"GRATUIT";
   document.getElementById("mop").textContent=p.origPriceMAD?p.origPriceMAD+" DH":"";
-  document.getElementById("meur").textContent="≈ "+p.priceEUR+" € / "+p.priceUSD+" $";
-  document.getElementById("mtags").innerHTML=['PDF A4','Téléchargement instantané','Impression illimitée','🇲🇦 AREEJ'].map(t=>`<span class="mtag">${t}</span>`).join("");
+  document.getElementById("mtags").innerHTML=['PDF A4','Téléchargement instantané','Impression illimitée','Dans '+(CATN[p.category]||p.category)].map(t=>'<span class="mtag">'+t+'</span>').join("");
   document.getElementById("mdesc").textContent=p.description||"";
-  document.getElementById("mwa").href="https://wa.me/?text="+encodeURIComponent("🛍️ Commande AREEJ market\n\n• "+p.title+" — "+p.priceMAD+" DH\n\nMerci de me confirmer, les liens de téléchargement arrivent juste après 💛");
+  document.getElementById("mwa").href="https://wa.me/?text="+encodeURIComponent("🛍️ Commande AREEJ Fabrica\n\n• "+p.title+" — "+(p.priceMAD?p.priceMAD+" DH":"GRATUIT")+"\n\nMerci de me confirmer, les liens de téléchargement arrivent juste après 💛");
   document.getElementById("modal").classList.add("open");
   document.body.style.overflow="hidden";
 }
 function closeM(){document.getElementById("modal").classList.remove("open");document.body.style.overflow="";}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeM()});
-render();
 </script>
 </body>
 </html>
