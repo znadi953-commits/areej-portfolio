@@ -266,8 +266,8 @@ footer a:hover{color:#fff}
       <div class="mprice"><b id="mp"></b><s id="mop"></s></div>
       <div class="mtags" id="mtags"></div>
       <div class="mdesc" id="mdesc"></div>
-      <div class="mcta"><a class="cta1" id="mbuy" href="boutique.html">🛍️ Commander sur la boutique</a><a class="cta2" id="mwa" href="#" target="_blank">💬 WhatsApp</a></div>
-      <div class="mnote">📩 Produit numérique — les fichiers PDF sont envoyés après confirmation de la commande.</div>
+      <div class="mcta" id="mcta"></div>
+      <div class="mnote" id="mnote">📩 Produit numérique — les fichiers PDF sont envoyés après confirmation de la commande.</div>
     </div>
   </div>
 </div>
@@ -793,7 +793,7 @@ const nav2=document.getElementById("nav2");
 
 function card(p,freeLabel){
   const free=!p.priceMAD;
-  const priceHtml=free?'<span class="gr">0 DH — Gratuit aujourd\'hui chez AREEJ</span>'
+  const priceHtml=free?'<span class="gr">0 DH — Gratuit · téléchargement direct ⬇</span>'
     :'<b>'+p.priceMAD+' DH</b>'+(p.origPriceMAD?'<s>'+p.origPriceMAD+' DH</s>':'')+' <span style="color:#9AA0A8">· ≈ '+p.priceEUR+' €</span>';
   return '<div class="pcard" onclick="openM(\''+p.id+'\')">'+
    '<div class="pthumb">'+(free?'<span class="pfree">Gratuit</span>':'')+'<img loading="lazy" src="'+(p.cover||p.img)+'"></div>'+
@@ -872,7 +872,15 @@ function openM(id){
   document.getElementById("mop").textContent=p.origPriceMAD?p.origPriceMAD+" DH":"";
   document.getElementById("mtags").innerHTML=['PDF A4','Téléchargement instantané','Impression illimitée','Dans '+(CATN[p.category]||p.category)].map(t=>'<span class="mtag">'+t+'</span>').join("");
   document.getElementById("mdesc").textContent=p.description||"";
-  document.getElementById("mwa").href="https://wa.me/?text="+encodeURIComponent("🛍️ Commande AREEJ Fabrica\n\n• "+p.title+" — "+(p.priceMAD?p.priceMAD+" DH":"GRATUIT")+"\n\nMerci de me confirmer, les liens de téléchargement arrivent juste après 💛");
+  const FREEF={"kit-detective":{type:"pdf",print:"planning/KIT-DETECTIVE-PRINT-A4.pdf",ecran:"planning/KIT-DETECTIVE-ECRAN.pdf"},"coding-games":{type:"play",url:"heroes/coding.html"}};
+  const mc=document.getElementById("mcta"); const fr=FREEF[p.id];
+  if(!p.priceMAD&&fr){
+    if(fr.type==="pdf"){mc.innerHTML='<a class="cta1" href="'+fr.print+'" download>⬇ Télécharger GRATUITEMENT (PDF A4)</a><a class="cta2" href="'+fr.ecran+'" download>💻 Version écran</a>';}
+    else{mc.innerHTML='<a class="cta1" href="'+fr.url+'" target="_blank">🎮 Jouer GRATUITEMENT en ligne</a>';}
+  }else{
+    mc.innerHTML='<a class="cta1" href="boutique.html">🛍️ Commander sur la boutique</a><a class="cta2" target="_blank" href="https://wa.me/?text='+encodeURIComponent("🛍️ Commande AREEJ Fabrica\n\n• "+p.title+" — "+p.priceMAD+" DH\n\nMerci de me confirmer, les liens de téléchargement arrivent juste après 💛")+'">💬 WhatsApp</a>';
+  }
+  document.getElementById("mnote").textContent=(!p.priceMAD&&fr)?"🎁 100% gratuit — aucun compte requis, téléchargement direct.":"📩 Produit numérique — les fichiers PDF sont envoyés après confirmation de la commande.";
   document.getElementById("modal").classList.add("open");
   document.body.style.overflow="hidden";
 }
