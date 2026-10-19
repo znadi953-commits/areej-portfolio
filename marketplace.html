@@ -845,10 +845,11 @@ function backHome(){
   document.getElementById("heroS").classList.remove("hidden");
   document.getElementById("resS").classList.add("hidden");
 }
+function norm(t){return (t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
 function doSearch(){
-  const q=(document.getElementById("q").value||"").toLowerCase().trim();
+  const q=norm(document.getElementById("q").value).trim();
   if(!q){backHome();return;}
-  const list=productsData.filter(p=>(p.title+" "+(p.subtitle||"")+" "+(p.description||"")).toLowerCase().includes(q));
+  const list=productsData.filter(p=>norm(p.title+" "+(p.subtitle||"")+" "+(p.description||"")).includes(q));
   showRes(list,'Résultats pour « '+q+' »');
 }
 function goCat(c){
