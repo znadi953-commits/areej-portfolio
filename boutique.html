@@ -1316,7 +1316,17 @@
     @media (max-width: 900px) { .showcase { height: 420px; } .sc-main { width: 230px; } .sc-side { width: 170px; }
       .sc-l { transform: translateX(-120px) rotate(-11deg); } .sc-r { transform: translateX(120px) rotate(11deg); }
       .hero-stats { gap: 18px; flex-wrap: wrap; } }
-  </style>
+  
+/* checkout payer-telecharger */
+.paysec{border:2px solid #F3D6E4;border-radius:14px;padding:14px 16px;margin-bottom:10px;cursor:pointer;background:#fff;transition:.15s}
+.paysec.on{border-color:#E5247E;background:#FDF0F6;box-shadow:0 4px 14px rgba(229,36,126,.12)}
+.paysec b{font-size:14.5px;color:#2d2340}
+.paysec p{font-size:12.5px;color:#7a6f8a;margin:4px 0 0;line-height:1.5}
+.paystep{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;margin-bottom:9px;color:#4a3f5c}
+.paystep .n{background:#E5247E;color:#fff;font-weight:800;font-size:12px;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.pay-go{display:block;width:100%;text-align:center;background:linear-gradient(135deg,#E5247E,#8E44EC);color:#fff;font-weight:800;font-size:15.5px;padding:15px;border-radius:14px;text-decoration:none;margin-top:6px;box-shadow:0 8px 20px rgba(229,36,126,.3)}
+.pay-note{font-size:12px;color:#7a6f8a;text-align:center;margin-top:10px;line-height:1.6}
+</style>
 </head>
 <body>
 
@@ -1808,6 +1818,28 @@
     <div class="modal-box pv-box">
       <button class="modal-close" onclick="closeQuickModal()">✕</button>
       <div id="quickModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Checkout Payer & Telecharger -->
+  <div class="modal-overlay" id="payModal" onclick="if(event.target===this)closePay()">
+    <div class="modal-box" style="max-width:560px">
+      <button class="modal-close" onclick="closePay()">✕</button>
+      <div style="padding:26px 26px 22px">
+        <h2 style="font-size:21px;color:#2d2340;margin:0 0 4px">💳 Payer & Télécharger</h2>
+        <div id="payTitle" style="font-size:13.5px;color:#7a6f8a;margin-bottom:6px"></div>
+        <div style="font-size:24px;font-weight:800;color:#E5247E;margin-bottom:14px" id="payPrice"></div>
+        <div style="font-weight:800;font-size:13.5px;color:#2d2340;margin-bottom:8px">1️⃣ Choisissez votre moyen de paiement :</div>
+        <div class="paysec on" onclick="pickPay(this,'Virement bancaire')"><b>🏦 Virement / Dépôt bancaire</b><p>Le RIB vous est envoyé sur WhatsApp — virement ou dépôt espèces au GAB (CIH, Attijariwafa, Banque Populaire…)</p></div>
+        <div class="paysec" onclick="pickPay(this,'CashPlus / Wafacash')"><b>📮 CashPlus / Wafacash</b><p>Envoyez le montant au nom communiqué sur WhatsApp — disponible partout au Maroc</p></div>
+        <div class="paysec" onclick="pickPay(this,'PayPal (hors Maroc)')"><b>🌍 PayPal (clients hors Maroc)</b><p>Pour nos clients en Europe & ailleurs — le lien de paiement vous est envoyé</p></div>
+        <div style="font-weight:800;font-size:13.5px;color:#2d2340;margin:14px 0 8px">2️⃣ Comment ça marche :</div>
+        <div class="paystep"><span class="n">1</span><span>Cliquez sur le bouton rose — votre commande s'ouvre dans WhatsApp</span></div>
+        <div class="paystep"><span class="n">2</span><span>Vous recevez les coordonnées de paiement & payez</span></div>
+        <div class="paystep"><span class="n">3</span><span>Envoyez la photo du reçu — <b>vos PDF arrivent immédiatement</b> ⚡</span></div>
+        <a class="pay-go" id="payGo" href="#" target="_blank">✅ Commander & payer via WhatsApp</a>
+        <div class="pay-note">⚡ Livraison en quelques minutes (max 2h) · PDF A4 haute résolution · impression illimitée</div>
+      </div>
     </div>
   </div>
 
@@ -2360,8 +2392,8 @@
               <span class="review-num">(${p.reviews} avis)</span>
             </div>
             <div class="product-price-row">
-              <span class="price-current">${prices.current}</span>
-              <span class="price-original">${prices.orig}</span>
+              <span class="price-current">${p.priceMAD === 0 ? 'GRATUIT 🎁' : prices.current}</span>
+              <span class="price-original">${p.priceMAD === 0 ? '' : prices.orig}</span>
               <span class="discount-tag">PROMO</span>
             </div>
             <button class="add-to-cart-action" onclick="addToCart('${p.id}')">
@@ -2566,6 +2598,20 @@
           </div>
         </div>` : '';
       const gal = (p.gallery && p.gallery.length) ? p.gallery.concat([p.cover]) : [p.cover, p.img];
+      const isFree = p.priceMAD === 0;
+      const fr = FREEF[p.id] || {};
+      let ctaHtml;
+      if (isFree && fr.play) {
+        ctaHtml = `<a class="pv-cta buy" style="text-decoration:none" href="${fr.play}" target="_blank" rel="noopener">🎮 Jouer GRATUITEMENT en ligne</a>
+            <a class="pv-cta flipb" href="${p.flip}" target="_blank" rel="noopener">📖 Feuilleter le livre</a>`;
+      } else if (isFree && fr.pdf) {
+        ctaHtml = `<a class="pv-cta buy" style="text-decoration:none" href="${fr.pdf}" download target="_blank" rel="noopener">⬇ Télécharger GRATUITEMENT (PDF A4)</a>
+            <a class="pv-cta flipb" href="${fr.ecran || fr.pdf}" download target="_blank" rel="noopener">💻 Version écran</a>`;
+      } else {
+        ctaHtml = `<button class="pv-cta buy" onclick="openPay('${p.id}')">💳 Payer & Télécharger (${prices.current})</button>
+            <button class="pv-cta flipb" style="cursor:pointer" onclick="addToCart('${p.id}'); closeQuickModal();">Ajouter au panier 🛒</button>
+            <a class="pv-cta flipb" href="${p.flip}" target="_blank" rel="noopener">📖 Feuilleter le livre</a>`;
+      }
       content.innerHTML = `
         <div class="pv-wrap">
           <div class="pv-gallery">
@@ -2580,14 +2626,13 @@
             <h2 class="pv-title">${p.title}</h2>
             <div class="pv-rating"><span class="s">★★★★★</span> ${p.rating}${p.reviews > 0 ? ` · ${p.reviews} avis` : ' · Nouveauté'} · ${p.subtitle}</div>
             <div>
-              <span class="pv-price">${prices.current}</span>
-              <span class="pv-orig">${prices.orig}</span>
-              <span class="pv-off">PROMO -50%</span>
+              <span class="pv-price">${isFree ? 'GRATUIT 🎁' : prices.current}</span>
+              <span class="pv-orig">${isFree ? '' : prices.orig}</span>
+              <span class="pv-off">${isFree ? '100% GRATUIT' : 'PROMO -50%'}</span>
             </div>
             <div class="pv-promo">⏳ Prix de lancement — pour une durée limitée</div>
             <div class="pv-digital">📩 <b>Téléchargement numérique</b> · PDF A4 haute qualité · Âge : ${p.ageGroup}</div>
-            <button class="pv-cta buy" onclick="addToCart('${p.id}'); closeQuickModal();">Ajouter au panier 🛒</button>
-            <a class="pv-cta flipb" href="${p.flip}" target="_blank" rel="noopener">📖 Feuilleter le livre</a>
+            ${ctaHtml}
             <div class="pv-trust">
               <span>✅ Téléchargement instantané après commande</span>
               <span>✅ Impression illimitée à la maison</span>
@@ -2621,6 +2666,41 @@
         closeQuickModal();
       }
     }
+
+    // Checkout Payer & Telecharger
+    const FREEF = {
+      'kit-detective': { pdf: 'planning/KIT-DETECTIVE-PRINT-A4.pdf', ecran: 'planning/KIT-DETECTIVE-ECRAN.pdf' },
+      'coding-games': { play: 'heroes/coding.html' }
+    };
+    let payMethod = 'Virement bancaire', payProd = null;
+    function pickPay(el, m) {
+      payMethod = m;
+      document.querySelectorAll('.paysec').forEach(x => x.classList.remove('on'));
+      el.classList.add('on');
+      updPay();
+    }
+    function updPay() {
+      if (!payProd) return;
+      const pr = formatPrice(payProd);
+      const msg = "🛍️ COMMANDE AREEJ Studio\n\n📦 " + payProd.title + "\n💰 Prix : " + pr.current + "\n💳 Paiement : " + payMethod + "\n\nMerci de m'envoyer les coordonnées de paiement. J'envoie le reçu et je reçois mes PDF 💛";
+      document.getElementById('payGo').href = "https://wa.me/?text=" + encodeURIComponent(msg);
+    }
+    function openPay(id) {
+      payProd = productsData.find(x => x.id === id);
+      if (!payProd) return;
+      closeQuickModal();
+      const pr = formatPrice(payProd);
+      document.getElementById('payTitle').textContent = payProd.title;
+      document.getElementById('payPrice').textContent = pr.current + (payProd.origPriceMAD ? "  (au lieu de " + pr.orig + ")" : "");
+      updPay();
+      document.getElementById('payModal').classList.add('active');
+    }
+    function closePay() {
+      document.getElementById('payModal').classList.remove('active');
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeQuickModal(); closePay(); }
+    });
 
     // Initialize
     renderProducts();
